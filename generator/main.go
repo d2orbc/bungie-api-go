@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/getkin/kin-openapi/openapi3"
@@ -80,7 +81,8 @@ func main() {
 		return n
 	}
 
-	for url, path := range spec.Paths.Map() {
+	for _, url := range spec.Paths.InMatchingOrder() {
+		path := spec.Paths.Find(url)
 		operation := path.Get
 		if operation == nil {
 			operation = path.Post
@@ -93,6 +95,7 @@ func main() {
 		paths.Comment(`%s: %s`, method, path.Description)
 		paths.Comment("")
 		paths.Comment("URL: %s", url)
+		paths.Comment("")
 		paths.Comment("Operation: " + operation.OperationID)
 		if operation.Deprecated {
 			paths.Comment("Deprecated.")
@@ -100,6 +103,7 @@ func main() {
 		if operation.Security != nil {
 			for _, req := range *operation.Security {
 				for scheme, scopes := range req {
+					paths.Comment("")
 					paths.Comment(`Scope: %s %v`, scheme, scopes)
 				}
 			}
@@ -118,7 +122,8 @@ func main() {
 	for {
 		updated := 0
 
-		for ref, schema := range spec.Components.Schemas {
+		for _, ref := range orderedKeys(spec.Components.Schemas) {
+			schema := spec.Components.Schemas[ref]
 			if refToTypeOverride[ref] != "" {
 				continue
 			}
@@ -151,7 +156,8 @@ func main() {
 				// types.Comment(string(def))
 				types.Debug(schema)
 
-				for fieldName, prop := range schema.Value.Properties {
+				for _, fieldName := range orderedKeys(schema.Value.Properties) {
+					prop := schema.Value.Properties[fieldName]
 					// TODO: use x-destiny-component-type-dependency
 					types.Out("")
 					if prop.Value != nil && prop.Value.Description != "" {
@@ -331,10 +337,8 @@ func (b *buf) Out(s string, params ...interface{}) {
 }
 
 func methodParameters(w *buf, method string, op *openapi3.Operation) {
-	paths.Comment("%sRequest are the request parameters for operation %s", method, op.OperationID)
-	helpers.Out("func (r %sRequest) Request() {}", method)
+	w.Comment("%sRequest are the request parameters for operation %s", method, op.OperationID)
 	w.Out(`type %sRequest struct {`, method)
-
 	for _, param := range op.Parameters {
 		b, _ := param.MarshalJSON()
 		if param.Value.In != "path" && param.Value.In != "query" {
@@ -508,3 +512,12 @@ func deRefSchema(ref string) *openapi3.Schema {
 }
 
 */
+
+func orderedKeys[V any](m map[string]V) []string {
+	var keys []string
+	for k, _ := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}

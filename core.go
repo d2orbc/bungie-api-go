@@ -9,10 +9,6 @@ type API struct {
 	client Client
 }
 
-type Request interface {
-	Request()
-}
-
 type Client interface {
 	Get(ctx context.Context, pathSpec string, pathParams map[string]string) ([]byte, error)
 	Post(ctx context.Context, pathSpec string, pathParams map[string]string, body []byte) ([]byte, error)
