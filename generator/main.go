@@ -29,8 +29,6 @@ var helpers buf
 var wantSchema = map[string]bool{}
 var doneSchema = map[string]bool{}
 var refToTypeOverride = map[string]string{
-	"BaseItemComponentSetOfint32":  "BaseItemComponentSet[int32]",
-	"BaseItemComponentSetOfint64":  "BaseItemComponentSet[int64]",
 	"BaseItemComponentSetOfuint32": "BaseItemComponentSet[uint32]",
 
 	"DestinyBaseItemComponentSetOfint32":  "BaseItemComponentSet[int32]",
@@ -75,9 +73,6 @@ func main() {
 			panic(fmt.Errorf("couldnt find ref %s: %v", ref, err))
 		}
 		n := typeFromSchema(l.(*openapi3.Response).Content.Get("application/json").Schema.Value.Properties["Response"])
-		if override := refToTypeOverride[n]; override != "" {
-			n = override
-		}
 		return n
 	}
 
@@ -98,7 +93,8 @@ func main() {
 		paths.Comment("")
 		paths.Comment("Operation: " + operation.OperationID)
 		if operation.Deprecated {
-			paths.Comment("Deprecated.")
+			paths.Comment("")
+			paths.Comment("Deprecated: see above.")
 		}
 		if operation.Security != nil {
 			for _, req := range *operation.Security {
@@ -164,9 +160,6 @@ func main() {
 						types.Comment(prop.Value.Description)
 					}
 					fieldType := typeFromSchema(prop)
-					if override, ok := refToTypeOverride[fieldType]; ok {
-						fieldType = override
-					}
 					structOpt := ""
 					if fieldType == "int64" || fieldType == "Nullable[int64]" {
 						structOpt = ",string"
@@ -179,10 +172,8 @@ func main() {
 
 					if prop.Value != nil {
 						if ext, ok := prop.Value.Extensions["x-mapped-definition"]; ok {
-							// desc := prop.Value.Description
 							mappedTo := ext.(map[string]any)["$ref"].(string)
 							types.Comment("Mapped to %s", mappedTo)
-							// log.Printf("mapped %+v %s", mappedTo, b)
 						}
 					}
 				}
@@ -477,8 +468,6 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 
 	b, _ := s.MarshalJSON()
 	panic(fmt.Errorf("unknown type %s", b))
-	// log.Printf("unhandled type %s", b)
-	return "any"
 }
 
 func refToIdent(ref string) (ident string) {
@@ -487,9 +476,6 @@ func refToIdent(ref string) (ident string) {
 			ident = override
 		}
 	}()
-	if override := refToTypeOverride[ref]; override != "" {
-		return override
-	}
 	t := strings.TrimPrefix(ref, "#/components/schemas/")
 	last := strings.LastIndex(t, ".")
 	t = t[last+1:]
@@ -500,18 +486,6 @@ func refToIdent(ref string) (ident string) {
 	wantSchema[t] = true
 	return t
 }
-
-/*
-func deRefSchema(ref string) *openapi3.Schema {
-	ref = strings.TrimPrefix(ref, "#/components/schemas/")
-	l, err := spec.Components.Schemas.JSONLookup(ref)
-	if err != nil {
-		panic(fmt.Errorf("couldnt find ref %s: %v", ref, err))
-	}
-	return l.(*openapi3.Schema)
-}
-
-*/
 
 func orderedKeys[V any](m map[string]V) []string {
 	var keys []string
