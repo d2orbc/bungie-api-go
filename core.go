@@ -2,6 +2,7 @@ package bnet
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 )
 
@@ -26,7 +27,39 @@ type ServerResponse[T any] struct {
 	DetailedErrorTrace string
 }
 
-type Nullable[T any] *T
+type Nullable[T any] struct{ v *T }
+
+func (n Nullable[T]) IsNull() bool {
+	return n.v == nil
+}
+
+func (n Nullable[T]) Value() (v T, ok bool) {
+	var zero T
+	if n.IsNull() {
+		return zero, false
+	}
+	return *n.v, true
+}
+
+func (n *Nullable[T]) UnmarshalJSON(raw []byte) error {
+	if string(raw) == "null" {
+		n.v = nil
+	}
+
+	var val T
+	if err := json.Unmarshal(raw, &val); err != nil {
+		return err
+	}
+	n.v = &val
+	return nil
+}
+
+func (n Nullable[T]) MarshalJSON() ([]byte, error) {
+	if n.v == nil {
+		return []byte("null"), nil
+	}
+	return json.Marshal(n.v)
+}
 
 type Timestamp string
 
