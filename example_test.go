@@ -61,6 +61,120 @@ func Example_B() {
 	}
 }
 
+func Example_Chiri() {
+	ctx := context.Background()
+	defs := &Defs{}
+	var api = &bnet.API{}
+
+	const (
+		memType = bnet.BungieMembershipType_TigerSteam
+		memId   = 4611686018504534611
+	)
+
+	profile, err := api.Destiny2GetProfile(ctx, bnet.Destiny2GetProfileRequest{
+		MembershipType:      memType,
+		DestinyMembershipID: memId,
+		Components: []bnet.ComponentType{
+			bnet.ComponentType_Characters,
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if eventHash, ok := profile.Response.Profile.Data.ActiveEventCardHash.Value(); ok {
+		eventDef, _ := eventHash.Get(defs.EventCard)
+		log.Print(eventDef.DisplayProperties.Name)
+	}
+
+	vendorSeen := make(map[uint32]bool)
+	for charId := range profile.Response.Characters.Data {
+		vendors, err := api.Destiny2GetVendors(ctx, bnet.Destiny2GetVendorsRequest{
+			MembershipType:      memType,
+			DestinyMembershipID: memId,
+			CharacterID:         charId,
+			Components: []bnet.ComponentType{
+				bnet.ComponentType_Vendors,
+			},
+		})
+		if err != nil {
+			log.Fatal(err)
+		}
+		for vendorHash := range vendors.Response.Vendors.Data {
+			if vendorSeen[vendorHash] {
+				continue
+			}
+			vendorSeen[vendorHash] = true
+			// NOTE: we have to cast here because Bungie doesn't type the map key.
+			vendorDef, _ := defs.Vendor(bnet.Hash[bnet.VendorDefinition](vendorHash))
+			for _, loc := range vendorDef.Locations {
+				locationDef, _ := loc.DestinationHash.Get(defs.Destination)
+				log.Printf("%s %s", vendorDef.DisplayProperties.Name, locationDef.DisplayProperties.Name)
+			}
+		}
+	}
+}
+
+func getMissingMemType(memID int64) bnet.BungieMembershipType {
+	ctx := context.Background()
+	var api = &bnet.API{}
+
+	var (
+		memType = bnet.BungieMembershipType_All
+	)
+
+	resp, _ := api.UserGetMembershipDataById(ctx, bnet.UserGetMembershipDataByIdRequest{
+		MembershipID:   memID,
+		MembershipType: memType,
+	})
+	for _, mem := range resp.Response.DestinyMemberships {
+		if mem.MembershipID == memID {
+			return mem.MembershipType
+		}
+	}
+	return bnet.BungieMembershipType_None
+}
+
+func Example_getDeletedCharacterIds_API(memID int64, membershipType bnet.BungieMembershipType) {
+	ctx := context.Background()
+	var api = &bnet.API{}
+
+	resp, _ := api.Destiny2GetHistoricalStatsForAccount(ctx, bnet.Destiny2GetHistoricalStatsForAccountRequest{
+		DestinyMembershipID: memID,
+		MembershipType:      membershipType,
+	})
+	var deletedChars []int64
+	for _, char := range resp.Response.Characters {
+		if char.Deleted {
+			deletedChars = append(deletedChars, char.CharacterID)
+		}
+	}
+	log.Print(deletedChars)
+}
+
+func Example_getClan_API(memID int64, membershipType bnet.Nullable[bnet.BungieMembershipType]) {
+	ctx := context.Background()
+	var api = &bnet.API{}
+
+	memType, ok := membershipType.Value()
+	if !ok {
+		memType = getMissingMemType(memID)
+	}
+
+	resp, _ := api.GroupV2GetGroupsForMember(ctx, bnet.GroupV2GetGroupsForMemberRequest{
+		MembershipID:   memID,
+		MembershipType: memType,
+		Filter:         bnet.GroupsForMemberFilter_All,
+		GroupType:      bnet.GroupType_Clan,
+	})
+	for _, clan := range resp.Response.Results {
+		if clan.Group.GroupType == bnet.GroupType_Clan {
+			log.Print(clan.Group.Name)
+			log.Print(clan.Group.ClanInfo.ClanCallsign)
+			log.Print(clan.Group.GroupID)
+		}
+	}
+}
+
 type Defs struct{}
 
 func (f *Defs) Destination(h bnet.Hash[bnet.DestinationDefinition]) (*bnet.DestinationDefinition, error) {
@@ -72,5 +186,13 @@ func (f *Defs) Activity(h bnet.Hash[bnet.ActivityDefinition]) (*bnet.ActivityDef
 }
 
 func (f *Defs) InventoryItem(h bnet.Hash[bnet.InventoryItemDefinition]) (*bnet.InventoryItemDefinition, error) {
+	return nil, nil
+}
+
+func (f *Defs) EventCard(h bnet.Hash[bnet.EventCardDefinition]) (*bnet.EventCardDefinition, error) {
+	return nil, nil
+}
+
+func (f *Defs) Vendor(h bnet.Hash[bnet.VendorDefinition]) (*bnet.VendorDefinition, error) {
 	return nil, nil
 }
