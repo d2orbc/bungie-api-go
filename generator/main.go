@@ -86,7 +86,8 @@ func main() {
 			panic("unhandled operation")
 		}
 		method := methodName(path)
-		methodParameters(&paths, method, operation)
+		var paramBuf, queryBuf buf
+		methodParameters(&paths, method, operation, &paramBuf, &queryBuf)
 		paths.Comment(`%s: %s`, method, path.Description)
 		paths.Comment("")
 		paths.Comment("URL: %s", url)
@@ -106,10 +107,24 @@ func main() {
 		}
 		responseIdent := responseType(operation.Responses.Status(200).Ref)
 		paths.Out(`func (a API) %s(ctx context.Context, req %sRequest) (*ServerResponse[%s], error) {`, method, method, responseIdent)
-		paths.Debug(path)
-		// def, _ := json.MarshalIndent(path, "", "  ")
-		// paths.Comment(string(def))
-		paths.Out(`return nil, nil`)
+		paths.Debug(operation)
+		paths.Out(`var resp ServerResponse[%s]`, responseIdent)
+		paths.Out(`err := a.client.Do(ctx, %q,`, operation.OperationID)
+		if path.Get != nil {
+			paths.Out("%q,", "GET")
+		} else if path.Post != nil {
+			paths.Out("%q,", "POST")
+		}
+		paths.Out(`%q, nil, map[string]string{`, url)
+		paths.Out(paramBuf.String())
+		paths.Out("}, url.Values{")
+		paths.Out(queryBuf.String())
+		if operation.RequestBody == nil {
+			paths.Out("}, nil, &resp)")
+		} else {
+			paths.Out("}, req.Body, &resp)")
+		}
+		paths.Out("return &resp, err")
 		paths.Out(`}`)
 	}
 
@@ -152,6 +167,16 @@ func main() {
 				// types.Comment(string(def))
 				types.Debug(schema)
 
+				// if table, ok := schema.Value.Extensions["x-mobile-manifest-name"]; ok {
+				// table := table.(string)
+				if strings.HasPrefix(ref, "Destiny.Definitions.") {
+					table := strings.TrimPrefix(ref, "Destiny.Definitions.")
+					helpers.Out("func (d %s) DefinitionTable() string {", ident)
+					helpers.Out("return %q", table)
+					helpers.Out("}")
+				}
+				// }
+
 				for _, fieldName := range orderedKeys(schema.Value.Properties) {
 					prop := schema.Value.Properties[fieldName]
 					// TODO: use x-destiny-component-type-dependency
@@ -161,21 +186,21 @@ func main() {
 					}
 					fieldType := typeFromSchema(prop)
 					structOpt := ""
-					if fieldType == "int64" || fieldType == "Nullable[int64]" {
-						structOpt = ",string"
-					}
+					// if fieldType == "int64" || fieldType == "Nullable[int64]" {
+					// 	structOpt = ",string"
+					// }
 					if prop.Value != nil && prop.Value.Nullable {
 						structOpt += ",omitempty"
 					}
 					structTag := fmt.Sprintf(`json:"%s%s"`, fieldName, structOpt)
 					types.Out("%s %s `%s`", capitalize(fieldName), fieldType, structTag)
 
-					if prop.Value != nil {
-						if ext, ok := prop.Value.Extensions["x-mapped-definition"]; ok {
-							mappedTo := ext.(map[string]any)["$ref"].(string)
-							types.Comment("Mapped to %s", mappedTo)
-						}
-					}
+					// if prop.Value != nil {
+					// 	if ext, ok := prop.Value.Extensions["x-mapped-definition"]; ok {
+					// 		mappedTo := ext.(map[string]any)["$ref"].(string)
+					// 		types.Comment("Mapped to %s", mappedTo)
+					// 	}
+					// }
 				}
 				types.Out(`}`)
 			} else if schema.Value.Enum != nil {
@@ -186,7 +211,7 @@ func main() {
 
 				if values, ok := schema.Value.Extensions["x-enum-values"]; ok {
 					helpers.Out("")
-					helpers.Out("func (e %s) String() string {", ident)
+					helpers.Out("func (e %s) Enum() string {", ident)
 					helpers.Out("switch e {")
 					types.Out("const (")
 					values := values.([]interface{})
@@ -222,6 +247,7 @@ package bnet
 
 import "context"
 import "fmt"
+import "net/url"
 	`)
 	os.Stdout.ReadFrom(&paths)
 	os.Stdout.ReadFrom(&types)
@@ -327,7 +353,7 @@ func (b *buf) Out(s string, params ...interface{}) {
 	b.WriteString("\n")
 }
 
-func methodParameters(w *buf, method string, op *openapi3.Operation) {
+func methodParameters(w *buf, method string, op *openapi3.Operation, paramBuf, queryBuf *buf) {
 	w.Comment("%sRequest are the request parameters for operation %s", method, op.OperationID)
 	w.Out(`type %sRequest struct {`, method)
 	for _, param := range op.Parameters {
@@ -344,6 +370,15 @@ func methodParameters(w *buf, method string, op *openapi3.Operation) {
 		fieldType := typeFromSchema(param.Value.Schema)
 		wantSchema[fieldType] = true
 		w.Out(`%s %s`, capitalize(param.Value.Name), fieldType)
+		val := fmt.Sprintf("fmt.Sprint(req.%s)", capitalize(param.Value.Name))
+		if param.Value.Schema.Value.Type.Is("array") {
+			val = fmt.Sprintf("joinArray(req.%s)", capitalize(param.Value.Name))
+		}
+		if param.Value.In == "path" {
+			paramBuf.Out(`"%s":%s,`, param.Value.Name, val)
+		} else if param.Value.In == "query" {
+			queryBuf.Out(`"%s":{%s},`, param.Value.Name, val)
+		}
 	}
 
 	if op.RequestBody != nil {
@@ -384,12 +419,6 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 		}()
 	}
 
-	if ext, ok := s.Value.Extensions["x-mapped-definition"]; ok {
-		mappedTo := ext.(map[string]any)["$ref"].(string)
-		ident := refToIdent(mappedTo)
-		wantSchema[ident] = true
-		return "Hash[" + ident + "]"
-	}
 	if s.Value.Type.Is("object") {
 		if s.Value.AllOf != nil && len(s.Value.AllOf) == 1 {
 			return refToIdent(s.Value.AllOf[0].Ref)
@@ -408,8 +437,17 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 			if typ, ok := def["type"]; ok {
 				keySchema.Type = &openapi3.Types{typ.(string)}
 			}
+			keySchema.Extensions = s.Value.Extensions
 			keyType := typeFromSchema(openapi3.NewSchemaRef("", keySchema))
 			valueType := typeFromSchema(s.Value.AdditionalProperties.Schema)
+			if enumSchema, ok := def["x-enum-reference"]; ok {
+				enumSchema := enumSchema.(map[string]any)
+				ref := enumSchema["$ref"].(string)
+				keyType = refToIdent(ref)
+				if ref == "#/components/schemas/Destiny.DestinyGender" {
+					keyType = "string"
+				}
+			}
 			wantSchema[keyType] = true
 			wantSchema[valueType] = true
 			return "map[" + keyType + "]" + valueType
@@ -419,6 +457,7 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 			return "any"
 		}
 	}
+
 	if s.Value.Type.Is("array") {
 		return "[]" + typeFromSchema(s.Value.Items)
 	}
@@ -435,12 +474,13 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 	}
 
 	if v, ok := s.Value.Extensions["x-enum-reference"]; ok {
-		ref, ok := v.(map[string]interface{})
+		enumSchema, ok := v.(map[string]interface{})
 		if !ok {
 			b, _ := s.MarshalJSON()
 			panic(fmt.Errorf("unknown enum type %s", b))
 		}
-		t := refToIdent(ref["$ref"].(string))
+		ref := enumSchema["$ref"].(string)
+		t := refToIdent(ref)
 		if v, ok := s.Value.Extensions["x-enum-is-bitmask"]; ok {
 			if v.(bool) {
 				return "BitmaskSet[" + t + "]"
@@ -449,13 +489,20 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 		return t
 	}
 
+	if ext, ok := s.Value.Extensions["x-mapped-definition"]; ok {
+		mappedTo := ext.(map[string]any)["$ref"].(string)
+		ident := refToIdent(mappedTo)
+		wantSchema[ident] = true
+		return "Hash[" + ident + "]"
+	}
+
 	switch s.Value.Format {
 	case "uint32":
 		return "uint32"
 	case "int32":
 		return "int32"
 	case "int64":
-		return "int64"
+		return "Int64"
 	case "byte":
 		return "int"
 	case "float":
@@ -495,3 +542,5 @@ func orderedKeys[V any](m map[string]V) []string {
 	sort.Strings(keys)
 	return keys
 }
+
+// "[OBSOLETE]" -> Deprecated

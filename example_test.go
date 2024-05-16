@@ -114,7 +114,7 @@ func Example_Chiri() {
 	}
 }
 
-func getMissingMemType(memID int64) bnet.BungieMembershipType {
+func getMissingMemType(memID bnet.Int64) bnet.BungieMembershipType {
 	ctx := context.Background()
 	var api = &bnet.API{}
 
@@ -134,7 +134,7 @@ func getMissingMemType(memID int64) bnet.BungieMembershipType {
 	return bnet.BungieMembershipType_None
 }
 
-func Example_getDeletedCharacterIds_API(memID int64, membershipType bnet.BungieMembershipType) {
+func Example_getDeletedCharacterIds_API(memID bnet.Int64, membershipType bnet.BungieMembershipType) {
 	ctx := context.Background()
 	var api = &bnet.API{}
 
@@ -142,7 +142,7 @@ func Example_getDeletedCharacterIds_API(memID int64, membershipType bnet.BungieM
 		DestinyMembershipID: memID,
 		MembershipType:      membershipType,
 	})
-	var deletedChars []int64
+	var deletedChars []bnet.Int64
 	for _, char := range resp.Response.Characters {
 		if char.Deleted {
 			deletedChars = append(deletedChars, char.CharacterID)
@@ -151,7 +151,7 @@ func Example_getDeletedCharacterIds_API(memID int64, membershipType bnet.BungieM
 	log.Print(deletedChars)
 }
 
-func Example_getClan_API(memID int64, membershipType bnet.Nullable[bnet.BungieMembershipType]) {
+func Example_getClan_API(memID bnet.Int64, membershipType bnet.Nullable[bnet.BungieMembershipType]) {
 	ctx := context.Background()
 	var api = &bnet.API{}
 

@@ -2,6 +2,7 @@ package bnet
 
 import "context"
 import "fmt"
+import "net/url"
 
 // GetUserSystemOverridesRequest are the request parameters for operation .GetUserSystemOverrides
 type GetUserSystemOverridesRequest struct {
@@ -16,21 +17,21 @@ type GetUserSystemOverridesRequest struct {
 func (a API) GetUserSystemOverrides(ctx context.Context, req GetUserSystemOverridesRequest) (*ServerResponse[map[string]CoreSystem], error) {
 	//	{
 	//	  "description": "Get the user-specific system overrides that should be respected alongside common systems.",
-	//	  "get": {
-	//	    "description": "Get the user-specific system overrides that should be respected alongside common systems.",
-	//	    "operationId": ".GetUserSystemOverrides",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfstringAndCoreSystem"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      ""
-	//	    ]
+	//	  "operationId": ".GetUserSystemOverrides",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfstringAndCoreSystem"
+	//	    }
 	//	  },
-	//	  "summary": ".GetUserSystemOverrides"
+	//	  "tags": [
+	//	    ""
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]CoreSystem]
+	err := a.client.Do(ctx, ".GetUserSystemOverrides",
+		"GET",
+		"/UserSystemOverrides/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetMembershipDataForCurrentUserRequest are the request parameters for operation
@@ -49,28 +50,28 @@ type UserGetMembershipDataForCurrentUserRequest struct {
 func (a API) UserGetMembershipDataForCurrentUser(ctx context.Context, req UserGetMembershipDataForCurrentUserRequest) (*ServerResponse[UserMembershipData], error) {
 	//	{
 	//	  "description": "Returns a list of accounts associated with signed in user. This is useful for OAuth implementations that do not give you access to the token response.",
-	//	  "get": {
-	//	    "description": "Returns a list of accounts associated with signed in user. This is useful for OAuth implementations that do not give you access to the token response.",
-	//	    "operationId": "User.GetMembershipDataForCurrentUser",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.UserMembershipData"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadBasicUserProfile"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	  "operationId": "User.GetMembershipDataForCurrentUser",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.UserMembershipData"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetMembershipDataForCurrentUser"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadBasicUserProfile"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[UserMembershipData]
+	err := a.client.Do(ctx, "User.GetMembershipDataForCurrentUser",
+		"GET",
+		"/User/GetMembershipsForCurrentUser/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetAvailableThemesRequest are the request parameters for operation User.GetAvailableThemes
@@ -85,21 +86,21 @@ type UserGetAvailableThemesRequest struct {
 func (a API) UserGetAvailableThemes(ctx context.Context, req UserGetAvailableThemesRequest) (*ServerResponse[[]UserTheme], error) {
 	//	{
 	//	  "description": "Returns a list of all available user themes.",
-	//	  "get": {
-	//	    "description": "Returns a list of all available user themes.",
-	//	    "operationId": "User.GetAvailableThemes",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfUserTheme"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	  "operationId": "User.GetAvailableThemes",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfUserTheme"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetAvailableThemes"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]UserTheme]
+	err := a.client.Do(ctx, "User.GetAvailableThemes",
+		"GET",
+		"/User/GetAvailableThemes/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TrendingGetTrendingCategoriesRequest are the request parameters for operation
@@ -116,21 +117,21 @@ type TrendingGetTrendingCategoriesRequest struct {
 func (a API) TrendingGetTrendingCategories(ctx context.Context, req TrendingGetTrendingCategoriesRequest) (*ServerResponse[TrendingCategories], error) {
 	//	{
 	//	  "description": "Returns trending items for Bungie.net, collapsed into the first page of items per category. For pagination within a category, call GetTrendingCategory.",
-	//	  "get": {
-	//	    "description": "Returns trending items for Bungie.net, collapsed into the first page of items per category. For pagination within a category, call GetTrendingCategory.",
-	//	    "operationId": "Trending.GetTrendingCategories",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Trending.TrendingCategories"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Trending"
-	//	    ]
+	//	  "operationId": "Trending.GetTrendingCategories",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Trending.TrendingCategories"
+	//	    }
 	//	  },
-	//	  "summary": "Trending.GetTrendingCategories"
+	//	  "tags": [
+	//	    "Trending"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[TrendingCategories]
+	err := a.client.Do(ctx, "Trending.GetTrendingCategories",
+		"GET",
+		"/Trending/Categories/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensGetBungieRewardsListRequest are the request parameters for operation
@@ -146,21 +147,21 @@ type TokensGetBungieRewardsListRequest struct {
 func (a API) TokensGetBungieRewardsList(ctx context.Context, req TokensGetBungieRewardsListRequest) (*ServerResponse[map[string]BungieRewardDisplay], error) {
 	//	{
 	//	  "description": "Returns a list of the current bungie rewards",
-	//	  "get": {
-	//	    "description": "Returns a list of the current bungie rewards",
-	//	    "operationId": "Tokens.GetBungieRewardsList",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	  "operationId": "Tokens.GetBungieRewardsList",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.GetBungieRewardsList"
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]BungieRewardDisplay]
+	err := a.client.Do(ctx, "Tokens.GetBungieRewardsList",
+		"GET",
+		"/Tokens/Rewards/BungieRewards/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensForceDropsRepairRequest are the request parameters for operation Tokens.ForceDropsRepair
@@ -178,28 +179,28 @@ type TokensForceDropsRepairRequest struct {
 func (a API) TokensForceDropsRepair(ctx context.Context, req TokensForceDropsRepairRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Twitch Drops self-repair function - scans twitch for drops not marked as fulfilled and resyncs them.",
-	//	  "post": {
-	//	    "description": "Twitch Drops self-repair function - scans twitch for drops not marked as fulfilled and resyncs them.",
-	//	    "operationId": "Tokens.ForceDropsRepair",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "PartnerOfferGrant"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	  "operationId": "Tokens.ForceDropsRepair",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.ForceDropsRepair"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "PartnerOfferGrant"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Tokens.ForceDropsRepair",
+		"POST",
+		"/Tokens/Partner/ForceDropsRepair/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensClaimPartnerOfferRequest are the request parameters for operation Tokens.ClaimPartnerOffer
@@ -219,38 +220,38 @@ type TokensClaimPartnerOfferRequest struct {
 func (a API) TokensClaimPartnerOffer(ctx context.Context, req TokensClaimPartnerOfferRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Claim a partner offer as the authenticated user.",
-	//	  "post": {
-	//	    "description": "Claim a partner offer as the authenticated user.",
-	//	    "operationId": "Tokens.ClaimPartnerOffer",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Tokens.PartnerOfferClaimRequest"
-	//	          }
+	//	  "operationId": "Tokens.ClaimPartnerOffer",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Tokens.PartnerOfferClaimRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "PartnerOfferGrant"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Tokens.ClaimPartnerOffer"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "PartnerOfferGrant"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Tokens.ClaimPartnerOffer",
+		"POST",
+		"/Tokens/Partner/ClaimOffer/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // SocialGetFriendRequestListRequest are the request parameters for operation
@@ -268,28 +269,28 @@ type SocialGetFriendRequestListRequest struct {
 func (a API) SocialGetFriendRequestList(ctx context.Context, req SocialGetFriendRequestListRequest) (*ServerResponse[BungieFriendRequestListResponse], error) {
 	//	{
 	//	  "description": "Returns your friend request queue.",
-	//	  "get": {
-	//	    "description": "Returns your friend request queue.",
-	//	    "operationId": "Social.GetFriendRequestList",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Social.Friends.BungieFriendRequestListResponse"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadUserData"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	  "operationId": "Social.GetFriendRequestList",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Social.Friends.BungieFriendRequestListResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Social.GetFriendRequestList"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadUserData"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[BungieFriendRequestListResponse]
+	err := a.client.Do(ctx, "Social.GetFriendRequestList",
+		"GET",
+		"/Social/Friends/Requests/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialGetFriendListRequest are the request parameters for operation Social.GetFriendList
@@ -306,28 +307,28 @@ type SocialGetFriendListRequest struct {
 func (a API) SocialGetFriendList(ctx context.Context, req SocialGetFriendListRequest) (*ServerResponse[BungieFriendListResponse], error) {
 	//	{
 	//	  "description": "Returns your Bungie Friend list",
-	//	  "get": {
-	//	    "description": "Returns your Bungie Friend list",
-	//	    "operationId": "Social.GetFriendList",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Social.Friends.BungieFriendListResponse"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadUserData"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	  "operationId": "Social.GetFriendList",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Social.Friends.BungieFriendListResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Social.GetFriendList"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadUserData"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[BungieFriendListResponse]
+	err := a.client.Do(ctx, "Social.GetFriendList",
+		"GET",
+		"/Social/Friends/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GetCommonSettingsRequest are the request parameters for operation .GetCommonSettings
@@ -342,21 +343,21 @@ type GetCommonSettingsRequest struct {
 func (a API) GetCommonSettings(ctx context.Context, req GetCommonSettingsRequest) (*ServerResponse[CoreSettingsConfiguration], error) {
 	//	{
 	//	  "description": "Get the common settings used by the Bungie.Net environment.",
-	//	  "get": {
-	//	    "description": "Get the common settings used by the Bungie.Net environment.",
-	//	    "operationId": ".GetCommonSettings",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Common.Models.CoreSettingsConfiguration"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      ""
-	//	    ]
+	//	  "operationId": ".GetCommonSettings",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Common.Models.CoreSettingsConfiguration"
+	//	    }
 	//	  },
-	//	  "summary": ".GetCommonSettings"
+	//	  "tags": [
+	//	    ""
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[CoreSettingsConfiguration]
+	err := a.client.Do(ctx, ".GetCommonSettings",
+		"GET",
+		"/Settings/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GroupSearchRequest are the request parameters for operation GroupV2.GroupSearch
@@ -374,31 +375,31 @@ type GroupV2GroupSearchRequest struct {
 func (a API) GroupV2GroupSearch(ctx context.Context, req GroupV2GroupSearchRequest) (*ServerResponse[GroupSearchResponse], error) {
 	//	{
 	//	  "description": "Search for Groups.",
-	//	  "post": {
-	//	    "description": "Search for Groups.",
-	//	    "operationId": "GroupV2.GroupSearch",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupQuery"
-	//	          }
+	//	  "operationId": "GroupV2.GroupSearch",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupQuery"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.GroupSearch"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupSearchResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupSearchResponse]
+	err := a.client.Do(ctx, "GroupV2.GroupSearch",
+		"POST",
+		"/GroupV2/Search/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetGroupByNameV2Request are the request parameters for operation GroupV2.GetGroupByNameV2
@@ -417,31 +418,31 @@ type GroupV2GetGroupByNameV2Request struct {
 func (a API) GroupV2GetGroupByNameV2(ctx context.Context, req GroupV2GetGroupByNameV2Request) (*ServerResponse[GroupResponse], error) {
 	//	{
 	//	  "description": "Get information about a specific group with the given name and type. The POST version.",
-	//	  "post": {
-	//	    "description": "Get information about a specific group with the given name and type. The POST version.",
-	//	    "operationId": "GroupV2.GetGroupByNameV2",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupNameSearchRequest"
-	//	          }
+	//	  "operationId": "GroupV2.GetGroupByNameV2",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupNameSearchRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.GetGroupByNameV2"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupResponse]
+	err := a.client.Do(ctx, "GroupV2.GetGroupByNameV2",
+		"POST",
+		"/GroupV2/NameV2/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetAvailableThemesRequest are the request parameters for operation GroupV2.GetAvailableThemes
@@ -456,21 +457,21 @@ type GroupV2GetAvailableThemesRequest struct {
 func (a API) GroupV2GetAvailableThemes(ctx context.Context, req GroupV2GetAvailableThemesRequest) (*ServerResponse[[]GroupTheme], error) {
 	//	{
 	//	  "description": "Returns a list of all available group themes.",
-	//	  "get": {
-	//	    "description": "Returns a list of all available group themes.",
-	//	    "operationId": "GroupV2.GetAvailableThemes",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfGroupTheme"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	  "operationId": "GroupV2.GetAvailableThemes",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfGroupTheme"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetAvailableThemes"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]GroupTheme]
+	err := a.client.Do(ctx, "GroupV2.GetAvailableThemes",
+		"GET",
+		"/GroupV2/GetAvailableThemes/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetAvailableAvatarsRequest are the request parameters for operation
@@ -486,21 +487,21 @@ type GroupV2GetAvailableAvatarsRequest struct {
 func (a API) GroupV2GetAvailableAvatars(ctx context.Context, req GroupV2GetAvailableAvatarsRequest) (*ServerResponse[map[int32]string], error) {
 	//	{
 	//	  "description": "Returns a list of all available group avatars for the signed-in user.",
-	//	  "get": {
-	//	    "description": "Returns a list of all available group avatars for the signed-in user.",
-	//	    "operationId": "GroupV2.GetAvailableAvatars",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfint32Andstring"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	  "operationId": "GroupV2.GetAvailableAvatars",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfint32Andstring"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetAvailableAvatars"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[int32]string]
+	err := a.client.Do(ctx, "GroupV2.GetAvailableAvatars",
+		"GET",
+		"/GroupV2/GetAvailableAvatars/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GetGlobalAlertsRequest are the request parameters for operation .GetGlobalAlerts
@@ -519,31 +520,33 @@ type GetGlobalAlertsRequest struct {
 func (a API) GetGlobalAlerts(ctx context.Context, req GetGlobalAlertsRequest) (*ServerResponse[[]GlobalAlert], error) {
 	//	{
 	//	  "description": "Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.",
-	//	  "get": {
-	//	    "description": "Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.",
-	//	    "operationId": ".GetGlobalAlerts",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Determines whether Streaming Alerts are included in results",
-	//	        "in": "query",
-	//	        "name": "includestreaming",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
+	//	  "operationId": ".GetGlobalAlerts",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Determines whether Streaming Alerts are included in results",
+	//	      "in": "query",
+	//	      "name": "includestreaming",
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEListOfGlobalAlert"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      ""
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEListOfGlobalAlert"
+	//	    }
 	//	  },
-	//	  "summary": ".GetGlobalAlerts"
+	//	  "tags": [
+	//	    ""
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]GlobalAlert]
+	err := a.client.Do(ctx, ".GetGlobalAlerts",
+		"GET",
+		"/GlobalAlerts/", nil, map[string]string{}, url.Values{
+			"includestreaming": {fmt.Sprint(req.Includestreaming)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // GetAvailableLocalesRequest are the request parameters for operation .GetAvailableLocales
@@ -558,21 +561,21 @@ type GetAvailableLocalesRequest struct {
 func (a API) GetAvailableLocales(ctx context.Context, req GetAvailableLocalesRequest) (*ServerResponse[map[string]string], error) {
 	//	{
 	//	  "description": "List of available localization cultures",
-	//	  "get": {
-	//	    "description": "List of available localization cultures",
-	//	    "operationId": ".GetAvailableLocales",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEDictionaryOfstringAndstring"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      ""
-	//	    ]
+	//	  "operationId": ".GetAvailableLocales",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEDictionaryOfstringAndstring"
+	//	    }
 	//	  },
-	//	  "summary": ".GetAvailableLocales"
+	//	  "tags": [
+	//	    ""
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]string]
+	err := a.client.Do(ctx, ".GetAvailableLocales",
+		"GET",
+		"/GetAvailableLocales/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetRecruitmentThreadSummariesRequest are the request parameters for operation
@@ -580,7 +583,7 @@ func (a API) GetAvailableLocales(ctx context.Context, req GetAvailableLocalesReq
 type ForumGetRecruitmentThreadSummariesRequest struct {
 
 	// Required.
-	Body []int64
+	Body []Int64
 }
 
 // ForumGetRecruitmentThreadSummaries: Allows the caller to get a list of to 25 recruitment thread
@@ -592,35 +595,35 @@ type ForumGetRecruitmentThreadSummariesRequest struct {
 func (a API) ForumGetRecruitmentThreadSummaries(ctx context.Context, req ForumGetRecruitmentThreadSummariesRequest) (*ServerResponse[[]ForumRecruitmentDetail], error) {
 	//	{
 	//	  "description": "Allows the caller to get a list of to 25 recruitment thread summary information objects.",
-	//	  "post": {
-	//	    "description": "Allows the caller to get a list of to 25 recruitment thread summary information objects.",
-	//	    "operationId": "Forum.GetRecruitmentThreadSummaries",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "items": {
-	//	              "format": "int64",
-	//	              "type": "integer"
-	//	            },
-	//	            "type": "array"
-	//	          }
+	//	  "operationId": "Forum.GetRecruitmentThreadSummaries",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "items": {
+	//	            "format": "int64",
+	//	            "type": "integer"
+	//	          },
+	//	          "type": "array"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEListOfForumRecruitmentDetail"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Forum.GetRecruitmentThreadSummaries"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEListOfForumRecruitmentDetail"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]ForumRecruitmentDetail]
+	err := a.client.Do(ctx, "Forum.GetRecruitmentThreadSummaries",
+		"POST",
+		"/Forum/Recruit/Summaries/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // ForumGetForumTagSuggestionsRequest are the request parameters for operation
@@ -640,31 +643,33 @@ type ForumGetForumTagSuggestionsRequest struct {
 func (a API) ForumGetForumTagSuggestions(ctx context.Context, req ForumGetForumTagSuggestionsRequest) (*ServerResponse[[]TagResponse], error) {
 	//	{
 	//	  "description": "Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.",
-	//	  "get": {
-	//	    "description": "Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.",
-	//	    "operationId": "Forum.GetForumTagSuggestions",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The partial tag input to generate suggestions from.",
-	//	        "in": "query",
-	//	        "name": "partialtag",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Forum.GetForumTagSuggestions",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The partial tag input to generate suggestions from.",
+	//	      "in": "query",
+	//	      "name": "partialtag",
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfTagResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfTagResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetForumTagSuggestions"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]TagResponse]
+	err := a.client.Do(ctx, "Forum.GetForumTagSuggestions",
+		"GET",
+		"/Forum/GetForumTagSuggestions/", nil, map[string]string{}, url.Values{
+			"partialtag": {fmt.Sprint(req.Partialtag)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetPublicVendorsRequest are the request parameters for operation Destiny2.GetPublicVendors
@@ -687,42 +692,44 @@ type Destiny2GetPublicVendorsRequest struct {
 func (a API) Destiny2GetPublicVendors(ctx context.Context, req Destiny2GetPublicVendorsRequest) (*ServerResponse[PublicVendorsResponse], error) {
 	//	{
 	//	  "description": "Get items available from vendors where the vendors have items for sale that are common for everyone. If any portion of the Vendor's available inventory is character or account specific, we will be unable to return their data from this endpoint due to the way that available inventory is computed. As I am often guilty of saying: 'It's a long story...'",
-	//	  "get": {
-	//	    "description": "Get items available from vendors where the vendors have items for sale that are common for everyone. If any portion of the Vendor's available inventory is character or account specific, we will be unable to return their data from this endpoint due to the way that available inventory is computed. As I am often guilty of saying: 'It's a long story...'",
-	//	    "operationId": "Destiny2.GetPublicVendors",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
+	//	  "operationId": "Destiny2.GetPublicVendors",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
+	//	          "format": "int32",
+	//	          "type": "integer",
+	//	          "x-enum-is-bitmask": false,
+	//	          "x-enum-reference": {
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
+	//	          }
+	//	        },
+	//	        "type": "array"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyPublicVendorsResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-preview": true
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyPublicVendorsResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetPublicVendors"
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[PublicVendorsResponse]
+	err := a.client.Do(ctx, "Destiny2.GetPublicVendors",
+		"GET",
+		"/Destiny2/Vendors/", nil, map[string]string{}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetHistoricalStatsDefinitionRequest are the request parameters for operation
@@ -738,21 +745,21 @@ type Destiny2GetHistoricalStatsDefinitionRequest struct {
 func (a API) Destiny2GetHistoricalStatsDefinition(ctx context.Context, req Destiny2GetHistoricalStatsDefinitionRequest) (*ServerResponse[map[string]HistoricalStatsDefinition], error) {
 	//	{
 	//	  "description": "Gets historical stats definitions.",
-	//	  "get": {
-	//	    "description": "Gets historical stats definitions.",
-	//	    "operationId": "Destiny2.GetHistoricalStatsDefinition",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ReadOnlyDictionaryOfstringAndDestinyHistoricalStatsDefinition"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	  "operationId": "Destiny2.GetHistoricalStatsDefinition",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ReadOnlyDictionaryOfstringAndDestinyHistoricalStatsDefinition"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetHistoricalStatsDefinition"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]HistoricalStatsDefinition]
+	err := a.client.Do(ctx, "Destiny2.GetHistoricalStatsDefinition",
+		"GET",
+		"/Destiny2/Stats/Definition/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetPublicMilestonesRequest are the request parameters for operation
@@ -768,21 +775,21 @@ type Destiny2GetPublicMilestonesRequest struct {
 func (a API) Destiny2GetPublicMilestones(ctx context.Context, req Destiny2GetPublicMilestonesRequest) (*ServerResponse[map[uint32]PublicMilestone], error) {
 	//	{
 	//	  "description": "Gets public information about currently available Milestones.",
-	//	  "get": {
-	//	    "description": "Gets public information about currently available Milestones.",
-	//	    "operationId": "Destiny2.GetPublicMilestones",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfuint32AndDestinyPublicMilestone"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	  "operationId": "Destiny2.GetPublicMilestones",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfuint32AndDestinyPublicMilestone"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetPublicMilestones"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[uint32]PublicMilestone]
+	err := a.client.Do(ctx, "Destiny2.GetPublicMilestones",
+		"GET",
+		"/Destiny2/Milestones/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetDestinyManifestRequest are the request parameters for operation
@@ -798,21 +805,21 @@ type Destiny2GetDestinyManifestRequest struct {
 func (a API) Destiny2GetDestinyManifest(ctx context.Context, req Destiny2GetDestinyManifestRequest) (*ServerResponse[Manifest], error) {
 	//	{
 	//	  "description": "Returns the current version of the manifest as a json object.",
-	//	  "get": {
-	//	    "description": "Returns the current version of the manifest as a json object.",
-	//	    "operationId": "Destiny2.GetDestinyManifest",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Config.DestinyManifest"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	  "operationId": "Destiny2.GetDestinyManifest",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Config.DestinyManifest"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetDestinyManifest"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Manifest]
+	err := a.client.Do(ctx, "Destiny2.GetDestinyManifest",
+		"GET",
+		"/Destiny2/Manifest/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetClanBannerSourceRequest are the request parameters for operation
@@ -828,21 +835,21 @@ type Destiny2GetClanBannerSourceRequest struct {
 func (a API) Destiny2GetClanBannerSource(ctx context.Context, req Destiny2GetClanBannerSourceRequest) (*ServerResponse[ClanBannerSource], error) {
 	//	{
 	//	  "description": "Returns the dictionary of values for the Clan Banner",
-	//	  "get": {
-	//	    "description": "Returns the dictionary of values for the Clan Banner",
-	//	    "operationId": "Destiny2.GetClanBannerSource",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Config.ClanBanner.ClanBannerSource"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	  "operationId": "Destiny2.GetClanBannerSource",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Config.ClanBanner.ClanBannerSource"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetClanBannerSource"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ClanBannerSource]
+	err := a.client.Do(ctx, "Destiny2.GetClanBannerSource",
+		"GET",
+		"/Destiny2/Clan/ClanBannerDictionary/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2AwaInitializeRequestRequest are the request parameters for operation
@@ -863,38 +870,38 @@ type Destiny2AwaInitializeRequestRequest struct {
 func (a API) Destiny2AwaInitializeRequest(ctx context.Context, req Destiny2AwaInitializeRequestRequest) (*ServerResponse[AwaInitializeResponse], error) {
 	//	{
 	//	  "description": "Initialize a request to perform an advanced write action.",
-	//	  "post": {
-	//	    "description": "Initialize a request to perform an advanced write action.",
-	//	    "operationId": "Destiny2.AwaInitializeRequest",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Advanced.AwaPermissionRequested"
-	//	          }
+	//	  "operationId": "Destiny2.AwaInitializeRequest",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Advanced.AwaPermissionRequested"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Advanced.AwaInitializeResponse"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdvancedWriteActions"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.AwaInitializeRequest"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Advanced.AwaInitializeResponse"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdvancedWriteActions"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[AwaInitializeResponse]
+	err := a.client.Do(ctx, "Destiny2.AwaInitializeRequest",
+		"POST",
+		"/Destiny2/Awa/Initialize/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2AwaProvideAuthorizationResultRequest are the request parameters for operation
@@ -914,31 +921,31 @@ type Destiny2AwaProvideAuthorizationResultRequest struct {
 func (a API) Destiny2AwaProvideAuthorizationResult(ctx context.Context, req Destiny2AwaProvideAuthorizationResultRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.",
-	//	  "post": {
-	//	    "description": "Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.",
-	//	    "operationId": "Destiny2.AwaProvideAuthorizationResult",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Advanced.AwaUserResponse"
-	//	          }
+	//	  "operationId": "Destiny2.AwaProvideAuthorizationResult",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Advanced.AwaUserResponse"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.AwaProvideAuthorizationResult"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.AwaProvideAuthorizationResult",
+		"POST",
+		"/Destiny2/Awa/AwaProvideAuthorizationResult/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2UpdateLoadoutIdentifiersRequest are the request parameters for operation
@@ -959,41 +966,41 @@ type Destiny2UpdateLoadoutIdentifiersRequest struct {
 func (a API) Destiny2UpdateLoadoutIdentifiers(ctx context.Context, req Destiny2UpdateLoadoutIdentifiersRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Update the color, icon, and name of a loadout.",
-	//	  "post": {
-	//	    "description": "Update the color, icon, and name of a loadout.",
-	//	    "operationId": "Destiny2.UpdateLoadoutIdentifiers",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.UpdateLoadoutIdentifiers",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.UpdateLoadoutIdentifiers"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.UpdateLoadoutIdentifiers",
+		"POST",
+		"/Destiny2/Actions/Loadouts/UpdateLoadoutIdentifiers/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2SnapshotLoadoutRequest are the request parameters for operation Destiny2.SnapshotLoadout
@@ -1013,41 +1020,41 @@ type Destiny2SnapshotLoadoutRequest struct {
 func (a API) Destiny2SnapshotLoadout(ctx context.Context, req Destiny2SnapshotLoadoutRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Snapshot a loadout with the currently equipped items.",
-	//	  "post": {
-	//	    "description": "Snapshot a loadout with the currently equipped items.",
-	//	    "operationId": "Destiny2.SnapshotLoadout",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.SnapshotLoadout",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.SnapshotLoadout"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.SnapshotLoadout",
+		"POST",
+		"/Destiny2/Actions/Loadouts/SnapshotLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2EquipLoadoutRequest are the request parameters for operation Destiny2.EquipLoadout
@@ -1068,41 +1075,41 @@ type Destiny2EquipLoadoutRequest struct {
 func (a API) Destiny2EquipLoadout(ctx context.Context, req Destiny2EquipLoadoutRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Equip a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.",
-	//	  "post": {
-	//	    "description": "Equip a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.",
-	//	    "operationId": "Destiny2.EquipLoadout",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.EquipLoadout",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.EquipLoadout"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.EquipLoadout",
+		"POST",
+		"/Destiny2/Actions/Loadouts/EquipLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2ClearLoadoutRequest are the request parameters for operation Destiny2.ClearLoadout
@@ -1122,41 +1129,41 @@ type Destiny2ClearLoadoutRequest struct {
 func (a API) Destiny2ClearLoadout(ctx context.Context, req Destiny2ClearLoadoutRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Clear the identifiers and items of a loadout.",
-	//	  "post": {
-	//	    "description": "Clear the identifiers and items of a loadout.",
-	//	    "operationId": "Destiny2.ClearLoadout",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.ClearLoadout",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyLoadoutActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.ClearLoadout"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.ClearLoadout",
+		"POST",
+		"/Destiny2/Actions/Loadouts/ClearLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2TransferItemRequest are the request parameters for operation Destiny2.TransferItem
@@ -1177,41 +1184,41 @@ type Destiny2TransferItemRequest struct {
 func (a API) Destiny2TransferItem(ctx context.Context, req Destiny2TransferItemRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Transfer an item to/from your vault. You must have a valid Destiny account. You must also pass BOTH a reference AND an instance ID if it's an instanced item. itshappening.gif",
-	//	  "post": {
-	//	    "description": "Transfer an item to/from your vault. You must have a valid Destiny account. You must also pass BOTH a reference AND an instance ID if it's an instanced item. itshappening.gif",
-	//	    "operationId": "Destiny2.TransferItem",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.DestinyItemTransferRequest"
-	//	          }
+	//	  "operationId": "Destiny2.TransferItem",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.DestinyItemTransferRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.TransferItem"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.TransferItem",
+		"POST",
+		"/Destiny2/Actions/Items/TransferItem/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2SetQuestTrackedStateRequest are the request parameters for operation
@@ -1233,41 +1240,41 @@ type Destiny2SetQuestTrackedStateRequest struct {
 func (a API) Destiny2SetQuestTrackedState(ctx context.Context, req Destiny2SetQuestTrackedStateRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Set the Tracking State for an instanced item, if that item is a Quest or Bounty. You must have a valid Destiny Account. Yeah, it's an item.",
-	//	  "post": {
-	//	    "description": "Set the Tracking State for an instanced item, if that item is a Quest or Bounty. You must have a valid Destiny Account. Yeah, it's an item.",
-	//	    "operationId": "Destiny2.SetQuestTrackedState",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemStateRequest"
-	//	          }
+	//	  "operationId": "Destiny2.SetQuestTrackedState",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemStateRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.SetQuestTrackedState"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.SetQuestTrackedState",
+		"POST",
+		"/Destiny2/Actions/Items/SetTrackedState/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2SetItemLockStateRequest are the request parameters for operation Destiny2.SetItemLockState
@@ -1288,41 +1295,41 @@ type Destiny2SetItemLockStateRequest struct {
 func (a API) Destiny2SetItemLockState(ctx context.Context, req Destiny2SetItemLockStateRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Set the Lock State for an instanced item. You must have a valid Destiny Account.",
-	//	  "post": {
-	//	    "description": "Set the Lock State for an instanced item. You must have a valid Destiny Account.",
-	//	    "operationId": "Destiny2.SetItemLockState",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemStateRequest"
-	//	          }
+	//	  "operationId": "Destiny2.SetItemLockState",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemStateRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.SetItemLockState"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.SetItemLockState",
+		"POST",
+		"/Destiny2/Actions/Items/SetLockState/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2PullFromPostmasterRequest are the request parameters for operation
@@ -1345,41 +1352,41 @@ type Destiny2PullFromPostmasterRequest struct {
 func (a API) Destiny2PullFromPostmaster(ctx context.Context, req Destiny2PullFromPostmasterRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Extract an item from the Postmaster, with whatever implications that may entail. You must have a valid Destiny account. You must also pass BOTH a reference AND an instance ID if it's an instanced item.",
-	//	  "post": {
-	//	    "description": "Extract an item from the Postmaster, with whatever implications that may entail. You must have a valid Destiny account. You must also pass BOTH a reference AND an instance ID if it's an instanced item.",
-	//	    "operationId": "Destiny2.PullFromPostmaster",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyPostmasterTransferRequest"
-	//	          }
+	//	  "operationId": "Destiny2.PullFromPostmaster",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyPostmasterTransferRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.PullFromPostmaster"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.PullFromPostmaster",
+		"POST",
+		"/Destiny2/Actions/Items/PullFromPostmaster/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2InsertSocketPlugFreeRequest are the request parameters for operation
@@ -1403,43 +1410,43 @@ type Destiny2InsertSocketPlugFreeRequest struct {
 func (a API) Destiny2InsertSocketPlugFree(ctx context.Context, req Destiny2InsertSocketPlugFreeRequest) (*ServerResponse[ItemChangeResponse], error) {
 	//	{
 	//	  "description": "Insert a 'free' plug into an item's socket. This does not require 'Advanced Write Action' authorization and is available to 3rd-party apps, but will only work on 'free and reversible' socket actions (Perks, Armor Mods, Shaders, Ornaments, etc.). You must have a valid Destiny Account, and the character must either be in a social space, in orbit, or offline.",
-	//	  "post": {
-	//	    "description": "Insert a 'free' plug into an item's socket. This does not require 'Advanced Write Action' authorization and is available to 3rd-party apps, but will only work on 'free and reversible' socket actions (Perks, Armor Mods, Shaders, Ornaments, etc.). You must have a valid Destiny Account, and the character must either be in a social space, in orbit, or offline.",
-	//	    "operationId": "Destiny2.InsertSocketPlugFree",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyInsertPlugsFreeActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.InsertSocketPlugFree",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyInsertPlugsFreeActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyItemChangeResponse"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.5"
-	//	    },
-	//	    "x-preview": true
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.InsertSocketPlugFree"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyItemChangeResponse"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.5"
+	//	  },
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[ItemChangeResponse]
+	err := a.client.Do(ctx, "Destiny2.InsertSocketPlugFree",
+		"POST",
+		"/Destiny2/Actions/Items/InsertSocketPlugFree/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2InsertSocketPlugRequest are the request parameters for operation Destiny2.InsertSocketPlug
@@ -1464,43 +1471,43 @@ type Destiny2InsertSocketPlugRequest struct {
 func (a API) Destiny2InsertSocketPlug(ctx context.Context, req Destiny2InsertSocketPlugRequest) (*ServerResponse[ItemChangeResponse], error) {
 	//	{
 	//	  "description": "Insert a plug into a socketed item. I know how it sounds, but I assure you it's much more G-rated than you might be guessing. We haven't decided yet whether this will be able to insert plugs that have side effects, but if we do it will require special scope permission for an application attempting to do so. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline. Request must include proof of permission for 'InsertPlugs' from the account owner.",
-	//	  "post": {
-	//	    "description": "Insert a plug into a socketed item. I know how it sounds, but I assure you it's much more G-rated than you might be guessing. We haven't decided yet whether this will be able to insert plugs that have side effects, but if we do it will require special scope permission for an application attempting to do so. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline. Request must include proof of permission for 'InsertPlugs' from the account owner.",
-	//	    "operationId": "Destiny2.InsertSocketPlug",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyInsertPlugsActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.InsertSocketPlug",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyInsertPlugsActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyItemChangeResponse"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdvancedWriteActions"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.5"
-	//	    },
-	//	    "x-preview": true
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.InsertSocketPlug"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyItemChangeResponse"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdvancedWriteActions"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.5"
+	//	  },
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[ItemChangeResponse]
+	err := a.client.Do(ctx, "Destiny2.InsertSocketPlug",
+		"POST",
+		"/Destiny2/Actions/Items/InsertSocketPlug/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2EquipItemsRequest are the request parameters for operation Destiny2.EquipItems
@@ -1522,41 +1529,41 @@ type Destiny2EquipItemsRequest struct {
 func (a API) Destiny2EquipItems(ctx context.Context, req Destiny2EquipItemsRequest) (*ServerResponse[EquipItemResults], error) {
 	//	{
 	//	  "description": "Equip a list of items by itemInstanceIds. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline. Any items not found on your character will be ignored.",
-	//	  "post": {
-	//	    "description": "Equip a list of items by itemInstanceIds. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline. Any items not found on your character will be ignored.",
-	//	    "operationId": "Destiny2.EquipItems",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemSetActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.EquipItems",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemSetActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.DestinyEquipItemResults"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.DestinyEquipItemResults"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.EquipItems"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[EquipItemResults]
+	err := a.client.Do(ctx, "Destiny2.EquipItems",
+		"POST",
+		"/Destiny2/Actions/Items/EquipItems/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2EquipItemRequest are the request parameters for operation Destiny2.EquipItem
@@ -1577,41 +1584,41 @@ type Destiny2EquipItemRequest struct {
 func (a API) Destiny2EquipItem(ctx context.Context, req Destiny2EquipItemRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Equip an item. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.",
-	//	  "post": {
-	//	    "description": "Equip an item. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.",
-	//	    "operationId": "Destiny2.EquipItem",
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemActionRequest"
-	//	          }
+	//	  "operationId": "Destiny2.EquipItem",
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/Destiny.Requests.Actions.DestinyItemActionRequest"
 	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "MoveEquipDestinyItems"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ],
-	//	    "x-documentation-attributes": {
-	//	      "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
 	//	    }
 	//	  },
-	//	  "summary": "Destiny2.EquipItem"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "MoveEquipDestinyItems"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ],
+	//	  "x-documentation-attributes": {
+	//	    "ThrottleSecondsBetweenActionPerUser": "0.1"
+	//	  }
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.EquipItem",
+		"POST",
+		"/Destiny2/Actions/Items/EquipItem/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // AppGetBungieApplicationsRequest are the request parameters for operation App.GetBungieApplications
@@ -1626,21 +1633,21 @@ type AppGetBungieApplicationsRequest struct {
 func (a API) AppGetBungieApplications(ctx context.Context, req AppGetBungieApplicationsRequest) (*ServerResponse[[]Application], error) {
 	//	{
 	//	  "description": "Get list of applications created by Bungie.",
-	//	  "get": {
-	//	    "description": "Get list of applications created by Bungie.",
-	//	    "operationId": "App.GetBungieApplications",
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/IEnumerableOfApplication"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "App"
-	//	    ]
+	//	  "operationId": "App.GetBungieApplications",
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/IEnumerableOfApplication"
+	//	    }
 	//	  },
-	//	  "summary": "App.GetBungieApplications"
+	//	  "tags": [
+	//	    "App"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]Application]
+	err := a.client.Do(ctx, "App.GetBungieApplications",
+		"GET",
+		"/App/FirstParty/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserSearchByGlobalNamePostRequest are the request parameters for operation
@@ -1664,43 +1671,45 @@ type UserSearchByGlobalNamePostRequest struct {
 func (a API) UserSearchByGlobalNamePost(ctx context.Context, req UserSearchByGlobalNamePostRequest) (*ServerResponse[UserSearchResponse], error) {
 	//	{
 	//	  "description": "Given the prefix of a global display name, returns all users who share that name.",
-	//	  "post": {
-	//	    "description": "Given the prefix of a global display name, returns all users who share that name.",
-	//	    "operationId": "User.SearchByGlobalNamePost",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The zero-based page of results you desire.",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
+	//	  "operationId": "User.SearchByGlobalNamePost",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The zero-based page of results you desire.",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/User.UserSearchPrefixRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/User.UserSearchPrefixRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.UserSearchResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "User.SearchByGlobalNamePost"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.UserSearchResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[UserSearchResponse]
+	err := a.client.Do(ctx, "User.SearchByGlobalNamePost",
+		"POST",
+		"/User/Search/GlobalName/{page}/", nil, map[string]string{
+			"page": fmt.Sprint(req.Page),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // UserGetSanitizedPlatformDisplayNamesRequest are the request parameters for operation
@@ -1709,7 +1718,7 @@ type UserGetSanitizedPlatformDisplayNamesRequest struct {
 
 	// The requested membership id to load.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 }
 
 // UserGetSanitizedPlatformDisplayNames: Gets a list of all display names linked to this membership id
@@ -1719,36 +1728,38 @@ type UserGetSanitizedPlatformDisplayNamesRequest struct {
 // URL: /User/GetSanitizedPlatformDisplayNames/{membershipId}/
 //
 // Operation: User.GetSanitizedPlatformDisplayNames
-func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserGetSanitizedPlatformDisplayNamesRequest) (*ServerResponse[map[int]string], error) {
+func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserGetSanitizedPlatformDisplayNamesRequest) (*ServerResponse[map[BungieCredentialType]string], error) {
 	//	{
 	//	  "description": "Gets a list of all display names linked to this membership id but sanitized (profanity filtered). Obeys all visibility rules of calling user and is heavily cached.",
-	//	  "get": {
-	//	    "description": "Gets a list of all display names linked to this membership id but sanitized (profanity filtered). Obeys all visibility rules of calling user and is heavily cached.",
-	//	    "operationId": "User.GetSanitizedPlatformDisplayNames",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The requested membership id to load.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "User.GetSanitizedPlatformDisplayNames",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The requested membership id to load.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEDictionaryOfBungieCredentialTypeAndstring"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEDictionaryOfBungieCredentialTypeAndstring"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetSanitizedPlatformDisplayNames"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[BungieCredentialType]string]
+	err := a.client.Do(ctx, "User.GetSanitizedPlatformDisplayNames",
+		"GET",
+		"/User/GetSanitizedPlatformDisplayNames/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetCredentialTypesForTargetAccountRequest are the request parameters for operation
@@ -1757,7 +1768,7 @@ type UserGetCredentialTypesForTargetAccountRequest struct {
 
 	// The user's membership id
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 }
 
 // UserGetCredentialTypesForTargetAccount: Returns a list of credential types attached to the requested
@@ -1769,33 +1780,35 @@ type UserGetCredentialTypesForTargetAccountRequest struct {
 func (a API) UserGetCredentialTypesForTargetAccount(ctx context.Context, req UserGetCredentialTypesForTargetAccountRequest) (*ServerResponse[[]GetCredentialTypesForAccountResponse], error) {
 	//	{
 	//	  "description": "Returns a list of credential types attached to the requested account",
-	//	  "get": {
-	//	    "description": "Returns a list of credential types attached to the requested account",
-	//	    "operationId": "User.GetCredentialTypesForTargetAccount",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The user's membership id",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "User.GetCredentialTypesForTargetAccount",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The user's membership id",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfGetCredentialTypesForAccountResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfGetCredentialTypesForAccountResponse"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetCredentialTypesForTargetAccount"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]GetCredentialTypesForAccountResponse]
+	err := a.client.Do(ctx, "User.GetCredentialTypesForTargetAccount",
+		"GET",
+		"/User/GetCredentialTypesForTargetAccount/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetBungieNetUserByIdRequest are the request parameters for operation User.GetBungieNetUserById
@@ -1803,7 +1816,7 @@ type UserGetBungieNetUserByIdRequest struct {
 
 	// The requested Bungie.net membership id.
 	// Required.
-	Id int64
+	Id Int64
 }
 
 // UserGetBungieNetUserById: Loads a bungienet user by membership id.
@@ -1814,33 +1827,35 @@ type UserGetBungieNetUserByIdRequest struct {
 func (a API) UserGetBungieNetUserById(ctx context.Context, req UserGetBungieNetUserByIdRequest) (*ServerResponse[GeneralUser], error) {
 	//	{
 	//	  "description": "Loads a bungienet user by membership id.",
-	//	  "get": {
-	//	    "description": "Loads a bungienet user by membership id.",
-	//	    "operationId": "User.GetBungieNetUserById",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The requested Bungie.net membership id.",
-	//	        "in": "path",
-	//	        "name": "id",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "User.GetBungieNetUserById",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The requested Bungie.net membership id.",
+	//	      "in": "path",
+	//	      "name": "id",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.GeneralUser"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.GeneralUser"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetBungieNetUserById"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GeneralUser]
+	err := a.client.Do(ctx, "User.GetBungieNetUserById",
+		"GET",
+		"/User/GetBungieNetUserById/{id}/", nil, map[string]string{
+			"id": fmt.Sprint(req.Id),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensGetBungieRewardsForUserRequest are the request parameters for operation
@@ -1850,7 +1865,7 @@ type TokensGetBungieRewardsForUserRequest struct {
 	// bungie.net user membershipId for requested user rewards. If not self, elevated permissions are
 	// required.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 }
 
 // TokensGetBungieRewardsForUser: Returns the bungie rewards for the targeted user.
@@ -1863,40 +1878,42 @@ type TokensGetBungieRewardsForUserRequest struct {
 func (a API) TokensGetBungieRewardsForUser(ctx context.Context, req TokensGetBungieRewardsForUserRequest) (*ServerResponse[map[string]BungieRewardDisplay], error) {
 	//	{
 	//	  "description": "Returns the bungie rewards for the targeted user.",
-	//	  "get": {
-	//	    "description": "Returns the bungie rewards for the targeted user.",
-	//	    "operationId": "Tokens.GetBungieRewardsForUser",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "bungie.net user membershipId for requested user rewards. If not self, elevated permissions are required.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Tokens.GetBungieRewardsForUser",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "bungie.net user membershipId for requested user rewards. If not self, elevated permissions are required.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadAndApplyTokens"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.GetBungieRewardsForUser"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadAndApplyTokens"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]BungieRewardDisplay]
+	err := a.client.Do(ctx, "Tokens.GetBungieRewardsForUser",
+		"GET",
+		"/Tokens/Rewards/GetRewardsForUser/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialRemoveFriendRequestRequest are the request parameters for operation Social.RemoveFriendRequest
@@ -1918,39 +1935,41 @@ type SocialRemoveFriendRequestRequest struct {
 func (a API) SocialRemoveFriendRequest(ctx context.Context, req SocialRemoveFriendRequestRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Remove a friend relationship with the target user. The user must be on your outgoing request friend list, though no error will occur if they are not.",
-	//	  "post": {
-	//	    "description": "Remove a friend relationship with the target user. The user must be on your outgoing request friend list, though no error will occur if they are not.",
-	//	    "operationId": "Social.RemoveFriendRequest",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership id of the user you wish to remove.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Social.RemoveFriendRequest",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership id of the user you wish to remove.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Social.RemoveFriendRequest"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Social.RemoveFriendRequest",
+		"POST",
+		"/Social/Friends/Requests/Remove/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialDeclineFriendRequestRequest are the request parameters for operation
@@ -1973,39 +1992,41 @@ type SocialDeclineFriendRequestRequest struct {
 func (a API) SocialDeclineFriendRequest(ctx context.Context, req SocialDeclineFriendRequestRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Declines a friend relationship with the target user. The user must be on your incoming friend request list, though no error will occur if they are not.",
-	//	  "post": {
-	//	    "description": "Declines a friend relationship with the target user. The user must be on your incoming friend request list, though no error will occur if they are not.",
-	//	    "operationId": "Social.DeclineFriendRequest",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership id of the user you wish to decline.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Social.DeclineFriendRequest",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership id of the user you wish to decline.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Social.DeclineFriendRequest"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Social.DeclineFriendRequest",
+		"POST",
+		"/Social/Friends/Requests/Decline/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialAcceptFriendRequestRequest are the request parameters for operation Social.AcceptFriendRequest
@@ -2027,39 +2048,41 @@ type SocialAcceptFriendRequestRequest struct {
 func (a API) SocialAcceptFriendRequest(ctx context.Context, req SocialAcceptFriendRequestRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Accepts a friend relationship with the target user. The user must be on your incoming friend request list, though no error will occur if they are not.",
-	//	  "post": {
-	//	    "description": "Accepts a friend relationship with the target user. The user must be on your incoming friend request list, though no error will occur if they are not.",
-	//	    "operationId": "Social.AcceptFriendRequest",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership id of the user you wish to accept.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Social.AcceptFriendRequest",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership id of the user you wish to accept.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Social.AcceptFriendRequest"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Social.AcceptFriendRequest",
+		"POST",
+		"/Social/Friends/Requests/Accept/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialRemoveFriendRequest are the request parameters for operation Social.RemoveFriend
@@ -2081,39 +2104,41 @@ type SocialRemoveFriendRequest struct {
 func (a API) SocialRemoveFriend(ctx context.Context, req SocialRemoveFriendRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Remove a friend relationship with the target user. The user must be on your friend list, though no error will occur if they are not.",
-	//	  "post": {
-	//	    "description": "Remove a friend relationship with the target user. The user must be on your friend list, though no error will occur if they are not.",
-	//	    "operationId": "Social.RemoveFriend",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership id of the user you wish to remove.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Social.RemoveFriend",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership id of the user you wish to remove.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Social.RemoveFriend"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Social.RemoveFriend",
+		"POST",
+		"/Social/Friends/Remove/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialIssueFriendRequestRequest are the request parameters for operation Social.IssueFriendRequest
@@ -2135,39 +2160,41 @@ type SocialIssueFriendRequestRequest struct {
 func (a API) SocialIssueFriendRequest(ctx context.Context, req SocialIssueFriendRequestRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Requests a friend relationship with the target user. Any of the target user's linked membership ids are valid inputs.",
-	//	  "post": {
-	//	    "description": "Requests a friend relationship with the target user. Any of the target user's linked membership ids are valid inputs.",
-	//	    "operationId": "Social.IssueFriendRequest",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership id of the user you wish to add.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Social.IssueFriendRequest",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership id of the user you wish to add.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Social.IssueFriendRequest"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Social.IssueFriendRequest",
+		"POST",
+		"/Social/Friends/Add/{membershipId}/", nil, map[string]string{
+			"membershipId": fmt.Sprint(req.MembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2AddOptionalConversationRequest are the request parameters for operation
@@ -2176,7 +2203,7 @@ type GroupV2AddOptionalConversationRequest struct {
 
 	// Group ID of the group to edit.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupOptionalConversationAddRequest
@@ -2190,53 +2217,55 @@ type GroupV2AddOptionalConversationRequest struct {
 // Operation: GroupV2.AddOptionalConversation
 //
 // Scope: oauth2 [AdminGroups]
-func (a API) GroupV2AddOptionalConversation(ctx context.Context, req GroupV2AddOptionalConversationRequest) (*ServerResponse[int64], error) {
+func (a API) GroupV2AddOptionalConversation(ctx context.Context, req GroupV2AddOptionalConversationRequest) (*ServerResponse[Int64], error) {
 	//	{
 	//	  "description": "Add a new optional conversation/chat channel. Requires admin permissions to the group.",
-	//	  "post": {
-	//	    "description": "Add a new optional conversation/chat channel. Requires admin permissions to the group.",
-	//	    "operationId": "GroupV2.AddOptionalConversation",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the group to edit.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.AddOptionalConversation",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the group to edit.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupOptionalConversationAddRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupOptionalConversationAddRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int64"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.AddOptionalConversation"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int64"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Int64]
+	err := a.client.Do(ctx, "GroupV2.AddOptionalConversation",
+		"POST",
+		"/GroupV2/{groupId}/OptionalConversations/Add/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetGroupOptionalConversationsRequest are the request parameters for operation
@@ -2245,7 +2274,7 @@ type GroupV2GetGroupOptionalConversationsRequest struct {
 
 	// Requested group's id.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetGroupOptionalConversations: Gets a list of available optional conversation channels and
@@ -2257,33 +2286,35 @@ type GroupV2GetGroupOptionalConversationsRequest struct {
 func (a API) GroupV2GetGroupOptionalConversations(ctx context.Context, req GroupV2GetGroupOptionalConversationsRequest) (*ServerResponse[[]GroupOptionalConversation], error) {
 	//	{
 	//	  "description": "Gets a list of available optional conversation channels and their settings.",
-	//	  "get": {
-	//	    "description": "Gets a list of available optional conversation channels and their settings.",
-	//	    "operationId": "GroupV2.GetGroupOptionalConversations",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Requested group's id.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "GroupV2.GetGroupOptionalConversations",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Requested group's id.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEListOfGroupOptionalConversation"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEListOfGroupOptionalConversation"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetGroupOptionalConversations"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]GroupOptionalConversation]
+	err := a.client.Do(ctx, "GroupV2.GetGroupOptionalConversations",
+		"GET",
+		"/GroupV2/{groupId}/OptionalConversations/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetPendingMembershipsRequest are the request parameters for operation
@@ -2296,7 +2327,7 @@ type GroupV2GetPendingMembershipsRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetPendingMemberships: Get the list of users who are awaiting a decision on their application
@@ -2310,50 +2341,53 @@ type GroupV2GetPendingMembershipsRequest struct {
 func (a API) GroupV2GetPendingMemberships(ctx context.Context, req GroupV2GetPendingMembershipsRequest) (*ServerResponse[SearchResult[GroupMemberApplication]], error) {
 	//	{
 	//	  "description": "Get the list of users who are awaiting a decision on their application to join a given group. Modified to include application info.",
-	//	  "get": {
-	//	    "description": "Get the list of users who are awaiting a decision on their application to join a given group. Modified to include application info.",
-	//	    "operationId": "GroupV2.GetPendingMemberships",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
-	//	        "in": "path",
-	//	        "name": "currentpage",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfGroupMemberApplication"
+	//	  "operationId": "GroupV2.GetPendingMemberships",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupMemberApplication"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetPendingMemberships"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[GroupMemberApplication]]
+	err := a.client.Do(ctx, "GroupV2.GetPendingMemberships",
+		"GET",
+		"/GroupV2/{groupId}/Members/Pending/", nil, map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetInvitedIndividualsRequest are the request parameters for operation
@@ -2366,7 +2400,7 @@ type GroupV2GetInvitedIndividualsRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetInvitedIndividuals: Get the list of users who have been invited into the group.
@@ -2379,50 +2413,53 @@ type GroupV2GetInvitedIndividualsRequest struct {
 func (a API) GroupV2GetInvitedIndividuals(ctx context.Context, req GroupV2GetInvitedIndividualsRequest) (*ServerResponse[SearchResult[GroupMemberApplication]], error) {
 	//	{
 	//	  "description": "Get the list of users who have been invited into the group.",
-	//	  "get": {
-	//	    "description": "Get the list of users who have been invited into the group.",
-	//	    "operationId": "GroupV2.GetInvitedIndividuals",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
-	//	        "in": "path",
-	//	        "name": "currentpage",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfGroupMemberApplication"
+	//	  "operationId": "GroupV2.GetInvitedIndividuals",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupMemberApplication"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetInvitedIndividuals"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[GroupMemberApplication]]
+	err := a.client.Do(ctx, "GroupV2.GetInvitedIndividuals",
+		"GET",
+		"/GroupV2/{groupId}/Members/InvitedIndividuals/", nil, map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2DenyPendingForListRequest are the request parameters for operation GroupV2.DenyPendingForList
@@ -2430,7 +2467,7 @@ type GroupV2DenyPendingForListRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupApplicationListRequest
@@ -2447,50 +2484,52 @@ type GroupV2DenyPendingForListRequest struct {
 func (a API) GroupV2DenyPendingForList(ctx context.Context, req GroupV2DenyPendingForListRequest) (*ServerResponse[[]EntityActionResult], error) {
 	//	{
 	//	  "description": "Deny all of the pending users for the given group that match the passed-in .",
-	//	  "post": {
-	//	    "description": "Deny all of the pending users for the given group that match the passed-in .",
-	//	    "operationId": "GroupV2.DenyPendingForList",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.DenyPendingForList",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationListRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationListRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfEntityActionResult"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.DenyPendingForList"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfEntityActionResult"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]EntityActionResult]
+	err := a.client.Do(ctx, "GroupV2.DenyPendingForList",
+		"POST",
+		"/GroupV2/{groupId}/Members/DenyList/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2DenyAllPendingRequest are the request parameters for operation GroupV2.DenyAllPending
@@ -2498,7 +2537,7 @@ type GroupV2DenyAllPendingRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupApplicationRequest
@@ -2514,50 +2553,52 @@ type GroupV2DenyAllPendingRequest struct {
 func (a API) GroupV2DenyAllPending(ctx context.Context, req GroupV2DenyAllPendingRequest) (*ServerResponse[[]EntityActionResult], error) {
 	//	{
 	//	  "description": "Deny all of the pending users for the given group.",
-	//	  "post": {
-	//	    "description": "Deny all of the pending users for the given group.",
-	//	    "operationId": "GroupV2.DenyAllPending",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.DenyAllPending",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfEntityActionResult"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.DenyAllPending"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfEntityActionResult"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]EntityActionResult]
+	err := a.client.Do(ctx, "GroupV2.DenyAllPending",
+		"POST",
+		"/GroupV2/{groupId}/Members/DenyAll/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2ApprovePendingForListRequest are the request parameters for operation
@@ -2566,7 +2607,7 @@ type GroupV2ApprovePendingForListRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupApplicationListRequest
@@ -2582,50 +2623,52 @@ type GroupV2ApprovePendingForListRequest struct {
 func (a API) GroupV2ApprovePendingForList(ctx context.Context, req GroupV2ApprovePendingForListRequest) (*ServerResponse[[]EntityActionResult], error) {
 	//	{
 	//	  "description": "Approve all of the pending users for the given group.",
-	//	  "post": {
-	//	    "description": "Approve all of the pending users for the given group.",
-	//	    "operationId": "GroupV2.ApprovePendingForList",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.ApprovePendingForList",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationListRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationListRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfEntityActionResult"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.ApprovePendingForList"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfEntityActionResult"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]EntityActionResult]
+	err := a.client.Do(ctx, "GroupV2.ApprovePendingForList",
+		"POST",
+		"/GroupV2/{groupId}/Members/ApproveList/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2ApproveAllPendingRequest are the request parameters for operation GroupV2.ApproveAllPending
@@ -2633,7 +2676,7 @@ type GroupV2ApproveAllPendingRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupApplicationRequest
@@ -2649,50 +2692,52 @@ type GroupV2ApproveAllPendingRequest struct {
 func (a API) GroupV2ApproveAllPending(ctx context.Context, req GroupV2ApproveAllPendingRequest) (*ServerResponse[[]EntityActionResult], error) {
 	//	{
 	//	  "description": "Approve all of the pending users for the given group.",
-	//	  "post": {
-	//	    "description": "Approve all of the pending users for the given group.",
-	//	    "operationId": "GroupV2.ApproveAllPending",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.ApproveAllPending",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfEntityActionResult"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.ApproveAllPending"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfEntityActionResult"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]EntityActionResult]
+	err := a.client.Do(ctx, "GroupV2.ApproveAllPending",
+		"POST",
+		"/GroupV2/{groupId}/Members/ApproveAll/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetMembersOfGroupRequest are the request parameters for operation GroupV2.GetMembersOfGroup
@@ -2704,7 +2749,7 @@ type GroupV2GetMembersOfGroupRequest struct {
 
 	// The ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Filter out other member types. Use None for all members.
 	MemberType RuntimeGroupMemberType
@@ -2722,65 +2767,71 @@ type GroupV2GetMembersOfGroupRequest struct {
 func (a API) GroupV2GetMembersOfGroup(ctx context.Context, req GroupV2GetMembersOfGroupRequest) (*ServerResponse[SearchResult[GroupMember]], error) {
 	//	{
 	//	  "description": "Get the list of members in a given group.",
-	//	  "get": {
-	//	    "description": "Get the list of members in a given group.",
-	//	    "operationId": "GroupV2.GetMembersOfGroup",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
-	//	        "in": "path",
-	//	        "name": "currentpage",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Filter out other member types. Use None for all members.",
-	//	        "in": "query",
-	//	        "name": "memberType",
-	//	        "schema": {
-	//	          "description": "The member levels used by all V2 Groups API. Individual group types use their own mappings in their native storage (general uses BnetDbGroupMemberType and D2 clans use ClanMemberLevel), but they are all translated to this in the runtime api. These runtime values should NEVER be stored anywhere, so the values can be changed as necessary.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.RuntimeGroupMemberType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The name fragment upon which a search should be executed for members with matching display or unique names.",
-	//	        "in": "query",
-	//	        "name": "nameSearch",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfGroupMember"
+	//	  "operationId": "GroupV2.GetMembersOfGroup",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "The ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Filter out other member types. Use None for all members.",
+	//	      "in": "query",
+	//	      "name": "memberType",
+	//	      "schema": {
+	//	        "description": "The member levels used by all V2 Groups API. Individual group types use their own mappings in their native storage (general uses BnetDbGroupMemberType and D2 clans use ClanMemberLevel), but they are all translated to this in the runtime api. These runtime values should NEVER be stored anywhere, so the values can be changed as necessary.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.RuntimeGroupMemberType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The name fragment upon which a search should be executed for members with matching display or unique names.",
+	//	      "in": "query",
+	//	      "name": "nameSearch",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupMember"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetMembersOfGroup"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[GroupMember]]
+	err := a.client.Do(ctx, "GroupV2.GetMembersOfGroup",
+		"GET",
+		"/GroupV2/{groupId}/Members/", nil, map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, url.Values{
+			"memberType": {fmt.Sprint(req.MemberType)},
+			"nameSearch": {fmt.Sprint(req.NameSearch)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2EditFounderOptionsRequest are the request parameters for operation GroupV2.EditFounderOptions
@@ -2788,7 +2839,7 @@ type GroupV2EditFounderOptionsRequest struct {
 
 	// Group ID of the group to edit.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupOptionsEditAction
@@ -2805,50 +2856,52 @@ type GroupV2EditFounderOptionsRequest struct {
 func (a API) GroupV2EditFounderOptions(ctx context.Context, req GroupV2EditFounderOptionsRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Edit group options only available to a founder. You must have suitable permissions in the group to perform this operation.",
-	//	  "post": {
-	//	    "description": "Edit group options only available to a founder. You must have suitable permissions in the group to perform this operation.",
-	//	    "operationId": "GroupV2.EditFounderOptions",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the group to edit.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.EditFounderOptions",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the group to edit.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupOptionsEditAction"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupOptionsEditAction"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.EditFounderOptions"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.EditFounderOptions",
+		"POST",
+		"/GroupV2/{groupId}/EditFounderOptions/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2EditClanBannerRequest are the request parameters for operation GroupV2.EditClanBanner
@@ -2856,7 +2909,7 @@ type GroupV2EditClanBannerRequest struct {
 
 	// Group ID of the group to edit.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body ClanBanner
@@ -2873,50 +2926,52 @@ type GroupV2EditClanBannerRequest struct {
 func (a API) GroupV2EditClanBanner(ctx context.Context, req GroupV2EditClanBannerRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Edit an existing group's clan banner. You must have suitable permissions in the group to perform this operation. All fields are required.",
-	//	  "post": {
-	//	    "description": "Edit an existing group's clan banner. You must have suitable permissions in the group to perform this operation. All fields are required.",
-	//	    "operationId": "GroupV2.EditClanBanner",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the group to edit.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.EditClanBanner",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the group to edit.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.ClanBanner"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.ClanBanner"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.EditClanBanner"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.EditClanBanner",
+		"POST",
+		"/GroupV2/{groupId}/EditClanBanner/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2EditGroupRequest are the request parameters for operation GroupV2.EditGroup
@@ -2924,7 +2979,7 @@ type GroupV2EditGroupRequest struct {
 
 	// Group ID of the group to edit.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupEditAction
@@ -2942,50 +2997,52 @@ type GroupV2EditGroupRequest struct {
 func (a API) GroupV2EditGroup(ctx context.Context, req GroupV2EditGroupRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Edit an existing group. You must have suitable permissions in the group to perform this operation. This latest revision will only edit the fields you pass in - pass null for properties you want to leave unaltered.",
-	//	  "post": {
-	//	    "description": "Edit an existing group. You must have suitable permissions in the group to perform this operation. This latest revision will only edit the fields you pass in - pass null for properties you want to leave unaltered.",
-	//	    "operationId": "GroupV2.EditGroup",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the group to edit.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
+	//	  "operationId": "GroupV2.EditGroup",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the group to edit.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupEditAction"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupEditAction"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.EditGroup"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.EditGroup",
+		"POST",
+		"/GroupV2/{groupId}/Edit/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetBannedMembersOfGroupRequest are the request parameters for operation
@@ -2998,7 +3055,7 @@ type GroupV2GetBannedMembersOfGroupRequest struct {
 
 	// Group ID whose banned members you are fetching
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetBannedMembersOfGroup: Get the list of banned members in a given group. Only accessible to
@@ -3012,50 +3069,53 @@ type GroupV2GetBannedMembersOfGroupRequest struct {
 func (a API) GroupV2GetBannedMembersOfGroup(ctx context.Context, req GroupV2GetBannedMembersOfGroupRequest) (*ServerResponse[SearchResult[GroupBan]], error) {
 	//	{
 	//	  "description": "Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all groups. Check group features.",
-	//	  "get": {
-	//	    "description": "Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all groups. Check group features.",
-	//	    "operationId": "GroupV2.GetBannedMembersOfGroup",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number (starting with 1). Each page has a fixed size of 50 entries.",
-	//	        "in": "path",
-	//	        "name": "currentpage",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Group ID whose banned members you are fetching",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfGroupBan"
+	//	  "operationId": "GroupV2.GetBannedMembersOfGroup",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 entries.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Group ID whose banned members you are fetching",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupBan"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetBannedMembersOfGroup"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[GroupBan]]
+	err := a.client.Do(ctx, "GroupV2.GetBannedMembersOfGroup",
+		"GET",
+		"/GroupV2/{groupId}/Banned/", nil, map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetAdminsAndFounderOfGroupRequest are the request parameters for operation
@@ -3068,7 +3128,7 @@ type GroupV2GetAdminsAndFounderOfGroupRequest struct {
 
 	// The ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetAdminsAndFounderOfGroup: Get the list of members in a given group who are of admin level
@@ -3080,43 +3140,46 @@ type GroupV2GetAdminsAndFounderOfGroupRequest struct {
 func (a API) GroupV2GetAdminsAndFounderOfGroup(ctx context.Context, req GroupV2GetAdminsAndFounderOfGroupRequest) (*ServerResponse[SearchResult[GroupMember]], error) {
 	//	{
 	//	  "description": "Get the list of members in a given group who are of admin level or higher.",
-	//	  "get": {
-	//	    "description": "Get the list of members in a given group who are of admin level or higher.",
-	//	    "operationId": "GroupV2.GetAdminsAndFounderOfGroup",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
-	//	        "in": "path",
-	//	        "name": "currentpage",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfGroupMember"
+	//	  "operationId": "GroupV2.GetAdminsAndFounderOfGroup",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 items per page.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "The ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupMember"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetAdminsAndFounderOfGroup"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[GroupMember]]
+	err := a.client.Do(ctx, "GroupV2.GetAdminsAndFounderOfGroup",
+		"GET",
+		"/GroupV2/{groupId}/AdminsAndFounder/", nil, map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetGroupRequest are the request parameters for operation GroupV2.GetGroup
@@ -3124,7 +3187,7 @@ type GroupV2GetGroupRequest struct {
 
 	// Requested group's id.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // GroupV2GetGroup: Get information about a specific group of the given ID.
@@ -3135,33 +3198,35 @@ type GroupV2GetGroupRequest struct {
 func (a API) GroupV2GetGroup(ctx context.Context, req GroupV2GetGroupRequest) (*ServerResponse[GroupResponse], error) {
 	//	{
 	//	  "description": "Get information about a specific group of the given ID.",
-	//	  "get": {
-	//	    "description": "Get information about a specific group of the given ID.",
-	//	    "operationId": "GroupV2.GetGroup",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Requested group's id.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "GroupV2.GetGroup",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Requested group's id.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetGroup"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupResponse]
+	err := a.client.Do(ctx, "GroupV2.GetGroup",
+		"GET",
+		"/GroupV2/{groupId}/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetUserClanInviteSettingRequest are the request parameters for operation
@@ -3184,45 +3249,47 @@ type GroupV2GetUserClanInviteSettingRequest struct {
 func (a API) GroupV2GetUserClanInviteSetting(ctx context.Context, req GroupV2GetUserClanInviteSettingRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Gets the state of the user's clan invite preferences for a particular membership type - true if they wish to be invited to clans, false otherwise.",
-	//	  "get": {
-	//	    "description": "Gets the state of the user's clan invite preferences for a particular membership type - true if they wish to be invited to clans, false otherwise.",
-	//	    "operationId": "GroupV2.GetUserClanInviteSetting",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny membership type of the account we wish to access settings.",
-	//	        "in": "path",
-	//	        "name": "mType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
+	//	  "operationId": "GroupV2.GetUserClanInviteSetting",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny membership type of the account we wish to access settings.",
+	//	      "in": "path",
+	//	      "name": "mType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadUserData"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetUserClanInviteSetting"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadUserData"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "GroupV2.GetUserClanInviteSetting",
+		"GET",
+		"/GroupV2/GetUserClanInviteSetting/{mType}/", nil, map[string]string{
+			"mType": fmt.Sprint(req.MType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetPollRequest are the request parameters for operation Forum.GetPoll
@@ -3230,7 +3297,7 @@ type ForumGetPollRequest struct {
 
 	// The post id of the topic that has the poll.
 	// Required.
-	TopicID int64
+	TopicID Int64
 }
 
 // ForumGetPoll: Gets the specified forum poll.
@@ -3241,40 +3308,42 @@ type ForumGetPollRequest struct {
 func (a API) ForumGetPoll(ctx context.Context, req ForumGetPollRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Gets the specified forum poll.",
-	//	  "get": {
-	//	    "description": "Gets the specified forum poll.",
-	//	    "operationId": "Forum.GetPoll",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The post id of the topic that has the poll.",
-	//	        "in": "path",
-	//	        "name": "topicId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Forum.GetPoll",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The post id of the topic that has the poll.",
+	//	      "in": "path",
+	//	      "name": "topicId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetPoll"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetPoll",
+		"GET",
+		"/Forum/Poll/{topicId}/", nil, map[string]string{
+			"topicId": fmt.Sprint(req.TopicID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetTopicForContentRequest are the request parameters for operation Forum.GetTopicForContent
 type ForumGetTopicForContentRequest struct {
 
 	// Required.
-	ContentID int64
+	ContentID Int64
 }
 
 // ForumGetTopicForContent: Gets the post Id for the given content item's comments, if it exists.
@@ -3282,35 +3351,37 @@ type ForumGetTopicForContentRequest struct {
 // URL: /Forum/GetTopicForContent/{contentId}/
 //
 // Operation: Forum.GetTopicForContent
-func (a API) ForumGetTopicForContent(ctx context.Context, req ForumGetTopicForContentRequest) (*ServerResponse[int64], error) {
+func (a API) ForumGetTopicForContent(ctx context.Context, req ForumGetTopicForContentRequest) (*ServerResponse[Int64], error) {
 	//	{
 	//	  "description": "Gets the post Id for the given content item's comments, if it exists.",
-	//	  "get": {
-	//	    "description": "Gets the post Id for the given content item's comments, if it exists.",
-	//	    "operationId": "Forum.GetTopicForContent",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "contentId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Forum.GetTopicForContent",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "contentId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int64"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int64"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetTopicForContent"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Int64]
+	err := a.client.Do(ctx, "Forum.GetTopicForContent",
+		"GET",
+		"/Forum/GetTopicForContent/{contentId}/", nil, map[string]string{
+			"contentId": fmt.Sprint(req.ContentID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetPostAndParentAwaitingApprovalRequest are the request parameters for operation
@@ -3318,7 +3389,7 @@ func (a API) ForumGetTopicForContent(ctx context.Context, req ForumGetTopicForCo
 type ForumGetPostAndParentAwaitingApprovalRequest struct {
 
 	// Required.
-	ChildPostID int64
+	ChildPostID Int64
 
 	// If this value is not null or empty, banned posts are requested to be returned
 	Showbanned string
@@ -3333,47 +3404,51 @@ type ForumGetPostAndParentAwaitingApprovalRequest struct {
 func (a API) ForumGetPostAndParentAwaitingApproval(ctx context.Context, req ForumGetPostAndParentAwaitingApprovalRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Returns the post specified and its immediate parent of posts that are awaiting approval.",
-	//	  "get": {
-	//	    "description": "Returns the post specified and its immediate parent of posts that are awaiting approval.",
-	//	    "operationId": "Forum.GetPostAndParentAwaitingApproval",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "childPostId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If this value is not null or empty, banned posts are requested to be returned",
-	//	        "in": "query",
-	//	        "name": "showbanned",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	  "operationId": "Forum.GetPostAndParentAwaitingApproval",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "childPostId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "description": "If this value is not null or empty, banned posts are requested to be returned",
+	//	      "in": "query",
+	//	      "name": "showbanned",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetPostAndParentAwaitingApproval"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetPostAndParentAwaitingApproval",
+		"GET",
+		"/Forum/GetPostAndParentAwaitingApproval/{childPostId}/", nil, map[string]string{
+			"childPostId": fmt.Sprint(req.ChildPostID),
+		}, url.Values{
+			"showbanned": {fmt.Sprint(req.Showbanned)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetPostAndParentRequest are the request parameters for operation Forum.GetPostAndParent
 type ForumGetPostAndParentRequest struct {
 
 	// Required.
-	ChildPostID int64
+	ChildPostID Int64
 
 	// If this value is not null or empty, banned posts are requested to be returned
 	Showbanned string
@@ -3387,40 +3462,44 @@ type ForumGetPostAndParentRequest struct {
 func (a API) ForumGetPostAndParent(ctx context.Context, req ForumGetPostAndParentRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Returns the post specified and its immediate parent.",
-	//	  "get": {
-	//	    "description": "Returns the post specified and its immediate parent.",
-	//	    "operationId": "Forum.GetPostAndParent",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "childPostId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If this value is not null or empty, banned posts are requested to be returned",
-	//	        "in": "query",
-	//	        "name": "showbanned",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	  "operationId": "Forum.GetPostAndParent",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "childPostId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "description": "If this value is not null or empty, banned posts are requested to be returned",
+	//	      "in": "query",
+	//	      "name": "showbanned",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetPostAndParent"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetPostAndParent",
+		"GET",
+		"/Forum/GetPostAndParent/{childPostId}/", nil, map[string]string{
+			"childPostId": fmt.Sprint(req.ChildPostID),
+		}, url.Values{
+			"showbanned": {fmt.Sprint(req.Showbanned)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // FireteamGetActivePrivateClanFireteamCountRequest are the request parameters for operation
@@ -3429,7 +3508,7 @@ type FireteamGetActivePrivateClanFireteamCountRequest struct {
 
 	// The group id of the clan.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // FireteamGetActivePrivateClanFireteamCount: Gets a count of all active non-public fireteams for the
@@ -3443,40 +3522,42 @@ type FireteamGetActivePrivateClanFireteamCountRequest struct {
 func (a API) FireteamGetActivePrivateClanFireteamCount(ctx context.Context, req FireteamGetActivePrivateClanFireteamCountRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Gets a count of all active non-public fireteams for the specified clan. Maximum value returned is 25.",
-	//	  "get": {
-	//	    "description": "Gets a count of all active non-public fireteams for the specified clan. Maximum value returned is 25.",
-	//	    "operationId": "Fireteam.GetActivePrivateClanFireteamCount",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The group id of the clan.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Fireteam.GetActivePrivateClanFireteamCount",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The group id of the clan.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Fireteam"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
 	//	  },
-	//	  "summary": "Fireteam.GetActivePrivateClanFireteamCount"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Fireteam"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Fireteam.GetActivePrivateClanFireteamCount",
+		"GET",
+		"/Fireteam/Clan/{groupId}/ActiveCount/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2ReportOffensivePostGameCarnageReportPlayerRequest are the request parameters for operation
@@ -3485,7 +3566,7 @@ type Destiny2ReportOffensivePostGameCarnageReportPlayerRequest struct {
 
 	// The ID of the activity where you ran into the brigand that you're reporting.
 	// Required.
-	ActivityID int64
+	ActivityID Int64
 
 	// Required.
 	Body ReportOffensePgcrRequest
@@ -3504,50 +3585,52 @@ type Destiny2ReportOffensivePostGameCarnageReportPlayerRequest struct {
 func (a API) Destiny2ReportOffensivePostGameCarnageReportPlayer(ctx context.Context, req Destiny2ReportOffensivePostGameCarnageReportPlayerRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the offending player must have played in the activityId passed in. Please use this judiciously and only when you have strong suspicions of violation, pretty please.",
-	//	  "post": {
-	//	    "description": "Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the offending player must have played in the activityId passed in. Please use this judiciously and only when you have strong suspicions of violation, pretty please.",
-	//	    "operationId": "Destiny2.ReportOffensivePostGameCarnageReportPlayer",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The ID of the activity where you ran into the brigand that you're reporting.",
-	//	        "in": "path",
-	//	        "name": "activityId",
-	//	        "required": true,
+	//	  "operationId": "Destiny2.ReportOffensivePostGameCarnageReportPlayer",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the activity where you ran into the brigand that you're reporting.",
+	//	      "in": "path",
+	//	      "name": "activityId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
+	//	          "$ref": "#/components/schemas/Destiny.Reporting.Requests.DestinyReportOffensePgcrRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/Destiny.Reporting.Requests.DestinyReportOffensePgcrRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "BnetWrite"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.ReportOffensivePostGameCarnageReportPlayer"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "BnetWrite"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "Destiny2.ReportOffensivePostGameCarnageReportPlayer",
+		"POST",
+		"/Destiny2/Stats/PostGameCarnageReport/{activityId}/Report/", nil, map[string]string{
+			"activityId": fmt.Sprint(req.ActivityID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2GetPostGameCarnageReportRequest are the request parameters for operation
@@ -3556,7 +3639,7 @@ type Destiny2GetPostGameCarnageReportRequest struct {
 
 	// The ID of the activity whose PGCR is requested.
 	// Required.
-	ActivityID int64
+	ActivityID Int64
 }
 
 // Destiny2GetPostGameCarnageReport: Gets the available post game carnage report for the activity ID.
@@ -3567,33 +3650,35 @@ type Destiny2GetPostGameCarnageReportRequest struct {
 func (a API) Destiny2GetPostGameCarnageReport(ctx context.Context, req Destiny2GetPostGameCarnageReportRequest) (*ServerResponse[PostGameCarnageReportData], error) {
 	//	{
 	//	  "description": "Gets the available post game carnage report for the activity ID.",
-	//	  "get": {
-	//	    "description": "Gets the available post game carnage report for the activity ID.",
-	//	    "operationId": "Destiny2.GetPostGameCarnageReport",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The ID of the activity whose PGCR is requested.",
-	//	        "in": "path",
-	//	        "name": "activityId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Destiny2.GetPostGameCarnageReport",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the activity whose PGCR is requested.",
+	//	      "in": "path",
+	//	      "name": "activityId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyPostGameCarnageReportData"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyPostGameCarnageReportData"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetPostGameCarnageReport"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostGameCarnageReportData]
+	err := a.client.Do(ctx, "Destiny2.GetPostGameCarnageReport",
+		"GET",
+		"/Destiny2/Stats/PostGameCarnageReport/{activityId}/", nil, map[string]string{
+			"activityId": fmt.Sprint(req.ActivityID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetClanLeaderboardsRequest are the request parameters for operation
@@ -3602,7 +3687,7 @@ type Destiny2GetClanLeaderboardsRequest struct {
 
 	// Group ID of the clan whose leaderboards you wish to fetch.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Maximum number of top players to return. Use a large number to get entire leaderboard.
 	Maxtop int32
@@ -3625,60 +3710,66 @@ type Destiny2GetClanLeaderboardsRequest struct {
 func (a API) Destiny2GetClanLeaderboards(ctx context.Context, req Destiny2GetClanLeaderboardsRequest) (*ServerResponse[map[string]map[string]Leaderboard], error) {
 	//	{
 	//	  "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	  "get": {
-	//	    "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	    "operationId": "Destiny2.GetClanLeaderboards",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the clan whose leaderboards you wish to fetch.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
-	//	        "in": "query",
-	//	        "name": "maxtop",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
-	//	        "in": "query",
-	//	        "name": "modes",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "ID of stat to return rather than returning all Leaderboard stats.",
-	//	        "in": "query",
-	//	        "name": "statid",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	  "operationId": "Destiny2.GetClanLeaderboards",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the clan whose leaderboards you wish to fetch.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-preview": true
+	//	    {
+	//	      "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
+	//	      "in": "query",
+	//	      "name": "maxtop",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
+	//	      "in": "query",
+	//	      "name": "modes",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "ID of stat to return rather than returning all Leaderboard stats.",
+	//	      "in": "query",
+	//	      "name": "statid",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetClanLeaderboards"
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]map[string]Leaderboard]
+	err := a.client.Do(ctx, "Destiny2.GetClanLeaderboards",
+		"GET",
+		"/Destiny2/Stats/Leaderboards/Clans/{groupId}/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{
+			"maxtop": {fmt.Sprint(req.Maxtop)},
+			"modes":  {fmt.Sprint(req.Modes)},
+			"statid": {fmt.Sprint(req.Statid)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetClanAggregateStatsRequest are the request parameters for operation
@@ -3687,7 +3778,7 @@ type Destiny2GetClanAggregateStatsRequest struct {
 
 	// Group ID of the clan whose leaderboards you wish to fetch.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType
 	// for valid values, and pass in string representation, comma delimited.
@@ -3704,43 +3795,47 @@ type Destiny2GetClanAggregateStatsRequest struct {
 func (a API) Destiny2GetClanAggregateStats(ctx context.Context, req Destiny2GetClanAggregateStatsRequest) (*ServerResponse[[]ClanAggregateStat], error) {
 	//	{
 	//	  "description": "Gets aggregated stats for a clan using the same categories as the clan leaderboards. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	  "get": {
-	//	    "description": "Gets aggregated stats for a clan using the same categories as the clan leaderboards. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	    "operationId": "Destiny2.GetClanAggregateStats",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID of the clan whose leaderboards you wish to fetch.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
-	//	        "in": "query",
-	//	        "name": "modes",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfDestinyClanAggregateStat"
+	//	  "operationId": "Destiny2.GetClanAggregateStats",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID of the clan whose leaderboards you wish to fetch.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-preview": true
+	//	    {
+	//	      "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
+	//	      "in": "query",
+	//	      "name": "modes",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfDestinyClanAggregateStat"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetClanAggregateStats"
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]ClanAggregateStat]
+	err := a.client.Do(ctx, "Destiny2.GetClanAggregateStats",
+		"GET",
+		"/Destiny2/Stats/AggregateClanStats/{groupId}/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{
+			"modes": {fmt.Sprint(req.Modes)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2SearchDestinyPlayerByBungieNameRequest are the request parameters for operation
@@ -3765,48 +3860,50 @@ type Destiny2SearchDestinyPlayerByBungieNameRequest struct {
 func (a API) Destiny2SearchDestinyPlayerByBungieName(ctx context.Context, req Destiny2SearchDestinyPlayerByBungieNameRequest) (*ServerResponse[[]UserInfoCard], error) {
 	//	{
 	//	  "description": "Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden memberships due to cross save.",
-	//	  "post": {
-	//	    "description": "Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden memberships due to cross save.",
-	//	    "operationId": "Destiny2.SearchDestinyPlayerByBungieName",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type, or All. Indicates which memberships to return. You probably want this set to All.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
+	//	  "operationId": "Destiny2.SearchDestinyPlayerByBungieName",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type, or All. Indicates which memberships to return. You probably want this set to All.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
 	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
+	//	          "$ref": "#/components/schemas/User.ExactSearchRequest"
 	//	        }
 	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/User.ExactSearchRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
 	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/IEnumerableOfUserInfoCard"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    "required": true
 	//	  },
-	//	  "summary": "Destiny2.SearchDestinyPlayerByBungieName"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/IEnumerableOfUserInfoCard"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]UserInfoCard]
+	err := a.client.Do(ctx, "Destiny2.SearchDestinyPlayerByBungieName",
+		"POST",
+		"/Destiny2/SearchDestinyPlayerByBungieName/{membershipType}/", nil, map[string]string{
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // Destiny2GetPublicMilestoneContentRequest are the request parameters for operation
@@ -3827,33 +3924,35 @@ type Destiny2GetPublicMilestoneContentRequest struct {
 func (a API) Destiny2GetPublicMilestoneContent(ctx context.Context, req Destiny2GetPublicMilestoneContentRequest) (*ServerResponse[MilestoneContent], error) {
 	//	{
 	//	  "description": "Gets custom localized content for the milestone of the given hash, if it exists.",
-	//	  "get": {
-	//	    "description": "Gets custom localized content for the milestone of the given hash, if it exists.",
-	//	    "operationId": "Destiny2.GetPublicMilestoneContent",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The identifier for the milestone to be returned.",
-	//	        "in": "path",
-	//	        "name": "milestoneHash",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "uint32",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Destiny2.GetPublicMilestoneContent",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The identifier for the milestone to be returned.",
+	//	      "in": "path",
+	//	      "name": "milestoneHash",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "uint32",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Milestones.DestinyMilestoneContent"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Milestones.DestinyMilestoneContent"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetPublicMilestoneContent"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[MilestoneContent]
+	err := a.client.Do(ctx, "Destiny2.GetPublicMilestoneContent",
+		"GET",
+		"/Destiny2/Milestones/{milestoneHash}/Content/", nil, map[string]string{
+			"milestoneHash": fmt.Sprint(req.MilestoneHash),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetClanWeeklyRewardStateRequest are the request parameters for operation
@@ -3862,7 +3961,7 @@ type Destiny2GetClanWeeklyRewardStateRequest struct {
 
 	// A valid group id of clan.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // Destiny2GetClanWeeklyRewardState: Returns information on the weekly clan rewards and if the clan has
@@ -3874,33 +3973,35 @@ type Destiny2GetClanWeeklyRewardStateRequest struct {
 func (a API) Destiny2GetClanWeeklyRewardState(ctx context.Context, req Destiny2GetClanWeeklyRewardStateRequest) (*ServerResponse[Milestone], error) {
 	//	{
 	//	  "description": "Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.",
-	//	  "get": {
-	//	    "description": "Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.",
-	//	    "operationId": "Destiny2.GetClanWeeklyRewardState",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A valid group id of clan.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
+	//	  "operationId": "Destiny2.GetClanWeeklyRewardState",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid group id of clan.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Milestones.DestinyMilestone"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Milestones.DestinyMilestone"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetClanWeeklyRewardState"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Milestone]
+	err := a.client.Do(ctx, "Destiny2.GetClanWeeklyRewardState",
+		"GET",
+		"/Destiny2/Clan/{groupId}/WeeklyRewardState/", nil, map[string]string{
+			"groupId": fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2AwaGetActionTokenRequest are the request parameters for operation Destiny2.AwaGetActionToken
@@ -3921,39 +4022,41 @@ type Destiny2AwaGetActionTokenRequest struct {
 func (a API) Destiny2AwaGetActionToken(ctx context.Context, req Destiny2AwaGetActionTokenRequest) (*ServerResponse[AwaAuthorizationResult], error) {
 	//	{
 	//	  "description": "Returns the action token if user approves the request.",
-	//	  "get": {
-	//	    "description": "Returns the action token if user approves the request.",
-	//	    "operationId": "Destiny2.AwaGetActionToken",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The identifier for the advanced write action request.",
-	//	        "in": "path",
-	//	        "name": "correlationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Destiny2.AwaGetActionToken",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The identifier for the advanced write action request.",
+	//	      "in": "path",
+	//	      "name": "correlationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Advanced.AwaAuthorizationResult"
-	//	      }
-	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdvancedWriteActions"
-	//	        ]
-	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Advanced.AwaAuthorizationResult"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.AwaGetActionToken"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdvancedWriteActions"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[AwaAuthorizationResult]
+	err := a.client.Do(ctx, "Destiny2.AwaGetActionToken",
+		"GET",
+		"/Destiny2/Awa/GetActionToken/{correlationId}/", nil, map[string]string{
+			"correlationId": fmt.Sprint(req.CorrelationID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ContentSearchContentWithTextRequest are the request parameters for operation
@@ -3991,80 +4094,89 @@ type ContentSearchContentWithTextRequest struct {
 func (a API) ContentSearchContentWithText(ctx context.Context, req ContentSearchContentWithTextRequest) (*ServerResponse[SearchResult[ContentItemPublicContract]], error) {
 	//	{
 	//	  "description": "Gets content based on querystring information passed in. Provides basic search and text search capabilities.",
-	//	  "get": {
-	//	    "description": "Gets content based on querystring information passed in. Provides basic search and text search capabilities.",
-	//	    "operationId": "Content.SearchContentWithText",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Content type tag: Help, News, etc. Supply multiple ctypes separated by space.",
-	//	        "in": "query",
-	//	        "name": "ctype",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Page number for the search results, starting with page 1.",
-	//	        "in": "query",
-	//	        "name": "currentpage",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Not used.",
-	//	        "in": "query",
-	//	        "name": "head",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "locale",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Word or phrase for the search.",
-	//	        "in": "query",
-	//	        "name": "searchtext",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "For analytics, hint at the part of the app that triggered the search. Optional.",
-	//	        "in": "query",
-	//	        "name": "source",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Tag used on the content to be searched.",
-	//	        "in": "query",
-	//	        "name": "tag",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfContentItemPublicContract"
+	//	  "operationId": "Content.SearchContentWithText",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Content type tag: Help, News, etc. Supply multiple ctypes separated by space.",
+	//	      "in": "query",
+	//	      "name": "ctype",
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "description": "Page number for the search results, starting with page 1.",
+	//	      "in": "query",
+	//	      "name": "currentpage",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Not used.",
+	//	      "in": "query",
+	//	      "name": "head",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "locale",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Word or phrase for the search.",
+	//	      "in": "query",
+	//	      "name": "searchtext",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "For analytics, hint at the part of the app that triggered the search. Optional.",
+	//	      "in": "query",
+	//	      "name": "source",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Tag used on the content to be searched.",
+	//	      "in": "query",
+	//	      "name": "tag",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfContentItemPublicContract"
+	//	    }
 	//	  },
-	//	  "summary": "Content.SearchContentWithText"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[ContentItemPublicContract]]
+	err := a.client.Do(ctx, "Content.SearchContentWithText",
+		"GET",
+		"/Content/Search/{locale}/", nil, map[string]string{
+			"locale": fmt.Sprint(req.Locale),
+		}, url.Values{
+			"ctype":       {fmt.Sprint(req.Ctype)},
+			"currentpage": {fmt.Sprint(req.Currentpage)},
+			"head":        {fmt.Sprint(req.Head)},
+			"searchtext":  {fmt.Sprint(req.Searchtext)},
+			"source":      {fmt.Sprint(req.Source)},
+			"tag":         {fmt.Sprint(req.Tag)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ContentRssNewsArticlesRequest are the request parameters for operation Content.RssNewsArticles
@@ -4089,48 +4201,53 @@ type ContentRssNewsArticlesRequest struct {
 func (a API) ContentRssNewsArticles(ctx context.Context, req ContentRssNewsArticlesRequest) (*ServerResponse[NewsArticleRssResponse], error) {
 	//	{
 	//	  "description": "Returns a JSON string response that is the RSS feed for news articles.",
-	//	  "get": {
-	//	    "description": "Returns a JSON string response that is the RSS feed for news articles.",
-	//	    "operationId": "Content.RssNewsArticles",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Optionally filter response to only include news items in a certain category.",
-	//	        "in": "query",
-	//	        "name": "categoryfilter",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Optionally include full content body for each news item.",
-	//	        "in": "query",
-	//	        "name": "includebody",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero-based pagination token for paging through result sets.",
-	//	        "in": "path",
-	//	        "name": "pageToken",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Content.NewsArticleRssResponse"
+	//	  "operationId": "Content.RssNewsArticles",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Optionally filter response to only include news items in a certain category.",
+	//	      "in": "query",
+	//	      "name": "categoryfilter",
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "description": "Optionally include full content body for each news item.",
+	//	      "in": "query",
+	//	      "name": "includebody",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Zero-based pagination token for paging through result sets.",
+	//	      "in": "path",
+	//	      "name": "pageToken",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Content.NewsArticleRssResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Content.RssNewsArticles"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[NewsArticleRssResponse]
+	err := a.client.Do(ctx, "Content.RssNewsArticles",
+		"GET",
+		"/Content/Rss/NewsArticles/{pageToken}/", nil, map[string]string{
+			"pageToken": fmt.Sprint(req.PageToken),
+		}, url.Values{
+			"categoryfilter": {fmt.Sprint(req.Categoryfilter)},
+			"includebody":    {fmt.Sprint(req.Includebody)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ContentGetContentTypeRequest are the request parameters for operation Content.GetContentType
@@ -4148,31 +4265,33 @@ type ContentGetContentTypeRequest struct {
 func (a API) ContentGetContentType(ctx context.Context, req ContentGetContentTypeRequest) (*ServerResponse[ContentTypeDescription], error) {
 	//	{
 	//	  "description": "Gets an object describing a particular variant of content.",
-	//	  "get": {
-	//	    "description": "Gets an object describing a particular variant of content.",
-	//	    "operationId": "Content.GetContentType",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "type",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
+	//	  "operationId": "Content.GetContentType",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "type",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Content.Models.ContentTypeDescription"
-	//	      }
-	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Content.Models.ContentTypeDescription"
+	//	    }
 	//	  },
-	//	  "summary": "Content.GetContentType"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ContentTypeDescription]
+	err := a.client.Do(ctx, "Content.GetContentType",
+		"GET",
+		"/Content/GetContentType/{type}/", nil, map[string]string{
+			"type": fmt.Sprint(req.Type),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // AppGetApplicationApiUsageRequest are the request parameters for operation App.GetApplicationApiUsage
@@ -4201,58 +4320,63 @@ type AppGetApplicationApiUsageRequest struct {
 func (a API) AppGetApplicationApiUsage(ctx context.Context, req AppGetApplicationApiUsageRequest) (*ServerResponse[ApiUsage], error) {
 	//	{
 	//	  "description": "Get API usage by application for time frame specified. You can go as far back as 30 days ago, and can ask for up to a 48 hour window of time in a single request. You must be authenticated with at least the ReadUserData permission to access this endpoint.",
-	//	  "get": {
-	//	    "description": "Get API usage by application for time frame specified. You can go as far back as 30 days ago, and can ask for up to a 48 hour window of time in a single request. You must be authenticated with at least the ReadUserData permission to access this endpoint.",
-	//	    "operationId": "App.GetApplicationApiUsage",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the application to get usage statistics.",
-	//	        "in": "path",
-	//	        "name": "applicationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "End time for query. Goes to now if not specified.",
-	//	        "in": "query",
-	//	        "name": "end",
-	//	        "schema": {
-	//	          "format": "date-time",
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Start time for query. Goes to 24 hours ago if not specified.",
-	//	        "in": "query",
-	//	        "name": "start",
-	//	        "schema": {
-	//	          "format": "date-time",
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Applications.ApiUsage"
+	//	  "operationId": "App.GetApplicationApiUsage",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the application to get usage statistics.",
+	//	      "in": "path",
+	//	      "name": "applicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadUserData"
-	//	        ]
+	//	    {
+	//	      "description": "End time for query. Goes to now if not specified.",
+	//	      "in": "query",
+	//	      "name": "end",
+	//	      "schema": {
+	//	        "format": "date-time",
+	//	        "type": "string"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "App"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Start time for query. Goes to 24 hours ago if not specified.",
+	//	      "in": "query",
+	//	      "name": "start",
+	//	      "schema": {
+	//	        "format": "date-time",
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Applications.ApiUsage"
+	//	    }
 	//	  },
-	//	  "summary": "App.GetApplicationApiUsage"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadUserData"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "App"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ApiUsage]
+	err := a.client.Do(ctx, "App.GetApplicationApiUsage",
+		"GET",
+		"/App/ApiUsage/{applicationId}/", nil, map[string]string{
+			"applicationId": fmt.Sprint(req.ApplicationID),
+		}, url.Values{
+			"end":   {fmt.Sprint(req.End)},
+			"start": {fmt.Sprint(req.Start)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // UserSearchByGlobalNamePrefixRequest are the request parameters for operation
@@ -4277,42 +4401,45 @@ type UserSearchByGlobalNamePrefixRequest struct {
 func (a API) UserSearchByGlobalNamePrefix(ctx context.Context, req UserSearchByGlobalNamePrefixRequest) (*ServerResponse[UserSearchResponse], error) {
 	//	{
 	//	  "description": "[OBSOLETE] Do not use this to search users, use SearchByGlobalNamePost instead.",
-	//	  "get": {
-	//	    "description": "[OBSOLETE] Do not use this to search users, use SearchByGlobalNamePost instead.",
-	//	    "operationId": "User.SearchByGlobalNamePrefix",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The display name prefix you're looking for.",
-	//	        "in": "path",
-	//	        "name": "displayNamePrefix",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The zero-based page of results you desire.",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.UserSearchResponse"
+	//	  "operationId": "User.SearchByGlobalNamePrefix",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The display name prefix you're looking for.",
+	//	      "in": "path",
+	//	      "name": "displayNamePrefix",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    {
+	//	      "description": "The zero-based page of results you desire.",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.UserSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "User.SearchByGlobalNamePrefix"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[UserSearchResponse]
+	err := a.client.Do(ctx, "User.SearchByGlobalNamePrefix",
+		"GET",
+		"/User/Search/Prefix/{displayNamePrefix}/{page}/", nil, map[string]string{
+			"displayNamePrefix": fmt.Sprint(req.DisplayNamePrefix),
+			"page":              fmt.Sprint(req.Page),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetMembershipDataByIdRequest are the request parameters for operation User.GetMembershipDataById
@@ -4320,7 +4447,7 @@ type UserGetMembershipDataByIdRequest struct {
 
 	// The membership ID of the target user.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Type of the supplied membership ID.
 	// Required.
@@ -4337,48 +4464,51 @@ type UserGetMembershipDataByIdRequest struct {
 func (a API) UserGetMembershipDataById(ctx context.Context, req UserGetMembershipDataByIdRequest) (*ServerResponse[UserMembershipData], error) {
 	//	{
 	//	  "description": "Returns a list of accounts associated with the supplied membership ID and membership type. This will include all linked accounts (even when hidden) if supplied credentials permit it.",
-	//	  "get": {
-	//	    "description": "Returns a list of accounts associated with the supplied membership ID and membership type. This will include all linked accounts (even when hidden) if supplied credentials permit it.",
-	//	    "operationId": "User.GetMembershipDataById",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The membership ID of the target user.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Type of the supplied membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.UserMembershipData"
+	//	  "operationId": "User.GetMembershipDataById",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The membership ID of the target user.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    {
+	//	      "description": "Type of the supplied membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.UserMembershipData"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetMembershipDataById"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[UserMembershipData]
+	err := a.client.Do(ctx, "User.GetMembershipDataById",
+		"GET",
+		"/User/GetMembershipsById/{membershipId}/{membershipType}/", nil, map[string]string{
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // UserGetMembershipFromHardLinkedCredentialRequest are the request parameters for operation
@@ -4403,47 +4533,50 @@ type UserGetMembershipFromHardLinkedCredentialRequest struct {
 func (a API) UserGetMembershipFromHardLinkedCredential(ctx context.Context, req UserGetMembershipFromHardLinkedCredentialRequest) (*ServerResponse[HardLinkedUserMembership], error) {
 	//	{
 	//	  "description": "Gets any hard linked membership given a credential. Only works for credentials that are public (just SteamID64 right now). Cross Save aware.",
-	//	  "get": {
-	//	    "description": "Gets any hard linked membership given a credential. Only works for credentials that are public (just SteamID64 right now). Cross Save aware.",
-	//	    "operationId": "User.GetMembershipFromHardLinkedCredential",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The credential to look up. Must be a valid SteamID64.",
-	//	        "in": "path",
-	//	        "name": "credential",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The credential type. 'SteamId' is the only valid value at present.",
-	//	        "in": "path",
-	//	        "name": "crType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of credentials the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.CredentialType.",
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieCredentialType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/User.HardLinkedUserMembership"
+	//	  "operationId": "User.GetMembershipFromHardLinkedCredential",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The credential to look up. Must be a valid SteamID64.",
+	//	      "in": "path",
+	//	      "name": "credential",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "User"
-	//	    ]
+	//	    {
+	//	      "description": "The credential type. 'SteamId' is the only valid value at present.",
+	//	      "in": "path",
+	//	      "name": "crType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of credentials the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.CredentialType.",
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieCredentialType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/User.HardLinkedUserMembership"
+	//	    }
 	//	  },
-	//	  "summary": "User.GetMembershipFromHardLinkedCredential"
+	//	  "tags": [
+	//	    "User"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[HardLinkedUserMembership]
+	err := a.client.Do(ctx, "User.GetMembershipFromHardLinkedCredential",
+		"GET",
+		"/User/GetMembershipFromHardLinkedCredential/{crType}/{credential}/", nil, map[string]string{
+			"credential": fmt.Sprint(req.Credential),
+			"crType":     fmt.Sprint(req.CrType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TrendingGetTrendingEntryDetailRequest are the request parameters for operation
@@ -4469,47 +4602,50 @@ type TrendingGetTrendingEntryDetailRequest struct {
 func (a API) TrendingGetTrendingEntryDetail(ctx context.Context, req TrendingGetTrendingEntryDetailRequest) (*ServerResponse[TrendingDetail], error) {
 	//	{
 	//	  "description": "Returns the detailed results for a specific trending entry. Note that trending entries are uniquely identified by a combination of *both* the TrendingEntryType *and* the identifier: the identifier alone is not guaranteed to be globally unique.",
-	//	  "get": {
-	//	    "description": "Returns the detailed results for a specific trending entry. Note that trending entries are uniquely identified by a combination of *both* the TrendingEntryType *and* the identifier: the identifier alone is not guaranteed to be globally unique.",
-	//	    "operationId": "Trending.GetTrendingEntryDetail",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The identifier for the entity to be returned.",
-	//	        "in": "path",
-	//	        "name": "identifier",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The type of entity to be returned.",
-	//	        "in": "path",
-	//	        "name": "trendingEntryType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The known entity types that you can have returned from Trending.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Trending.TrendingEntryType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Trending.TrendingDetail"
+	//	  "operationId": "Trending.GetTrendingEntryDetail",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The identifier for the entity to be returned.",
+	//	      "in": "path",
+	//	      "name": "identifier",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Trending"
-	//	    ]
+	//	    {
+	//	      "description": "The type of entity to be returned.",
+	//	      "in": "path",
+	//	      "name": "trendingEntryType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The known entity types that you can have returned from Trending.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Trending.TrendingEntryType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Trending.TrendingDetail"
+	//	    }
 	//	  },
-	//	  "summary": "Trending.GetTrendingEntryDetail"
+	//	  "tags": [
+	//	    "Trending"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[TrendingDetail]
+	err := a.client.Do(ctx, "Trending.GetTrendingEntryDetail",
+		"GET",
+		"/Trending/Details/{trendingEntryType}/{identifier}/", nil, map[string]string{
+			"identifier":        fmt.Sprint(req.Identifier),
+			"trendingEntryType": fmt.Sprint(req.TrendingEntryType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TrendingGetTrendingCategoryRequest are the request parameters for operation
@@ -4533,42 +4669,45 @@ type TrendingGetTrendingCategoryRequest struct {
 func (a API) TrendingGetTrendingCategory(ctx context.Context, req TrendingGetTrendingCategoryRequest) (*ServerResponse[SearchResult[TrendingEntry]], error) {
 	//	{
 	//	  "description": "Returns paginated lists of trending items for a category.",
-	//	  "get": {
-	//	    "description": "Returns paginated lists of trending items for a category.",
-	//	    "operationId": "Trending.GetTrendingCategory",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The ID of the category for whom you want additional results.",
-	//	        "in": "path",
-	//	        "name": "categoryId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The page # of results to return.",
-	//	        "in": "path",
-	//	        "name": "pageNumber",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfTrendingEntry"
+	//	  "operationId": "Trending.GetTrendingCategory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the category for whom you want additional results.",
+	//	      "in": "path",
+	//	      "name": "categoryId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Trending"
-	//	    ]
+	//	    {
+	//	      "description": "The page # of results to return.",
+	//	      "in": "path",
+	//	      "name": "pageNumber",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfTrendingEntry"
+	//	    }
 	//	  },
-	//	  "summary": "Trending.GetTrendingCategory"
+	//	  "tags": [
+	//	    "Trending"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[TrendingEntry]]
+	err := a.client.Do(ctx, "Trending.GetTrendingCategory",
+		"GET",
+		"/Trending/Categories/{categoryId}/{pageNumber}/", nil, map[string]string{
+			"categoryId": fmt.Sprint(req.CategoryID),
+			"pageNumber": fmt.Sprint(req.PageNumber),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensGetBungieRewardsForPlatformUserRequest are the request parameters for operation
@@ -4578,7 +4717,7 @@ type TokensGetBungieRewardsForPlatformUserRequest struct {
 	// users platform membershipId for requested user rewards. If not self, elevated permissions are
 	// required.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// The target Destiny 2 membership type.
 	// Required.
@@ -4596,55 +4735,58 @@ type TokensGetBungieRewardsForPlatformUserRequest struct {
 func (a API) TokensGetBungieRewardsForPlatformUser(ctx context.Context, req TokensGetBungieRewardsForPlatformUserRequest) (*ServerResponse[map[string]BungieRewardDisplay], error) {
 	//	{
 	//	  "description": "Returns the bungie rewards for the targeted user when a platform membership Id and Type are used.",
-	//	  "get": {
-	//	    "description": "Returns the bungie rewards for the targeted user when a platform membership Id and Type are used.",
-	//	    "operationId": "Tokens.GetBungieRewardsForPlatformUser",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "users platform membershipId for requested user rewards. If not self, elevated permissions are required.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The target Destiny 2 membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
+	//	  "operationId": "Tokens.GetBungieRewardsForPlatformUser",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "users platform membershipId for requested user rewards. If not self, elevated permissions are required.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadAndApplyTokens"
-	//	        ]
+	//	    {
+	//	      "description": "The target Destiny 2 membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/DictionaryOfstringAndBungieRewardDisplay"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.GetBungieRewardsForPlatformUser"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadAndApplyTokens"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]BungieRewardDisplay]
+	err := a.client.Do(ctx, "Tokens.GetBungieRewardsForPlatformUser",
+		"GET",
+		"/Tokens/Rewards/GetRewardsForPlatformUser/{membershipId}/{membershipType}/", nil, map[string]string{
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensGetPartnerRewardHistoryRequest are the request parameters for operation
@@ -4657,7 +4799,7 @@ type TokensGetPartnerRewardHistoryRequest struct {
 
 	// The bungie.net user to return reward history for.
 	// Required.
-	TargetBnetMembershipID int64
+	TargetBnetMembershipID Int64
 }
 
 // TokensGetPartnerRewardHistory: Returns the partner rewards history of the targeted user, both
@@ -4671,50 +4813,53 @@ type TokensGetPartnerRewardHistoryRequest struct {
 func (a API) TokensGetPartnerRewardHistory(ctx context.Context, req TokensGetPartnerRewardHistoryRequest) (*ServerResponse[PartnerRewardHistoryResponse], error) {
 	//	{
 	//	  "description": "Returns the partner rewards history of the targeted user, both partner offers and Twitch drops.",
-	//	  "get": {
-	//	    "description": "Returns the partner rewards history of the targeted user, both partner offers and Twitch drops.",
-	//	    "operationId": "Tokens.GetPartnerRewardHistory",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The partner application identifier.",
-	//	        "in": "path",
-	//	        "name": "partnerApplicationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The bungie.net user to return reward history for.",
-	//	        "in": "path",
-	//	        "name": "targetBnetMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Tokens.PartnerRewardHistoryResponse"
+	//	  "operationId": "Tokens.GetPartnerRewardHistory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The partner application identifier.",
+	//	      "in": "path",
+	//	      "name": "partnerApplicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "PartnerOfferGrant"
-	//	        ]
+	//	    {
+	//	      "description": "The bungie.net user to return reward history for.",
+	//	      "in": "path",
+	//	      "name": "targetBnetMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Tokens.PartnerRewardHistoryResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.GetPartnerRewardHistory"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "PartnerOfferGrant"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PartnerRewardHistoryResponse]
+	err := a.client.Do(ctx, "Tokens.GetPartnerRewardHistory",
+		"GET",
+		"/Tokens/Partner/History/{targetBnetMembershipId}/Application/{partnerApplicationId}/", nil, map[string]string{
+			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
+			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensGetPartnerOfferSkuHistoryRequest are the request parameters for operation
@@ -4727,7 +4872,7 @@ type TokensGetPartnerOfferSkuHistoryRequest struct {
 
 	// The bungie.net user to apply missing offers to. If not self, elevated permissions are required.
 	// Required.
-	TargetBnetMembershipID int64
+	TargetBnetMembershipID Int64
 }
 
 // TokensGetPartnerOfferSkuHistory: Returns the partner sku and offer history of the targeted user.
@@ -4741,50 +4886,53 @@ type TokensGetPartnerOfferSkuHistoryRequest struct {
 func (a API) TokensGetPartnerOfferSkuHistory(ctx context.Context, req TokensGetPartnerOfferSkuHistoryRequest) (*ServerResponse[[]PartnerOfferSkuHistoryResponse], error) {
 	//	{
 	//	  "description": "Returns the partner sku and offer history of the targeted user. Elevated permissions are required to see users that are not yourself.",
-	//	  "get": {
-	//	    "description": "Returns the partner sku and offer history of the targeted user. Elevated permissions are required to see users that are not yourself.",
-	//	    "operationId": "Tokens.GetPartnerOfferSkuHistory",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The partner application identifier.",
-	//	        "in": "path",
-	//	        "name": "partnerApplicationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The bungie.net user to apply missing offers to. If not self, elevated permissions are required.",
-	//	        "in": "path",
-	//	        "name": "targetBnetMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/CEListOfPartnerOfferSkuHistoryResponse"
+	//	  "operationId": "Tokens.GetPartnerOfferSkuHistory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The partner application identifier.",
+	//	      "in": "path",
+	//	      "name": "partnerApplicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "PartnerOfferGrant"
-	//	        ]
+	//	    {
+	//	      "description": "The bungie.net user to apply missing offers to. If not self, elevated permissions are required.",
+	//	      "in": "path",
+	//	      "name": "targetBnetMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/CEListOfPartnerOfferSkuHistoryResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.GetPartnerOfferSkuHistory"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "PartnerOfferGrant"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]PartnerOfferSkuHistoryResponse]
+	err := a.client.Do(ctx, "Tokens.GetPartnerOfferSkuHistory",
+		"GET",
+		"/Tokens/Partner/History/{partnerApplicationId}/{targetBnetMembershipId}/", nil, map[string]string{
+			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
+			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // TokensApplyMissingPartnerOffersWithoutClaimRequest are the request parameters for operation
@@ -4797,7 +4945,7 @@ type TokensApplyMissingPartnerOffersWithoutClaimRequest struct {
 
 	// The bungie.net user to apply missing offers to. If not self, elevated permissions are required.
 	// Required.
-	TargetBnetMembershipID int64
+	TargetBnetMembershipID Int64
 }
 
 // TokensApplyMissingPartnerOffersWithoutClaim: Apply a partner offer to the targeted user. This
@@ -4812,50 +4960,53 @@ type TokensApplyMissingPartnerOffersWithoutClaimRequest struct {
 func (a API) TokensApplyMissingPartnerOffersWithoutClaim(ctx context.Context, req TokensApplyMissingPartnerOffersWithoutClaimRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Apply a partner offer to the targeted user. This endpoint does not claim a new offer, but any already claimed offers will be applied to the game if not already.",
-	//	  "post": {
-	//	    "description": "Apply a partner offer to the targeted user. This endpoint does not claim a new offer, but any already claimed offers will be applied to the game if not already.",
-	//	    "operationId": "Tokens.ApplyMissingPartnerOffersWithoutClaim",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The partner application identifier.",
-	//	        "in": "path",
-	//	        "name": "partnerApplicationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The bungie.net user to apply missing offers to. If not self, elevated permissions are required.",
-	//	        "in": "path",
-	//	        "name": "targetBnetMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
+	//	  "operationId": "Tokens.ApplyMissingPartnerOffersWithoutClaim",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The partner application identifier.",
+	//	      "in": "path",
+	//	      "name": "partnerApplicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "PartnerOfferGrant"
-	//	        ]
+	//	    {
+	//	      "description": "The bungie.net user to apply missing offers to. If not self, elevated permissions are required.",
+	//	      "in": "path",
+	//	      "name": "targetBnetMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Tokens"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "Tokens.ApplyMissingPartnerOffersWithoutClaim"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "PartnerOfferGrant"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Tokens"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "Tokens.ApplyMissingPartnerOffersWithoutClaim",
+		"POST",
+		"/Tokens/Partner/ApplyMissingOffers/{partnerApplicationId}/{targetBnetMembershipId}/", nil, map[string]string{
+			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
+			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // SocialGetPlatformFriendListRequest are the request parameters for operation
@@ -4880,46 +5031,49 @@ type SocialGetPlatformFriendListRequest struct {
 func (a API) SocialGetPlatformFriendList(ctx context.Context, req SocialGetPlatformFriendListRequest) (*ServerResponse[PlatformFriendResponse], error) {
 	//	{
 	//	  "description": "Gets the platform friend of the requested type, with additional information if they have Bungie accounts. Must have a recent login session with said platform.",
-	//	  "get": {
-	//	    "description": "Gets the platform friend of the requested type, with additional information if they have Bungie accounts. Must have a recent login session with said platform.",
-	//	    "operationId": "Social.GetPlatformFriendList",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The platform friend type.",
-	//	        "in": "path",
-	//	        "name": "friendPlatform",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Social.Friends.PlatformFriendType"
-	//	          }
+	//	  "operationId": "Social.GetPlatformFriendList",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The platform friend type.",
+	//	      "in": "path",
+	//	      "name": "friendPlatform",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Social.Friends.PlatformFriendType"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The zero based page to return. Page size is 100.",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Social.Friends.PlatformFriendResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Social"
-	//	    ]
+	//	    {
+	//	      "description": "The zero based page to return. Page size is 100.",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Social.Friends.PlatformFriendResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Social.GetPlatformFriendList"
+	//	  "tags": [
+	//	    "Social"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PlatformFriendResponse]
+	err := a.client.Do(ctx, "Social.GetPlatformFriendList",
+		"GET",
+		"/Social/PlatformFriends/{friendPlatform}/{page}/", nil, map[string]string{
+			"friendPlatform": fmt.Sprint(req.FriendPlatform),
+			"page":           fmt.Sprint(req.Page),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2EditOptionalConversationRequest are the request parameters for operation
@@ -4928,11 +5082,11 @@ type GroupV2EditOptionalConversationRequest struct {
 
 	// Conversation Id of the channel being edited.
 	// Required.
-	ConversationID int64
+	ConversationID Int64
 
 	// Group ID of the group to edit.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Required.
 	Body GroupOptionalConversationEditRequest
@@ -4946,63 +5100,66 @@ type GroupV2EditOptionalConversationRequest struct {
 // Operation: GroupV2.EditOptionalConversation
 //
 // Scope: oauth2 [AdminGroups]
-func (a API) GroupV2EditOptionalConversation(ctx context.Context, req GroupV2EditOptionalConversationRequest) (*ServerResponse[int64], error) {
+func (a API) GroupV2EditOptionalConversation(ctx context.Context, req GroupV2EditOptionalConversationRequest) (*ServerResponse[Int64], error) {
 	//	{
 	//	  "description": "Edit the settings of an optional conversation/chat channel. Requires admin permissions to the group.",
-	//	  "post": {
-	//	    "description": "Edit the settings of an optional conversation/chat channel. Requires admin permissions to the group.",
-	//	    "operationId": "GroupV2.EditOptionalConversation",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Conversation Id of the channel being edited.",
-	//	        "in": "path",
-	//	        "name": "conversationId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Group ID of the group to edit.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupOptionalConversationEditRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int64"
+	//	  "operationId": "GroupV2.EditOptionalConversation",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Conversation Id of the channel being edited.",
+	//	      "in": "path",
+	//	      "name": "conversationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Group ID of the group to edit.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupOptionalConversationEditRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.EditOptionalConversation"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int64"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Int64]
+	err := a.client.Do(ctx, "GroupV2.EditOptionalConversation",
+		"POST",
+		"/GroupV2/{groupId}/OptionalConversations/Edit/{conversationId}/", nil, map[string]string{
+			"conversationId": fmt.Sprint(req.ConversationID),
+			"groupId":        fmt.Sprint(req.GroupID),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2GetRecommendedGroupsRequest are the request parameters for operation
@@ -5029,58 +5186,61 @@ type GroupV2GetRecommendedGroupsRequest struct {
 func (a API) GroupV2GetRecommendedGroups(ctx context.Context, req GroupV2GetRecommendedGroupsRequest) (*ServerResponse[[]GroupV2Card], error) {
 	//	{
 	//	  "description": "Gets groups recommended for you based on the groups to whom those you follow belong.",
-	//	  "post": {
-	//	    "description": "Gets groups recommended for you based on the groups to whom those you follow belong.",
-	//	    "operationId": "GroupV2.GetRecommendedGroups",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Requested range in which to pull recommended groups",
-	//	        "in": "path",
-	//	        "name": "createDateRange",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupDateRange"
-	//	          }
+	//	  "operationId": "GroupV2.GetRecommendedGroups",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Requested range in which to pull recommended groups",
+	//	      "in": "path",
+	//	      "name": "createDateRange",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupDateRange"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Type of groups requested",
-	//	        "in": "path",
-	//	        "name": "groupType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/ListOfGroupV2Card"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Type of groups requested",
+	//	      "in": "path",
+	//	      "name": "groupType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupType"
+	//	        }
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/ListOfGroupV2Card"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetRecommendedGroups"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[[]GroupV2Card]
+	err := a.client.Do(ctx, "GroupV2.GetRecommendedGroups",
+		"POST",
+		"/GroupV2/Recommended/{groupType}/{createDateRange}/", nil, map[string]string{
+			"createDateRange": fmt.Sprint(req.CreateDateRange),
+			"groupType":       fmt.Sprint(req.GroupType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetGroupByNameRequest are the request parameters for operation GroupV2.GetGroupByName
@@ -5103,46 +5263,49 @@ type GroupV2GetGroupByNameRequest struct {
 func (a API) GroupV2GetGroupByName(ctx context.Context, req GroupV2GetGroupByNameRequest) (*ServerResponse[GroupResponse], error) {
 	//	{
 	//	  "description": "Get information about a specific group with the given name and type.",
-	//	  "get": {
-	//	    "description": "Get information about a specific group with the given name and type.",
-	//	    "operationId": "GroupV2.GetGroupByName",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Exact name of the group to find.",
-	//	        "in": "path",
-	//	        "name": "groupName",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Type of group to find.",
-	//	        "in": "path",
-	//	        "name": "groupType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupResponse"
+	//	  "operationId": "GroupV2.GetGroupByName",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Exact name of the group to find.",
+	//	      "in": "path",
+	//	      "name": "groupName",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "Type of group to find.",
+	//	      "in": "path",
+	//	      "name": "groupType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetGroupByName"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupResponse]
+	err := a.client.Do(ctx, "GroupV2.GetGroupByName",
+		"GET",
+		"/GroupV2/Name/{groupName}/{groupType}/", nil, map[string]string{
+			"groupName": fmt.Sprint(req.GroupName),
+			"groupType": fmt.Sprint(req.GroupType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // FireteamGetClanFireteamRequest are the request parameters for operation Fireteam.GetClanFireteam
@@ -5150,11 +5313,11 @@ type FireteamGetClanFireteamRequest struct {
 
 	// The unique id of the fireteam.
 	// Required.
-	FireteamID int64
+	FireteamID Int64
 
 	// The group id of the clan.
 	// Required.
-	GroupID int64
+	GroupID Int64
 }
 
 // FireteamGetClanFireteam: Gets a specific fireteam.
@@ -5167,50 +5330,53 @@ type FireteamGetClanFireteamRequest struct {
 func (a API) FireteamGetClanFireteam(ctx context.Context, req FireteamGetClanFireteamRequest) (*ServerResponse[FireteamResponse], error) {
 	//	{
 	//	  "description": "Gets a specific fireteam.",
-	//	  "get": {
-	//	    "description": "Gets a specific fireteam.",
-	//	    "operationId": "Fireteam.GetClanFireteam",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The unique id of the fireteam.",
-	//	        "in": "path",
-	//	        "name": "fireteamId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The group id of the clan.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Fireteam.FireteamResponse"
+	//	  "operationId": "Fireteam.GetClanFireteam",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The unique id of the fireteam.",
+	//	      "in": "path",
+	//	      "name": "fireteamId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
+	//	    {
+	//	      "description": "The group id of the clan.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Fireteam"
-	//	    ]
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Fireteam.FireteamResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Fireteam.GetClanFireteam"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Fireteam"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[FireteamResponse]
+	err := a.client.Do(ctx, "Fireteam.GetClanFireteam",
+		"GET",
+		"/Fireteam/Clan/{groupId}/Summary/{fireteamId}/", nil, map[string]string{
+			"fireteamId": fmt.Sprint(req.FireteamID),
+			"groupId":    fmt.Sprint(req.GroupID),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetLinkedProfilesRequest are the request parameters for operation Destiny2.GetLinkedProfiles
@@ -5224,7 +5390,7 @@ type Destiny2GetLinkedProfilesRequest struct {
 	// ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's
 	// not going to work!
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// The type for the membership whose linked Destiny accounts you want returned.
 	// Required.
@@ -5244,56 +5410,61 @@ type Destiny2GetLinkedProfilesRequest struct {
 func (a API) Destiny2GetLinkedProfiles(ctx context.Context, req Destiny2GetLinkedProfilesRequest) (*ServerResponse[LinkedProfilesResponse], error) {
 	//	{
 	//	  "description": "Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny membership. It only returns the minimal amount of data to begin making more substantive requests, but will hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it will only return linked accounts whose linkages you are allowed to view.",
-	//	  "get": {
-	//	    "description": "Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny membership. It only returns the minimal amount of data to begin making more substantive requests, but will hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it will only return linked accounts whose linkages you are allowed to view.",
-	//	    "operationId": "Destiny2.GetLinkedProfiles",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "(optional) if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.",
-	//	        "in": "query",
-	//	        "name": "getAllMemberships",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The type for the membership whose linked Destiny accounts you want returned.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyLinkedProfilesResponse"
+	//	  "operationId": "Destiny2.GetLinkedProfiles",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "(optional) if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.",
+	//	      "in": "query",
+	//	      "name": "getAllMemberships",
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The type for the membership whose linked Destiny accounts you want returned.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyLinkedProfilesResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetLinkedProfiles"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[LinkedProfilesResponse]
+	err := a.client.Do(ctx, "Destiny2.GetLinkedProfiles",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/", nil, map[string]string{
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"getAllMemberships": {fmt.Sprint(req.GetAllMemberships)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetProfileRequest are the request parameters for operation Destiny2.GetProfile
@@ -5306,7 +5477,7 @@ type Destiny2GetProfileRequest struct {
 
 	// Destiny membership ID.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -5321,65 +5492,70 @@ type Destiny2GetProfileRequest struct {
 func (a API) Destiny2GetProfile(ctx context.Context, req Destiny2GetProfileRequest) (*ServerResponse[ProfileResponse], error) {
 	//	{
 	//	  "description": "Returns Destiny Profile information for the supplied membership.",
-	//	  "get": {
-	//	    "description": "Returns Destiny Profile information for the supplied membership.",
-	//	    "operationId": "Destiny2.GetProfile",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Destiny membership ID.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetProfile",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
 	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyProfileResponse"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyProfileResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetProfile"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ProfileResponse]
+	err := a.client.Do(ctx, "Destiny2.GetProfile",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/", nil, map[string]string{
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetLeaderboardsRequest are the request parameters for operation Destiny2.GetLeaderboards
@@ -5387,7 +5563,7 @@ type Destiny2GetLeaderboardsRequest struct {
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// Maximum number of top players to return. Use a large number to get entire leaderboard.
 	Maxtop int32
@@ -5414,75 +5590,82 @@ type Destiny2GetLeaderboardsRequest struct {
 func (a API) Destiny2GetLeaderboards(ctx context.Context, req Destiny2GetLeaderboardsRequest) (*ServerResponse[map[string]map[string]Leaderboard], error) {
 	//	{
 	//	  "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint has not yet been implemented. It is being returned for a preview of future functionality, and for public comment/suggestion/preparation.",
-	//	  "get": {
-	//	    "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint has not yet been implemented. It is being returned for a preview of future functionality, and for public comment/suggestion/preparation.",
-	//	    "operationId": "Destiny2.GetLeaderboards",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
-	//	        "in": "query",
-	//	        "name": "maxtop",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
-	//	        "in": "query",
-	//	        "name": "modes",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "ID of stat to return rather than returning all Leaderboard stats.",
-	//	        "in": "query",
-	//	        "name": "statid",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	  "operationId": "Destiny2.GetLeaderboards",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-preview": true
+	//	    {
+	//	      "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
+	//	      "in": "query",
+	//	      "name": "maxtop",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
+	//	      "in": "query",
+	//	      "name": "modes",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "ID of stat to return rather than returning all Leaderboard stats.",
+	//	      "in": "query",
+	//	      "name": "statid",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetLeaderboards"
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]map[string]Leaderboard]
+	err := a.client.Do(ctx, "Destiny2.GetLeaderboards",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/Leaderboards/", nil, map[string]string{
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"maxtop": {fmt.Sprint(req.Maxtop)},
+			"modes":  {fmt.Sprint(req.Modes)},
+			"statid": {fmt.Sprint(req.Statid)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetHistoricalStatsForAccountRequest are the request parameters for operation
@@ -5491,7 +5674,7 @@ type Destiny2GetHistoricalStatsForAccountRequest struct {
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// Groups of stats to include, otherwise only general stats are returned. Comma separated list is
 	// allowed. Values: General, Weapons, Medals.
@@ -5511,65 +5694,70 @@ type Destiny2GetHistoricalStatsForAccountRequest struct {
 func (a API) Destiny2GetHistoricalStatsForAccount(ctx context.Context, req Destiny2GetHistoricalStatsForAccountRequest) (*ServerResponse[HistoricalStatsAccountResult], error) {
 	//	{
 	//	  "description": "Gets aggregate historical stats organized around each character for a given account.",
-	//	  "get": {
-	//	    "description": "Gets aggregate historical stats organized around each character for a given account.",
-	//	    "operationId": "Destiny2.GetHistoricalStatsForAccount",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Groups of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals.",
-	//	        "in": "query",
-	//	        "name": "groups",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "If the enum value is \u003e 100, it is a \"special\" group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyStatsGroupType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetHistoricalStatsForAccount",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Groups of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals.",
+	//	      "in": "query",
+	//	      "name": "groups",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "If the enum value is \u003e 100, it is a \"special\" group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyStatsGroupType"
 	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetHistoricalStatsForAccount"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[HistoricalStatsAccountResult]
+	err := a.client.Do(ctx, "Destiny2.GetHistoricalStatsForAccount",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/", nil, map[string]string{
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"groups": {joinArray(req.Groups)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetDestinyEntityDefinitionRequest are the request parameters for operation
@@ -5602,42 +5790,45 @@ type Destiny2GetDestinyEntityDefinitionRequest struct {
 func (a API) Destiny2GetDestinyEntityDefinition(ctx context.Context, req Destiny2GetDestinyEntityDefinitionRequest) (*ServerResponse[Definition], error) {
 	//	{
 	//	  "description": "Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for the Type Names of entities that have their own definitions. Note that the return type will always *inherit from* DestinyDefinition, but the specific type returned will be the requested entity type if it can be found. Please don't use this as a chatty alternative to the Manifest database if you require large sets of data, but for simple and one-off accesses this should be handy.",
-	//	  "get": {
-	//	    "description": "Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for the Type Names of entities that have their own definitions. Note that the return type will always *inherit from* DestinyDefinition, but the specific type returned will be the requested entity type if it can be found. Please don't use this as a chatty alternative to the Manifest database if you require large sets of data, but for simple and one-off accesses this should be handy.",
-	//	    "operationId": "Destiny2.GetDestinyEntityDefinition",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is tentatively in final form, but there may be bugs that prevent desirable operation.",
-	//	        "in": "path",
-	//	        "name": "entityType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The hash identifier for the specific Entity you want returned.",
-	//	        "in": "path",
-	//	        "name": "hashIdentifier",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "uint32",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Definitions.DestinyDefinition"
+	//	  "operationId": "Destiny2.GetDestinyEntityDefinition",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is tentatively in final form, but there may be bugs that prevent desirable operation.",
+	//	      "in": "path",
+	//	      "name": "entityType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The hash identifier for the specific Entity you want returned.",
+	//	      "in": "path",
+	//	      "name": "hashIdentifier",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "uint32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Definitions.DestinyDefinition"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetDestinyEntityDefinition"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[Definition]
+	err := a.client.Do(ctx, "Destiny2.GetDestinyEntityDefinition",
+		"GET",
+		"/Destiny2/Manifest/{entityType}/{hashIdentifier}/", nil, map[string]string{
+			"entityType":     fmt.Sprint(req.EntityType),
+			"hashIdentifier": fmt.Sprint(req.HashIdentifier),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2SearchDestinyEntitiesRequest are the request parameters for operation
@@ -5666,50 +5857,55 @@ type Destiny2SearchDestinyEntitiesRequest struct {
 func (a API) Destiny2SearchDestinyEntities(ctx context.Context, req Destiny2SearchDestinyEntitiesRequest) (*ServerResponse[EntitySearchResult], error) {
 	//	{
 	//	  "description": "Gets a page list of Destiny items.",
-	//	  "get": {
-	//	    "description": "Gets a page list of Destiny items.",
-	//	    "operationId": "Destiny2.SearchDestinyEntities",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number to return, starting with 0.",
-	//	        "in": "query",
-	//	        "name": "page",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The string to use when searching for Destiny entities.",
-	//	        "in": "path",
-	//	        "name": "searchTerm",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'.",
-	//	        "in": "path",
-	//	        "name": "type",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Definitions.DestinyEntitySearchResult"
+	//	  "operationId": "Destiny2.SearchDestinyEntities",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number to return, starting with 0.",
+	//	      "in": "query",
+	//	      "name": "page",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The string to use when searching for Destiny entities.",
+	//	      "in": "path",
+	//	      "name": "searchTerm",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'.",
+	//	      "in": "path",
+	//	      "name": "type",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Definitions.DestinyEntitySearchResult"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.SearchDestinyEntities"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[EntitySearchResult]
+	err := a.client.Do(ctx, "Destiny2.SearchDestinyEntities",
+		"GET",
+		"/Destiny2/Armory/Search/{type}/{searchTerm}/", nil, map[string]string{
+			"searchTerm": fmt.Sprint(req.SearchTerm),
+			"type":       fmt.Sprint(req.Type),
+		}, url.Values{
+			"page": {fmt.Sprint(req.Page)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ContentSearchHelpArticlesRequest are the request parameters for operation Content.SearchHelpArticles
@@ -5730,39 +5926,42 @@ type ContentSearchHelpArticlesRequest struct {
 func (a API) ContentSearchHelpArticles(ctx context.Context, req ContentSearchHelpArticlesRequest) (*ServerResponse[any], error) {
 	//	{
 	//	  "description": "Search for Help Articles.",
-	//	  "get": {
-	//	    "description": "Search for Help Articles.",
-	//	    "operationId": "Content.SearchHelpArticles",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "searchtext",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "size",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/IReadOnlyCollectionOfContentItemPublicContract"
+	//	  "operationId": "Content.SearchHelpArticles",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "searchtext",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "in": "path",
+	//	      "name": "size",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/IReadOnlyCollectionOfContentItemPublicContract"
+	//	    }
 	//	  },
-	//	  "summary": "Content.SearchHelpArticles"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[any]
+	err := a.client.Do(ctx, "Content.SearchHelpArticles",
+		"GET",
+		"/Content/SearchHelpArticles/{searchtext}/{size}/", nil, map[string]string{
+			"searchtext": fmt.Sprint(req.Searchtext),
+			"size":       fmt.Sprint(req.Size),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ContentGetContentByIdRequest are the request parameters for operation Content.GetContentById
@@ -5772,7 +5971,7 @@ type ContentGetContentByIdRequest struct {
 	Head bool
 
 	// Required.
-	Id int64
+	Id Int64
 
 	// Required.
 	Locale string
@@ -5786,59 +5985,64 @@ type ContentGetContentByIdRequest struct {
 func (a API) ContentGetContentById(ctx context.Context, req ContentGetContentByIdRequest) (*ServerResponse[ContentItemPublicContract], error) {
 	//	{
 	//	  "description": "Returns a content item referenced by id",
-	//	  "get": {
-	//	    "description": "Returns a content item referenced by id",
-	//	    "operationId": "Content.GetContentById",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "false",
-	//	        "in": "query",
-	//	        "name": "head",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "id",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "locale",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Content.ContentItemPublicContract"
+	//	  "operationId": "Content.GetContentById",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "false",
+	//	      "in": "query",
+	//	      "name": "head",
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "in": "path",
+	//	      "name": "id",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "locale",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Content.ContentItemPublicContract"
+	//	    }
 	//	  },
-	//	  "summary": "Content.GetContentById"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ContentItemPublicContract]
+	err := a.client.Do(ctx, "Content.GetContentById",
+		"GET",
+		"/Content/GetContentById/{id}/{locale}/", nil, map[string]string{
+			"id":     fmt.Sprint(req.Id),
+			"locale": fmt.Sprint(req.Locale),
+		}, url.Values{
+			"head": {fmt.Sprint(req.Head)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2UnbanMemberRequest are the request parameters for operation GroupV2.UnbanMember
 type GroupV2UnbanMemberRequest struct {
 
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership ID of the member to unban from the group
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the provided membership ID.
 	// Required.
@@ -5855,64 +6059,68 @@ type GroupV2UnbanMemberRequest struct {
 func (a API) GroupV2UnbanMember(ctx context.Context, req GroupV2UnbanMemberRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Unbans the requested member, allowing them to re-apply for membership.",
-	//	  "post": {
-	//	    "description": "Unbans the requested member, allowing them to re-apply for membership.",
-	//	    "operationId": "GroupV2.UnbanMember",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID of the member to unban from the group",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the provided membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
+	//	  "operationId": "GroupV2.UnbanMember",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership ID of the member to unban from the group",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the provided membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.UnbanMember"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.UnbanMember",
+		"POST",
+		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Unban/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2KickMemberRequest are the request parameters for operation GroupV2.KickMember
@@ -5920,11 +6128,11 @@ type GroupV2KickMemberRequest struct {
 
 	// Group ID to kick the user from.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership ID to kick.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the provided membership ID.
 	// Required.
@@ -5942,65 +6150,69 @@ type GroupV2KickMemberRequest struct {
 func (a API) GroupV2KickMember(ctx context.Context, req GroupV2KickMemberRequest) (*ServerResponse[GroupMemberLeaveResult], error) {
 	//	{
 	//	  "description": "Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have suitable permissions in the group to perform this operation.",
-	//	  "post": {
-	//	    "description": "Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have suitable permissions in the group to perform this operation.",
-	//	    "operationId": "GroupV2.KickMember",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID to kick the user from.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID to kick.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the provided membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupMemberLeaveResult"
+	//	  "operationId": "GroupV2.KickMember",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID to kick the user from.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership ID to kick.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the provided membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupMemberLeaveResult"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.KickMember"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupMemberLeaveResult]
+	err := a.client.Do(ctx, "GroupV2.KickMember",
+		"POST",
+		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Kick/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2BanMemberRequest are the request parameters for operation GroupV2.BanMember
@@ -6008,11 +6220,11 @@ type GroupV2BanMemberRequest struct {
 
 	// Group ID that has the member to ban.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership ID of the member to ban from the group.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the provided membership ID.
 	// Required.
@@ -6033,75 +6245,79 @@ type GroupV2BanMemberRequest struct {
 func (a API) GroupV2BanMember(ctx context.Context, req GroupV2BanMemberRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Bans the requested member from the requested group for the specified period of time.",
-	//	  "post": {
-	//	    "description": "Bans the requested member from the requested group for the specified period of time.",
-	//	    "operationId": "GroupV2.BanMember",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Group ID that has the member to ban.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID of the member to ban from the group.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the provided membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupBanRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
+	//	  "operationId": "GroupV2.BanMember",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Group ID that has the member to ban.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership ID of the member to ban from the group.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the provided membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupBanRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.BanMember"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.BanMember",
+		"POST",
+		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Ban/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2IndividualGroupInviteCancelRequest are the request parameters for operation
@@ -6110,11 +6326,11 @@ type GroupV2IndividualGroupInviteCancelRequest struct {
 
 	// ID of the group you would like to join.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership id of the account being cancelled.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// MembershipType of the account being cancelled.
 	// Required.
@@ -6131,65 +6347,69 @@ type GroupV2IndividualGroupInviteCancelRequest struct {
 func (a API) GroupV2IndividualGroupInviteCancel(ctx context.Context, req GroupV2IndividualGroupInviteCancelRequest) (*ServerResponse[GroupApplicationResponse], error) {
 	//	{
 	//	  "description": "Cancels a pending invitation to join a group.",
-	//	  "post": {
-	//	    "description": "Cancels a pending invitation to join a group.",
-	//	    "operationId": "GroupV2.IndividualGroupInviteCancel",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group you would like to join.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership id of the account being cancelled.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "MembershipType of the account being cancelled.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupApplicationResponse"
+	//	  "operationId": "GroupV2.IndividualGroupInviteCancel",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group you would like to join.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership id of the account being cancelled.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "MembershipType of the account being cancelled.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupApplicationResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.IndividualGroupInviteCancel"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupApplicationResponse]
+	err := a.client.Do(ctx, "GroupV2.IndividualGroupInviteCancel",
+		"POST",
+		"/GroupV2/{groupId}/Members/IndividualInviteCancel/{membershipType}/{membershipId}/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2IndividualGroupInviteRequest are the request parameters for operation
@@ -6198,11 +6418,11 @@ type GroupV2IndividualGroupInviteRequest struct {
 
 	// ID of the group you would like to join.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership id of the account being invited.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// MembershipType of the account being invited.
 	// Required.
@@ -6222,75 +6442,79 @@ type GroupV2IndividualGroupInviteRequest struct {
 func (a API) GroupV2IndividualGroupInvite(ctx context.Context, req GroupV2IndividualGroupInviteRequest) (*ServerResponse[GroupApplicationResponse], error) {
 	//	{
 	//	  "description": "Invite a user to join this group.",
-	//	  "post": {
-	//	    "description": "Invite a user to join this group.",
-	//	    "operationId": "GroupV2.IndividualGroupInvite",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group you would like to join.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership id of the account being invited.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "MembershipType of the account being invited.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupApplicationResponse"
+	//	  "operationId": "GroupV2.IndividualGroupInvite",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group you would like to join.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership id of the account being invited.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "MembershipType of the account being invited.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.IndividualGroupInvite"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupApplicationResponse"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupApplicationResponse]
+	err := a.client.Do(ctx, "GroupV2.IndividualGroupInvite",
+		"POST",
+		"/GroupV2/{groupId}/Members/IndividualInvite/{membershipType}/{membershipId}/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2ApprovePendingRequest are the request parameters for operation GroupV2.ApprovePending
@@ -6298,11 +6522,11 @@ type GroupV2ApprovePendingRequest struct {
 
 	// ID of the group.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// The membership id being approved.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the supplied membership ID.
 	// Required.
@@ -6323,75 +6547,79 @@ type GroupV2ApprovePendingRequest struct {
 func (a API) GroupV2ApprovePending(ctx context.Context, req GroupV2ApprovePendingRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "Approve the given membershipId to join the group/clan as long as they have applied.",
-	//	  "post": {
-	//	    "description": "Approve the given membershipId to join the group/clan as long as they have applied.",
-	//	    "operationId": "GroupV2.ApprovePending",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The membership id being approved.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the supplied membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "requestBody": {
-	//	      "content": {
-	//	        "application/json": {
-	//	          "schema": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
-	//	          }
-	//	        }
-	//	      },
-	//	      "required": true
-	//	    },
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
+	//	  "operationId": "GroupV2.ApprovePending",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "The membership id being approved.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the supplied membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupApplicationRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
 	//	  },
-	//	  "summary": "GroupV2.ApprovePending"
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "GroupV2.ApprovePending",
+		"POST",
+		"/GroupV2/{groupId}/Members/Approve/{membershipType}/{membershipId}/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, req.Body, &resp)
+	return &resp, err
 }
 
 // GroupV2AbdicateFoundershipRequest are the request parameters for operation
@@ -6400,11 +6628,11 @@ type GroupV2AbdicateFoundershipRequest struct {
 
 	// The new founder for this group. Must already be a group admin.
 	// Required.
-	FounderIdNew int64
+	FounderIdNew Int64
 
 	// The target group id.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership type of the provided founderIdNew.
 	// Required.
@@ -6420,58 +6648,62 @@ type GroupV2AbdicateFoundershipRequest struct {
 func (a API) GroupV2AbdicateFoundership(ctx context.Context, req GroupV2AbdicateFoundershipRequest) (*ServerResponse[bool], error) {
 	//	{
 	//	  "description": "An administrative method to allow the founder of a group or clan to give up their position to another admin permanently.",
-	//	  "post": {
-	//	    "description": "An administrative method to allow the founder of a group or clan to give up their position to another admin permanently.",
-	//	    "operationId": "GroupV2.AbdicateFoundership",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The new founder for this group. Must already be a group admin.",
-	//	        "in": "path",
-	//	        "name": "founderIdNew",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The target group id.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the provided founderIdNew.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/boolean"
+	//	  "operationId": "GroupV2.AbdicateFoundership",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The new founder for this group. Must already be a group admin.",
+	//	      "in": "path",
+	//	      "name": "founderIdNew",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "The target group id.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the provided founderIdNew.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.AbdicateFoundership"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, "GroupV2.AbdicateFoundership",
+		"POST",
+		"/GroupV2/{groupId}/Admin/AbdicateFoundership/{membershipType}/{founderIdNew}/", nil, map[string]string{
+			"founderIdNew":   fmt.Sprint(req.FounderIdNew),
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2RecoverGroupForFounderRequest are the request parameters for operation
@@ -6484,7 +6716,7 @@ type GroupV2RecoverGroupForFounderRequest struct {
 
 	// Membership ID to for which to find founded groups.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the supplied membership ID.
 	// Required.
@@ -6500,62 +6732,66 @@ type GroupV2RecoverGroupForFounderRequest struct {
 func (a API) GroupV2RecoverGroupForFounder(ctx context.Context, req GroupV2RecoverGroupForFounderRequest) (*ServerResponse[GroupMembershipSearchResponse], error) {
 	//	{
 	//	  "description": "Allows a founder to manually recover a group they can see in game but not on bungie.net",
-	//	  "get": {
-	//	    "description": "Allows a founder to manually recover a group they can see in game but not on bungie.net",
-	//	    "operationId": "GroupV2.RecoverGroupForFounder",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Type of group the supplied member founded.",
-	//	        "in": "path",
-	//	        "name": "groupType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupType"
-	//	          }
+	//	  "operationId": "GroupV2.RecoverGroupForFounder",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Type of group the supplied member founded.",
+	//	      "in": "path",
+	//	      "name": "groupType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupType"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID to for which to find founded groups.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the supplied membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupMembershipSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "Membership ID to for which to find founded groups.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the supplied membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupMembershipSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.RecoverGroupForFounder"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupMembershipSearchResponse]
+	err := a.client.Do(ctx, "GroupV2.RecoverGroupForFounder",
+		"GET",
+		"/GroupV2/Recover/{membershipType}/{membershipId}/{groupType}/", nil, map[string]string{
+			"groupType":      fmt.Sprint(req.GroupType),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetItemRequest are the request parameters for operation Destiny2.GetItem
@@ -6568,11 +6804,11 @@ type Destiny2GetItemRequest struct {
 
 	// The membership ID of the destiny profile.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// The Instance ID of the destiny item.
 	// Required.
-	ItemInstanceID int64
+	ItemInstanceID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -6589,75 +6825,81 @@ type Destiny2GetItemRequest struct {
 func (a API) Destiny2GetItem(ctx context.Context, req Destiny2GetItemRequest) (*ServerResponse[ItemResponse], error) {
 	//	{
 	//	  "description": "Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.",
-	//	  "get": {
-	//	    "description": "Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.",
-	//	    "operationId": "Destiny2.GetItem",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The membership ID of the destiny profile.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Instance ID of the destiny item.",
-	//	        "in": "path",
-	//	        "name": "itemInstanceId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetItem",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
 	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyItemResponse"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The membership ID of the destiny profile.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The Instance ID of the destiny item.",
+	//	      "in": "path",
+	//	      "name": "itemInstanceId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyItemResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetItem"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ItemResponse]
+	err := a.client.Do(ctx, "Destiny2.GetItem",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/", nil, map[string]string{
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"itemInstanceId":      fmt.Sprint(req.ItemInstanceID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetVendorsRequest are the request parameters for operation Destiny2.GetVendors
@@ -6665,7 +6907,7 @@ type Destiny2GetVendorsRequest struct {
 
 	// The Destiny Character ID of the character for whom we're getting vendor info.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// A comma separated list of components to return (as strings or numeric values). See the
 	// DestinyComponentType enum for valid components to request. You must request at least one component
@@ -6674,7 +6916,7 @@ type Destiny2GetVendorsRequest struct {
 
 	// Destiny membership ID of another user. You may be denied.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// The filter of what vendors and items to return, if any.
 	Filter VendorFilter
@@ -6695,89 +6937,96 @@ type Destiny2GetVendorsRequest struct {
 func (a API) Destiny2GetVendors(ctx context.Context, req Destiny2GetVendorsRequest) (*ServerResponse[VendorsResponse], error) {
 	//	{
 	//	  "description": "Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.",
-	//	  "get": {
-	//	    "description": "Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.",
-	//	    "operationId": "Destiny2.GetVendors",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny Character ID of the character for whom we're getting vendor info.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Destiny membership ID of another user. You may be denied.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The filter of what vendors and items to return, if any.",
-	//	        "in": "query",
-	//	        "name": "filter",
-	//	        "schema": {
-	//	          "description": "Indicates the type of filter to apply to Vendor results.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Destiny.DestinyVendorFilter"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyVendorsResponse"
+	//	  "operationId": "Destiny2.GetVendors",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny Character ID of the character for whom we're getting vendor info.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
+	//	          "format": "int32",
+	//	          "type": "integer",
+	//	          "x-enum-is-bitmask": false,
+	//	          "x-enum-reference": {
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
+	//	          }
+	//	        },
+	//	        "type": "array"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Destiny membership ID of another user. You may be denied.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The filter of what vendors and items to return, if any.",
+	//	      "in": "query",
+	//	      "name": "filter",
+	//	      "schema": {
+	//	        "description": "Indicates the type of filter to apply to Vendor results.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Destiny.DestinyVendorFilter"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyVendorsResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetVendors"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[VendorsResponse]
+	err := a.client.Do(ctx, "Destiny2.GetVendors",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+			"filter":     {fmt.Sprint(req.Filter)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetCharacterRequest are the request parameters for operation Destiny2.GetCharacter
@@ -6785,7 +7034,7 @@ type Destiny2GetCharacterRequest struct {
 
 	// ID of the character.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// A comma separated list of components to return (as strings or numeric values). See the
 	// DestinyComponentType enum for valid components to request. You must request at least one component
@@ -6794,7 +7043,7 @@ type Destiny2GetCharacterRequest struct {
 
 	// Destiny membership ID.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -6809,75 +7058,81 @@ type Destiny2GetCharacterRequest struct {
 func (a API) Destiny2GetCharacter(ctx context.Context, req Destiny2GetCharacterRequest) (*ServerResponse[CharacterResponse], error) {
 	//	{
 	//	  "description": "Returns character information for the supplied character.",
-	//	  "get": {
-	//	    "description": "Returns character information for the supplied character.",
-	//	    "operationId": "Destiny2.GetCharacter",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the character.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Destiny membership ID.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetCharacter",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the character.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
 	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyCharacterResponse"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyCharacterResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetCharacter"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[CharacterResponse]
+	err := a.client.Do(ctx, "Destiny2.GetCharacter",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetUniqueWeaponHistoryRequest are the request parameters for operation
@@ -6886,11 +7141,11 @@ type Destiny2GetUniqueWeaponHistoryRequest struct {
 
 	// The id of the character to retrieve.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -6907,58 +7162,62 @@ type Destiny2GetUniqueWeaponHistoryRequest struct {
 func (a API) Destiny2GetUniqueWeaponHistory(ctx context.Context, req Destiny2GetUniqueWeaponHistoryRequest) (*ServerResponse[HistoricalWeaponStatsData], error) {
 	//	{
 	//	  "description": "Gets details about unique weapon usage, including all exotic weapons.",
-	//	  "get": {
-	//	    "description": "Gets details about unique weapon usage, including all exotic weapons.",
-	//	    "operationId": "Destiny2.GetUniqueWeaponHistory",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The id of the character to retrieve.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalWeaponStatsData"
+	//	  "operationId": "Destiny2.GetUniqueWeaponHistory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The id of the character to retrieve.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalWeaponStatsData"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetUniqueWeaponHistory"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[HistoricalWeaponStatsData]
+	err := a.client.Do(ctx, "Destiny2.GetUniqueWeaponHistory",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetDestinyAggregateActivityStatsRequest are the request parameters for operation
@@ -6967,11 +7226,11 @@ type Destiny2GetDestinyAggregateActivityStatsRequest struct {
 
 	// The specific character whose activities should be returned.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -6988,58 +7247,62 @@ type Destiny2GetDestinyAggregateActivityStatsRequest struct {
 func (a API) Destiny2GetDestinyAggregateActivityStats(ctx context.Context, req Destiny2GetDestinyAggregateActivityStatsRequest) (*ServerResponse[AggregateActivityResults], error) {
 	//	{
 	//	  "description": "Gets all activities the character has participated in together with aggregate statistics for those activities.",
-	//	  "get": {
-	//	    "description": "Gets all activities the character has participated in together with aggregate statistics for those activities.",
-	//	    "operationId": "Destiny2.GetDestinyAggregateActivityStats",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The specific character whose activities should be returned.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyAggregateActivityResults"
+	//	  "operationId": "Destiny2.GetDestinyAggregateActivityStats",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The specific character whose activities should be returned.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyAggregateActivityResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetDestinyAggregateActivityStats"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[AggregateActivityResults]
+	err := a.client.Do(ctx, "Destiny2.GetDestinyAggregateActivityStats",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetActivityHistoryRequest are the request parameters for operation
@@ -7048,14 +7311,14 @@ type Destiny2GetActivityHistoryRequest struct {
 
 	// The id of the character to retrieve.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// Number of rows to return
 	Count int32
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -7078,90 +7341,98 @@ type Destiny2GetActivityHistoryRequest struct {
 func (a API) Destiny2GetActivityHistory(ctx context.Context, req Destiny2GetActivityHistoryRequest) (*ServerResponse[ActivityHistoryResults], error) {
 	//	{
 	//	  "description": "Gets activity history stats for indicated character.",
-	//	  "get": {
-	//	    "description": "Gets activity history stats for indicated character.",
-	//	    "operationId": "Destiny2.GetActivityHistory",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The id of the character to retrieve.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Number of rows to return",
-	//	        "in": "query",
-	//	        "name": "count",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A filter for the activity mode to be returned. None returns all activities. See the documentation for DestinyActivityModeType for valid values, and pass in string representation.",
-	//	        "in": "query",
-	//	        "name": "mode",
-	//	        "schema": {
-	//	          "description": "For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please don't take this to mean that some D1-only feature is coming back!",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Page number to return, starting with 0.",
-	//	        "in": "query",
-	//	        "name": "page",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyActivityHistoryResults"
+	//	  "operationId": "Destiny2.GetActivityHistory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The id of the character to retrieve.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Number of rows to return",
+	//	      "in": "query",
+	//	      "name": "count",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A filter for the activity mode to be returned. None returns all activities. See the documentation for DestinyActivityModeType for valid values, and pass in string representation.",
+	//	      "in": "query",
+	//	      "name": "mode",
+	//	      "schema": {
+	//	        "description": "For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please don't take this to mean that some D1-only feature is coming back!",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Page number to return, starting with 0.",
+	//	      "in": "query",
+	//	      "name": "page",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyActivityHistoryResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetActivityHistory"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ActivityHistoryResults]
+	err := a.client.Do(ctx, "Destiny2.GetActivityHistory",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"count": {fmt.Sprint(req.Count)},
+			"mode":  {fmt.Sprint(req.Mode)},
+			"page":  {fmt.Sprint(req.Page)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetHistoricalStatsRequest are the request parameters for operation
@@ -7171,7 +7442,7 @@ type Destiny2GetHistoricalStatsRequest struct {
 	// The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate
 	// stats across all characters.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// Last day to return when daily stats are requested. Use the format YYYY-MM-DD. Currently, we cannot
 	// allow more than 31 days of daily data to be requested in a single request.
@@ -7183,7 +7454,7 @@ type Destiny2GetHistoricalStatsRequest struct {
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// Group of stats to include, otherwise only general stats are returned. Comma separated list is
 	// allowed. Values: General, Weapons, Medals
@@ -7209,123 +7480,133 @@ type Destiny2GetHistoricalStatsRequest struct {
 func (a API) Destiny2GetHistoricalStats(ctx context.Context, req Destiny2GetHistoricalStatsRequest) (*ServerResponse[map[string]HistoricalStatsByPeriod], error) {
 	//	{
 	//	  "description": "Gets historical stats for indicated character.",
-	//	  "get": {
-	//	    "description": "Gets historical stats for indicated character.",
-	//	    "operationId": "Destiny2.GetHistoricalStats",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Last day to return when daily stats are requested. Use the format YYYY-MM-DD. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.",
-	//	        "in": "query",
-	//	        "name": "dayend",
-	//	        "schema": {
-	//	          "format": "date-time",
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "First day to return when daily stats are requested. Use the format YYYY-MM-DD. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.",
-	//	        "in": "query",
-	//	        "name": "daystart",
-	//	        "schema": {
-	//	          "format": "date-time",
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Group of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals",
-	//	        "in": "query",
-	//	        "name": "groups",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "If the enum value is \u003e 100, it is a \"special\" group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyStatsGroupType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Game modes to return. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
-	//	        "in": "query",
-	//	        "name": "modes",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please don't take this to mean that some D1-only feature is coming back!",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity",
-	//	        "in": "query",
-	//	        "name": "periodType",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.PeriodType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalStatsResults"
+	//	  "operationId": "Destiny2.GetHistoricalStats",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Last day to return when daily stats are requested. Use the format YYYY-MM-DD. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.",
+	//	      "in": "query",
+	//	      "name": "dayend",
+	//	      "schema": {
+	//	        "format": "date-time",
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "First day to return when daily stats are requested. Use the format YYYY-MM-DD. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.",
+	//	      "in": "query",
+	//	      "name": "daystart",
+	//	      "schema": {
+	//	        "format": "date-time",
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Group of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals",
+	//	      "in": "query",
+	//	      "name": "groups",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "If the enum value is \u003e 100, it is a \"special\" group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)",
+	//	          "format": "int32",
+	//	          "type": "integer",
+	//	          "x-enum-is-bitmask": false,
+	//	          "x-enum-reference": {
+	//	            "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyStatsGroupType"
+	//	          }
+	//	        },
+	//	        "type": "array"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Game modes to return. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
+	//	      "in": "query",
+	//	      "name": "modes",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please don't take this to mean that some D1-only feature is coming back!",
+	//	          "format": "int32",
+	//	          "type": "integer",
+	//	          "x-enum-is-bitmask": false,
+	//	          "x-enum-reference": {
+	//	            "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+	//	          }
+	//	        },
+	//	        "type": "array"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity",
+	//	      "in": "query",
+	//	      "name": "periodType",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.PeriodType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyHistoricalStatsResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetHistoricalStats"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]HistoricalStatsByPeriod]
+	err := a.client.Do(ctx, "Destiny2.GetHistoricalStats",
+		"GET",
+		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"dayend":     {fmt.Sprint(req.Dayend)},
+			"daystart":   {fmt.Sprint(req.Daystart)},
+			"groups":     {joinArray(req.Groups)},
+			"modes":      {joinArray(req.Modes)},
+			"periodType": {fmt.Sprint(req.PeriodType)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetLeaderboardsForCharacterRequest are the request parameters for operation
@@ -7334,11 +7615,11 @@ type Destiny2GetLeaderboardsForCharacterRequest struct {
 
 	// The specific character to build the leaderboard around for the provided Destiny Membership.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// The Destiny membershipId of the user to retrieve.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// Maximum number of top players to return. Use a large number to get entire leaderboard.
 	Maxtop int32
@@ -7366,85 +7647,93 @@ type Destiny2GetLeaderboardsForCharacterRequest struct {
 func (a API) Destiny2GetLeaderboardsForCharacter(ctx context.Context, req Destiny2GetLeaderboardsForCharacterRequest) (*ServerResponse[map[string]map[string]Leaderboard], error) {
 	//	{
 	//	  "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	  "get": {
-	//	    "description": "Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is in final form, but there may be bugs that prevent desirable operation.",
-	//	    "operationId": "Destiny2.GetLeaderboardsForCharacter",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The specific character to build the leaderboard around for the provided Destiny Membership.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Destiny membershipId of the user to retrieve.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
-	//	        "in": "query",
-	//	        "name": "maxtop",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
-	//	        "in": "query",
-	//	        "name": "modes",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "ID of stat to return rather than returning all Leaderboard stats.",
-	//	        "in": "query",
-	//	        "name": "statid",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	  "operationId": "Destiny2.GetLeaderboardsForCharacter",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The specific character to build the leaderboard around for the provided Destiny Membership.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2",
-	//	      "Preview"
-	//	    ],
-	//	    "x-preview": true
+	//	    {
+	//	      "description": "The Destiny membershipId of the user to retrieve.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Maximum number of top players to return. Use a large number to get entire leaderboard.",
+	//	      "in": "query",
+	//	      "name": "maxtop",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.",
+	//	      "in": "query",
+	//	      "name": "modes",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "ID of stat to return rather than returning all Leaderboard stats.",
+	//	      "in": "query",
+	//	      "name": "statid",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.HistoricalStats.DestinyLeaderboardResults"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetLeaderboardsForCharacter"
+	//	  "tags": [
+	//	    "Destiny2",
+	//	    "Preview"
+	//	  ],
+	//	  "x-preview": true
 	//	}
-	return nil, nil
+	var resp ServerResponse[map[string]map[string]Leaderboard]
+	err := a.client.Do(ctx, "Destiny2.GetLeaderboardsForCharacter",
+		"GET",
+		"/Destiny2/Stats/Leaderboards/{membershipType}/{destinyMembershipId}/{characterId}/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"maxtop": {fmt.Sprint(req.Maxtop)},
+			"modes":  {fmt.Sprint(req.Modes)},
+			"statid": {fmt.Sprint(req.Statid)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ContentSearchContentByTagAndTypeRequest are the request parameters for operation
@@ -7479,73 +7768,81 @@ type ContentSearchContentByTagAndTypeRequest struct {
 func (a API) ContentSearchContentByTagAndType(ctx context.Context, req ContentSearchContentByTagAndTypeRequest) (*ServerResponse[SearchResult[ContentItemPublicContract]], error) {
 	//	{
 	//	  "description": "Searches for Content Items that match the given Tag and Content Type.",
-	//	  "get": {
-	//	    "description": "Searches for Content Items that match the given Tag and Content Type.",
-	//	    "operationId": "Content.SearchContentByTagAndType",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Page number for the search results starting with page 1.",
-	//	        "in": "query",
-	//	        "name": "currentpage",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Not used.",
-	//	        "in": "query",
-	//	        "name": "head",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Not used.",
-	//	        "in": "query",
-	//	        "name": "itemsperpage",
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "locale",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "tag",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "type",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfContentItemPublicContract"
+	//	  "operationId": "Content.SearchContentByTagAndType",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number for the search results starting with page 1.",
+	//	      "in": "query",
+	//	      "name": "currentpage",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "description": "Not used.",
+	//	      "in": "query",
+	//	      "name": "head",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Not used.",
+	//	      "in": "query",
+	//	      "name": "itemsperpage",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "locale",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "tag",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "type",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfContentItemPublicContract"
+	//	    }
 	//	  },
-	//	  "summary": "Content.SearchContentByTagAndType"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[ContentItemPublicContract]]
+	err := a.client.Do(ctx, "Content.SearchContentByTagAndType",
+		"GET",
+		"/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/", nil, map[string]string{
+			"locale": fmt.Sprint(req.Locale),
+			"tag":    fmt.Sprint(req.Tag),
+			"type":   fmt.Sprint(req.Type),
+		}, url.Values{
+			"currentpage":  {fmt.Sprint(req.Currentpage)},
+			"head":         {fmt.Sprint(req.Head)},
+			"itemsperpage": {fmt.Sprint(req.Itemsperpage)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ContentGetContentByTagAndTypeRequest are the request parameters for operation
@@ -7573,55 +7870,61 @@ type ContentGetContentByTagAndTypeRequest struct {
 func (a API) ContentGetContentByTagAndType(ctx context.Context, req ContentGetContentByTagAndTypeRequest) (*ServerResponse[ContentItemPublicContract], error) {
 	//	{
 	//	  "description": "Returns the newest item that matches a given tag and Content Type.",
-	//	  "get": {
-	//	    "description": "Returns the newest item that matches a given tag and Content Type.",
-	//	    "operationId": "Content.GetContentByTagAndType",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Not used.",
-	//	        "in": "query",
-	//	        "name": "head",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "locale",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "tag",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "type",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Content.ContentItemPublicContract"
+	//	  "operationId": "Content.GetContentByTagAndType",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Not used.",
+	//	      "in": "query",
+	//	      "name": "head",
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Content"
-	//	    ]
+	//	    {
+	//	      "in": "path",
+	//	      "name": "locale",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "tag",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "type",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Content.ContentItemPublicContract"
+	//	    }
 	//	  },
-	//	  "summary": "Content.GetContentByTagAndType"
+	//	  "tags": [
+	//	    "Content"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[ContentItemPublicContract]
+	err := a.client.Do(ctx, "Content.GetContentByTagAndType",
+		"GET",
+		"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/", nil, map[string]string{
+			"locale": fmt.Sprint(req.Locale),
+			"tag":    fmt.Sprint(req.Tag),
+			"type":   fmt.Sprint(req.Type),
+		}, url.Values{
+			"head": {fmt.Sprint(req.Head)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // CommunityContentGetCommunityContentRequest are the request parameters for operation
@@ -7649,61 +7952,65 @@ type CommunityContentGetCommunityContentRequest struct {
 func (a API) CommunityContentGetCommunityContent(ctx context.Context, req CommunityContentGetCommunityContentRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Returns community content.",
-	//	  "get": {
-	//	    "description": "Returns community content.",
-	//	    "operationId": "CommunityContent.GetCommunityContent",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The type of media to get",
-	//	        "in": "path",
-	//	        "name": "mediaFilter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": true,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
-	//	          }
+	//	  "operationId": "CommunityContent.GetCommunityContent",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The type of media to get",
+	//	      "in": "path",
+	//	      "name": "mediaFilter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": true,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero based page",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The sort mode.",
-	//	        "in": "path",
-	//	        "name": "sort",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.CommunityContentSortMode"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "CommunityContent"
-	//	    ]
+	//	    {
+	//	      "description": "Zero based page",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The sort mode.",
+	//	      "in": "path",
+	//	      "name": "sort",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.CommunityContentSortMode"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "CommunityContent.GetCommunityContent"
+	//	  "tags": [
+	//	    "CommunityContent"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "CommunityContent.GetCommunityContent",
+		"GET",
+		"/CommunityContent/Get/{sort}/{mediaFilter}/{page}/", nil, map[string]string{
+			"mediaFilter": fmt.Sprint(req.MediaFilter),
+			"page":        fmt.Sprint(req.Page),
+			"sort":        fmt.Sprint(req.Sort),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2EditGroupMembershipRequest are the request parameters for operation
@@ -7712,11 +8019,11 @@ type GroupV2EditGroupMembershipRequest struct {
 
 	// ID of the group to which the member belongs.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// Membership ID to modify.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the provide membership ID.
 	// Required.
@@ -7738,80 +8045,85 @@ type GroupV2EditGroupMembershipRequest struct {
 func (a API) GroupV2EditGroupMembership(ctx context.Context, req GroupV2EditGroupMembershipRequest) (*ServerResponse[int32], error) {
 	//	{
 	//	  "description": "Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.",
-	//	  "post": {
-	//	    "description": "Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.",
-	//	    "operationId": "GroupV2.EditGroupMembership",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "ID of the group to which the member belongs.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID to modify.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the provide membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "New membertype for the specified member.",
-	//	        "in": "path",
-	//	        "name": "memberType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The member levels used by all V2 Groups API. Individual group types use their own mappings in their native storage (general uses BnetDbGroupMemberType and D2 clans use ClanMemberLevel), but they are all translated to this in the runtime api. These runtime values should NEVER be stored anywhere, so the values can be changed as necessary.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.RuntimeGroupMemberType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/int32"
+	//	  "operationId": "GroupV2.EditGroupMembership",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "ID of the group to which the member belongs.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "AdminGroups"
-	//	        ]
+	//	    {
+	//	      "description": "Membership ID to modify.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the provide membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "New membertype for the specified member.",
+	//	      "in": "path",
+	//	      "name": "memberType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The member levels used by all V2 Groups API. Individual group types use their own mappings in their native storage (general uses BnetDbGroupMemberType and D2 clans use ClanMemberLevel), but they are all translated to this in the runtime api. These runtime values should NEVER be stored anywhere, so the values can be changed as necessary.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.RuntimeGroupMemberType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/int32"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.EditGroupMembership"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[int32]
+	err := a.client.Do(ctx, "GroupV2.EditGroupMembership",
+		"POST",
+		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/SetMembershipType/{memberType}/", nil, map[string]string{
+			"groupId":        fmt.Sprint(req.GroupID),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+			"memberType":     fmt.Sprint(req.MemberType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetGroupsForMemberRequest are the request parameters for operation GroupV2.GetGroupsForMember
@@ -7827,7 +8139,7 @@ type GroupV2GetGroupsForMemberRequest struct {
 
 	// Membership ID to for which to find founded groups.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the supplied membership ID.
 	// Required.
@@ -7842,76 +8154,81 @@ type GroupV2GetGroupsForMemberRequest struct {
 func (a API) GroupV2GetGroupsForMember(ctx context.Context, req GroupV2GetGroupsForMemberRequest) (*ServerResponse[GetGroupsForMemberResponse], error) {
 	//	{
 	//	  "description": "Get information about the groups that a given member has joined.",
-	//	  "get": {
-	//	    "description": "Get information about the groups that a given member has joined.",
-	//	    "operationId": "GroupV2.GetGroupsForMember",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Filter apply to list of joined groups.",
-	//	        "in": "path",
-	//	        "name": "filter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupsForMemberFilter"
-	//	          }
+	//	  "operationId": "GroupV2.GetGroupsForMember",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Filter apply to list of joined groups.",
+	//	      "in": "path",
+	//	      "name": "filter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupsForMemberFilter"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Type of group the supplied member founded.",
-	//	        "in": "path",
-	//	        "name": "groupType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID to for which to find founded groups.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the supplied membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GetGroupsForMemberResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "Type of group the supplied member founded.",
+	//	      "in": "path",
+	//	      "name": "groupType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership ID to for which to find founded groups.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the supplied membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GetGroupsForMemberResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetGroupsForMember"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GetGroupsForMemberResponse]
+	err := a.client.Do(ctx, "GroupV2.GetGroupsForMember",
+		"GET",
+		"/GroupV2/User/{membershipType}/{membershipId}/{filter}/{groupType}/", nil, map[string]string{
+			"filter":         fmt.Sprint(req.Filter),
+			"groupType":      fmt.Sprint(req.GroupType),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // GroupV2GetPotentialGroupsForMemberRequest are the request parameters for operation
@@ -7928,7 +8245,7 @@ type GroupV2GetPotentialGroupsForMemberRequest struct {
 
 	// Membership ID to for which to find applied groups.
 	// Required.
-	MembershipID int64
+	MembershipID Int64
 
 	// Membership type of the supplied membership ID.
 	// Required.
@@ -7944,76 +8261,81 @@ type GroupV2GetPotentialGroupsForMemberRequest struct {
 func (a API) GroupV2GetPotentialGroupsForMember(ctx context.Context, req GroupV2GetPotentialGroupsForMemberRequest) (*ServerResponse[GroupPotentialMembershipSearchResponse], error) {
 	//	{
 	//	  "description": "Get information about the groups that a given member has applied to or been invited to.",
-	//	  "get": {
-	//	    "description": "Get information about the groups that a given member has applied to or been invited to.",
-	//	    "operationId": "GroupV2.GetPotentialGroupsForMember",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "Filter apply to list of potential joined groups.",
-	//	        "in": "path",
-	//	        "name": "filter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupPotentialMemberStatus"
-	//	          }
+	//	  "operationId": "GroupV2.GetPotentialGroupsForMember",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Filter apply to list of potential joined groups.",
+	//	      "in": "path",
+	//	      "name": "filter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupPotentialMemberStatus"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Type of group the supplied member applied.",
-	//	        "in": "path",
-	//	        "name": "groupType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/GroupsV2.GroupType"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership ID to for which to find applied groups.",
-	//	        "in": "path",
-	//	        "name": "membershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Membership type of the supplied membership ID.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/GroupsV2.GroupPotentialMembershipSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "GroupV2"
-	//	    ]
+	//	    {
+	//	      "description": "Type of group the supplied member applied.",
+	//	      "in": "path",
+	//	      "name": "groupType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/GroupsV2.GroupType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership ID to for which to find applied groups.",
+	//	      "in": "path",
+	//	      "name": "membershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Membership type of the supplied membership ID.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/GroupsV2.GroupPotentialMembershipSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "GroupV2.GetPotentialGroupsForMember"
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[GroupPotentialMembershipSearchResponse]
+	err := a.client.Do(ctx, "GroupV2.GetPotentialGroupsForMember",
+		"GET",
+		"/GroupV2/User/Potential/{membershipType}/{membershipId}/{filter}/{groupType}/", nil, map[string]string{
+			"filter":         fmt.Sprint(req.Filter),
+			"groupType":      fmt.Sprint(req.GroupType),
+			"membershipId":   fmt.Sprint(req.MembershipID),
+			"membershipType": fmt.Sprint(req.MembershipType),
+		}, url.Values{}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetCoreTopicsPagedRequest are the request parameters for operation Forum.GetCoreTopicsPaged
@@ -8047,83 +8369,90 @@ type ForumGetCoreTopicsPagedRequest struct {
 func (a API) ForumGetCoreTopicsPaged(ctx context.Context, req ForumGetCoreTopicsPagedRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Gets a listing of all topics marked as part of the core group.",
-	//	  "get": {
-	//	    "description": "Gets a listing of all topics marked as part of the core group.",
-	//	    "operationId": "Forum.GetCoreTopicsPaged",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The category filter.",
-	//	        "in": "path",
-	//	        "name": "categoryFilter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": true,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
-	//	          }
+	//	  "operationId": "Forum.GetCoreTopicsPaged",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The category filter.",
+	//	      "in": "path",
+	//	      "name": "categoryFilter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": true,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Comma seperated list of locales posts must match to return in the result list. Default 'en'",
-	//	        "in": "query",
-	//	        "name": "locales",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero base page",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The date filter.",
-	//	        "in": "path",
-	//	        "name": "quickDate",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsQuickDateEnum"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The sort mode.",
-	//	        "in": "path",
-	//	        "name": "sort",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsSortEnum"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "description": "Comma seperated list of locales posts must match to return in the result list. Default 'en'",
+	//	      "in": "query",
+	//	      "name": "locales",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Zero base page",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The date filter.",
+	//	      "in": "path",
+	//	      "name": "quickDate",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsQuickDateEnum"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The sort mode.",
+	//	      "in": "path",
+	//	      "name": "sort",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsSortEnum"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetCoreTopicsPaged"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetCoreTopicsPaged",
+		"GET",
+		"/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/", nil, map[string]string{
+			"categoryFilter": fmt.Sprint(req.CategoryFilter),
+			"page":           fmt.Sprint(req.Page),
+			"quickDate":      fmt.Sprint(req.QuickDate),
+			"sort":           fmt.Sprint(req.Sort),
+		}, url.Values{
+			"locales": {fmt.Sprint(req.Locales)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // FireteamGetMyClanFireteamsRequest are the request parameters for operation
@@ -8136,7 +8465,7 @@ type FireteamGetMyClanFireteamsRequest struct {
 	// The group id of the clan. (This parameter is ignored unless the optional query parameter groupFilter
 	// is true).
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// If true, return fireteams that have been closed.
 	// Required.
@@ -8165,90 +8494,98 @@ type FireteamGetMyClanFireteamsRequest struct {
 func (a API) FireteamGetMyClanFireteams(ctx context.Context, req FireteamGetMyClanFireteamsRequest) (*ServerResponse[SearchResult[FireteamResponse]], error) {
 	//	{
 	//	  "description": "Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.",
-	//	  "get": {
-	//	    "description": "Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.",
-	//	    "operationId": "Fireteam.GetMyClanFireteams",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "If true, filter by clan. Otherwise, ignore the clan and show all of the user's fireteams.",
-	//	        "in": "query",
-	//	        "name": "groupFilter",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The group id of the clan. (This parameter is ignored unless the optional query parameter groupFilter is true).",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If true, return fireteams that have been closed.",
-	//	        "in": "path",
-	//	        "name": "includeClosed",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "An optional language filter.",
-	//	        "in": "query",
-	//	        "name": "langFilter",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "deprecated": true,
-	//	        "description": "Deprecated parameter, ignored.",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The platform filter.",
-	//	        "in": "path",
-	//	        "name": "platform",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfFireteamResponse"
+	//	  "operationId": "Fireteam.GetMyClanFireteams",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "If true, filter by clan. Otherwise, ignore the clan and show all of the user's fireteams.",
+	//	      "in": "query",
+	//	      "name": "groupFilter",
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
+	//	    {
+	//	      "description": "The group id of the clan. (This parameter is ignored unless the optional query parameter groupFilter is true).",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Fireteam"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "If true, return fireteams that have been closed.",
+	//	      "in": "path",
+	//	      "name": "includeClosed",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional language filter.",
+	//	      "in": "query",
+	//	      "name": "langFilter",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "deprecated": true,
+	//	      "description": "Deprecated parameter, ignored.",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The platform filter.",
+	//	      "in": "path",
+	//	      "name": "platform",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfFireteamResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Fireteam.GetMyClanFireteams"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Fireteam"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[FireteamResponse]]
+	err := a.client.Do(ctx, "Fireteam.GetMyClanFireteams",
+		"GET",
+		"/Fireteam/Clan/{groupId}/My/{platform}/{includeClosed}/{page}/", nil, map[string]string{
+			"groupId":       fmt.Sprint(req.GroupID),
+			"includeClosed": fmt.Sprint(req.IncludeClosed),
+			"page":          fmt.Sprint(req.Page),
+			"platform":      fmt.Sprint(req.Platform),
+		}, url.Values{
+			"groupFilter": {fmt.Sprint(req.GroupFilter)},
+			"langFilter":  {fmt.Sprint(req.LangFilter)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetVendorRequest are the request parameters for operation Destiny2.GetVendor
@@ -8256,7 +8593,7 @@ type Destiny2GetVendorRequest struct {
 
 	// The Destiny Character ID of the character for whom we're getting vendor info.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// A comma separated list of components to return (as strings or numeric values). See the
 	// DestinyComponentType enum for valid components to request. You must request at least one component
@@ -8265,7 +8602,7 @@ type Destiny2GetVendorRequest struct {
 
 	// Destiny membership ID of another user. You may be denied.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -8285,85 +8622,92 @@ type Destiny2GetVendorRequest struct {
 func (a API) Destiny2GetVendor(ctx context.Context, req Destiny2GetVendorRequest) (*ServerResponse[VendorResponse], error) {
 	//	{
 	//	  "description": "Get the details of a specific Vendor.",
-	//	  "get": {
-	//	    "description": "Get the details of a specific Vendor.",
-	//	    "operationId": "Destiny2.GetVendor",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny Character ID of the character for whom we're getting vendor info.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Destiny membership ID of another user. You may be denied.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetVendor",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny Character ID of the character for whom we're getting vendor info.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
 	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The Hash identifier of the Vendor to be returned.",
-	//	        "in": "path",
-	//	        "name": "vendorHash",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "uint32",
-	//	          "type": "integer"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyVendorResponse"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Destiny membership ID of another user. You may be denied.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The Hash identifier of the Vendor to be returned.",
+	//	      "in": "path",
+	//	      "name": "vendorHash",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "uint32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyVendorResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetVendor"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[VendorResponse]
+	err := a.client.Do(ctx, "Destiny2.GetVendor",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/", nil, map[string]string{
+			"characterId":         fmt.Sprint(req.CharacterID),
+			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":      fmt.Sprint(req.MembershipType),
+			"vendorHash":          fmt.Sprint(req.VendorHash),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Destiny2GetCollectibleNodeDetailsRequest are the request parameters for operation
@@ -8372,7 +8716,7 @@ type Destiny2GetCollectibleNodeDetailsRequest struct {
 
 	// The Destiny Character ID of the character for whom we're getting collectible detail info.
 	// Required.
-	CharacterID int64
+	CharacterID Int64
 
 	// The hash identifier of the Presentation Node for whom we should return collectible details. Details
 	// will only be returned for collectibles that are direct descendants of this node.
@@ -8386,7 +8730,7 @@ type Destiny2GetCollectibleNodeDetailsRequest struct {
 
 	// Destiny membership ID of another user. You may be denied.
 	// Required.
-	DestinyMembershipID int64
+	DestinyMembershipID Int64
 
 	// A valid non-BungieNet membership type.
 	// Required.
@@ -8404,85 +8748,92 @@ type Destiny2GetCollectibleNodeDetailsRequest struct {
 func (a API) Destiny2GetCollectibleNodeDetails(ctx context.Context, req Destiny2GetCollectibleNodeDetailsRequest) (*ServerResponse[CollectibleNodeDetailResponse], error) {
 	//	{
 	//	  "description": "Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.",
-	//	  "get": {
-	//	    "description": "Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.",
-	//	    "operationId": "Destiny2.GetCollectibleNodeDetails",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The Destiny Character ID of the character for whom we're getting collectible detail info.",
-	//	        "in": "path",
-	//	        "name": "characterId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The hash identifier of the Presentation Node for whom we should return collectible details. Details will only be returned for collectibles that are direct descendants of this node.",
-	//	        "in": "path",
-	//	        "name": "collectiblePresentationNodeHash",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "uint32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
-	//	        "in": "query",
-	//	        "name": "components",
-	//	        "schema": {
-	//	          "items": {
-	//	            "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
-	//	            "format": "int32",
-	//	            "type": "integer",
-	//	            "x-enum-is-bitmask": false,
-	//	            "x-enum-reference": {
-	//	              "$ref": "#/components/schemas/Destiny.DestinyComponentType"
-	//	            }
-	//	          },
-	//	          "type": "array"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Destiny membership ID of another user. You may be denied.",
-	//	        "in": "path",
-	//	        "name": "destinyMembershipId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A valid non-BungieNet membership type.",
-	//	        "in": "path",
-	//	        "name": "membershipType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	  "operationId": "Destiny2.GetCollectibleNodeDetails",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The Destiny Character ID of the character for whom we're getting collectible detail info.",
+	//	      "in": "path",
+	//	      "name": "characterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The hash identifier of the Presentation Node for whom we should return collectible details. Details will only be returned for collectibles that are direct descendants of this node.",
+	//	      "in": "path",
+	//	      "name": "collectiblePresentationNodeHash",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "uint32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.",
+	//	      "in": "query",
+	//	      "name": "components",
+	//	      "schema": {
+	//	        "items": {
+	//	          "description": "Represents the possible components that can be returned from Destiny \"Get\" calls such as GetProfile, GetCharacter, GetVendor etc...\r\nWhen making one of these requests, you will pass one or more of these components as a comma separated list in the \"?components=\" querystring parameter. For instance, if you want baseline Profile data, Character Data, and character progressions, you would pass \"?components=Profiles,Characters,CharacterProgressions\" You may use either the numerical or string values.",
 	//	          "format": "int32",
 	//	          "type": "integer",
 	//	          "x-enum-is-bitmask": false,
 	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/BungieMembershipType"
+	//	            "$ref": "#/components/schemas/Destiny.DestinyComponentType"
 	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Destiny.Responses.DestinyCollectibleNodeDetailResponse"
+	//	        },
+	//	        "type": "array"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Destiny2"
-	//	    ]
+	//	    {
+	//	      "description": "Destiny membership ID of another user. You may be denied.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid non-BungieNet membership type.",
+	//	      "in": "path",
+	//	      "name": "membershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Destiny.Responses.DestinyCollectibleNodeDetailResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Destiny2.GetCollectibleNodeDetails"
+	//	  "tags": [
+	//	    "Destiny2"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[CollectibleNodeDetailResponse]
+	err := a.client.Do(ctx, "Destiny2.GetCollectibleNodeDetails",
+		"GET",
+		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/", nil, map[string]string{
+			"characterId":                     fmt.Sprint(req.CharacterID),
+			"collectiblePresentationNodeHash": fmt.Sprint(req.CollectiblePresentationNodeHash),
+			"destinyMembershipId":             fmt.Sprint(req.DestinyMembershipID),
+			"membershipType":                  fmt.Sprint(req.MembershipType),
+		}, url.Values{
+			"components": {joinArray(req.Components)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // FireteamSearchPublicAvailableClanFireteamsRequest are the request parameters for operation
@@ -8528,108 +8879,117 @@ type FireteamSearchPublicAvailableClanFireteamsRequest struct {
 func (a API) FireteamSearchPublicAvailableClanFireteams(ctx context.Context, req FireteamSearchPublicAvailableClanFireteamsRequest) (*ServerResponse[SearchResult[FireteamSummary]], error) {
 	//	{
 	//	  "description": "Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so caching is maximized.",
-	//	  "get": {
-	//	    "description": "Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so caching is maximized.",
-	//	    "operationId": "Fireteam.SearchPublicAvailableClanFireteams",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The activity type to filter by.",
-	//	        "in": "path",
-	//	        "name": "activityType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The date range to grab available fireteams.",
-	//	        "in": "path",
-	//	        "name": "dateRange",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamDateRange"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
-	//	        "in": "query",
-	//	        "name": "excludeImmediate",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "An optional language filter.",
-	//	        "in": "query",
-	//	        "name": "langFilter",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero based page",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The platform filter.",
-	//	        "in": "path",
-	//	        "name": "platform",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Filters based on available slots",
-	//	        "in": "path",
-	//	        "name": "slotFilter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamSlotSearch"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfFireteamSummary"
+	//	  "operationId": "Fireteam.SearchPublicAvailableClanFireteams",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The activity type to filter by.",
+	//	      "in": "path",
+	//	      "name": "activityType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
+	//	    {
+	//	      "description": "The date range to grab available fireteams.",
+	//	      "in": "path",
+	//	      "name": "dateRange",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamDateRange"
+	//	        }
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Fireteam"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
+	//	      "in": "query",
+	//	      "name": "excludeImmediate",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional language filter.",
+	//	      "in": "query",
+	//	      "name": "langFilter",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Zero based page",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The platform filter.",
+	//	      "in": "path",
+	//	      "name": "platform",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Filters based on available slots",
+	//	      "in": "path",
+	//	      "name": "slotFilter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamSlotSearch"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfFireteamSummary"
+	//	    }
 	//	  },
-	//	  "summary": "Fireteam.SearchPublicAvailableClanFireteams"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Fireteam"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[FireteamSummary]]
+	err := a.client.Do(ctx, "Fireteam.SearchPublicAvailableClanFireteams",
+		"GET",
+		"/Fireteam/Search/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{page}/", nil, map[string]string{
+			"activityType": fmt.Sprint(req.ActivityType),
+			"dateRange":    fmt.Sprint(req.DateRange),
+			"page":         fmt.Sprint(req.Page),
+			"platform":     fmt.Sprint(req.Platform),
+			"slotFilter":   fmt.Sprint(req.SlotFilter),
+		}, url.Values{
+			"excludeImmediate": {fmt.Sprint(req.ExcludeImmediate)},
+			"langFilter":       {fmt.Sprint(req.LangFilter)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetTopicsPagedRequest are the request parameters for operation Forum.GetTopicsPaged
@@ -8641,7 +9001,7 @@ type ForumGetTopicsPagedRequest struct {
 
 	// The group, if any.
 	// Required.
-	Group int64
+	Group Int64
 
 	// Comma seperated list of locales posts must match to return in the result list. Default 'en'
 	Locales string
@@ -8674,111 +9034,121 @@ type ForumGetTopicsPagedRequest struct {
 func (a API) ForumGetTopicsPaged(ctx context.Context, req ForumGetTopicsPagedRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Get topics from any forum.",
-	//	  "get": {
-	//	    "description": "Get topics from any forum.",
-	//	    "operationId": "Forum.GetTopicsPaged",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "A category filter",
-	//	        "in": "path",
-	//	        "name": "categoryFilter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": true,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
-	//	          }
+	//	  "operationId": "Forum.GetTopicsPaged",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A category filter",
+	//	      "in": "path",
+	//	      "name": "categoryFilter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": true,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsCategoryFiltersEnum"
 	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The group, if any.",
-	//	        "in": "path",
-	//	        "name": "group",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Comma seperated list of locales posts must match to return in the result list. Default 'en'",
-	//	        "in": "query",
-	//	        "name": "locales",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero paged page number",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Unused",
-	//	        "in": "path",
-	//	        "name": "pageSize",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "A date filter.",
-	//	        "in": "path",
-	//	        "name": "quickDate",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsQuickDateEnum"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The sort mode.",
-	//	        "in": "path",
-	//	        "name": "sort",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumTopicsSortEnum"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The tags to search, if any.",
-	//	        "in": "query",
-	//	        "name": "tagstring",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "description": "The group, if any.",
+	//	      "in": "path",
+	//	      "name": "group",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Comma seperated list of locales posts must match to return in the result list. Default 'en'",
+	//	      "in": "query",
+	//	      "name": "locales",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Zero paged page number",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Unused",
+	//	      "in": "path",
+	//	      "name": "pageSize",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A date filter.",
+	//	      "in": "path",
+	//	      "name": "quickDate",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsQuickDateEnum"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The sort mode.",
+	//	      "in": "path",
+	//	      "name": "sort",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumTopicsSortEnum"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The tags to search, if any.",
+	//	      "in": "query",
+	//	      "name": "tagstring",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetTopicsPaged"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetTopicsPaged",
+		"GET",
+		"/Forum/GetTopicsPaged/{page}/{pageSize}/{group}/{sort}/{quickDate}/{categoryFilter}/", nil, map[string]string{
+			"categoryFilter": fmt.Sprint(req.CategoryFilter),
+			"group":          fmt.Sprint(req.Group),
+			"page":           fmt.Sprint(req.Page),
+			"pageSize":       fmt.Sprint(req.PageSize),
+			"quickDate":      fmt.Sprint(req.QuickDate),
+			"sort":           fmt.Sprint(req.Sort),
+		}, url.Values{
+			"locales":   {fmt.Sprint(req.Locales)},
+			"tagstring": {fmt.Sprint(req.Tagstring)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetPostsThreadedPagedFromChildRequest are the request parameters for operation
@@ -8786,7 +9156,7 @@ func (a API) ForumGetTopicsPaged(ctx context.Context, req ForumGetTopicsPagedReq
 type ForumGetPostsThreadedPagedFromChildRequest struct {
 
 	// Required.
-	ChildPostID int64
+	ChildPostID Int64
 
 	// Required.
 	Page int32
@@ -8817,88 +9187,97 @@ type ForumGetPostsThreadedPagedFromChildRequest struct {
 func (a API) ForumGetPostsThreadedPagedFromChild(ctx context.Context, req ForumGetPostsThreadedPagedFromChildRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Returns a thread of posts starting at the topicId of the input childPostId, optionally returning replies to those posts as well as the original parent.",
-	//	  "get": {
-	//	    "description": "Returns a thread of posts starting at the topicId of the input childPostId, optionally returning replies to those posts as well as the original parent.",
-	//	    "operationId": "Forum.GetPostsThreadedPagedFromChild",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "childPostId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "pageSize",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "replySize",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "rootThreadMode",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If this value is not null or empty, banned posts are requested to be returned",
-	//	        "in": "query",
-	//	        "name": "showbanned",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "sortMode",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumPostSortEnum"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	  "operationId": "Forum.GetPostsThreadedPagedFromChild",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "childPostId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "pageSize",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "replySize",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "rootThreadMode",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "If this value is not null or empty, banned posts are requested to be returned",
+	//	      "in": "query",
+	//	      "name": "showbanned",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "sortMode",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumPostSortEnum"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetPostsThreadedPagedFromChild"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetPostsThreadedPagedFromChild",
+		"GET",
+		"/Forum/GetPostsThreadedPagedFromChild/{childPostId}/{page}/{pageSize}/{replySize}/{rootThreadMode}/{sortMode}/", nil, map[string]string{
+			"childPostId":    fmt.Sprint(req.ChildPostID),
+			"page":           fmt.Sprint(req.Page),
+			"pageSize":       fmt.Sprint(req.PageSize),
+			"replySize":      fmt.Sprint(req.ReplySize),
+			"rootThreadMode": fmt.Sprint(req.RootThreadMode),
+			"sortMode":       fmt.Sprint(req.SortMode),
+		}, url.Values{
+			"showbanned": {fmt.Sprint(req.Showbanned)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // ForumGetPostsThreadedPagedRequest are the request parameters for operation
@@ -8915,7 +9294,7 @@ type ForumGetPostsThreadedPagedRequest struct {
 	PageSize int32
 
 	// Required.
-	ParentPostID int64
+	ParentPostID Int64
 
 	// Required.
 	ReplySize int32
@@ -8940,96 +9319,106 @@ type ForumGetPostsThreadedPagedRequest struct {
 func (a API) ForumGetPostsThreadedPaged(ctx context.Context, req ForumGetPostsThreadedPagedRequest) (*ServerResponse[PostSearchResponse], error) {
 	//	{
 	//	  "description": "Returns a thread of posts at the given parent, optionally returning replies to those posts as well as the original parent.",
-	//	  "get": {
-	//	    "description": "Returns a thread of posts at the given parent, optionally returning replies to those posts as well as the original parent.",
-	//	    "operationId": "Forum.GetPostsThreadedPaged",
-	//	    "parameters": [
-	//	      {
-	//	        "in": "path",
-	//	        "name": "getParentPost",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "pageSize",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "parentPostId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "replySize",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "rootThreadMode",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If this value is not null or empty, banned posts are requested to be returned",
-	//	        "in": "query",
-	//	        "name": "showbanned",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "in": "path",
-	//	        "name": "sortMode",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Forum.ForumPostSortEnum"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	  "operationId": "Forum.GetPostsThreadedPaged",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "getParentPost",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "boolean"
 	//	      }
 	//	    },
-	//	    "tags": [
-	//	      "Forum"
-	//	    ]
+	//	    {
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "pageSize",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "parentPostId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "replySize",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "rootThreadMode",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "If this value is not null or empty, banned posts are requested to be returned",
+	//	      "in": "query",
+	//	      "name": "showbanned",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "in": "path",
+	//	      "name": "sortMode",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Forum.ForumPostSortEnum"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/Forum.PostSearchResponse"
+	//	    }
 	//	  },
-	//	  "summary": "Forum.GetPostsThreadedPaged"
+	//	  "tags": [
+	//	    "Forum"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[PostSearchResponse]
+	err := a.client.Do(ctx, "Forum.GetPostsThreadedPaged",
+		"GET",
+		"/Forum/GetPostsThreadedPaged/{parentPostId}/{page}/{pageSize}/{replySize}/{getParentPost}/{rootThreadMode}/{sortMode}/", nil, map[string]string{
+			"getParentPost":  fmt.Sprint(req.GetParentPost),
+			"page":           fmt.Sprint(req.Page),
+			"pageSize":       fmt.Sprint(req.PageSize),
+			"parentPostId":   fmt.Sprint(req.ParentPostID),
+			"replySize":      fmt.Sprint(req.ReplySize),
+			"rootThreadMode": fmt.Sprint(req.RootThreadMode),
+			"sortMode":       fmt.Sprint(req.SortMode),
+		}, url.Values{
+			"showbanned": {fmt.Sprint(req.Showbanned)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // FireteamGetAvailableClanFireteamsRequest are the request parameters for operation
@@ -9050,7 +9439,7 @@ type FireteamGetAvailableClanFireteamsRequest struct {
 
 	// The group id of the clan.
 	// Required.
-	GroupID int64
+	GroupID Int64
 
 	// An optional language filter.
 	LangFilter string
@@ -9084,132 +9473,143 @@ type FireteamGetAvailableClanFireteamsRequest struct {
 func (a API) FireteamGetAvailableClanFireteams(ctx context.Context, req FireteamGetAvailableClanFireteamsRequest) (*ServerResponse[SearchResult[FireteamSummary]], error) {
 	//	{
 	//	  "description": "Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join criteria so caching is maximized.",
-	//	  "get": {
-	//	    "description": "Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join criteria so caching is maximized.",
-	//	    "operationId": "Fireteam.GetAvailableClanFireteams",
-	//	    "parameters": [
-	//	      {
-	//	        "description": "The activity type to filter by.",
-	//	        "in": "path",
-	//	        "name": "activityType",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The date range to grab available fireteams.",
-	//	        "in": "path",
-	//	        "name": "dateRange",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamDateRange"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
-	//	        "in": "query",
-	//	        "name": "excludeImmediate",
-	//	        "schema": {
-	//	          "type": "boolean"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The group id of the clan.",
-	//	        "in": "path",
-	//	        "name": "groupId",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int64",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "An optional language filter.",
-	//	        "in": "query",
-	//	        "name": "langFilter",
-	//	        "schema": {
-	//	          "type": "string"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Zero based page",
-	//	        "in": "path",
-	//	        "name": "page",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "int32",
-	//	          "type": "integer"
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "The platform filter.",
-	//	        "in": "path",
-	//	        "name": "platform",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Determines public/private filtering.",
-	//	        "in": "path",
-	//	        "name": "publicOnly",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamPublicSearchOption"
-	//	          }
-	//	        }
-	//	      },
-	//	      {
-	//	        "description": "Filters based on available slots",
-	//	        "in": "path",
-	//	        "name": "slotFilter",
-	//	        "required": true,
-	//	        "schema": {
-	//	          "format": "byte",
-	//	          "type": "integer",
-	//	          "x-enum-is-bitmask": false,
-	//	          "x-enum-reference": {
-	//	            "$ref": "#/components/schemas/Fireteam.FireteamSlotSearch"
-	//	          }
-	//	        }
-	//	      }
-	//	    ],
-	//	    "responses": {
-	//	      "200": {
-	//	        "$ref": "#/components/responses/SearchResultOfFireteamSummary"
+	//	  "operationId": "Fireteam.GetAvailableClanFireteams",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The activity type to filter by.",
+	//	      "in": "path",
+	//	      "name": "activityType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
 	//	      }
 	//	    },
-	//	    "security": [
-	//	      {
-	//	        "oauth2": [
-	//	          "ReadGroups"
-	//	        ]
+	//	    {
+	//	      "description": "The date range to grab available fireteams.",
+	//	      "in": "path",
+	//	      "name": "dateRange",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamDateRange"
+	//	        }
 	//	      }
-	//	    ],
-	//	    "tags": [
-	//	      "Fireteam"
-	//	    ]
+	//	    },
+	//	    {
+	//	      "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
+	//	      "in": "query",
+	//	      "name": "excludeImmediate",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The group id of the clan.",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional language filter.",
+	//	      "in": "query",
+	//	      "name": "langFilter",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Zero based page",
+	//	      "in": "path",
+	//	      "name": "page",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The platform filter.",
+	//	      "in": "path",
+	//	      "name": "platform",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamPlatform"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Determines public/private filtering.",
+	//	      "in": "path",
+	//	      "name": "publicOnly",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamPublicSearchOption"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Filters based on available slots",
+	//	      "in": "path",
+	//	      "name": "slotFilter",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "byte",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/Fireteam.FireteamSlotSearch"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfFireteamSummary"
+	//	    }
 	//	  },
-	//	  "summary": "Fireteam.GetAvailableClanFireteams"
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "ReadGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "Fireteam"
+	//	  ]
 	//	}
-	return nil, nil
+	var resp ServerResponse[SearchResult[FireteamSummary]]
+	err := a.client.Do(ctx, "Fireteam.GetAvailableClanFireteams",
+		"GET",
+		"/Fireteam/Clan/{groupId}/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{publicOnly}/{page}/", nil, map[string]string{
+			"activityType": fmt.Sprint(req.ActivityType),
+			"dateRange":    fmt.Sprint(req.DateRange),
+			"groupId":      fmt.Sprint(req.GroupID),
+			"page":         fmt.Sprint(req.Page),
+			"platform":     fmt.Sprint(req.Platform),
+			"publicOnly":   fmt.Sprint(req.PublicOnly),
+			"slotFilter":   fmt.Sprint(req.SlotFilter),
+		}, url.Values{
+			"excludeImmediate": {fmt.Sprint(req.ExcludeImmediate)},
+			"langFilter":       {fmt.Sprint(req.LangFilter)},
+		}, nil, &resp)
+	return &resp, err
 }
 
 // Applications.ApiUsage
@@ -9335,7 +9735,7 @@ type Application struct {
 	RedirectUrl string `json:"redirectUrl"`
 
 	// Permissions the application needs to work
-	Scope int64 `json:"scope,string"`
+	Scope Int64 `json:"scope"`
 
 	// Current status of the application.
 	Status ApplicationStatus `json:"status"`
@@ -9379,7 +9779,7 @@ type ApplicationDeveloper struct {
 }
 
 // Applications.ApplicationScopes
-type ApplicationScopes int64
+type ApplicationScopes Int64
 
 const (
 	ApplicationScopes_ReadBasicUserProfile          = ApplicationScopes(1)
@@ -9966,10 +10366,8 @@ type CoreSettings struct {
 	// }
 
 	ActiveSealsRootNodeHash Hash[PresentationNodeDefinition] `json:"activeSealsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	ActiveTriumphsRootNodeHash Hash[PresentationNodeDefinition] `json:"activeTriumphsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	AmmoTypeHeavyIcon string `json:"ammoTypeHeavyIcon"`
 
@@ -9978,71 +10376,48 @@ type CoreSettings struct {
 	AmmoTypeSpecialIcon string `json:"ammoTypeSpecialIcon"`
 
 	BadgesRootNode Hash[PresentationNodeDefinition] `json:"badgesRootNode"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	CollectionRootNode Hash[PresentationNodeDefinition] `json:"collectionRootNode"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	CraftingRootNodeHash Hash[PresentationNodeDefinition] `json:"craftingRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
-	CurrentRankProgressionHashes Hash[ProgressionDefinition] `json:"currentRankProgressionHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
+	CurrentRankProgressionHashes []uint32 `json:"currentRankProgressionHashes"`
 
 	CurrentSeasonHash Nullable[Hash[SeasonDefinition]] `json:"currentSeasonHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
 
 	CurrentSeasonalArtifactHash Hash[VendorDefinition] `json:"currentSeasonalArtifactHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	ExoticCatalystsRootNodeHash Hash[PresentationNodeDefinition] `json:"exoticCatalystsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
-	FutureSeasonHashes Hash[SeasonDefinition] `json:"futureSeasonHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
+	FutureSeasonHashes []uint32 `json:"futureSeasonHashes"`
 
 	GuardianRankConstantsHash Hash[GuardianRankConstantsDefinition] `json:"guardianRankConstantsHash"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankConstantsDefinition
 
 	GuardianRanksRootNodeHash Hash[PresentationNodeDefinition] `json:"guardianRanksRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
-	InsertPlugFreeBlockedSocketTypeHashes Hash[SocketTypeDefinition] `json:"insertPlugFreeBlockedSocketTypeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
+	InsertPlugFreeBlockedSocketTypeHashes []uint32 `json:"insertPlugFreeBlockedSocketTypeHashes"`
 
-	InsertPlugFreeProtectedPlugItemHashes Hash[InventoryItemDefinition] `json:"insertPlugFreeProtectedPlugItemHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	InsertPlugFreeProtectedPlugItemHashes []uint32 `json:"insertPlugFreeProtectedPlugItemHashes"`
 
 	LegacySealsRootNodeHash Hash[PresentationNodeDefinition] `json:"legacySealsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	LegacyTriumphsRootNodeHash Hash[PresentationNodeDefinition] `json:"legacyTriumphsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	LoadoutConstantsHash Hash[LoadoutConstantsDefinition] `json:"loadoutConstantsHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutConstantsDefinition
 
 	LoreRootNodeHash Hash[PresentationNodeDefinition] `json:"loreRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	MedalsRootNode Hash[PresentationNodeDefinition] `json:"medalsRootNode"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	MedalsRootNodeHash Hash[PresentationNodeDefinition] `json:"medalsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	MetricsRootNode Hash[PresentationNodeDefinition] `json:"metricsRootNode"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
-	PastSeasonHashes Hash[SeasonDefinition] `json:"pastSeasonHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
+	PastSeasonHashes []uint32 `json:"pastSeasonHashes"`
 
 	RecordsRootNode Hash[PresentationNodeDefinition] `json:"recordsRootNode"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	SeasonalChallengesPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"seasonalChallengesPresentationNodeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	UndiscoveredCollectibleImage string `json:"undiscoveredCollectibleImage"`
 }
@@ -10189,7 +10564,7 @@ type CommentSummary struct {
 
 	CommentCount int32 `json:"commentCount"`
 
-	TopicID int64 `json:"topicId,string"`
+	TopicID Int64 `json:"topicId"`
 }
 
 // Content.ContentItemPublicContract
@@ -10275,7 +10650,7 @@ type ContentItemPublicContract struct {
 
 	CommentSummary CommentSummary `json:"commentSummary"`
 
-	ContentID int64 `json:"contentId,string"`
+	ContentID Int64 `json:"contentId"`
 
 	CreationDate Timestamp `json:"creationDate"`
 
@@ -11060,14 +11435,11 @@ type PublicActivityStatus struct {
 	// }
 
 	// Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
-	ChallengeObjectiveHashes Hash[ObjectiveDefinition] `json:"challengeObjectiveHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
+	ChallengeObjectiveHashes []uint32 `json:"challengeObjectiveHashes"`
 
 	// The active modifiers on this activity, if any - represented as hashes for
 	// DestinyActivityModifierDefinitions.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// If the activity itself provides any specific "mock" rewards, this will be the items and their
 	// quantity.
@@ -11246,10 +11618,10 @@ type AwaPermissionRequested struct {
 
 	// Item instance ID the action shall be applied to. This is optional for all but a new AwaType values.
 	// Rule of thumb is to provide the item instance ID if one is available.
-	AffectedItemID Nullable[int64] `json:"affectedItemId,string,omitempty"`
+	AffectedItemID Nullable[Int64] `json:"affectedItemId,omitempty"`
 
 	// Destiny character ID, if applicable, that will be affected by the action.
-	CharacterID Nullable[int64] `json:"characterId,string,omitempty"`
+	CharacterID Nullable[Int64] `json:"characterId,omitempty"`
 
 	// Destiny membership type of the account to modify.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -11354,7 +11726,6 @@ type ArtifactCharacterScoped struct {
 	// }
 
 	ArtifactHash Hash[ArtifactDefinition] `json:"artifactHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Artifacts.DestinyArtifactDefinition
 
 	PointsUsed int32 `json:"pointsUsed"`
 
@@ -11398,7 +11769,6 @@ type ArtifactProfileScoped struct {
 	// }
 
 	ArtifactHash Hash[ArtifactDefinition] `json:"artifactHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Artifacts.DestinyArtifactDefinition
 
 	PointProgression Progression `json:"pointProgression"`
 
@@ -11464,7 +11834,6 @@ type ArtifactTierItem struct {
 	IsActive bool `json:"isActive"`
 
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.BucketCategory
@@ -11660,7 +12029,6 @@ type ItemPeerView struct {
 	// The hash identifier of the item in question. Use it to look up the DestinyInventoryItemDefinition of
 	// the item for static rendering data.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Components.Collectibles.DestinyCollectibleComponent
@@ -11720,16 +12088,13 @@ type CollectiblesComponent struct {
 	//   "x-destiny-component-type-dependency": "Collectibles"
 	// }
 
-	Collectibles Hash[CollectibleDefinition] `json:"collectibles"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
+	Collectibles map[Hash[CollectibleDefinition]]CollectibleComponent `json:"collectibles"`
 
 	// The hash for the root presentation node definition of Collection Badges.
 	CollectionBadgesRootNodeHash Hash[PresentationNodeDefinition] `json:"collectionBadgesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The hash for the root presentation node definition of Collection categories.
 	CollectionCategoriesRootNodeHash Hash[PresentationNodeDefinition] `json:"collectionCategoriesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Components.Collectibles.DestinyProfileCollectiblesComponent
@@ -11792,27 +12157,22 @@ type ProfileCollectiblesComponent struct {
 	//   "x-destiny-component-type-dependency": "Collectibles"
 	// }
 
-	Collectibles Hash[CollectibleDefinition] `json:"collectibles"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
+	Collectibles map[Hash[CollectibleDefinition]]CollectibleComponent `json:"collectibles"`
 
 	// The hash for the root presentation node definition of Collection Badges.
 	CollectionBadgesRootNodeHash Hash[PresentationNodeDefinition] `json:"collectionBadgesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The hash for the root presentation node definition of Collection categories.
 	CollectionCategoriesRootNodeHash Hash[PresentationNodeDefinition] `json:"collectionCategoriesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The list of collectibles determined by the game as having been "recently" acquired.
 	// The game client itself actually controls this data, so I personally question whether anyone will get
 	// much use out of this: because we can't edit this value through the API. But in case anyone finds it
 	// useful, here it is.
-	NewnessFlaggedCollectibleHashes Hash[CollectibleDefinition] `json:"newnessFlaggedCollectibleHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
+	NewnessFlaggedCollectibleHashes []uint32 `json:"newnessFlaggedCollectibleHashes"`
 
 	// The list of collectibles determined by the game as having been "recently" acquired.
-	RecentCollectibleHashes Hash[CollectibleDefinition] `json:"recentCollectibleHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
+	RecentCollectibleHashes []uint32 `json:"recentCollectibleHashes"`
 }
 
 // Destiny.Components.Craftables.DestinyCraftableComponent
@@ -11874,7 +12234,6 @@ type CraftableSocketComponent struct {
 	// }
 
 	PlugSetHash Hash[PlugSetDefinition] `json:"plugSetHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition
 
 	// Unlock state for plugs in the socket plug set definition
 	Plugs []CraftableSocketPlugComponent `json:"plugs"`
@@ -11907,7 +12266,6 @@ type CraftableSocketPlugComponent struct {
 	FailedRequirementIndexes []int32 `json:"failedRequirementIndexes"`
 
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Components.Craftables.DestinyCraftablesComponent
@@ -11942,12 +12300,10 @@ type CraftablesComponent struct {
 	// }
 
 	// A map of craftable item hashes to craftable item state components.
-	Craftables Hash[InventoryItemDefinition] `json:"craftables"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	Craftables map[Hash[InventoryItemDefinition]]CraftableComponent `json:"craftables"`
 
 	// The hash for the root presentation node definition of craftable item categories.
 	CraftingRootNodeHash Hash[PresentationNodeDefinition] `json:"craftingRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Components.Inventory.DestinyCurrenciesComponent
@@ -11989,8 +12345,7 @@ type CurrenciesComponent struct {
 	// is the amount of that item you have across all available inventory buckets for purchasing.
 	// This allows you to see whether the requesting character can afford any given purchase/action without
 	// having to re-create this list itself.
-	ItemQuantities Hash[InventoryItemDefinition] `json:"itemQuantities"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	ItemQuantities map[Hash[InventoryItemDefinition]]int32 `json:"itemQuantities"`
 }
 
 // Destiny.Components.Inventory.DestinyPlatformSilverComponent
@@ -12020,7 +12375,7 @@ type PlatformSilverComponent struct {
 
 	// If a Profile is played on multiple platforms, this is the silver they have for each platform, keyed
 	// by Membership Type.
-	PlatformSilver map[int32]ItemComponent `json:"platformSilver"`
+	PlatformSilver map[BungieMembershipType]ItemComponent `json:"platformSilver"`
 }
 
 // Destiny.Components.Items.DestinyItemPlugComponent
@@ -12095,7 +12450,6 @@ type ItemPlugComponent struct {
 
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Sometimes, Plugs may have objectives: these are often used for flavor and display purposes, but they
 	// can be used for any arbitrary purpose (both fortunately and unfortunately). Recently (with Season 2)
@@ -12147,8 +12501,7 @@ type ItemPlugObjectivesComponent struct {
 	// item's data about that tracking status to determine what to show, and will generally show it using
 	// the DestinyObjectiveDefinition's progressDescription property. Refer to the plug's itemHash and
 	// objective property for more information if you would like to display even more data.
-	ObjectivesPerPlug Hash[InventoryItemDefinition] `json:"objectivesPerPlug"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	ObjectivesPerPlug map[Hash[InventoryItemDefinition]][]ObjectiveProgress `json:"objectivesPerPlug"`
 }
 
 // Destiny.Components.Items.DestinyItemReusablePlugsComponent
@@ -12285,8 +12638,7 @@ type KiosksComponent struct {
 	// A dictionary keyed by the Kiosk Vendor's hash identifier (use it to look up the
 	// DestinyVendorDefinition for the relevant kiosk vendor), and whose value is a list of all the items
 	// that the user can "see" in the Kiosk, and any other interesting metadata.
-	KioskItems Hash[VendorDefinition] `json:"kioskItems"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
+	KioskItems map[Hash[VendorDefinition]][]KioskItem `json:"kioskItems"`
 }
 
 // Destiny.Components.Loadouts.DestinyLoadoutComponent
@@ -12325,15 +12677,12 @@ type LoadoutComponent struct {
 	// }
 
 	ColorHash Hash[LoadoutColorDefinition] `json:"colorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition
 
 	IconHash Hash[LoadoutIconDefinition] `json:"iconHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition
 
 	Items []LoadoutItemComponent `json:"items"`
 
 	NameHash Hash[LoadoutNameDefinition] `json:"nameHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition
 }
 
 // Destiny.Components.Loadouts.DestinyLoadoutItemComponent
@@ -12358,10 +12707,9 @@ type LoadoutItemComponent struct {
 	//   "type": "object"
 	// }
 
-	ItemInstanceID int64 `json:"itemInstanceId,string"`
+	ItemInstanceID Int64 `json:"itemInstanceId"`
 
-	PlugItemHashes Hash[InventoryItemDefinition] `json:"plugItemHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	PlugItemHashes []uint32 `json:"plugItemHashes"`
 }
 
 // Destiny.Components.Loadouts.DestinyLoadoutsComponent
@@ -12430,7 +12778,6 @@ type MetricsComponent struct {
 	Metrics map[uint32]MetricComponent `json:"metrics"`
 
 	MetricsRootNodeHash Hash[PresentationNodeDefinition] `json:"metricsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Components.PlugSets.DestinyPlugSetsComponent
@@ -12470,8 +12817,7 @@ type PlugSetsComponent struct {
 
 	// The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet
 	// (DestinyPlugSetDefinition).
-	Plugs Hash[PlugSetDefinition] `json:"plugs"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition
+	Plugs map[Hash[PlugSetDefinition]][]ItemPlug `json:"plugs"`
 }
 
 // Destiny.Components.Presentation.DestinyPresentationNodeComponent
@@ -12555,8 +12901,7 @@ type PresentationNodesComponent struct {
 	//   "x-destiny-component-type-dependency": "PresentationNodes"
 	// }
 
-	Nodes Hash[PresentationNodeDefinition] `json:"nodes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	Nodes map[Hash[PresentationNodeDefinition]]PresentationNodeComponent `json:"nodes"`
 }
 
 // Destiny.Components.Profiles.DestinyProfileProgressionComponent
@@ -12608,8 +12953,7 @@ type ProfileProgressionComponent struct {
 	// the Checklist (DestinyChecklistDefinition)
 	// For each checklist returned, its value is itself a Dictionary keyed by the checklist's hash
 	// identifier with the value being a boolean indicating if it's been discovered yet.
-	Checklists Hash[ChecklistDefinition] `json:"checklists"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Checklists.DestinyChecklistDefinition
+	Checklists map[Hash[ChecklistDefinition]]map[uint32]bool `json:"checklists"`
 
 	// Data related to your progress on the current season's artifact that is the same across characters.
 	SeasonalArtifact ArtifactProfileScoped `json:"seasonalArtifact"`
@@ -12683,7 +13027,6 @@ type ProfileTransitoryComponent struct {
 	// The hash identifier for the DestinyDestinationDefinition of the last location you were orbiting when
 	// in orbit.
 	LastOrbitedDestinationHash Nullable[Hash[DestinationDefinition]] `json:"lastOrbitedDestinationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// If you have any members currently in your party, this is some (very) bare-bones information about
 	// those members.
@@ -12852,10 +13195,9 @@ type ProfileTransitoryPartyMember struct {
 
 	// The identifier for the DestinyInventoryItemDefinition of the player's emblem.
 	EmblemHash Hash[InventoryItemDefinition] `json:"emblemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The Membership ID that matches the party member.
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// A Flags Enumeration value indicating the states that the player is in relevant to being on a
 	// fireteam.
@@ -12931,27 +13273,22 @@ type ProfileTransitoryTrackingEntry struct {
 	// OPTIONAL - If this is tracking the status of a DestinyActivityDefinition, this is the identifier for
 	// that activity.
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// OPTIONAL - If this is tracking the status of a DestinyInventoryItemDefinition, this is the
 	// identifier for that item.
 	ItemHash Nullable[Hash[InventoryItemDefinition]] `json:"itemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// OPTIONAL - If this is tracking a DestinyLocationDefinition, this is the identifier for that
 	// location.
 	LocationHash Nullable[Hash[LocationDefinition]] `json:"locationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyLocationDefinition
 
 	// OPTIONAL - If this is tracking the status of a DestinyObjectiveDefinition, this is the identifier
 	// for that objective.
 	ObjectiveHash Nullable[Hash[ObjectiveDefinition]] `json:"objectiveHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 
 	// OPTIONAL - If this is tracking the status of a quest, this is the identifier for the
 	// DestinyInventoryItemDefinition that containst that questline data.
 	QuestlineItemHash Nullable[Hash[InventoryItemDefinition]] `json:"questlineItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// OPTIONAL - I've got to level with you, I don't really know what this is. Is it when you started
 	// tracking it? Is it only populated for tracked items that have time limits?
@@ -13005,16 +13342,13 @@ type CharacterRecordsComponent struct {
 	//   "x-destiny-component-type-dependency": "Records"
 	// }
 
-	FeaturedRecordHashes Hash[RecordDefinition] `json:"featuredRecordHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
+	FeaturedRecordHashes []uint32 `json:"featuredRecordHashes"`
 
 	// The hash for the root presentation node definition of Triumph categories.
 	RecordCategoriesRootNodeHash Hash[PresentationNodeDefinition] `json:"recordCategoriesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The hash for the root presentation node definition of Triumph Seals.
 	RecordSealsRootNodeHash Hash[PresentationNodeDefinition] `json:"recordSealsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	Records map[uint32]RecordComponent `json:"records"`
 }
@@ -13094,11 +13428,9 @@ type ProfileRecordsComponent struct {
 
 	// The hash for the root presentation node definition of Triumph categories.
 	RecordCategoriesRootNodeHash Hash[PresentationNodeDefinition] `json:"recordCategoriesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The hash for the root presentation node definition of Triumph Seals.
 	RecordSealsRootNodeHash Hash[PresentationNodeDefinition] `json:"recordSealsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	Records map[uint32]RecordComponent `json:"records"`
 
@@ -13107,7 +13439,6 @@ type ProfileRecordsComponent struct {
 
 	// If this profile is tracking a record, this is the hash identifier of the record it is tracking.
 	TrackedRecordHash Nullable[Hash[RecordDefinition]] `json:"trackedRecordHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
 }
 
 // Destiny.Components.Records.DestinyRecordComponent
@@ -13209,11 +13540,9 @@ type RecordsComponent struct {
 
 	// The hash for the root presentation node definition of Triumph categories.
 	RecordCategoriesRootNodeHash Hash[PresentationNodeDefinition] `json:"recordCategoriesRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	// The hash for the root presentation node definition of Triumph Seals.
 	RecordSealsRootNodeHash Hash[PresentationNodeDefinition] `json:"recordSealsRootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	Records map[uint32]RecordComponent `json:"records"`
 }
@@ -13266,11 +13595,9 @@ type SocialCommendationsComponent struct {
 	//   "x-destiny-component-type-dependency": "SocialCommendations"
 	// }
 
-	CommendationNodeScoresByHash Hash[SocialCommendationNodeDefinition] `json:"commendationNodeScoresByHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition
+	CommendationNodeScoresByHash map[Hash[SocialCommendationNodeDefinition]]int32 `json:"commendationNodeScoresByHash"`
 
-	CommendationScoresByHash Hash[SocialCommendationDefinition] `json:"commendationScoresByHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationDefinition
+	CommendationScoresByHash map[Hash[SocialCommendationDefinition]]int32 `json:"commendationScoresByHash"`
 
 	ScoreDetailValues []int32 `json:"scoreDetailValues"`
 
@@ -13346,7 +13673,6 @@ type PublicVendorComponent struct {
 
 	// The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Components.Vendors.DestinyPublicVendorSaleItemComponent
@@ -13419,7 +13745,6 @@ type PublicVendorSaleItemComponent struct {
 	// The hash of the item being sold, as a quick shortcut for looking up the
 	// DestinyInventoryItemDefinition of the sale item.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this item has its own custom date where it may be removed from the Vendor's rotation, this is
 	// that date.
@@ -13435,7 +13760,6 @@ type PublicVendorSaleItemComponent struct {
 	// the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be
 	// pretty or look accurate.
 	OverrideStyleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"overrideStyleItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// How much of the item you'll be getting.
 	Quantity int32 `json:"quantity"`
@@ -13493,7 +13817,6 @@ type VendorBaseComponent struct {
 
 	// The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Components.Vendors.DestinyVendorGroup
@@ -13527,11 +13850,9 @@ type VendorGroup struct {
 	// }
 
 	VendorGroupHash Hash[VendorGroupDefinition] `json:"vendorGroupHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorGroupDefinition
 
 	// The ordered list of vendors within a particular group.
-	VendorHashes Hash[VendorDefinition] `json:"vendorHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
+	VendorHashes []uint32 `json:"vendorHashes"`
 }
 
 // Destiny.Components.Vendors.DestinyVendorGroupComponent
@@ -13629,7 +13950,6 @@ type VendorSaleItemBaseComponent struct {
 	// The hash of the item being sold, as a quick shortcut for looking up the
 	// DestinyInventoryItemDefinition of the sale item.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this item has its own custom date where it may be removed from the Vendor's rotation, this is
 	// that date.
@@ -13645,7 +13965,6 @@ type VendorSaleItemBaseComponent struct {
 	// the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be
 	// pretty or look accurate.
 	OverrideStyleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"overrideStyleItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// How much of the item you'll be getting.
 	Quantity int32 `json:"quantity"`
@@ -13864,21 +14183,17 @@ type EnvironmentLocationMapping struct {
 	// appear because of this mapping. (theoretically, a location can have multiple mappings, and some
 	// might require you to be in a specific activity when others don't)
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// If this is populated, it is the item that you must possess for this location to be active because of
 	// this mapping. (theoretically, a location can have multiple mappings, and some might require an item
 	// while others don't)
 	ItemHash Nullable[Hash[InventoryItemDefinition]] `json:"itemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The location that is revealed on the director by this mapping.
 	LocationHash Hash[LocationDefinition] `json:"locationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyLocationDefinition
 
 	// If this is populated, this is an objective related to the location.
 	ObjectiveHash Nullable[Hash[ObjectiveDefinition]] `json:"objectiveHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 }
 
 // Destiny.DamageType
@@ -14122,7 +14437,6 @@ type ArtifactTierItemDefinition struct {
 
 	// The identifier of the Plug Item unlocked by activating this item in the Artifact.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition
@@ -14354,7 +14668,6 @@ type ChecklistEntryDefinition struct {
 	// }
 
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// Note that a Bubble's hash doesn't uniquely identify a "top level" entity in Destiny. Only the
 	// combination of location and bubble can uniquely identify a place in the world of Destiny: so if
@@ -14364,7 +14677,6 @@ type ChecklistEntryDefinition struct {
 	BubbleHash Nullable[uint32] `json:"bubbleHash,omitempty"`
 
 	DestinationHash Nullable[Hash[DestinationDefinition]] `json:"destinationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// Even if no other associations exist, we will give you *something* for display properties. In cases
 	// where we have no associated entities, it may be as simple as a numerical identifier.
@@ -14375,16 +14687,13 @@ type ChecklistEntryDefinition struct {
 	Hash uint32 `json:"hash"`
 
 	ItemHash Nullable[Hash[InventoryItemDefinition]] `json:"itemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	LocationHash Nullable[Hash[LocationDefinition]] `json:"locationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyLocationDefinition
 
 	// The scope at which this specific entry can be computed.
 	Scope Scope `json:"scope"`
 
 	VendorHash Nullable[Hash[VendorDefinition]] `json:"vendorHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	VendorInteractionIndex Nullable[int32] `json:"vendorInteractionIndex,omitempty"`
 }
@@ -14414,10 +14723,8 @@ type CollectibleAcquisitionBlock struct {
 	// }
 
 	AcquireMaterialRequirementHash Nullable[Hash[MaterialRequirementSetDefinition]] `json:"acquireMaterialRequirementHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
 
 	AcquireTimestampUnlockValueHash Nullable[Hash[UnlockValueDefinition]] `json:"acquireTimestampUnlockValueHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyUnlockValueDefinition
 }
 
 // Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
@@ -14532,12 +14839,10 @@ type CollectibleDefinition struct {
 	Index int32 `json:"index"`
 
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationInfo PresentationChildBlock `json:"presentationInfo"`
 
@@ -14565,8 +14870,7 @@ type CollectibleDefinition struct {
 
 	StateInfo CollectibleStateBlock `json:"stateInfo"`
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -14591,7 +14895,6 @@ type CollectibleStateBlock struct {
 	// }
 
 	ObscuredOverrideItemHash Nullable[Hash[InventoryItemDefinition]] `json:"obscuredOverrideItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	Requirements PresentationNodeRequirementsBlock `json:"requirements"`
 }
@@ -14729,7 +15032,6 @@ type ActivityChallengeDefinition struct {
 	// The hash for the Objective that matches this challenge. Use it to look up the
 	// DestinyObjectiveDefinition.
 	ObjectiveHash Hash[ObjectiveDefinition] `json:"objectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 }
 
 // Destiny.Definitions.DestinyActivityDefinition
@@ -15415,8 +15717,7 @@ type ActivityDefinition struct {
 	// The hash identifiers for Activity Modes relevant to this activity.  Note that if this is a playlist,
 	// the specific playlist entry chosen will determine the actual activity modes that end up being
 	// relevant.
-	ActivityModeHashes Hash[ActivityModeDefinition] `json:"activityModeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
+	ActivityModeHashes []uint32 `json:"activityModeHashes"`
 
 	// The activity modes - if any - in enum form. Because we can't seem to escape the enums.
 	ActivityModeTypes []ActivityModeType `json:"activityModeTypes"`
@@ -15426,7 +15727,6 @@ type ActivityDefinition struct {
 	// Activities will map to generic Activity Types. You'll have to use your knowledge of the Activity
 	// Mode being played to get more specific information about what the user is playing.
 	ActivityTypeHash Hash[ActivityTypeDefinition] `json:"activityTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityTypeDefinition
 
 	// An activity can have many Challenges, of which any subset of them may be active for play at any
 	// given period of time. This gives the information about the challenges and data that we use to
@@ -15442,11 +15742,9 @@ type ActivityDefinition struct {
 	// thought of as a more specific location than a "Place". For instance, if the "Place" is Earth, the
 	// "Destination" would be a specific city or region on Earth.
 	DestinationHash Hash[DestinationDefinition] `json:"destinationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// If this activity had an activity mode directly defined on it, this will be the hash of that mode.
 	DirectActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"directActivityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// If the activity had an activity mode directly defined on it, this will be the enum value of that
 	// mode.
@@ -15517,7 +15815,6 @@ type ActivityDefinition struct {
 	// concept for location information. For instance, if the "Place" is Earth, the "Destination" would be
 	// a specific city or region on Earth.
 	PlaceHash Hash[PlaceDefinition] `json:"placeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyPlaceDefinition
 
 	// Represents all of the possible activities that could be played in the Playlist, along with
 	// information that we can use to determine if they are active at the present time.
@@ -15577,7 +15874,6 @@ type ActivityGraphListEntryDefinition struct {
 	// The hash identifier of the DestinyActivityGraphDefinition that should be shown when opening the
 	// director.
 	ActivityGraphHash Hash[ActivityGraphDefinition] `json:"activityGraphHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Director.DestinyActivityGraphDefinition
 }
 
 // Destiny.Definitions.DestinyActivityGuidedBlockDefinition
@@ -15681,13 +15977,11 @@ type ActivityLoadoutRequirement struct {
 	//   "type": "object"
 	// }
 
-	AllowedEquippedItemHashes Hash[InventoryItemDefinition] `json:"allowedEquippedItemHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	AllowedEquippedItemHashes []uint32 `json:"allowedEquippedItemHashes"`
 
 	AllowedWeaponSubTypes []ItemSubType `json:"allowedWeaponSubTypes"`
 
 	EquipmentSlotHash Hash[EquipmentSlotDefinition] `json:"equipmentSlotHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyEquipmentSlotDefinition
 }
 
 // Destiny.Definitions.DestinyActivityLoadoutRequirementSet
@@ -15945,8 +16239,6 @@ type ActivityModifierReferenceDefinition struct {
 
 	// The hash identifier for the DestinyActivityModifierDefinition referenced by this activity.
 	ActivityModifierHash Hash[ActivityModifierDefinition] `json:"activityModifierHash"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
 }
 
 // Destiny.Definitions.DestinyActivityPlaylistItemDefinition
@@ -16437,11 +16729,9 @@ type ActivityPlaylistItemDefinition struct {
 	// The hash identifier of the Activity that can be played. Use it to look up the
 	// DestinyActivityDefinition.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The hash identifiers for Activity Modes relevant to this entry.
-	ActivityModeHashes Hash[ActivityModeDefinition] `json:"activityModeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
+	ActivityModeHashes []uint32 `json:"activityModeHashes"`
 
 	// The activity modes - if any - in enum form. Because we can't seem to escape the enums.
 	ActivityModeTypes []ActivityModeType `json:"activityModeTypes"`
@@ -16449,7 +16739,6 @@ type ActivityPlaylistItemDefinition struct {
 	// If this playlist entry had an activity mode directly defined on it, this will be the hash of that
 	// mode.
 	DirectActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"directActivityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// If the playlist entry had an activity mode directly defined on it, this will be the enum value of
 	// that mode.
@@ -16741,10 +17030,9 @@ type ClassDefinition struct {
 
 	// A localized string referring to the singular form of the Class's name when referred to in gendered
 	// form. Keyed by the DestinyGender.
-	GenderedClassNames map[int32]string `json:"genderedClassNames"`
+	GenderedClassNames map[string]string `json:"genderedClassNames"`
 
-	GenderedClassNamesByGenderHash Hash[GenderDefinition] `json:"genderedClassNamesByGenderHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyGenderDefinition
+	GenderedClassNamesByGenderHash map[Hash[GenderDefinition]]string `json:"genderedClassNamesByGenderHash"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -16756,7 +17044,6 @@ type ClassDefinition struct {
 
 	// Mentors don't really mean anything anymore. Don't expect this to be populated.
 	MentorVendorHash Nullable[Hash[VendorDefinition]] `json:"mentorVendorHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -17006,7 +17293,6 @@ type DestinationDefinition struct {
 	// If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to
 	// look up the DestinyActivityDefintion.
 	DefaultFreeroamActivityHash Hash[ActivityDefinition] `json:"defaultFreeroamActivityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
@@ -17020,7 +17306,6 @@ type DestinationDefinition struct {
 
 	// The place that "owns" this Destination. Use this hash to look up the DestinyPlaceDefinition.
 	PlaceHash Hash[PlaceDefinition] `json:"placeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyPlaceDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -17112,7 +17397,6 @@ type DisplayCategoryDefinition struct {
 	// progression to show on this display category.
 	// Specific categories can now have thier own distinct progression, apparently. So that's cool.
 	ProgressionHash Nullable[Hash[ProgressionDefinition]] `json:"progressionHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// If this category sorts items in a nonstandard way, this will be the way we sort.
 	SortOrder VendorDisplayCategorySortOrder `json:"sortOrder"`
@@ -17275,7 +17559,6 @@ type EquipmentSlotDefinition struct {
 
 	// The inventory bucket that owns this equipment slot.
 	BucketTypeHash Hash[InventoryBucketDefinition] `json:"bucketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
@@ -17377,11 +17660,9 @@ type EquippingBlockDefinition struct {
 	// An equipped item *must* be equipped in an Equipment Slot. This is the hash identifier of the
 	// DestinyEquipmentSlotDefinition into which it must be equipped.
 	EquipmentSlotTypeHash Hash[EquipmentSlotDefinition] `json:"equipmentSlotTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyEquipmentSlotDefinition
 
 	// If the item is part of a gearset, this is a reference to that gearset item.
 	GearsetItemHash Nullable[Hash[InventoryItemDefinition]] `json:"gearsetItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If defined, this is the label used to check if the item has other items of matching types already
 	// equipped.
@@ -17484,7 +17765,6 @@ type FactionDefinition struct {
 	// The hash identifier for the DestinyProgressionDefinition that indicates the character's relationship
 	// with this faction in terms of experience and levels.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -17492,11 +17772,9 @@ type FactionDefinition struct {
 
 	// The faction reward item hash, usually an engram.
 	RewardItemHash Hash[InventoryItemDefinition] `json:"rewardItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The faction reward vendor hash, used for faction engram previews.
 	RewardVendorHash Hash[VendorDefinition] `json:"rewardVendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// The faction token item hashes, and their respective progression values.
 	TokenValues map[uint32]uint32 `json:"tokenValues"`
@@ -17546,11 +17824,9 @@ type FactionVendorDefinition struct {
 	// The hash identifier for a Destination at which this vendor may be located. Each destination where a
 	// Vendor may exist will only ever have a single entry.
 	DestinationHash Hash[DestinationDefinition] `json:"destinationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// The faction vendor hash.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Definitions.DestinyGearArtArrangementReference
@@ -17575,7 +17851,6 @@ type GearArtArrangementReference struct {
 	ArtArrangementHash uint32 `json:"artArrangementHash"`
 
 	ClassHash Hash[ClassDefinition] `json:"classHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyClassDefinition
 }
 
 // Destiny.Definitions.DestinyGenderDefinition
@@ -18285,7 +18560,6 @@ type InventoryItemDefinition struct {
 	// convenience. Whether you use the enum or hash and look up the definition depends on what's cleanest
 	// for your code.
 	BreakerTypeHash Nullable[Hash[BreakerTypeDefinition]] `json:"breakerTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition
 
 	// We run a similarly weak-sauce algorithm to try and determine whether an item is restricted to a
 	// specific class. If we find it to be restricted in such a way, we set this classType property to
@@ -18295,7 +18569,6 @@ type InventoryItemDefinition struct {
 
 	// If this item has a collectible related to it, this is the hash identifier of that collectible entry.
 	CollectibleHash Nullable[Hash[CollectibleDefinition]] `json:"collectibleHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
 
 	// Recipe items will have relevant crafting information available here.
 	Crafting ItemCraftingBlockDefinition `json:"crafting"`
@@ -18304,8 +18577,7 @@ type InventoryItemDefinition struct {
 	// just in case weapons start being made that have multiple (for instance, an item where a socket has
 	// reusable plugs for every possible damage type that you can choose from freely), this field will
 	// return all of the possible damage types that are available to the weapon by default.
-	DamageTypeHashes Hash[DamageTypeDefinition] `json:"damageTypeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDamageTypeDefinition
+	DamageTypeHashes []uint32 `json:"damageTypeHashes"`
 
 	// This is the list of all damage types that we know ahead of time the item can take on. Unfortunately,
 	// this does not preclude the possibility of something funky happening to give the item a damage type
@@ -18326,7 +18598,6 @@ type InventoryItemDefinition struct {
 	// I will likely regret leaving in the enumeration versions of these properties, but for now they're
 	// very convenient.
 	DefaultDamageTypeHash Nullable[Hash[DamageTypeDefinition]] `json:"defaultDamageTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDamageTypeDefinition
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
@@ -18406,8 +18677,7 @@ type InventoryItemDefinition struct {
 	// Rifle", etc...)
 	// The algorithm for these is, unfortunately, volatile. If you believe you see a miscategorized item,
 	// please let us know on the Bungie API forums.
-	ItemCategoryHashes Hash[ItemCategoryDefinition] `json:"itemCategoryHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyItemCategoryDefinition
+	ItemCategoryHashes []uint32 `json:"itemCategoryHashes"`
 
 	// A value indicating the "sub-type" of the item. For instance, where an item might have an itemType
 	// value "Weapon", this will be something more specific like "Auto Rifle".
@@ -18435,7 +18705,6 @@ type InventoryItemDefinition struct {
 	// If the item has any related Lore (DestinyLoreDefinition), this will be the hash identifier you can
 	// use to look up the lore definition.
 	LoreHash Nullable[Hash[LoreDefinition]] `json:"loreHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Lore.DestinyLoreDefinition
 
 	// If this item has available metrics to be shown, this block will be non-null have the appropriate
 	// hashes defined.
@@ -18486,7 +18755,6 @@ type InventoryItemDefinition struct {
 	// If this item is related directly to a Season of Destiny, this is the hash identifier for that
 	// season.
 	SeasonHash Nullable[Hash[SeasonDefinition]] `json:"seasonHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
 
 	// A secondary icon associated with the item. Currently this is used in very context specific
 	// applications, such as Emblem Nameplates.
@@ -18537,7 +18805,6 @@ type InventoryItemDefinition struct {
 	// This happens sometimes when summarizing possible rewards in a tooltip. This is the item displayed
 	// instead, if it exists.
 	SummaryItemHash Nullable[Hash[InventoryItemDefinition]] `json:"summaryItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein.
 	// Note that, while many items still have talent grids, the only ones with meaningful Nodes still on
@@ -18639,7 +18906,6 @@ type InventoryItemStatDefinition struct {
 
 	// The hash for the DestinyStatDefinition representing this stat.
 	StatHash Hash[StatDefinition] `json:"statHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// This value represents the stat value assuming the minimum possible roll but accounting for any
 	// mandatory bonuses that should be applied to the stat on item creation.
@@ -18816,7 +19082,6 @@ type ItemActionRequiredItemDefinition struct {
 	// The hash identifier of the item you need to have. Use it to look up the
 	// DestinyInventoryItemDefinition for more info.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Definitions.DestinyItemCategoryDefinition
@@ -18982,8 +19247,7 @@ type ItemCategoryDefinition struct {
 	// In this way, you can build up a visual hierarchy of item categories. That's what we did, and you can
 	// do it too. I believe in you. Yes, you, Carl.
 	// (I hope someone named Carl reads this someday)
-	GroupedCategoryHashes Hash[ItemCategoryDefinition] `json:"groupedCategoryHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyItemCategoryDefinition
+	GroupedCategoryHashes []uint32 `json:"groupedCategoryHashes"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -19053,10 +19317,8 @@ type ItemCraftingBlockBonusPlugDefinition struct {
 	// }
 
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	SocketTypeHash Hash[SocketTypeDefinition] `json:"socketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
 }
 
 // Destiny.Definitions.DestinyItemCraftingBlockDefinition
@@ -19114,7 +19376,6 @@ type ItemCraftingBlockDefinition struct {
 
 	// A reference to the base material requirements for crafting with this recipe.
 	BaseMaterialRequirements Nullable[Hash[MaterialRequirementSetDefinition]] `json:"baseMaterialRequirements,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
 
 	// A list of 'bonus' socket plugs that may be available if certain requirements are met.
 	BonusPlugs []ItemCraftingBlockBonusPlugDefinition `json:"bonusPlugs"`
@@ -19123,12 +19384,10 @@ type ItemCraftingBlockDefinition struct {
 
 	// A reference to the item definition that is created when crafting with this 'recipe' item.
 	OutputItemHash Hash[InventoryItemDefinition] `json:"outputItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// A list of socket type hashes that describes which sockets are required for crafting with this
 	// recipe.
-	RequiredSocketTypeHashes Hash[SocketTypeDefinition] `json:"requiredSocketTypeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
+	RequiredSocketTypeHashes []uint32 `json:"requiredSocketTypeHashes"`
 }
 
 // Destiny.Definitions.DestinyItemCreationEntryLevelDefinition
@@ -19180,8 +19439,7 @@ type ItemGearsetBlockDefinition struct {
 
 	// The list of hashes for items in the gearset. Use them to look up DestinyInventoryItemDefinition
 	// entries for the items in the set.
-	ItemList Hash[InventoryItemDefinition] `json:"itemList"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	ItemList []uint32 `json:"itemList"`
 
 	// The maximum possible number of items that can be collected.
 	TrackingValueMax int32 `json:"trackingValueMax"`
@@ -19228,11 +19486,9 @@ type ItemIntrinsicSocketEntryDefinition struct {
 
 	// Indicates the plug that is intrinsically inserted into this socket.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Indicates the type of this intrinsic socket.
 	SocketTypeHash Hash[SocketTypeDefinition] `json:"socketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
 }
 
 // Destiny.Definitions.DestinyItemInventoryBlockDefinition
@@ -19324,7 +19580,6 @@ type ItemInventoryBlockDefinition struct {
 	// The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should
 	// have named this "bucketHash", but too many things refer to it now. Sigh.
 	BucketTypeHash Hash[InventoryBucketDefinition] `json:"bucketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// The tooltip message to show, if any, when the item expires.
 	ExpirationTooltip string `json:"expirationTooltip"`
@@ -19344,13 +19599,11 @@ type ItemInventoryBlockDefinition struct {
 
 	// A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
 	RecipeItemHash Nullable[Hash[InventoryItemDefinition]] `json:"recipeItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If the item is picked up by the lost loot queue, this is the hash identifier for the
 	// DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this
 	// recoveryBucketHash instead.
 	RecoveryBucketTypeHash Hash[InventoryBucketDefinition] `json:"recoveryBucketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// If this string is populated, you can't have more than one stack with this label in a given
 	// inventory. Note that this is different from the equipping block's unique label, which is used for
@@ -19365,7 +19618,6 @@ type ItemInventoryBlockDefinition struct {
 	// The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition
 	// if you need to show localized data for the item's tier.
 	TierTypeHash Hash[ItemTierTypeDefinition] `json:"tierTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Items.DestinyItemTierTypeDefinition
 
 	// The localized name of the tier type, which is a useful shortcut so you don't have to look up the
 	// definition every time. However, it's mostly a holdover from days before we had a
@@ -19415,7 +19667,6 @@ type ItemInvestmentStatDefinition struct {
 
 	// The hash identifier for the DestinyStatDefinition defining this stat.
 	StatTypeHash Hash[StatDefinition] `json:"statTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// The raw "Investment" value for the stat, before transformations are performed to turn this raw stat
 	// into stats that are displayed in the game UI.
@@ -19447,8 +19698,7 @@ type ItemMetricBlockDefinition struct {
 	// Hash identifiers for any DestinyPresentationNodeDefinition entry that can be used to list available
 	// metrics. Any metric listed directly below these nodes, or in any of these nodes' children will be
 	// made available for selection.
-	AvailableMetricCategoryNodeHashes Hash[PresentationNodeDefinition] `json:"availableMetricCategoryNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	AvailableMetricCategoryNodeHashes []uint32 `json:"availableMetricCategoryNodeHashes"`
 }
 
 // Destiny.Definitions.DestinyItemObjectiveBlockDefinition
@@ -19531,8 +19781,7 @@ type ItemObjectiveBlockDefinition struct {
 	// a valid hash at that index. Otherwise, it will be invalid (0).
 	// Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same
 	// information but may end up with more info in the future.
-	DisplayActivityHashes Hash[ActivityDefinition] `json:"displayActivityHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
+	DisplayActivityHashes []uint32 `json:"displayActivityHashes"`
 
 	DisplayAsStatTracker bool `json:"displayAsStatTracker"`
 
@@ -19541,8 +19790,7 @@ type ItemObjectiveBlockDefinition struct {
 
 	// The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order
 	// that they should be rendered.
-	ObjectiveHashes Hash[ObjectiveDefinition] `json:"objectiveHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
+	ObjectiveHashes []uint32 `json:"objectiveHashes"`
 
 	// The localized string describing an action to be performed associated with the objectives, if any.
 	ObjectiveVerbName string `json:"objectiveVerbName"`
@@ -19560,7 +19808,6 @@ type ItemObjectiveBlockDefinition struct {
 	// The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step
 	// belongs.
 	QuestlineItemHash Hash[InventoryItemDefinition] `json:"questlineItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If True, all objectives must be completed for the step to be completed. If False, any one objective
 	// can be completed for the step to be completed.
@@ -19601,7 +19848,6 @@ type ItemPerkEntryDefinition struct {
 
 	// A hash identifier for the DestinySandboxPerkDefinition being provided on the item.
 	PerkHash Hash[SandboxPerkDefinition] `json:"perkHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinySandboxPerkDefinition
 
 	// Indicates whether this perk should be shown, or if it should be shown disabled.
 	PerkVisibility ItemPerkVisibility `json:"perkVisibility"`
@@ -19658,7 +19904,6 @@ type ItemPreviewBlockDefinition struct {
 	// If this item should show you Artifact information when you preview it, this is the hash identifier
 	// of the DestinyArtifactDefinition for the artifact whose data should be shown.
 	ArtifactHash Nullable[Hash[ArtifactDefinition]] `json:"artifactHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Artifacts.DestinyArtifactDefinition
 
 	// This is a list of the items being previewed, categorized in the same way as they are in the preview
 	// UI.
@@ -19671,7 +19916,6 @@ type ItemPreviewBlockDefinition struct {
 	// If the preview data is derived from a fake "Preview" Vendor, this will be the hash identifier for
 	// the DestinyVendorDefinition of that fake vendor.
 	PreviewVendorHash Hash[VendorDefinition] `json:"previewVendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// A string that the game UI uses as a hint for which detail screen to show for the item. You, too, can
 	// leverage this for your own custom screen detail views. Note, however, that these are arbitrarily
@@ -19786,8 +20030,6 @@ type ItemQualityBlockDefinition struct {
 	// DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate
 	// definition.
 	ProgressionLevelRequirementHash Hash[ProgressionLevelRequirementDefinition] `json:"progressionLevelRequirementHash"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.Progression.DestinyProgressionLevelRequirementDefinition
 
 	// qualityLevel is used in combination with the item's level to calculate stats like Attack and
 	// Defense. It plays a role in that calculation, but not nearly as large as itemLevel does.
@@ -19935,7 +20177,6 @@ type ItemSetBlockEntryDefinition struct {
 
 	// This is the hash identifier for a DestinyInventoryItemDefinition representing this quest step.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Used for tracking which step a user reached. These values will be populated in the user's internal
 	// state, which we expose externally as a more usable DestinyQuestStatus object. If this item has been
@@ -20028,7 +20269,6 @@ type ItemSocketCategoryDefinition struct {
 	// The hash for the Socket Category: a quick way to go get the header display information for the
 	// category. Use it to look up DestinySocketCategoryDefinition info.
 	SocketCategoryHash Hash[SocketCategoryDefinition] `json:"socketCategoryHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketCategoryDefinition
 
 	// Use these indexes to look up the sockets in the "sockets.socketEntries" property on the item
 	// definition. These are the indexes under the category, in game-rendered order.
@@ -20138,7 +20378,6 @@ type ItemSocketEntryDefinition struct {
 	//
 	//	If null, the item has no randomized plugs.
 	RandomizedPlugSetHash Nullable[Hash[PlugSetDefinition]] `json:"randomizedPlugSetHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition
 
 	// This is a list of pre-determined plugs that can *always* be plugged into this socket, without the
 	// character having the plug in their inventory.
@@ -20154,19 +20393,16 @@ type ItemSocketEntryDefinition struct {
 	//
 	// custom curation.
 	ReusablePlugSetHash Nullable[Hash[PlugSetDefinition]] `json:"reusablePlugSetHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition
 
 	// If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the
 	// Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will
 	// either start without a plug inserted, or will have one randomly inserted.
 	SingleInitialItemHash Hash[InventoryItemDefinition] `json:"singleInitialItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// All sockets have a type, and this is the hash identifier for this particular type. Use it to look up
 	// the DestinySocketTypeDefinition: read there for more information on how socket types affect the
 	// behavior of the socket.
 	SocketTypeHash Hash[SocketTypeDefinition] `json:"socketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
 }
 
 // Destiny.Definitions.DestinyItemSocketEntryPlugItemDefinition
@@ -20190,7 +20426,6 @@ type ItemSocketEntryPlugItemDefinition struct {
 
 	// The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Definitions.DestinyItemSocketEntryPlugItemRandomizedDefinition
@@ -20224,7 +20459,6 @@ type ItemSocketEntryPlugItemRandomizedDefinition struct {
 
 	// The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Definitions.DestinyItemSourceBlockDefinition
@@ -20278,8 +20512,7 @@ type ItemSourceBlockDefinition struct {
 
 	// The list of hash identifiers for Reward Sources that hint where the item can be found
 	// (DestinyRewardSourceDefinition).
-	SourceHashes Hash[RewardSourceDefinition] `json:"sourceHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyRewardSourceDefinition
+	SourceHashes []uint32 `json:"sourceHashes"`
 
 	// A collection of details about the stats that were computed for the ways we found that the item could
 	// be spawned.
@@ -20366,7 +20599,6 @@ type ItemStatBlockDefinition struct {
 	// Use this hash to look up the stat's value using DestinyInventoryItemDefinition.stats.stats, and the
 	// renderable data for the primary stat in the related DestinyStatDefinition.
 	PrimaryBaseStatHash Hash[StatDefinition] `json:"primaryBaseStatHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// If the item's stats are meant to be modified by a DestinyStatGroupDefinition, this will be the
 	// identifier for that definition.
@@ -20375,7 +20607,6 @@ type ItemStatBlockDefinition struct {
 	// how it alters stats: the already altered stats are provided to you. But if you want to see how the
 	// sausage gets made, or perform computations yourself, this is valuable information.
 	StatGroupHash Nullable[Hash[StatGroupDefinition]] `json:"statGroupHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatGroupDefinition
 
 	// If you are looking for precomputed values for the stats on a weapon, this is where they are stored.
 	// Technically these are the "Display" stat values. Please see DestinyStatsDefinition for what Display
@@ -20383,8 +20614,7 @@ type ItemStatBlockDefinition struct {
 	// get to the item stats that you see in-game.
 	// These stats are keyed by the DestinyStatDefinition's hash identifier for the stat that's found on
 	// the item.
-	Stats Hash[StatDefinition] `json:"stats"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
+	Stats map[Hash[StatDefinition]]InventoryItemStatDefinition `json:"stats"`
 }
 
 // Destiny.Definitions.DestinyItemSummaryBlockDefinition
@@ -20470,7 +20700,6 @@ type ItemTalentGridBlockDefinition struct {
 
 	// The hash identifier of the DestinyTalentGridDefinition attached to this item.
 	TalentGridHash Hash[TalentGridDefinition] `json:"talentGridHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyTalentGridDefinition
 }
 
 // Destiny.Definitions.DestinyItemTooltipNotification
@@ -20551,7 +20780,6 @@ type ItemTranslationBlockDefinition struct {
 	LockedDyes []DyeReference `json:"lockedDyes"`
 
 	WeaponPatternHash Hash[SandboxPatternDefinition] `json:"weaponPatternHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinySandboxPatternDefinition
 
 	WeaponPatternIdentifier string `json:"weaponPatternIdentifier"`
 }
@@ -20631,7 +20859,6 @@ type ItemVendorSourceReference struct {
 
 	// The identifier for the vendor that may sell this item.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// The Vendor sale item indexes that represent the sale information for this item. The same vendor may
 	// sell an item in multiple "ways", hence why this is a list. (for instance, a weapon may be "sold" as
@@ -20661,7 +20888,6 @@ type ItemVersionDefinition struct {
 
 	// A reference to the power cap for this item version.
 	PowerCapHash Hash[PowerCapDefinition] `json:"powerCapHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.PowerCaps.DestinyPowerCapDefinition
 }
 
 // Destiny.Definitions.DestinyLocationDefinition
@@ -20728,7 +20954,6 @@ type LocationDefinition struct {
 	// If the location has a Vendor on it, this is the hash identifier for that Vendor. Look them up with
 	// DestinyVendorDefinition.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Definitions.DestinyLocationReleaseDefinition
@@ -20837,7 +21062,6 @@ type LocationReleaseDefinition struct {
 
 	// The Activity being pointed to by this location.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// If we had map information, this would tell us something cool about the path this location wants you
 	// to take. I wish we had map information.
@@ -20849,7 +21073,6 @@ type LocationReleaseDefinition struct {
 
 	// The Destination being pointed to by this location.
 	DestinationHash Hash[DestinationDefinition] `json:"destinationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// Sadly, these don't appear to be populated anymore (ever?)
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
@@ -20924,7 +21147,6 @@ type MaterialRequirement struct {
 	// The hash identifier of the material required. Use it to look up the material's
 	// DestinyInventoryItemDefinition.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If True, this requirement is "silent": don't bother showing it in a material requirements display. I
 	// mean, I'm not your mom: I'm not going to tell you you *can't* show it. But we won't show it in our
@@ -21080,8 +21302,7 @@ type NodeActivationRequirement struct {
 	// requirements.
 	// In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list,
 	// and we won't know which one will be chosen until an instance of the item is created.
-	MaterialRequirementHashes Hash[MaterialRequirementSetDefinition] `json:"materialRequirementHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
+	MaterialRequirementHashes []uint32 `json:"materialRequirementHashes"`
 }
 
 // Destiny.Definitions.DestinyNodeSocketReplaceResponse
@@ -21115,13 +21336,11 @@ type NodeSocketReplaceResponse struct {
 
 	// The hash identifier of the plug item that will be inserted into the socket found.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The hash identifier of the socket type to find amidst the item's sockets (the item to which this
 	// talent grid is attached). See DestinyInventoryItemDefinition.sockets.socketEntries to find the
 	// socket type of sockets on the item in question.
 	SocketTypeHash Hash[SocketTypeDefinition] `json:"socketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
 }
 
 // Destiny.Definitions.DestinyNodeStepDefinition
@@ -21286,7 +21505,6 @@ type NodeStepDefinition struct {
 	// If the step provides a damage type, this will be the hash identifier used to look up the damage
 	// type's DestinyDamageTypeDefinition.
 	DamageTypeHash Nullable[Hash[DamageTypeDefinition]] `json:"damageTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDamageTypeDefinition
 
 	// These are the display properties actually used to render the Talent Node. The currently active
 	// step's displayProperties are shown.
@@ -21313,8 +21531,7 @@ type NodeStepDefinition struct {
 	// The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this
 	// step is active. Perks provide a variety of benefits and modifications - examine
 	// DestinySandboxPerkDefinition to learn more.
-	PerkHashes Hash[SandboxPerkDefinition] `json:"perkHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinySandboxPerkDefinition
+	PerkHashes []uint32 `json:"perkHashes"`
 
 	// If this step is activated, this will be a list of information used to replace socket items with new
 	// Plugs. See DestinyInventoryItemDefinition for more information about sockets and plugs.
@@ -21329,8 +21546,7 @@ type NodeStepDefinition struct {
 
 	// When the step provides stat benefits on the item or character, this is the list of hash identifiers
 	// for stats (DestinyStatDefinition) that are provided.
-	StatHashes Hash[StatDefinition] `json:"statHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
+	StatHashes []uint32 `json:"statHashes"`
 
 	// In Destiny 1, the Armory's Perk Filtering was driven by a concept of TalentNodeStepGroups:
 	// categorizations of talent nodes based on their functionality. While the Armory isn't a BNet-facing
@@ -21540,7 +21756,6 @@ type ObjectiveDefinition struct {
 	// is a location defined. Look up the DestinyLocationDefinition for this hash for that additional
 	// location info.
 	LocationHash Hash[LocationDefinition] `json:"locationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyLocationDefinition
 
 	// If nonzero, this is the minimum value at which the objective's progression should be shown.
 	// Otherwise, don't show it yet.
@@ -21607,7 +21822,6 @@ type ObjectiveDisplayProperties struct {
 
 	// The activity associated with this objective in the context of this item, if any.
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// If true, the game shows this objective on item preview screens.
 	DisplayOnItemPreviewScreen bool `json:"displayOnItemPreviewScreen"`
@@ -21645,7 +21859,6 @@ type ObjectivePerkEntryDefinition struct {
 
 	// The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character.
 	PerkHash Hash[SandboxPerkDefinition] `json:"perkHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinySandboxPerkDefinition
 
 	// An enumeration indicating whether it will be applied as long as the Objective is active, when it's
 	// completed, or until it's completed.
@@ -21767,8 +21980,7 @@ type PlugItemCraftingRequirements struct {
 	//   "type": "object"
 	// }
 
-	MaterialRequirementHashes Hash[MaterialRequirementSetDefinition] `json:"materialRequirementHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
+	MaterialRequirementHashes []uint32 `json:"materialRequirementHashes"`
 
 	// If the plug has a known level requirement, it'll be available here.
 	RequiredLevel Nullable[int32] `json:"requiredLevel,omitempty"`
@@ -21900,7 +22112,6 @@ type ProgressionDefinition struct {
 	// This is purely for convenience, if you're looking at a progression and want to know if and who it's
 	// related to in terms of Faction Reputation.
 	FactionHash Nullable[Hash[FactionDefinition]] `json:"factionHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyFactionDefinition
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -22106,7 +22317,6 @@ type ProgressionRewardDefinition struct {
 	// The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for
 	// which experience should be applied.
 	ProgressionMappingHash Hash[ProgressionMappingDefinition] `json:"progressionMappingHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionMappingDefinition
 }
 
 // Destiny.Definitions.DestinyProgressionRewardItemQuantity
@@ -22172,11 +22382,10 @@ type ProgressionRewardItemQuantity struct {
 	// The hash identifier for the item in question. Use it to look up the item's
 	// DestinyInventoryItemDefinition.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this quantity is referring to a specific instance of an item, this will have the item's instance
 	// ID. Normally, this will be null.
-	ItemInstanceID Nullable[int64] `json:"itemInstanceId,string,omitempty"`
+	ItemInstanceID Nullable[Int64] `json:"itemInstanceId,omitempty"`
 
 	// The amount of the item needed/available depending on the context of where DestinyItemQuantity is
 	// being used.
@@ -22322,10 +22531,9 @@ type RaceDefinition struct {
 
 	// A localized string referring to the singular form of the Race's name when referred to in gendered
 	// form. Keyed by the DestinyGender.
-	GenderedRaceNames map[int32]string `json:"genderedRaceNames"`
+	GenderedRaceNames map[string]string `json:"genderedRaceNames"`
 
-	GenderedRaceNamesByGenderHash Hash[GenderDefinition] `json:"genderedRaceNamesByGenderHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyGenderDefinition
+	GenderedRaceNamesByGenderHash map[Hash[GenderDefinition]]string `json:"genderedRaceNamesByGenderHash"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -22598,7 +22806,6 @@ type SandboxPerkDefinition struct {
 	// This is preferred over using the damageType enumeration value, which has been left purely because it
 	// is occasionally convenient.
 	DamageTypeHash Nullable[Hash[DamageTypeDefinition]] `json:"damageTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDamageTypeDefinition
 
 	// These display properties are by no means guaranteed to be populated. Usually when it is, it's only
 	// because we back-filled them with the displayProperties of some Talent Node or Plug item that
@@ -22796,7 +23003,6 @@ type StatDisplayDefinition struct {
 	// Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition's stats
 	// property.
 	StatHash Hash[StatDefinition] `json:"statHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 }
 
 // Destiny.Definitions.DestinyStatGroupDefinition
@@ -22941,7 +23147,6 @@ type StatOverrideDefinition struct {
 
 	// The hash identifier of the stat whose display properties are being overridden.
 	StatHash Hash[StatDefinition] `json:"statHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 }
 
 // Destiny.Definitions.DestinyTalentExclusiveGroup
@@ -23003,7 +23208,6 @@ type TalentExclusiveGroup struct {
 	// If this group has an associated piece of lore to show next to it, this will be the identifier for
 	// that DestinyLoreDefinition.
 	LoreHash Nullable[Hash[LoreDefinition]] `json:"loreHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Lore.DestinyLoreDefinition
 
 	// A quick reference of the talent nodes that are part of this group, by their Talent Node hashes. (See
 	// DestinyTalentNodeDefinition.nodeHash)
@@ -23184,7 +23388,6 @@ type TalentGridDefinition struct {
 	// increases, it will cross the threshold where nodes can be activated. See
 	// DestinyTalentGridStepDefinition's activation requirements for more information.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -23421,7 +23624,6 @@ type TalentNodeDefinition struct {
 	// Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the
 	// hash identifier of the lore element to show, if there is one to be show.
 	LoreHash Nullable[Hash[LoreDefinition]] `json:"loreHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Lore.DestinyLoreDefinition
 
 	// The hash identifier for the node, which unfortunately is also content version dependent but can be
 	// (and ideally, should be) used instead of the nodeIndex to uniquely identify the node.
@@ -23793,12 +23995,10 @@ type VendorAcceptedItemDefinition struct {
 	// If it exists, the item will be transferred into whatever bucket is defined by
 	// destinationInventoryBucketHash.
 	AcceptedInventoryBucketHash Hash[InventoryBucketDefinition] `json:"acceptedInventoryBucketHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// This is the bucket where the item being transferred will be put, given that it was being transferred
 	// *from* the bucket defined in acceptedInventoryBucketHash.
 	DestinationInventoryBucketHash Hash[InventoryBucketDefinition] `json:"destinationInventoryBucketHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 }
 
 // Destiny.Definitions.DestinyVendorActionDefinition
@@ -24039,7 +24239,6 @@ type VendorCategoryOverlayDefinition struct {
 
 	// If this overlay has a currency item that it features, this is said featured item.
 	CurrencyItemHash Nullable[Hash[InventoryItemDefinition]] `json:"currencyItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	Description string `json:"description"`
 
@@ -24318,7 +24517,6 @@ type VendorDefinition struct {
 	// Apparently this is usually a related currency, like a reputation token. But it need not be
 	// restricted to that.
 	DisplayItemHash Hash[InventoryItemDefinition] `json:"displayItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	DisplayProperties VendorDisplayPropertiesDefinition `json:"displayProperties"`
 
@@ -24330,7 +24528,6 @@ type VendorDefinition struct {
 	// The game UI and BNet often mine the faction definition for additional elements and details to place
 	// on the screen, such as the faction's Progression status (aka "Reputation").
 	FactionHash Hash[FactionDefinition] `json:"factionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyFactionDefinition
 
 	// If an item can't be purchased from the vendor, there may be many "custom"/game state specific
 	// reasons why not.
@@ -24629,7 +24826,6 @@ type VendorGroupReference struct {
 
 	// The DestinyVendorGroupDefinition to which this Vendor can belong.
 	VendorGroupHash Hash[VendorGroupDefinition] `json:"vendorGroupHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorGroupDefinition
 }
 
 // Destiny.Definitions.DestinyVendorInteractionDefinition
@@ -24745,7 +24941,6 @@ type VendorInteractionDefinition struct {
 	// to find the character's current Quest Step by checking their inventory against this
 	// questlineItemHash's DestinyInventoryItemDefinition.setData.
 	QuestlineItemHash Hash[InventoryItemDefinition] `json:"questlineItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The potential replies that the user can make to the interaction.
 	Replies []VendorInteractionReplyDefinition `json:"replies"`
@@ -24874,7 +25069,6 @@ type VendorInventoryFlyoutBucketDefinition struct {
 
 	// The inventory bucket whose contents should be shown.
 	InventoryBucketHash Hash[InventoryBucketDefinition] `json:"inventoryBucketHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// The methodology to use for sorting items from the flyout.
 	SortItemsBy ItemSortType `json:"sortItemsBy"`
@@ -25166,7 +25360,6 @@ type VendorItemDefinition struct {
 
 	// The inventory bucket into which this item will be placed upon purchase.
 	InventoryBucketHash Hash[InventoryBucketDefinition] `json:"inventoryBucketHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// If this sale can only be performed as the result of receiving a CRM offer, this is true.
 	IsCrm Nullable[bool] `json:"isCrm,omitempty"`
@@ -25178,7 +25371,6 @@ type VendorItemDefinition struct {
 	// Note that a vendor can sell the same item in multiple ways, so don't assume that itemHash is a
 	// unique identifier for this entity.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The maximum character level at which this item is available for sale.
 	MaximumLevel int32 `json:"maximumLevel"`
@@ -25280,11 +25472,10 @@ type VendorItemQuantity struct {
 	// The hash identifier for the item in question. Use it to look up the item's
 	// DestinyInventoryItemDefinition.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this quantity is referring to a specific instance of an item, this will have the item's instance
 	// ID. Normally, this will be null.
-	ItemInstanceID Nullable[int64] `json:"itemInstanceId,string,omitempty"`
+	ItemInstanceID Nullable[Int64] `json:"itemInstanceId,omitempty"`
 
 	// The amount of the item needed/available depending on the context of where DestinyItemQuantity is
 	// being used.
@@ -25332,11 +25523,9 @@ type VendorItemSocketOverride struct {
 	// If this isn't populated, it's being overridden by something more complicated that is only known by
 	// the Game Server and God, which means we can't tell you in advance what it'll be.
 	SingleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"singleItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// This appears to be used to select which socket ultimately gets the override defined here.
 	SocketTypeHash Hash[SocketTypeDefinition] `json:"socketTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
 }
 
 // Destiny.Definitions.DestinyVendorRequirementDisplayEntryDefinition
@@ -25610,7 +25799,6 @@ type ActivityGraphDisplayObjectiveDefinition struct {
 
 	// The objective being shown on the map.
 	ObjectiveHash Hash[ObjectiveDefinition] `json:"objectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 }
 
 // Destiny.Definitions.Director.DestinyActivityGraphDisplayProgressionDefinition
@@ -25670,7 +25858,6 @@ type ActivityGraphNodeActivityDefinition struct {
 	// The activity that will be activated if the user clicks on this node. Controls all activity-related
 	// information displayed on the node if it is active (the text shown in the tooltip etc)
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph.
 	NodeActivityID uint32 `json:"nodeActivityId"`
@@ -25947,12 +26134,10 @@ type EnergyTypeDefinition struct {
 	// Capacity - an Armor must have a specific Energy Type for determining the energy type that the Armor
 	// is restricted to use)
 	CapacityStatHash Nullable[Hash[StatDefinition]] `json:"capacityStatHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// If this Energy Type can be used as a cost to pay for socketing Armor 2.0 items, this is the hash for
 	// the DestinyInvestmentStatDefinition that stores the plug's raw cost.
 	CostStatHash Hash[StatDefinition] `json:"costStatHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// The description of the energy type, icon etc...
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
@@ -26040,7 +26225,6 @@ type GuardianRankConstantsDefinition struct {
 	Redacted bool `json:"redacted"`
 
 	RootNodeHash Hash[PresentationNodeDefinition] `json:"rootNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition
@@ -26106,7 +26290,6 @@ type GuardianRankDefinition struct {
 	OverlayMaskImagePath string `json:"overlayMaskImagePath"`
 
 	PresentationNodeHash Hash[PresentationNodeDefinition] `json:"presentationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	RankNumber int32 `json:"rankNumber"`
 
@@ -26334,7 +26517,6 @@ type EnergyCapacityEntry struct {
 	// Energy provided by a plug is always of a specific type - this is the hash identifier for the energy
 	// type for which it provides Capacity.
 	EnergyTypeHash Hash[EnergyTypeDefinition] `json:"energyTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition
 }
 
 // Destiny.Definitions.Items.DestinyEnergyCostEntry
@@ -26381,7 +26563,6 @@ type EnergyCostEntry struct {
 	// The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the
 	// energy type.
 	EnergyTypeHash Hash[EnergyTypeDefinition] `json:"energyTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition
 }
 
 // Destiny.Definitions.Items.DestinyItemPlugDefinition
@@ -26527,7 +26708,6 @@ type ItemPlugDefinition struct {
 	// may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition
 	// for those requirements, if there is one.
 	EnabledMaterialRequirementHash Hash[MaterialRequirementSetDefinition] `json:"enabledMaterialRequirementHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
 
 	// The rules around whether the plug, once inserted, is enabled and providing its benefits.
 	// The live data DestinyItemPlugComponent.enableFailIndexes will be an index into this array, so you
@@ -26545,7 +26725,6 @@ type ItemPlugDefinition struct {
 	// If inserting this plug requires materials, this is the hash identifier for looking up the
 	// DestinyMaterialRequirementSetDefinition for those requirements.
 	InsertionMaterialRequirementHash Hash[MaterialRequirementSetDefinition] `json:"insertionMaterialRequirementHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition
 
 	// The rules around when this plug can be inserted into a socket, aside from the socket's individual
 	// restrictions.
@@ -26587,7 +26766,6 @@ type ItemPlugDefinition struct {
 	// In the game, if you're inspecting a plug item directly, this will be the item shown with the plug
 	// attached. Look up the DestinyInventoryItemDefinition for this hash for the item.
 	PreviewItemOverrideHash Hash[InventoryItemDefinition] `json:"previewItemOverrideHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Plugs can have arbitrary, UI-defined identifiers that the UI designers use to determine the style
 	// applied to plugs. Unfortunately, we have neither a definitive list of these labels nor advance
@@ -26880,28 +27058,23 @@ type LoadoutConstantsDefinition struct {
 	Index int32 `json:"index"`
 
 	// A list of the loadout color hashes in index order, for convenience.
-	LoadoutColorHashes Hash[LoadoutColorDefinition] `json:"loadoutColorHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition
+	LoadoutColorHashes []uint32 `json:"loadoutColorHashes"`
 
 	// The maximum number of loadouts available to each character. The loadouts component API response can
 	// return fewer loadouts than this, as more loadouts are unlocked by reaching higher Guardian Ranks.
 	LoadoutCountPerCharacter int32 `json:"loadoutCountPerCharacter"`
 
 	// A list of the loadout icon hashes in index order, for convenience.
-	LoadoutIconHashes Hash[LoadoutIconDefinition] `json:"loadoutIconHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition
+	LoadoutIconHashes []uint32 `json:"loadoutIconHashes"`
 
 	// A list of the loadout name hashes in index order, for convenience.
-	LoadoutNameHashes Hash[LoadoutNameDefinition] `json:"loadoutNameHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition
+	LoadoutNameHashes []uint32 `json:"loadoutNameHashes"`
 
 	// A list of the socket category hashes to be filtered out of loadout item preview displays.
-	LoadoutPreviewFilterOutSocketCategoryHashes Hash[SocketCategoryDefinition] `json:"loadoutPreviewFilterOutSocketCategoryHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketCategoryDefinition
+	LoadoutPreviewFilterOutSocketCategoryHashes []uint32 `json:"loadoutPreviewFilterOutSocketCategoryHashes"`
 
 	// A list of the socket type hashes to be filtered out of loadout item preview displays.
-	LoadoutPreviewFilterOutSocketTypeHashes Hash[SocketTypeDefinition] `json:"loadoutPreviewFilterOutSocketTypeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketTypeDefinition
+	LoadoutPreviewFilterOutSocketTypeHashes []uint32 `json:"loadoutPreviewFilterOutSocketTypeHashes"`
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -27131,8 +27304,7 @@ type MetricDefinition struct {
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
 
@@ -27141,10 +27313,8 @@ type MetricDefinition struct {
 	Redacted bool `json:"redacted"`
 
 	TrackingObjectiveHash Hash[ObjectiveDefinition] `json:"trackingObjectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -27189,7 +27359,6 @@ type MilestoneActivityDefinition struct {
 	// as the canonical definition of the activity for rendering purposes.
 	// If you care about the specific difficulty modes and variations, use the activities under "Variants".
 	ConceptualActivityHash Hash[ActivityDefinition] `json:"conceptualActivityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.
 	// Even if there is only a single variant, the details for these are represented within as a variant
@@ -27199,8 +27368,7 @@ type MilestoneActivityDefinition struct {
 	// If a Milestone could ever split the variants' active status conditionally, they should all have
 	// their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for
 	// the obviousness of processing and use.
-	Variants Hash[ActivityDefinition] `json:"variants"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
+	Variants map[Hash[ActivityDefinition]]MilestoneActivityVariantDefinition `json:"variants"`
 }
 
 // Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition
@@ -27236,7 +27404,6 @@ type MilestoneActivityVariantDefinition struct {
 	// Frequently, that will be the only distinguishing characteristics in practice, which is somewhat of a
 	// bummer.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// If you care to do so, render the variants in the order prescribed by this value.
 	// When you combine live Milestone data with the definition, the order becomes more useful because
@@ -27285,7 +27452,6 @@ type MilestoneChallengeActivityDefinition struct {
 
 	// The activity for which this challenge is active.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	Challenges []MilestoneChallengeDefinition `json:"challenges"`
 
@@ -27350,7 +27516,6 @@ type MilestoneChallengeDefinition struct {
 
 	// The challenge related to this milestone.
 	ChallengeObjectiveHash Hash[ObjectiveDefinition] `json:"challengeObjectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 }
 
 // Destiny.Definitions.Milestones.DestinyMilestoneDefinition
@@ -27695,15 +27860,13 @@ type MilestoneQuestDefinition struct {
 	// The full set of all possible "conceptual activities" that are related to this Milestone. Tiers or
 	// alternative modes of play within these conceptual activities will be defined as sub-entities. Keyed
 	// by the Conceptual Activity Hash. Use the key to look up DestinyActivityDefinition.
-	Activities Hash[ActivityDefinition] `json:"activities"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
+	Activities map[Hash[ActivityDefinition]]MilestoneActivityDefinition `json:"activities"`
 
 	// Sometimes, a Milestone's quest is related to an entire Destination rather than a specific activity.
 	// In that situation, this will be the hash of that Destination. Hotspots are currently the only
 	// Milestones that expose this data, but that does not preclude this data from being returned for other
 	// Milestones in the future.
 	DestinationHash Nullable[Hash[DestinationDefinition]] `json:"destinationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// The individual quests may have different definitions from the overall milestone: if there's a
 	// specific active quest, use these displayProperties instead of that of the overall
@@ -27718,7 +27881,6 @@ type MilestoneQuestDefinition struct {
 	// The item representing this Milestone quest. Use this hash to look up the
 	// DestinyInventoryItemDefinition for the quest to find its steps and human readable data.
 	QuestItemHash Hash[InventoryItemDefinition] `json:"questItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The rewards you will get for completing this quest, as best as we could extract them from our data.
 	// Sometimes, it'll be a decent amount of data. Sometimes, it's going to be sucky. Sorry.
@@ -27785,11 +27947,10 @@ type MilestoneQuestRewardItem struct {
 	// The hash identifier for the item in question. Use it to look up the item's
 	// DestinyInventoryItemDefinition.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this quantity is referring to a specific instance of an item, this will have the item's instance
 	// ID. Normally, this will be null.
-	ItemInstanceID Nullable[int64] `json:"itemInstanceId,string,omitempty"`
+	ItemInstanceID Nullable[Int64] `json:"itemInstanceId,omitempty"`
 
 	// The amount of the item needed/available depending on the context of where DestinyItemQuantity is
 	// being used.
@@ -27798,7 +27959,6 @@ type MilestoneQuestRewardItem struct {
 	// The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash
 	// to look up the DestinyVendorDefinition.
 	VendorHash Nullable[Hash[VendorDefinition]] `json:"vendorHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// The quest reward item *may* be associated with a vendor. If so, this is the index of the item being
 	// sold, which we can use at runtime to find instanced item information for the reward item.
@@ -27976,7 +28136,6 @@ type MilestoneRewardEntryDefinition struct {
 	// If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem
 	// the reward. Use this hash to look up the DestinyVendorDefinition.
 	VendorHash Nullable[Hash[VendorDefinition]] `json:"vendorHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Definitions.Milestones.DestinyMilestoneType
@@ -28043,7 +28202,6 @@ type MilestoneVendorDefinition struct {
 
 	// The hash of the vendor whose wares should be shown as associated with the Milestone.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Definitions.PowerCaps.DestinyPowerCapDefinition
@@ -28129,8 +28287,7 @@ type PresentationChildBlock struct {
 
 	DisplayStyle PresentationDisplayStyle `json:"displayStyle"`
 
-	ParentPresentationNodeHashes Hash[PresentationNodeDefinition] `json:"parentPresentationNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentPresentationNodeHashes []uint32 `json:"parentPresentationNodeHashes"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
 }
@@ -28206,8 +28363,7 @@ type PresentationNodeBaseDefinition struct {
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
 
@@ -28215,8 +28371,7 @@ type PresentationNodeBaseDefinition struct {
 	// allowed to show it. Sorry!
 	Redacted bool `json:"redacted"`
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -28245,7 +28400,6 @@ type PresentationNodeChildEntry struct {
 	NodeDisplayPriority uint32 `json:"nodeDisplayPriority"`
 
 	PresentationNodeHash Hash[PresentationNodeDefinition] `json:"presentationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Definitions.Presentation.DestinyPresentationNodeChildEntryBase
@@ -28341,7 +28495,6 @@ type PresentationNodeCollectibleChildEntry struct {
 	// }
 
 	CollectibleHash Hash[CollectibleDefinition] `json:"collectibleHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Collectibles.DestinyCollectibleDefinition
 
 	// Use this value to sort the presentation node children in ascending order.
 	NodeDisplayPriority uint32 `json:"nodeDisplayPriority"`
@@ -28368,7 +28521,6 @@ type PresentationNodeCraftableChildEntry struct {
 	// }
 
 	CraftableItemHash Hash[InventoryItemDefinition] `json:"craftableItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Use this value to sort the presentation node children in ascending order.
 	NodeDisplayPriority uint32 `json:"nodeDisplayPriority"`
@@ -28541,7 +28693,6 @@ type PresentationNodeDefinition struct {
 	// If this presentation node has an associated "Record" that you can accomplish for completing its
 	// children, this is the identifier of that Record.
 	CompletionRecordHash Nullable[Hash[RecordDefinition]] `json:"completionRecordHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
 
 	// If this presentation node has children, but the game doesn't let you inspect the details of those
 	// children, that is indicated here.
@@ -28567,15 +28718,13 @@ type PresentationNodeDefinition struct {
 	// If this presentation node shows a related objective (for instance, if it tracks the progress of its
 	// children), the objective being tracked is indicated here.
 	ObjectiveHash Nullable[Hash[ObjectiveDefinition]] `json:"objectiveHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 
 	// The original icon for this presentation node, before we futzed with it.
 	OriginalIcon string `json:"originalIcon"`
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
 
@@ -28599,8 +28748,7 @@ type PresentationNodeDefinition struct {
 	// A hint for how to display this presentation node when it's shown in its own detail screen.
 	ScreenStyle PresentationScreenStyle `json:"screenStyle"`
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -28626,7 +28774,6 @@ type PresentationNodeMetricChildEntry struct {
 	// }
 
 	MetricHash Hash[MetricDefinition] `json:"metricHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Metrics.DestinyMetricDefinition
 
 	// Use this value to sort the presentation node children in ascending order.
 	NodeDisplayPriority uint32 `json:"nodeDisplayPriority"`
@@ -28656,7 +28803,6 @@ type PresentationNodeRecordChildEntry struct {
 	NodeDisplayPriority uint32 `json:"nodeDisplayPriority"`
 
 	RecordHash Hash[RecordDefinition] `json:"recordHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
 }
 
 // Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock
@@ -28753,8 +28899,7 @@ type ScoredPresentationNodeBaseDefinition struct {
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
 
@@ -28762,8 +28907,7 @@ type ScoredPresentationNodeBaseDefinition struct {
 	// allowed to show it. Sorry!
 	Redacted bool `json:"redacted"`
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -28828,7 +28972,6 @@ type ProgressionLevelRequirementDefinition struct {
 	// Look up the DestinyProgressionDefinition with this hash for more information about the progression
 	// in question.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -29036,15 +29179,12 @@ type RecordDefinition struct {
 	IntervalInfo RecordIntervalBlock `json:"intervalInfo"`
 
 	LoreHash Nullable[Hash[LoreDefinition]] `json:"loreHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Lore.DestinyLoreDefinition
 
-	ObjectiveHashes Hash[ObjectiveDefinition] `json:"objectiveHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
+	ObjectiveHashes []uint32 `json:"objectiveHashes"`
 
 	// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be
 	// parented under multiple parents.
-	ParentNodeHashes Hash[PresentationNodeDefinition] `json:"parentNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
+	ParentNodeHashes []uint32 `json:"parentNodeHashes"`
 
 	PresentationInfo PresentationChildBlock `json:"presentationInfo"`
 
@@ -29076,8 +29216,7 @@ type RecordDefinition struct {
 
 	TitleInfo RecordTitleBlock `json:"titleInfo"`
 
-	TraitHashes Hash[TraitDefinition] `json:"traitHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition
+	TraitHashes []uint32 `json:"traitHashes"`
 
 	TraitIds []string `json:"traitIds"`
 }
@@ -29161,7 +29300,6 @@ type RecordIntervalObjective struct {
 	// }
 
 	IntervalObjectiveHash Hash[ObjectiveDefinition] `json:"intervalObjectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 
 	IntervalScoreValue int32 `json:"intervalScoreValue"`
 }
@@ -29231,15 +29369,13 @@ type RecordTitleBlock struct {
 	// }
 
 	GildingTrackingRecordHash Nullable[Hash[RecordDefinition]] `json:"gildingTrackingRecordHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
 
 	HasTitle bool `json:"hasTitle"`
 
-	TitlesByGender map[int32]string `json:"titlesByGender"`
+	TitlesByGender map[string]string `json:"titlesByGender"`
 
 	// For those who prefer to use the definitions.
-	TitlesByGenderHash Hash[GenderDefinition] `json:"titlesByGenderHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyGenderDefinition
+	TitlesByGenderHash map[Hash[GenderDefinition]]string `json:"titlesByGenderHash"`
 }
 
 // Destiny.Definitions.Records.SchemaRecordStateBlock
@@ -29434,7 +29570,7 @@ type EventCardDefinition struct {
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
-	EndTime int64 `json:"endTime,string"`
+	EndTime Int64 `json:"endTime"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -29453,18 +29589,14 @@ type EventCardDefinition struct {
 	Redacted bool `json:"redacted"`
 
 	SealPresentationNodeHash Hash[PresentationNodeDefinition] `json:"sealPresentationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	TicketCurrencyItemHash Hash[InventoryItemDefinition] `json:"ticketCurrencyItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	TicketVendorCategoryHash uint32 `json:"ticketVendorCategoryHash"`
 
 	TicketVendorHash Hash[VendorDefinition] `json:"ticketVendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	TriumphsPresentationNodeHash Hash[PresentationNodeDefinition] `json:"triumphsPresentationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 }
 
 // Destiny.Definitions.Seasons.DestinyEventCardImages
@@ -29608,7 +29740,6 @@ type SeasonDefinition struct {
 	// }
 
 	ArtifactItemHash Nullable[Hash[InventoryItemDefinition]] `json:"artifactItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	BackgroundImagePath string `json:"backgroundImagePath"`
 
@@ -29632,18 +29763,14 @@ type SeasonDefinition struct {
 	Redacted bool `json:"redacted"`
 
 	SealPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"sealPresentationNodeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	SeasonNumber int32 `json:"seasonNumber"`
 
 	SeasonPassHash Nullable[Hash[SeasonPassDefinition]] `json:"seasonPassHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition
 
 	SeasonPassProgressionHash Nullable[Hash[ProgressionDefinition]] `json:"seasonPassProgressionHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	SeasonalChallengesPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"seasonalChallengesPresentationNodeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition
 
 	StartDate Nullable[Timestamp] `json:"startDate,omitempty"`
 }
@@ -29707,7 +29834,6 @@ type SeasonPassDefinition struct {
 	//
 	// ranks, that will ultimately increase your power/light level over the theoretical limit.
 	PrestigeProgressionHash Hash[ProgressionDefinition] `json:"prestigeProgressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -29717,7 +29843,6 @@ type SeasonPassDefinition struct {
 	// provide item rewards for the Season pass. Further experience after you reach the limit is provided
 	// in the "Prestige" progression referred to by prestigeProgressionHash.
 	RewardProgressionHash Hash[ProgressionDefinition] `json:"rewardProgressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 }
 
 // Destiny.Definitions.Seasons.DestinySeasonPreviewDefinition
@@ -29867,7 +29992,6 @@ type SocialCommendationDefinition struct {
 	Index int32 `json:"index"`
 
 	ParentCommendationNodeHash Hash[SocialCommendationNodeDefinition] `json:"parentCommendationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -29939,13 +30063,11 @@ type SocialCommendationNodeDefinition struct {
 	// }
 
 	// A list of hashes that map to child commendations.
-	ChildCommendationHashes Hash[SocialCommendationDefinition] `json:"childCommendationHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationDefinition
+	ChildCommendationHashes []uint32 `json:"childCommendationHashes"`
 
 	// A list of hashes that map to child commendation nodes. Only the root commendations node is expected
 	// to have child nodes.
-	ChildCommendationNodeHashes Hash[SocialCommendationNodeDefinition] `json:"childCommendationNodeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition
+	ChildCommendationNodeHashes []uint32 `json:"childCommendationNodeHashes"`
 
 	// The color associated with this group of commendations.
 	Color Color `json:"color"`
@@ -29961,7 +30083,6 @@ type SocialCommendationNodeDefinition struct {
 	Index int32 `json:"index"`
 
 	ParentCommendationNodeHash Hash[SocialCommendationNodeDefinition] `json:"parentCommendationNodeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition
 
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
@@ -30357,7 +30478,6 @@ type SocketTypeDefinition struct {
 	Redacted bool `json:"redacted"`
 
 	SocketCategoryHash Hash[SocketCategoryDefinition] `json:"socketCategoryHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Sockets.DestinySocketCategoryDefinition
 
 	// Sometimes a socket isn't visible. These are some of the conditions under which sockets of this type
 	// are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on
@@ -30385,7 +30505,6 @@ type SocketTypeScalarMaterialRequirementEntry struct {
 	// }
 
 	CurrencyItemHash Hash[InventoryItemDefinition] `json:"currencyItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	ScalarValue int32 `json:"scalarValue"`
 }
@@ -30476,8 +30595,7 @@ type ItemSourceDefinition struct {
 	MinQuality int32 `json:"minQuality"`
 
 	// The DestinyRewardSourceDefinitions found that can spawn the item at this level.
-	SourceHashes Hash[RewardSourceDefinition] `json:"sourceHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyRewardSourceDefinition
+	SourceHashes []uint32 `json:"sourceHashes"`
 }
 
 // Destiny.Definitions.Traits.DestinyTraitDefinition
@@ -30560,7 +30678,6 @@ type VendorLocationDefinition struct {
 	// The hash identifier for a Destination at which this vendor may be located. Each destination where a
 	// Vendor may exist will only ever have a single entry.
 	DestinationHash Hash[DestinationDefinition] `json:"destinationHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 }
 
 // Destiny.DestinyActivity
@@ -30663,7 +30780,6 @@ type Activity struct {
 	// The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the
 	// activity.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The set of activity options for this activity, keyed by an identifier that's unique for this
 	// activity (not guaranteed to be unique between or across all activities, though should be unique for
@@ -30715,9 +30831,7 @@ type Activity struct {
 	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// The recommended light level for the activity, if applicable.
 	RecommendedLight Nullable[int32] `json:"recommendedLight,omitempty"`
@@ -30931,7 +31045,7 @@ type EquipItemResult struct {
 
 	// The instance ID of the item in question (all items that can be equipped must, but definition, be
 	// Instanced and thus have an Instance ID that you can use to refer to them)
-	ItemInstanceID int64 `json:"itemInstanceId,string"`
+	ItemInstanceID Int64 `json:"itemInstanceId"`
 }
 
 // Destiny.DestinyEquipItemResults
@@ -31088,11 +31202,10 @@ type ItemQuantity struct {
 	// The hash identifier for the item in question. Use it to look up the item's
 	// DestinyInventoryItemDefinition.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If this quantity is referring to a specific instance of an item, this will have the item's instance
 	// ID. Normally, this will be null.
-	ItemInstanceID Nullable[int64] `json:"itemInstanceId,string,omitempty"`
+	ItemInstanceID Nullable[Int64] `json:"itemInstanceId,omitempty"`
 
 	// The amount of the item needed/available depending on the context of where DestinyItemQuantity is
 	// being used.
@@ -31446,7 +31559,6 @@ type Progression struct {
 	// The hash identifier of the Progression in question. Use it to look up the
 	// DestinyProgressionDefinition in static data.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// Information about historical rewards for this progression, if there is any data for it.
 	RewardItemStates []BitmaskSet[ProgressionRewardItemState] `json:"rewardItemStates"`
@@ -31670,7 +31782,6 @@ type Stat struct {
 	// The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about
 	// the stat.
 	StatHash Hash[StatDefinition] `json:"statHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
 
 	// The current value of the Stat.
 	Value int32 `json:"value"`
@@ -31923,7 +32034,6 @@ type UnlockStatus struct {
 	// to show. Even if they don't have human readable data, you might be able to infer the meaning of an
 	// unlock flag with a bit of experimentation...
 	UnlockHash Hash[UnlockDefinition] `json:"unlockHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyUnlockDefinition
 }
 
 // Destiny.DestinyUnlockValueUIStyle
@@ -32580,18 +32690,15 @@ type CharacterActivitiesComponent struct {
 	// right now. For instance, PVP "Activities" are just maps: it's the ActivityMode that determines what
 	// type of PVP game they're playing.
 	CurrentActivityHash Hash[ActivityDefinition] `json:"currentActivityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// If the user is in an activity, this will be the hash of the activity mode being played. Combine with
 	// currentActivityHash to give a person a full picture of what they're doing right now.
 	CurrentActivityModeHash Hash[ActivityModeDefinition] `json:"currentActivityModeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// If the user is in an activity, this will be the hashes of the DestinyActivityModeDefinition being
 	// played. Combine with currentActivityHash to give a person a full picture of what they're doing right
 	// now.
-	CurrentActivityModeHashes Hash[ActivityModeDefinition] `json:"currentActivityModeHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
+	CurrentActivityModeHashes []uint32 `json:"currentActivityModeHashes"`
 
 	// And the current activity's most specific mode type, if it can be found.
 	CurrentActivityModeType Nullable[int32] `json:"currentActivityModeType,omitempty"`
@@ -32601,7 +32708,6 @@ type CharacterActivitiesComponent struct {
 
 	// If the user is in a playlist, this is the hash identifier for the playlist that they chose.
 	CurrentPlaylistActivityHash Nullable[Hash[ActivityDefinition]] `json:"currentPlaylistActivityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The last date that the user started playing an activity.
 	DateActivityStarted Timestamp `json:"dateActivityStarted"`
@@ -32609,7 +32715,6 @@ type CharacterActivitiesComponent struct {
 	// This will have the activity hash of the last completed story/campaign mission, in case you care
 	// about that.
 	LastCompletedStoryHash Hash[ActivityDefinition] `json:"lastCompletedStoryHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 }
 
 // Destiny.Entities.Characters.DestinyCharacterComponent
@@ -32784,11 +32889,10 @@ type CharacterComponent struct {
 	BaseCharacterLevel int32 `json:"baseCharacterLevel"`
 
 	// The unique identifier for the character.
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// Use this hash to look up the character's DestinyClassDefinition.
 	ClassHash Hash[ClassDefinition] `json:"classHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyClassDefinition
 
 	// Mostly for historical purposes at this point, this is an enumeration for the character's class.
 	// It'll be preferable in the general case to look up the related definition: but for some people this
@@ -32810,7 +32914,6 @@ type CharacterComponent struct {
 	// The hash of the currently equipped emblem for the user. Can be used to look up the
 	// DestinyInventoryItemDefinition.
 	EmblemHash Hash[InventoryItemDefinition] `json:"emblemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// A shortcut path to the user's currently equipped emblem image. If you're just showing summary info
 	// for a user, this is more convenient than examining their equipped emblem and looking up the
@@ -32819,7 +32922,6 @@ type CharacterComponent struct {
 
 	// Use this hash to look up the character's DestinyGenderDefinition.
 	GenderHash Hash[GenderDefinition] `json:"genderHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyGenderDefinition
 
 	// Mostly for historical purposes at this point, this is an enumeration for the character's Gender.
 	// It'll be preferable in the general case to look up the related definition: but for some people this
@@ -32837,18 +32939,18 @@ type CharacterComponent struct {
 	Light int32 `json:"light"`
 
 	// Every Destiny Profile has a membershipId. This is provided on the character as well for convenience.
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// membershipType tells you the platform on which the character plays. Examine the BungieMembershipType
 	// enumeration for possible values.
 	MembershipType BungieMembershipType `json:"membershipType"`
 
 	// If the user is currently playing, this is how long they've been playing.
-	MinutesPlayedThisSession int64 `json:"minutesPlayedThisSession,string"`
+	MinutesPlayedThisSession Int64 `json:"minutesPlayedThisSession"`
 
 	// If this value is 525,600, then they played Destiny for a year. Or they're a very dedicated Rent fan.
 	// Note that this includes idle time, not just time spent actually in activities shooting things.
-	MinutesPlayedTotal int64 `json:"minutesPlayedTotal,string"`
+	MinutesPlayedTotal Int64 `json:"minutesPlayedTotal"`
 
 	// A number between 0 and 100, indicating the whole and fractional % remaining to get to the next
 	// character level.
@@ -32856,7 +32958,6 @@ type CharacterComponent struct {
 
 	// Use this hash to look up the character's DestinyRaceDefinition.
 	RaceHash Hash[RaceDefinition] `json:"raceHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyRaceDefinition
 
 	// Mostly for historical purposes at this point, this is an enumeration for the character's race.
 	// It'll be preferable in the general case to look up the related definition: but for some people this
@@ -32870,7 +32971,6 @@ type CharacterComponent struct {
 	// If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition
 	// that has that title information.
 	TitleRecordHash Nullable[Hash[RecordDefinition]] `json:"titleRecordHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Records.DestinyRecordDefinition
 }
 
 // Destiny.Entities.Characters.DestinyCharacterProgressionComponent
@@ -33000,24 +33100,20 @@ type CharacterProgressionComponent struct {
 	// of the Checklist (DestinyChecklistDefinition)
 	// For each checklist returned, its value is itself a Dictionary keyed by the checklist's hash
 	// identifier with the value being a boolean indicating if it's been discovered yet.
-	Checklists Hash[ChecklistDefinition] `json:"checklists"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Checklists.DestinyChecklistDefinition
+	Checklists map[Hash[ChecklistDefinition]]map[uint32]bool `json:"checklists"`
 
 	// A dictionary of all known Factions, keyed by the Faction's hash. It contains data about this
 	// character's status with the faction.
-	Factions Hash[FactionDefinition] `json:"factions"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyFactionDefinition
+	Factions map[Hash[FactionDefinition]]FactionProgression `json:"factions"`
 
 	// Milestones are related to the simple progressions shown in the game, but return additional and
 	// hopefully helpful information for users about the specifics of the Milestone's status.
-	Milestones Hash[MilestoneDefinition] `json:"milestones"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Milestones.DestinyMilestoneDefinition
+	Milestones map[Hash[MilestoneDefinition]]Milestone `json:"milestones"`
 
 	// A Dictionary of all known progressions for the Character, keyed by the Progression's hash.
 	// Not all progressions have user-facing data, but those who do will have that data contained in the
 	// DestinyProgressionDefinition.
-	Progressions Hash[ProgressionDefinition] `json:"progressions"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
+	Progressions map[Hash[ProgressionDefinition]]Progression `json:"progressions"`
 
 	// If the user has any active quests, the quests' statuses will be returned here.
 	//
@@ -33038,15 +33134,13 @@ type CharacterProgressionComponent struct {
 	// This dictionary is keyed by the item's hash: which you can use to look up the name and description
 	// for the overall task(s) implied by the objective. The value is the list of objectives for this item,
 	// and their statuses.
-	UninstancedItemObjectives Hash[InventoryItemDefinition] `json:"uninstancedItemObjectives"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	UninstancedItemObjectives map[Hash[InventoryItemDefinition]][]ObjectiveProgress `json:"uninstancedItemObjectives"`
 
 	// Sometimes, you have items in your inventory that don't have instances, but still have perks (for
 	// example: Trials passage cards). This gives you the perk information for uninstanced items.
 	// This dictionary is keyed by item hash, which you can use to look up the corresponding item
 	// definition. The value is the list of perks states for the item.
-	UninstancedItemPerks Hash[InventoryItemDefinition] `json:"uninstancedItemPerks"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	UninstancedItemPerks map[Hash[InventoryItemDefinition]]ItemPerksComponent `json:"uninstancedItemPerks"`
 }
 
 // Destiny.Entities.Characters.DestinyCharacterRenderComponent
@@ -33278,7 +33372,6 @@ type ItemComponent struct {
 
 	// The hash identifier for the specific inventory bucket in which the item is located.
 	BucketHash Hash[InventoryBucketDefinition] `json:"bucketHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryBucketDefinition
 
 	// If the item can expire, this is the date at which it will/did expire.
 	ExpirationDate Nullable[Timestamp] `json:"expirationDate,omitempty"`
@@ -33295,11 +33388,10 @@ type ItemComponent struct {
 	// The identifier for the item's definition, which is where most of the useful static information for
 	// the item can be found.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item
 	// has no distinct local qualities aside from stack size.
-	ItemInstanceID Nullable[int64] `json:"itemInstanceId,string,omitempty"`
+	ItemInstanceID Nullable[Int64] `json:"itemInstanceId,omitempty"`
 
 	// If available, a list that describes which item values (rewards) should be shown (true) or hidden
 	// (false).
@@ -33315,7 +33407,6 @@ type ItemComponent struct {
 	// The identifier for the currently-selected metric definition, to be displayed on the emblem
 	// nameplate.
 	MetricHash Nullable[Hash[MetricDefinition]] `json:"metricHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Metrics.DestinyMetricDefinition
 
 	// The objective progress for the currently-selected metric definition, to be displayed on the emblem
 	// nameplate.
@@ -33327,7 +33418,6 @@ type ItemComponent struct {
 	// the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be
 	// pretty or look accurate.
 	OverrideStyleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"overrideStyleItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The quantity of the item in this stack. Note that Instanced items cannot stack. If an instanced
 	// item, this value will always be 1 (as the stack has exactly one item in it)
@@ -33495,7 +33585,6 @@ type ItemInstanceComponent struct {
 	// If populated, this is the hash identifier for the item's breaker type. See
 	// DestinyBreakerTypeDefinition for more details.
 	BreakerTypeHash Nullable[Hash[BreakerTypeDefinition]] `json:"breakerTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition
 
 	// If this is an equippable item, you can check it here. There are permanent as well as transitory
 	// reasons why an item might not be able to be equipped: check cannotEquipReason for details.
@@ -33511,7 +33600,6 @@ type ItemInstanceComponent struct {
 
 	// The current damage type's hash, so you can look up localized info and icons for it.
 	DamageTypeHash Nullable[Hash[DamageTypeDefinition]] `json:"damageTypeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDamageTypeDefinition
 
 	// IF populated, this item supports Energy mechanics (i.e. Armor 2.0), and these are the current
 	// details of its energy type and available capacity to spend energy points.
@@ -33539,8 +33627,7 @@ type ItemInstanceComponent struct {
 	// This is a list of flags that they need in order to equip the item that the character has not met.
 	// Use these to look up the descriptions to show in your UI by looking up the relevant
 	// DestinyUnlockDefinitions for the hashes.
-	UnlockHashesRequiredToEquip Hash[UnlockDefinition] `json:"unlockHashesRequiredToEquip"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyUnlockDefinition
+	UnlockHashesRequiredToEquip []uint32 `json:"unlockHashesRequiredToEquip"`
 }
 
 // Destiny.Entities.Items.DestinyItemInstanceEnergy
@@ -33594,7 +33681,6 @@ type ItemInstanceEnergy struct {
 	// "Any" Energy Type or the matching energy type of this item. This is a reference to the
 	// DestinyEnergyTypeDefinition for the energy type, where you can find extended info about it.
 	EnergyTypeHash Hash[EnergyTypeDefinition] `json:"energyTypeHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition
 
 	// The amount of energy still available for inserting new plugs.
 	EnergyUnused int32 `json:"energyUnused"`
@@ -33779,7 +33865,6 @@ type ItemSocketState struct {
 	// determined using the plug item's definition. The stats and perks can be taken at face value on the
 	// plug item as the stats and perks it will provide to the user/item.
 	PlugHash Nullable[Hash[InventoryItemDefinition]] `json:"plugHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.Entities.Items.DestinyItemSocketsComponent
@@ -33838,8 +33923,7 @@ type ItemStatsComponent struct {
 	// }
 
 	// If the item has stats that it provides (damage, defense, etc...), it will be given here.
-	Stats Hash[StatDefinition] `json:"stats"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyStatDefinition
+	Stats map[Hash[StatDefinition]]Stat `json:"stats"`
 }
 
 // Destiny.Entities.Items.DestinyItemTalentGridComponent
@@ -33914,7 +33998,6 @@ type ItemTalentGridComponent struct {
 	// You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be
 	// crucial for understanding the node values on the item.
 	TalentGridHash Hash[TalentGridDefinition] `json:"talentGridHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyTalentGridDefinition
 }
 
 // Destiny.Entities.Profiles.DestinyProfileComponent
@@ -34024,18 +34107,15 @@ type ProfileComponent struct {
 
 	// If populated, this is a reference to the event card that is currently active.
 	ActiveEventCardHash Nullable[Hash[EventCardDefinition]] `json:"activeEventCardHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinyEventCardDefinition
 
 	// A list of the character IDs, for further querying on your part.
-	CharacterIds []int64 `json:"characterIds"`
+	CharacterIds []Int64 `json:"characterIds"`
 
 	// The 'current' Guardian Rank value, which starts at rank 1.
 	CurrentGuardianRank Hash[GuardianRankDefinition] `json:"currentGuardianRank"`
-	// Mapped to #/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition
 
 	// If populated, this is a reference to the season that is currently active.
 	CurrentSeasonHash Nullable[Hash[SeasonDefinition]] `json:"currentSeasonHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
 
 	// If populated, this is the reward power cap for the current season.
 	CurrentSeasonRewardPowerCap Nullable[int32] `json:"currentSeasonRewardPowerCap,omitempty"`
@@ -34045,12 +34125,10 @@ type ProfileComponent struct {
 
 	// A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these
 	// stay with the profile across all platforms.
-	EventCardHashesOwned Hash[EventCardDefinition] `json:"eventCardHashesOwned"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinyEventCardDefinition
+	EventCardHashesOwned []uint32 `json:"eventCardHashesOwned"`
 
 	// The 'lifetime highest' Guardian Rank value, which starts at rank 1.
 	LifetimeHighestGuardianRank Hash[GuardianRankDefinition] `json:"lifetimeHighestGuardianRank"`
-	// Mapped to #/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition
 
 	// A list of seasons that this profile owns. Unlike versionsOwned, these stay with the profile across
 	// Platforms, and thus will be valid.
@@ -34060,8 +34138,7 @@ type ProfileComponent struct {
 	// Stadia and with an active subscription. So some users (users who have Stadia Pro but choose to play
 	// on some other platform) won't see these as available: it will be whatever seasons are available for
 	// the platform on which they last played.
-	SeasonHashes Hash[SeasonDefinition] `json:"seasonHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition
+	SeasonHashes []uint32 `json:"seasonHashes"`
 
 	// If you need to render the Profile (their platform name, icon, etc...) somewhere, this property
 	// contains that information.
@@ -34250,7 +34327,6 @@ type VendorComponent struct {
 
 	// The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 
 	// An index into the vendor definition's "locations" property array, indicating which location they are
 	// at currently. If -1, then the vendor has no known location (and you may choose not to show them in
@@ -34393,7 +34469,6 @@ type VendorSaleItemComponent struct {
 	// The hash of the item being sold, as a quick shortcut for looking up the
 	// DestinyInventoryItemDefinition of the sale item.
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// If available, a list that describes which item values (rewards) should be shown (true) or hidden
 	// (false).
@@ -34413,7 +34488,6 @@ type VendorSaleItemComponent struct {
 	// the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be
 	// pretty or look accurate.
 	OverrideStyleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"overrideStyleItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// How much of the item you'll be getting.
 	Quantity int32 `json:"quantity"`
@@ -34424,8 +34498,7 @@ type VendorSaleItemComponent struct {
 	// and your application will have to handle that)
 	// Prefer using failureIndexes instead. These are provided for informational purposes, but have largely
 	// been supplanted by failureIndexes.
-	RequiredUnlocks Hash[UnlockDefinition] `json:"requiredUnlocks"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyUnlockDefinition
+	RequiredUnlocks []uint32 `json:"requiredUnlocks"`
 
 	// A flag indicating whether the requesting character can buy the item, and if not the reasons why the
 	// character can't buy it.
@@ -34706,7 +34779,6 @@ type HistoricalStatsDefinition struct {
 
 	// The tier associated with this medal - be it implicitly or explicitly.
 	MedalTierHash Nullable[Hash[MedalTierDefinition]] `json:"medalTierHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyMedalTierDefinition
 
 	// Optional icon for the statistic
 	MergeMethod Nullable[int32] `json:"mergeMethod,omitempty"`
@@ -34888,7 +34960,6 @@ type AggregateActivityStats struct {
 
 	// Hash ID that can be looked up in the DestinyActivityTable.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// Collection of stats for the player in this activity.
 	Values map[string]HistoricalStatsValue `json:"values"`
@@ -35030,12 +35101,11 @@ type HistoricalStatsActivity struct {
 
 	// The unique hash identifier of the DestinyActivityDefinition that was played.
 	DirectorActivityHash Hash[ActivityDefinition] `json:"directorActivityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The unique identifier for this *specific* match that was played.
 	// This value can be used to get additional data about this activity such as who else was playing via
 	// the GetPostGameCarnageReport endpoint.
-	InstanceID int64 `json:"instanceId,string"`
+	InstanceID Int64 `json:"instanceId"`
 
 	// Whether or not the match was a private match.
 	IsPrivate bool `json:"isPrivate"`
@@ -35053,7 +35123,6 @@ type HistoricalStatsActivity struct {
 	// The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do
 	// over, it'd be named activityHash. Too late now.
 	ReferenceID Hash[ActivityDefinition] `json:"referenceId"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 }
 
 // Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod
@@ -35152,7 +35221,7 @@ type HistoricalStatsPerCharacter struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	Deleted bool `json:"deleted"`
 
@@ -35265,7 +35334,7 @@ type HistoricalStatsValue struct {
 
 	// When a stat represents the best, most, longest, fastest or some other personal best, the actual
 	// activity ID where that personal best was established is available on this property.
-	ActivityID Nullable[int64] `json:"activityId,string,omitempty"`
+	ActivityID Nullable[Int64] `json:"activityId,omitempty"`
 
 	// Basic stat value.
 	Basic HistoricalStatsValuePair `json:"basic"`
@@ -35357,7 +35426,6 @@ type HistoricalWeaponStats struct {
 
 	// The hash ID of the item definition that describes the weapon.
 	ReferenceID Hash[InventoryItemDefinition] `json:"referenceId"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Collection of stats for the period.
 	Values map[string]HistoricalStatsValue `json:"values"`
@@ -35441,7 +35509,7 @@ type LeaderboardEntry struct {
 	// }
 
 	// ID of the player's best character for the reported stat.
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// Identity details of the player
 	Player Player `json:"player"`
@@ -35488,10 +35556,10 @@ type LeaderboardResults struct {
 	// Indicate the character ID of the character that is the focal point of the provided leaderboards. May
 	// be null, in which case any character from the focus membership can appear in the provided
 	// leaderboards.
-	FocusCharacterID Nullable[int64] `json:"focusCharacterId,string,omitempty"`
+	FocusCharacterID Nullable[Int64] `json:"focusCharacterId,omitempty"`
 
 	// Indicate the membership ID of the account that is the focal point of the provided leaderboards.
-	FocusMembershipID Nullable[int64] `json:"focusMembershipId,string,omitempty"`
+	FocusMembershipID Nullable[Int64] `json:"focusMembershipId,omitempty"`
 }
 
 // Destiny.HistoricalStats.DestinyPlayer
@@ -35590,7 +35658,6 @@ type Player struct {
 	ClanTag string `json:"clanTag"`
 
 	ClassHash Hash[ClassDefinition] `json:"classHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyClassDefinition
 
 	// Details about the player as they are known in game (platform display name, Destiny emblem)
 	DestinyUserInfo UserInfoCard `json:"destinyUserInfo"`
@@ -35599,16 +35666,13 @@ type Player struct {
 	// when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain
 	// it).
 	EmblemHash Hash[InventoryItemDefinition] `json:"emblemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	GenderHash Hash[GenderDefinition] `json:"genderHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyGenderDefinition
 
 	// Light Level of the character if available. Zero if it is not available.
 	LightLevel int32 `json:"lightLevel"`
 
 	RaceHash Hash[RaceDefinition] `json:"raceHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyRaceDefinition
 }
 
 // Destiny.HistoricalStats.DestinyPostGameCarnageReportData
@@ -35736,7 +35800,7 @@ type PostGameCarnageReportEntry struct {
 	// }
 
 	// ID of the player's character used in the activity.
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// Extended data extracted from the activity blob.
 	Extended PostGameCarnageReportExtendedData `json:"extended"`
@@ -35992,7 +36056,6 @@ type Milestone struct {
 	// The unique identifier for the Milestone. Use it to look up the DestinyMilestoneDefinition, so you
 	// can combine the other data in this contract with static definition data.
 	MilestoneHash Hash[MilestoneDefinition] `json:"milestoneHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Milestones.DestinyMilestoneDefinition
 
 	// Used for ordering milestones in a display to match how we order them in BNet. May pull from static
 	// data, or possibly in the future from dynamic information.
@@ -36027,8 +36090,7 @@ type Milestone struct {
 	// allowing you to show their current inventory as rewards or related items to the Milestone or its
 	// activities.
 	// Before we even use it, it's already deprecated! How much of a bummer is that? We need more data.
-	VendorHashes Hash[VendorDefinition] `json:"vendorHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
+	VendorHashes []uint32 `json:"vendorHashes"`
 
 	// Replaces vendorHashes, which I knew was going to be trouble the day it walked in the door. This will
 	// return not only what Vendors are active and relevant to the activity (in an implied order that you
@@ -36522,14 +36584,12 @@ type MilestoneActivity struct {
 	// are common across the variants: things like the name of the activity, it's location, etc... Use this
 	// hash to look up the DestinyActivityDefinition of this activity for rendering data.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The hash identifier of the most specific Activity Mode under which this activity is played. This is
 	// useful for situations where the activity in question is - for instance - a PVP map, but it's not
 	// clear what mode the PVP map is being played under. If it's a playlist, this will be less specific:
 	// but hopefully useful in some way.
 	ActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"activityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// The enumeration equivalent of the most specific Activity Mode under which this activity is played.
 	ActivityModeType Nullable[int32] `json:"activityModeType,omitempty"`
@@ -36539,9 +36599,7 @@ type MilestoneActivity struct {
 	// to get at the modifier data. Note that, in the DestiyActivityDefinition, you will see many more
 	// modifiers than this being referred to: those are all *possible* modifiers for the activity, not the
 	// active ones. Use only the active ones to match what's really live.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// If you want more than just name/location/etc... you're going to have to dig into and show the
 	// variants of the conceptual activity. These will differ in seemingly arbitrary ways, like difficulty
@@ -37086,14 +37144,12 @@ type MilestoneActivityVariant struct {
 	// The hash for the specific variant of the activity related to this milestone. You can pull more
 	// detailed static info from the DestinyActivityDefinition, such as difficulty level.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The hash identifier of the most specific Activity Mode under which this activity is played. This is
 	// useful for situations where the activity in question is - for instance - a PVP map, but it's not
 	// clear what mode the PVP map is being played under. If it's a playlist, this will be less specific:
 	// but hopefully useful in some way.
 	ActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"activityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// The enumeration equivalent of the most specific Activity Mode under which this activity is played.
 	ActivityModeType Nullable[int32] `json:"activityModeType,omitempty"`
@@ -37161,7 +37217,6 @@ type MilestoneChallengeActivity struct {
 	// }
 
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The set of activity options for this activity, keyed by an identifier that's unique for this
 	// activity (not guaranteed to be unique between or across all activities, though should be unique for
@@ -37190,9 +37245,7 @@ type MilestoneChallengeActivity struct {
 	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// If the Activity has discrete "phases" that we can track, that info will be here. Otherwise, this
 	// value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending
@@ -37275,8 +37328,7 @@ type MilestoneContentItemCategory struct {
 	//   "type": "object"
 	// }
 
-	ItemHashes Hash[InventoryItemDefinition] `json:"itemHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
+	ItemHashes []uint32 `json:"itemHashes"`
 
 	Title string `json:"title"`
 }
@@ -37346,7 +37398,6 @@ type MilestoneQuest struct {
 	// will be referred to in the Quest item's DestinyInventoryItemDefinition.setData property, and
 	// themselves are Items with their own renderable data.
 	QuestItemHash Hash[InventoryItemDefinition] `json:"questItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The current status of the quest for the character making the request.
 	Status QuestStatus `json:"status"`
@@ -37457,12 +37508,10 @@ type MilestoneVendor struct {
 	// complex representation instead and I deprecate this too. I'm going to go with 5 months. Calling it
 	// now, 2017-09-14 at 9:46pm PST.
 	PreviewItemHash Nullable[Hash[InventoryItemDefinition]] `json:"previewItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The hash identifier of the Vendor related to this Milestone. You can show useful things from this,
 	// such as thier Faction icon or whatever you might care about.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Milestones.DestinyPublicMilestone
@@ -37544,7 +37593,6 @@ type PublicMilestone struct {
 	// The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static
 	// data about the Milestone.
 	MilestoneHash Hash[MilestoneDefinition] `json:"milestoneHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Milestones.DestinyMilestoneDefinition
 
 	// Used for ordering milestones in a display to match how we order them in BNet. May pull from static
 	// data, or possibly in the future from dynamic information.
@@ -38049,23 +38097,19 @@ type PublicMilestoneActivity struct {
 	// The hash identifier of the activity that's been chosen to be considered the canonical "conceptual"
 	// activity definition. This may have many variants, defined herein.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The hash identifier of the most specific Activity Mode under which this activity is played. This is
 	// useful for situations where the activity in question is - for instance - a PVP map, but it's not
 	// clear what mode the PVP map is being played under. If it's a playlist, this will be less specific:
 	// but hopefully useful in some way.
 	ActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"activityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// The enumeration equivalent of the most specific Activity Mode under which this activity is played.
 	ActivityModeType Nullable[int32] `json:"activityModeType,omitempty"`
 
 	// The activity may have 0-to-many modifiers: if it does, this will contain the hashes to the
 	// DestinyActivityModifierDefinition that defines the modifier being applied.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// Every relevant variation of this conceptual activity, including the conceptual activity itself, have
 	// variants defined here.
@@ -38537,14 +38581,12 @@ type PublicMilestoneActivityVariant struct {
 	// whether or not it is a guided game variant of the activity, but theoretically it could be
 	// distinguished in any arbitrary way.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The hash identifier of the most specific Activity Mode under which this activity is played. This is
 	// useful for situations where the activity in question is - for instance - a PVP map, but it's not
 	// clear what mode the PVP map is being played under. If it's a playlist, this will be less specific:
 	// but hopefully useful in some way.
 	ActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"activityModeHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityModeDefinition
 
 	// The enumeration equivalent of the most specific Activity Mode under which this activity is played.
 	ActivityModeType Nullable[int32] `json:"activityModeType,omitempty"`
@@ -38582,12 +38624,10 @@ type PublicMilestoneChallenge struct {
 	// IF the Objective is related to a specific Activity, this will be that activity's hash. Use it to
 	// look up the DestinyActivityDefinition for additional data to show.
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The objective for the Challenge, which should have human-readable data about what needs to be done
 	// to accomplish the objective. Use this hash to look up the DestinyObjectiveDefinition.
 	ObjectiveHash Hash[ObjectiveDefinition] `json:"objectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 }
 
 // Destiny.Milestones.DestinyPublicMilestoneChallengeActivity
@@ -38649,7 +38689,6 @@ type PublicMilestoneChallengeActivity struct {
 	// }
 
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// The set of activity options for this activity, keyed by an identifier that's unique for this
 	// activity (not guaranteed to be unique between or across all activities, though should be unique for
@@ -38674,9 +38713,7 @@ type PublicMilestoneChallengeActivity struct {
 	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
-	ModifierHashes Hash[ActivityModifierDefinition] `json:"modifierHashes"`
-	// Mapped to
-	// #/components/schemas/Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
+	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// The ordered list of phases for this activity, if any. Note that we have no human readable info for
 	// phases, nor any entities to relate them to: relating these hashes to something human readable is up
@@ -38730,7 +38767,6 @@ type PublicMilestoneQuest struct {
 	// will be referred to in the Quest item's DestinyInventoryItemDefinition.setData property, and
 	// themselves are Items with their own renderable data.
 	QuestItemHash Hash[MilestoneDefinition] `json:"questItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Milestones.DestinyMilestoneDefinition
 }
 
 // Destiny.Milestones.DestinyPublicMilestoneVendor
@@ -38763,12 +38799,10 @@ type PublicMilestoneVendor struct {
 	// complex representation instead and I deprecate this too. I'm going to go with 5 months. Calling it
 	// now, 2017-09-14 at 9:46pm PST.
 	PreviewItemHash Nullable[Hash[InventoryItemDefinition]] `json:"previewItemHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// The hash identifier of the Vendor related to this Milestone. You can show useful things from this,
 	// such as thier Faction icon or whatever you might care about.
 	VendorHash Hash[VendorDefinition] `json:"vendorHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyVendorDefinition
 }
 
 // Destiny.Misc.DestinyColor
@@ -38853,7 +38887,6 @@ type PerkReference struct {
 	// whether you actually found a name/description in the perk's definition before you show it to the
 	// user.
 	PerkHash Hash[SandboxPerkDefinition] `json:"perkHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinySandboxPerkDefinition
 
 	// Some perks provide benefits, but aren't visible in the UI. This value will let you know if this is
 	// perk should be shown in your UI.
@@ -39014,7 +39047,6 @@ type FactionProgression struct {
 	// The hash identifier of the Faction related to this progression. Use it to look up the
 	// DestinyFactionDefinition for more rendering info.
 	FactionHash Hash[FactionDefinition] `json:"factionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyFactionDefinition
 
 	// The index of the Faction vendor that is currently available. Will be set to -1 if no vendors are
 	// available.
@@ -39037,7 +39069,6 @@ type FactionProgression struct {
 	// The hash identifier of the Progression in question. Use it to look up the
 	// DestinyProgressionDefinition in static data.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyProgressionDefinition
 
 	// Information about historical rewards for this progression, if there is any data for it.
 	RewardItemStates []BitmaskSet[ProgressionRewardItemState] `json:"rewardItemStates"`
@@ -39120,7 +39151,6 @@ type ObjectiveProgress struct {
 	// being referred to. Use to look up the DestinyActivityDefinition in static data. This will give
 	// localized data about *what* you should be playing for the objective to be achieved.
 	ActivityHash Nullable[Hash[ActivityDefinition]] `json:"activityHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyActivityDefinition
 
 	// Whether or not the Objective is completed.
 	Complete bool `json:"complete"`
@@ -39136,12 +39166,10 @@ type ObjectiveProgress struct {
 	// Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This
 	// will give localized data about *where* in the universe the objective should be achieved.
 	DestinationHash Nullable[Hash[DestinationDefinition]] `json:"destinationHash,omitempty"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyDestinationDefinition
 
 	// The unique identifier of the Objective being referred to. Use to look up the
 	// DestinyObjectiveDefinition in static data.
 	ObjectiveHash Hash[ObjectiveDefinition] `json:"objectiveHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyObjectiveDefinition
 
 	// If progress has been made, and the progress can be measured numerically, this will be the value of
 	// that progress. You can compare it to the DestinyObjectiveDefinition.completionValue property for
@@ -39226,7 +39254,7 @@ type QuestStatus struct {
 
 	// The current Quest Step will be an instanced item in the player's inventory. If you care about that,
 	// this is the instance ID of that item.
-	ItemInstanceID int64 `json:"itemInstanceId,string"`
+	ItemInstanceID Int64 `json:"itemInstanceId"`
 
 	// The hash identifier for the Quest Item. (Note: Quests are defined as Items, and thus you would use
 	// this to look up the quest's DestinyInventoryItemDefinition). For information on all steps in the
@@ -39234,7 +39262,6 @@ type QuestStatus struct {
 	// (which are *also* items). You can use the Item Definition to display human readable data about the
 	// overall quest.
 	QuestHash Hash[InventoryItemDefinition] `json:"questHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Whether or not you have redeemed rewards for this quest.
 	Redeemed bool `json:"redeemed"`
@@ -39245,7 +39272,6 @@ type QuestStatus struct {
 	// The hash identifier of the current Quest Step, which is also a DestinyInventoryItemDefinition. You
 	// can use this to get human readable data about the current step and what to do in that step.
 	StepHash Hash[InventoryItemDefinition] `json:"stepHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// A step can have multiple objectives. This will give you the progress for each objective in the
 	// current step, in the order in which they are rendered in-game.
@@ -39304,13 +39330,12 @@ type ReportOffensePgcrRequest struct {
 
 	// Within the PGCR provided when calling the Reporting endpoint, this should be the character ID of the
 	// user that you thought was violating terms of use. They must exist in the PGCR provided.
-	OffendingCharacterID int64 `json:"offendingCharacterId,string"`
+	OffendingCharacterID Int64 `json:"offendingCharacterId"`
 
 	// So you've decided to report someone instead of cursing them and their descendants. Well, okay then.
 	// This is the category or categorie(s) of infractions for which you are reporting the user. These are
 	// hash identifiers that map to DestinyReportReasonCategoryDefinition entries.
-	ReasonCategoryHashes Hash[ReportReasonCategoryDefinition] `json:"reasonCategoryHashes"`
-	// Mapped to #/components/schemas/Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition
+	ReasonCategoryHashes []uint32 `json:"reasonCategoryHashes"`
 
 	// If applicable, provide a more specific reason(s) within the general category of problems provided by
 	// the reasonHash. This is also an identifier for a reason. All reasonHashes provided must be children
@@ -39357,7 +39382,7 @@ type CharacterActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 }
@@ -39403,10 +39428,10 @@ type InsertPlugsActionRequest struct {
 	// Action token provided by the AwaGetActionToken API call.
 	ActionToken string `json:"actionToken"`
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item having a plug inserted. Only instanced items can have sockets.
-	ItemInstanceID int64 `json:"itemInstanceId,string"`
+	ItemInstanceID Int64 `json:"itemInstanceId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 
@@ -39448,10 +39473,10 @@ type InsertPlugsFreeActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item for this action request.
-	ItemID int64 `json:"itemId,string"`
+	ItemID Int64 `json:"itemId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 
@@ -39532,10 +39557,10 @@ type ItemActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item for this action request.
-	ItemID int64 `json:"itemId,string"`
+	ItemID Int64 `json:"itemId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 }
@@ -39567,9 +39592,9 @@ type ItemSetActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
-	ItemIds []int64 `json:"itemIds"`
+	ItemIds []Int64 `json:"itemIds"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 }
@@ -39602,10 +39627,10 @@ type ItemStateRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item for this action request.
-	ItemID int64 `json:"itemId,string"`
+	ItemID Int64 `json:"itemId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 
@@ -39637,7 +39662,7 @@ type LoadoutActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The index of the loadout for this action request.
 	LoadoutIndex int32 `json:"loadoutIndex"`
@@ -39685,7 +39710,7 @@ type LoadoutUpdateActionRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	ColorHash Nullable[uint32] `json:"colorHash,omitempty"`
 
@@ -39735,13 +39760,12 @@ type PostmasterTransferRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item for this action request.
-	ItemID int64 `json:"itemId,string"`
+	ItemID Int64 `json:"itemId"`
 
 	ItemReferenceHash Hash[InventoryItemDefinition] `json:"itemReferenceHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 
@@ -39801,13 +39825,12 @@ type ItemTransferRequest struct {
 	//   "type": "object"
 	// }
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	// The instance ID of the item for this action request.
-	ItemID int64 `json:"itemId,string"`
+	ItemID Int64 `json:"itemId"`
 
 	ItemReferenceHash Hash[InventoryItemDefinition] `json:"itemReferenceHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 
@@ -40280,7 +40303,7 @@ type ItemResponse struct {
 	// }
 
 	// If the item is on a character, this will return the ID of the character that is holding the item.
-	CharacterID Nullable[int64] `json:"characterId,string,omitempty"`
+	CharacterID Nullable[Int64] `json:"characterId,omitempty"`
 
 	// Basic instance data for the item.
 	// COMPONENT TYPE: ItemInstances
@@ -40730,26 +40753,26 @@ type ProfileResponse struct {
 	// Character activity data - the activities available to this character and its status, keyed by the
 	// Character's Id.
 	// COMPONENT TYPE: CharacterActivities
-	CharacterActivities ComponentResponse[map[int64]CharacterActivitiesComponent] `json:"characterActivities"`
+	CharacterActivities ComponentResponse[map[Int64]CharacterActivitiesComponent] `json:"characterActivities"`
 
 	// COMPONENT TYPE: Collectibles
-	CharacterCollectibles ComponentResponse[map[int64]CollectiblesComponent] `json:"characterCollectibles"`
+	CharacterCollectibles ComponentResponse[map[Int64]CollectiblesComponent] `json:"characterCollectibles"`
 
 	// COMPONENT TYPE: Craftables
-	CharacterCraftables ComponentResponse[map[int64]CraftablesComponent] `json:"characterCraftables"`
+	CharacterCraftables ComponentResponse[map[Int64]CraftablesComponent] `json:"characterCraftables"`
 
 	// A "lookup" convenience component that can be used to quickly check if the character has access to
 	// items that can be used for purchasing.
 	// COMPONENT TYPE: CurrencyLookups
-	CharacterCurrencyLookups ComponentResponse[map[int64]CurrenciesComponent] `json:"characterCurrencyLookups"`
+	CharacterCurrencyLookups ComponentResponse[map[Int64]CurrenciesComponent] `json:"characterCurrencyLookups"`
 
 	// The character's equipped items, keyed by the Character's Id.
 	// COMPONENT TYPE: CharacterEquipment
-	CharacterEquipment ComponentResponse[map[int64]InventoryComponent] `json:"characterEquipment"`
+	CharacterEquipment ComponentResponse[map[Int64]InventoryComponent] `json:"characterEquipment"`
 
 	// The character-level non-equipped inventory items, keyed by the Character's Id.
 	// COMPONENT TYPE: CharacterInventories
-	CharacterInventories ComponentResponse[map[int64]InventoryComponent] `json:"characterInventories"`
+	CharacterInventories ComponentResponse[map[Int64]InventoryComponent] `json:"characterInventories"`
 
 	// Items available from Kiosks that are available to a specific character as opposed to the account as
 	// a whole. It must be combined with data from the profileKiosks property to get a full picture of the
@@ -40758,36 +40781,36 @@ type ProfileResponse struct {
 	// level. Usually, kiosk items will be earned for the entire Profile (all characters) at once. To find
 	// those, look in the profileKiosks property.
 	// COMPONENT TYPE: Kiosks
-	CharacterKiosks ComponentResponse[map[int64]KiosksComponent] `json:"characterKiosks"`
+	CharacterKiosks ComponentResponse[map[Int64]KiosksComponent] `json:"characterKiosks"`
 
 	// The character loadouts, keyed by the Character's Id.
 	// COMPONENT TYPE: CharacterLoadouts
-	CharacterLoadouts ComponentResponse[map[int64]LoadoutsComponent] `json:"characterLoadouts"`
+	CharacterLoadouts ComponentResponse[map[Int64]LoadoutsComponent] `json:"characterLoadouts"`
 
 	// When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the
 	// set of plugs and their states, per character, that are character-scoped.
 	// This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested
 	// items.
 	// COMPONENT TYPE: ItemSockets
-	CharacterPlugSets ComponentResponse[map[int64]PlugSetsComponent] `json:"characterPlugSets"`
+	CharacterPlugSets ComponentResponse[map[Int64]PlugSetsComponent] `json:"characterPlugSets"`
 
 	// COMPONENT TYPE: PresentationNodes
-	CharacterPresentationNodes ComponentResponse[map[int64]PresentationNodesComponent] `json:"characterPresentationNodes"`
+	CharacterPresentationNodes ComponentResponse[map[Int64]PresentationNodesComponent] `json:"characterPresentationNodes"`
 
 	// Character-level progression data, keyed by the Character's Id.
 	// COMPONENT TYPE: CharacterProgressions
-	CharacterProgressions ComponentResponse[map[int64]CharacterProgressionComponent] `json:"characterProgressions"`
+	CharacterProgressions ComponentResponse[map[Int64]CharacterProgressionComponent] `json:"characterProgressions"`
 
 	// COMPONENT TYPE: Records
-	CharacterRecords ComponentResponse[map[int64]CharacterRecordsComponent] `json:"characterRecords"`
+	CharacterRecords ComponentResponse[map[Int64]CharacterRecordsComponent] `json:"characterRecords"`
 
 	// Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the
 	// Character's Id.
 	// COMPONENT TYPE: CharacterRenderData
-	CharacterRenderData ComponentResponse[map[int64]CharacterRenderComponent] `json:"characterRenderData"`
+	CharacterRenderData ComponentResponse[map[Int64]CharacterRenderComponent] `json:"characterRenderData"`
 
 	// COMPONENT TYPE: StringVariables
-	CharacterStringVariables ComponentResponse[map[int64]StringVariablesComponent] `json:"characterStringVariables"`
+	CharacterStringVariables ComponentResponse[map[Int64]StringVariablesComponent] `json:"characterStringVariables"`
 
 	// Do you ever get the feeling that a system was designed *too* flexibly? That it can be used in so
 	// many different ways that you end up being unable to provide an easy to use abstraction for the mess
@@ -40810,11 +40833,11 @@ type ProfileResponse struct {
 	// characters who have the bounty in their inventory.
 	// I'm not crying, you're crying Okay we're both crying but it's going to be okay I promise Actually I
 	// shouldn't promise that, I don't know if it's going to be okay
-	CharacterUninstancedItemComponents map[int64]BaseItemComponentSet[uint32] `json:"characterUninstancedItemComponents"`
+	CharacterUninstancedItemComponents map[Int64]BaseItemComponentSet[uint32] `json:"characterUninstancedItemComponents"`
 
 	// Basic information about each character, keyed by the CharacterId.
 	// COMPONENT TYPE: Characters
-	Characters ComponentResponse[map[int64]CharacterComponent] `json:"characters"`
+	Characters ComponentResponse[map[Int64]CharacterComponent] `json:"characters"`
 
 	// Information about instanced items across all returned characters, keyed by the item's instance ID.
 	// COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
@@ -41090,7 +41113,7 @@ type ProfileUserInfoCard struct {
 	IsPublic bool `json:"isPublic"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -41610,7 +41633,6 @@ type ItemPlug struct {
 
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 
 	// Sometimes, Plugs may have objectives: these are often used for flavor and display purposes, but they
 	// can be used for any arbitrary purpose (both fortunately and unfortunately). Recently (with Season 2)
@@ -41680,7 +41702,6 @@ type ItemPlugBase struct {
 
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
-	// Mapped to #/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition
 }
 
 // Destiny.SpecialItemType
@@ -41856,7 +41877,7 @@ type VendorReceipt struct {
 	LicenseUnlockHash uint32 `json:"licenseUnlockHash"`
 
 	// The ID of the character who made the purchase.
-	PurchasedByCharacterID int64 `json:"purchasedByCharacterId,string"`
+	PurchasedByCharacterID Int64 `json:"purchasedByCharacterId"`
 
 	// Whether you can get a refund, and what happens in order for the refund to be received. See the
 	// DestinyVendorItemRefundPolicy enum for details.
@@ -41866,7 +41887,7 @@ type VendorReceipt struct {
 	SequenceNumber int32 `json:"sequenceNumber"`
 
 	// The seconds since epoch at which this receipt is rendered invalid.
-	TimeToExpiration int64 `json:"timeToExpiration,string"`
+	TimeToExpiration Int64 `json:"timeToExpiration"`
 }
 
 // Entities.EntityActionResult
@@ -41889,7 +41910,7 @@ type EntityActionResult struct {
 	//   "type": "object"
 	// }
 
-	EntityID int64 `json:"entityId,string"`
+	EntityID Int64 `json:"entityId"`
 
 	Result PlatformErrorCodes `json:"result"`
 }
@@ -42794,7 +42815,7 @@ type FireteamMember struct {
 
 	BungieNetUserInfo UserInfoCard `json:"bungieNetUserInfo"`
 
-	CharacterID int64 `json:"characterId,string"`
+	CharacterID Int64 `json:"characterId"`
 
 	DateJoined Timestamp `json:"dateJoined"`
 
@@ -42996,9 +43017,9 @@ type FireteamSummary struct {
 
 	DatePlayerModified Timestamp `json:"datePlayerModified"`
 
-	FireteamID int64 `json:"fireteamId,string"`
+	FireteamID Int64 `json:"fireteamId"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	IsImmediate bool `json:"isImmediate"`
 
@@ -43009,12 +43030,10 @@ type FireteamSummary struct {
 	Locale string `json:"locale"`
 
 	OwnerCurrentGuardianRankSnapshot Hash[GuardianRankDefinition] `json:"ownerCurrentGuardianRankSnapshot"`
-	// Mapped to #/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition
 
 	OwnerHighestLifetimeGuardianRankSnapshot Hash[GuardianRankDefinition] `json:"ownerHighestLifetimeGuardianRankSnapshot"`
-	// Mapped to #/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition
 
-	OwnerMembershipID int64 `json:"ownerMembershipId,string"`
+	OwnerMembershipID Int64 `json:"ownerMembershipId"`
 
 	OwnerTotalCommendationScoreSnapshot int32 `json:"ownerTotalCommendationScoreSnapshot"`
 
@@ -43142,7 +43161,7 @@ type FireteamUserInfoCard struct {
 	IsPublic bool `json:"isPublic"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -43254,11 +43273,11 @@ type ForumRecruitmentDetail struct {
 
 	Approved bool `json:"approved"`
 
-	ConversationID Nullable[int64] `json:"conversationId,string,omitempty"`
+	ConversationID Nullable[Int64] `json:"conversationId,omitempty"`
 
 	Intensity ForumRecruitmentIntensityLabel `json:"intensity"`
 
-	KickedPlayerIds []int64 `json:"kickedPlayerIds"`
+	KickedPlayerIds []Int64 `json:"kickedPlayerIds"`
 
 	MicrophoneRequired bool `json:"microphoneRequired"`
 
@@ -43268,7 +43287,7 @@ type ForumRecruitmentDetail struct {
 
 	Tone ForumRecruitmentToneLabel `json:"tone"`
 
-	TopicID int64 `json:"topicId,string"`
+	TopicID Int64 `json:"topicId"`
 }
 
 // Forum.ForumRecruitmentIntensityLabel
@@ -43353,7 +43372,7 @@ type PollResponse struct {
 
 	Results []PollResult `json:"results"`
 
-	TopicID int64 `json:"topicId,string"`
+	TopicID Int64 `json:"topicId"`
 
 	TotalVotes int32 `json:"totalVotes"`
 }
@@ -43469,9 +43488,9 @@ type PostResponse struct {
 
 	LastReplyTimestamp Timestamp `json:"lastReplyTimestamp"`
 
-	LatestReplyAuthorID int64 `json:"latestReplyAuthorId,string"`
+	LatestReplyAuthorID Int64 `json:"latestReplyAuthorId"`
 
-	LatestReplyPostID int64 `json:"latestReplyPostId,string"`
+	LatestReplyPostID Int64 `json:"latestReplyPostId"`
 
 	Locale string `json:"locale"`
 
@@ -43820,7 +43839,7 @@ type GetGroupsForMemberResponse struct {
 	//	The key is the Group ID for the group being checked, and the value is true if the users'
 	//
 	// memberships for that group are all inactive.
-	AreAllMembershipsInactive map[int64]bool `json:"areAllMembershipsInactive"`
+	AreAllMembershipsInactive map[Int64]bool `json:"areAllMembershipsInactive"`
 
 	HasMore bool `json:"hasMore"`
 
@@ -43962,7 +43981,7 @@ type GroupBan struct {
 
 	DestinyUserInfo GroupUserInfoCard `json:"destinyUserInfo"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	LastModifiedBy UserInfoCard `json:"lastModifiedBy"`
 }
@@ -44337,13 +44356,13 @@ type GroupMember struct {
 
 	DestinyUserInfo GroupUserInfoCard `json:"destinyUserInfo"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	IsOnline bool `json:"isOnline"`
 
 	JoinDate Timestamp `json:"joinDate"`
 
-	LastOnlineStatusChange int64 `json:"lastOnlineStatusChange,string"`
+	LastOnlineStatusChange Int64 `json:"lastOnlineStatusChange"`
 
 	MemberType RuntimeGroupMemberType `json:"memberType"`
 }
@@ -44400,7 +44419,7 @@ type GroupMemberApplication struct {
 
 	DestinyUserInfo GroupUserInfoCard `json:"destinyUserInfo"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	RequestMessage string `json:"requestMessage"`
 
@@ -44410,7 +44429,7 @@ type GroupMemberApplication struct {
 
 	ResolveState GroupApplicationResolveState `json:"resolveState"`
 
-	ResolvedByMembershipID Nullable[int64] `json:"resolvedByMembershipId,string,omitempty"`
+	ResolvedByMembershipID Nullable[Int64] `json:"resolvedByMembershipId,omitempty"`
 }
 
 // GroupsV2.GroupMemberCountFilter
@@ -44585,9 +44604,9 @@ type GroupOptionalConversation struct {
 
 	ChatSecurity ChatSecuritySetting `json:"chatSecurity"`
 
-	ConversationID int64 `json:"conversationId,string"`
+	ConversationID Int64 `json:"conversationId"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 }
 
 // GroupsV2.GroupOptionalConversationAddRequest
@@ -44818,7 +44837,7 @@ type GroupPotentialMember struct {
 
 	DestinyUserInfo GroupUserInfoCard `json:"destinyUserInfo"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	JoinDate Timestamp `json:"joinDate"`
 
@@ -45088,12 +45107,12 @@ type GroupResponse struct {
 
 	AllianceStatus GroupAllianceStatus `json:"allianceStatus"`
 
-	AlliedIds []int64 `json:"alliedIds"`
+	AlliedIds []Int64 `json:"alliedIds"`
 
 	// This property will be populated if the authenticated user is a member of the group. Note that
 	// because of account linking, a user can sometimes be part of a clan more than once. As such, this
 	// returns the highest member type available.
-	CurrentUserMemberMap map[int32]GroupMember `json:"currentUserMemberMap"`
+	CurrentUserMemberMap map[BungieMembershipType]GroupMember `json:"currentUserMemberMap"`
 
 	// A convenience property that indicates if every membership you (the current user) have that is a part
 	// of this group are part of an account that is considered inactive - for example, overridden accounts
@@ -45103,7 +45122,7 @@ type GroupResponse struct {
 	// This property will be populated if the authenticated user is an applicant or has an outstanding
 	// invitation to join. Note that because of account linking, a user can sometimes be part of a clan
 	// more than once.
-	CurrentUserPotentialMemberMap map[int32]GroupPotentialMember `json:"currentUserPotentialMemberMap"`
+	CurrentUserPotentialMemberMap map[BungieMembershipType]GroupPotentialMember `json:"currentUserPotentialMemberMap"`
 
 	Detail GroupV2 `json:"detail"`
 
@@ -45208,7 +45227,7 @@ type GroupUserBase struct {
 
 	DestinyUserInfo GroupUserInfoCard `json:"destinyUserInfo"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	JoinDate Timestamp `json:"joinDate"`
 }
@@ -45332,7 +45351,7 @@ type GroupUserInfoCard struct {
 	IsPublic bool `json:"isPublic"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -45486,7 +45505,7 @@ type GroupV2 struct {
 
 	ClanInfo GroupV2ClanInfoAndInvestment `json:"clanInfo"`
 
-	ConversationID int64 `json:"conversationId,string"`
+	ConversationID Int64 `json:"conversationId"`
 
 	CreationDate Timestamp `json:"creationDate"`
 
@@ -45496,7 +45515,7 @@ type GroupV2 struct {
 
 	Features GroupFeatures `json:"features"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	GroupType GroupType `json:"groupType"`
 
@@ -45512,7 +45531,7 @@ type GroupV2 struct {
 
 	MemberCount int32 `json:"memberCount"`
 
-	MembershipIdCreated int64 `json:"membershipIdCreated,string"`
+	MembershipIdCreated Int64 `json:"membershipIdCreated"`
 
 	MembershipOption MembershipOption `json:"membershipOption"`
 
@@ -45605,7 +45624,7 @@ type GroupV2Card struct {
 
 	CreationDate Timestamp `json:"creationDate"`
 
-	GroupID int64 `json:"groupId,string"`
+	GroupID Int64 `json:"groupId"`
 
 	GroupType GroupType `json:"groupType"`
 
@@ -45973,7 +45992,7 @@ type BungieFriend struct {
 
 	LastSeenAsBungieMembershipType BungieMembershipType `json:"lastSeenAsBungieMembershipType"`
 
-	LastSeenAsMembershipID int64 `json:"lastSeenAsMembershipId,string"`
+	LastSeenAsMembershipID Int64 `json:"lastSeenAsMembershipId"`
 
 	OnlineStatus PresenceStatus `json:"onlineStatus"`
 
@@ -46136,9 +46155,9 @@ type PlatformFriend struct {
 
 	BungieGlobalDisplayNameCode Nullable[int16] `json:"bungieGlobalDisplayNameCode,omitempty"`
 
-	BungieNetMembershipID Nullable[int64] `json:"bungieNetMembershipId,string,omitempty"`
+	BungieNetMembershipID Nullable[Int64] `json:"bungieNetMembershipId,omitempty"`
 
-	DestinyMembershipID Nullable[int64] `json:"destinyMembershipId,string,omitempty"`
+	DestinyMembershipID Nullable[Int64] `json:"destinyMembershipId,omitempty"`
 
 	DestinyMembershipType Nullable[int32] `json:"destinyMembershipType,omitempty"`
 
@@ -46312,7 +46331,7 @@ type PartnerOfferClaimRequest struct {
 	//   "type": "object"
 	// }
 
-	BungieNetMembershipID int64 `json:"BungieNetMembershipId,string"`
+	BungieNetMembershipID Int64 `json:"BungieNetMembershipId"`
 
 	PartnerOfferID string `json:"PartnerOfferId"`
 
@@ -46422,7 +46441,7 @@ type PartnerOfferHistoryResponse struct {
 
 	LocalizedName string `json:"LocalizedName"`
 
-	MembershipID Nullable[int64] `json:"MembershipId,string,omitempty"`
+	MembershipID Nullable[Int64] `json:"MembershipId,omitempty"`
 
 	MembershipType Nullable[int32] `json:"MembershipType,omitempty"`
 
@@ -46937,13 +46956,13 @@ type TrendingEntryCommunityCreation struct {
 
 	Author string `json:"author"`
 
-	AuthorMembershipID int64 `json:"authorMembershipId,string"`
+	AuthorMembershipID Int64 `json:"authorMembershipId"`
 
 	Body string `json:"body"`
 
 	Media string `json:"media"`
 
-	PostID int64 `json:"postId,string"`
+	PostID Int64 `json:"postId"`
 
 	Title string `json:"title"`
 
@@ -47193,7 +47212,7 @@ type CrossSaveUserMembership struct {
 	IsPublic bool `json:"isPublic"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -47408,7 +47427,7 @@ type EmailSubscriptionDefinition struct {
 	Name string `json:"name"`
 
 	// The bitflag value for this subscription. Should be a unique power of two value.
-	Value int64 `json:"value,string"`
+	Value Int64 `json:"value"`
 }
 
 // User.EmailViewDefinition
@@ -47677,17 +47696,17 @@ type GeneralUser struct {
 
 	IsDeleted bool `json:"isDeleted"`
 
-	LastBanReportID Nullable[int64] `json:"lastBanReportId,string,omitempty"`
+	LastBanReportID Nullable[Int64] `json:"lastBanReportId,omitempty"`
 
 	LastUpdate Nullable[Timestamp] `json:"lastUpdate,omitempty"`
 
-	LegacyPortalUID Nullable[int64] `json:"legacyPortalUID,string,omitempty"`
+	LegacyPortalUID Nullable[Int64] `json:"legacyPortalUID,omitempty"`
 
 	Locale string `json:"locale"`
 
 	LocaleInheritDefault bool `json:"localeInheritDefault"`
 
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	NormalizedName string `json:"normalizedName"`
 
@@ -47717,7 +47736,7 @@ type GeneralUser struct {
 
 	SteamDisplayName string `json:"steamDisplayName"`
 
-	SuccessMessageFlags int64 `json:"successMessageFlags,string"`
+	SuccessMessageFlags Int64 `json:"successMessageFlags"`
 
 	TwitchDisplayName string `json:"twitchDisplayName"`
 
@@ -47763,11 +47782,11 @@ type HardLinkedUserMembership struct {
 	//   "type": "object"
 	// }
 
-	CrossSaveOverriddenMembershipID Nullable[int64] `json:"CrossSaveOverriddenMembershipId,string,omitempty"`
+	CrossSaveOverriddenMembershipID Nullable[Int64] `json:"CrossSaveOverriddenMembershipId,omitempty"`
 
 	CrossSaveOverriddenType BungieMembershipType `json:"CrossSaveOverriddenType"`
 
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	MembershipType BungieMembershipType `json:"membershipType"`
 }
@@ -47807,7 +47826,7 @@ type GetCredentialTypesForAccountResponse struct {
 }
 
 // User.OptInFlags
-type OptInFlags int64
+type OptInFlags Int64
 
 const (
 	OptInFlags_None            = OptInFlags(0)
@@ -47927,7 +47946,7 @@ type UserInfoCard struct {
 	IsPublic bool `json:"isPublic"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -47986,7 +48005,7 @@ type UserMembership struct {
 	DisplayName string `json:"displayName"`
 
 	// Membership ID as they user is known in the Accounts service
-	MembershipID int64 `json:"membershipId,string"`
+	MembershipID Int64 `json:"membershipId"`
 
 	// Type of the membership. Not necessarily the native type.
 	MembershipType BungieMembershipType `json:"membershipType"`
@@ -48026,7 +48045,7 @@ type UserMembershipData struct {
 	// "primary" in this user's cross save relationship.
 	//
 	//	If null, this user has no cross save relationship, nor primary account.
-	PrimaryMembershipID Nullable[int64] `json:"primaryMembershipId,string,omitempty"`
+	PrimaryMembershipID Nullable[Int64] `json:"primaryMembershipId,omitempty"`
 }
 
 // User.UserSearchPrefixRequest
@@ -48102,7 +48121,7 @@ type UserSearchResponseDetail struct {
 
 	BungieGlobalDisplayNameCode Nullable[int16] `json:"bungieGlobalDisplayNameCode,omitempty"`
 
-	BungieNetMembershipID Nullable[int64] `json:"bungieNetMembershipId,string,omitempty"`
+	BungieNetMembershipID Nullable[Int64] `json:"bungieNetMembershipId,omitempty"`
 
 	DestinyMemberships []UserInfoCard `json:"destinyMemberships"`
 }
@@ -48133,7 +48152,7 @@ type UserToUserContext struct {
 	IsFollowing bool `json:"isFollowing"`
 }
 
-func (e ApplicationScopes) String() string {
+func (e ApplicationScopes) Enum() string {
 	switch e {
 	case ApplicationScopes_ReadBasicUserProfile:
 		return "ReadBasicUserProfile"
@@ -48169,7 +48188,7 @@ func (e ApplicationScopes) String() string {
 	return fmt.Sprintf("ApplicationScopes_%d", e)
 }
 
-func (e ApplicationStatus) String() string {
+func (e ApplicationStatus) Enum() string {
 	switch e {
 	case ApplicationStatus_None:
 		return "None"
@@ -48185,7 +48204,7 @@ func (e ApplicationStatus) String() string {
 	return fmt.Sprintf("ApplicationStatus_%d", e)
 }
 
-func (e DeveloperRole) String() string {
+func (e DeveloperRole) Enum() string {
 	switch e {
 	case DeveloperRole_None:
 		return "None"
@@ -48197,7 +48216,7 @@ func (e DeveloperRole) String() string {
 	return fmt.Sprintf("DeveloperRole_%d", e)
 }
 
-func (e BungieCredentialType) String() string {
+func (e BungieCredentialType) Enum() string {
 	switch e {
 	case BungieCredentialType_None:
 		return "None"
@@ -48231,7 +48250,7 @@ func (e BungieCredentialType) String() string {
 	return fmt.Sprintf("BungieCredentialType_%d", e)
 }
 
-func (e BungieMembershipType) String() string {
+func (e BungieMembershipType) Enum() string {
 	switch e {
 	case BungieMembershipType_None:
 		return "None"
@@ -48257,7 +48276,7 @@ func (e BungieMembershipType) String() string {
 	return fmt.Sprintf("BungieMembershipType_%d", e)
 }
 
-func (e ComponentPrivacySetting) String() string {
+func (e ComponentPrivacySetting) Enum() string {
 	switch e {
 	case ComponentPrivacySetting_None:
 		return "None"
@@ -48269,7 +48288,7 @@ func (e ComponentPrivacySetting) String() string {
 	return fmt.Sprintf("ComponentPrivacySetting_%d", e)
 }
 
-func (e ContentPropertyDataType) String() string {
+func (e ContentPropertyDataType) Enum() string {
 	switch e {
 	case ContentPropertyDataType_None:
 		return "None"
@@ -48305,7 +48324,7 @@ func (e ContentPropertyDataType) String() string {
 	return fmt.Sprintf("ContentPropertyDataType_%d", e)
 }
 
-func (e ActivityGraphNodeHighlightType) String() string {
+func (e ActivityGraphNodeHighlightType) Enum() string {
 	switch e {
 	case ActivityGraphNodeHighlightType_None:
 		return "None"
@@ -48321,7 +48340,7 @@ func (e ActivityGraphNodeHighlightType) String() string {
 	return fmt.Sprintf("ActivityGraphNodeHighlightType_%d", e)
 }
 
-func (e AwaResponseReason) String() string {
+func (e AwaResponseReason) Enum() string {
 	switch e {
 	case AwaResponseReason_None:
 		return "None"
@@ -48335,7 +48354,7 @@ func (e AwaResponseReason) String() string {
 	return fmt.Sprintf("AwaResponseReason_%d", e)
 }
 
-func (e AwaType) String() string {
+func (e AwaType) Enum() string {
 	switch e {
 	case AwaType_None:
 		return "None"
@@ -48345,7 +48364,7 @@ func (e AwaType) String() string {
 	return fmt.Sprintf("AwaType_%d", e)
 }
 
-func (e AwaUserSelection) String() string {
+func (e AwaUserSelection) Enum() string {
 	switch e {
 	case AwaUserSelection_None:
 		return "None"
@@ -48357,7 +48376,7 @@ func (e AwaUserSelection) String() string {
 	return fmt.Sprintf("AwaUserSelection_%d", e)
 }
 
-func (e BucketCategory) String() string {
+func (e BucketCategory) Enum() string {
 	switch e {
 	case BucketCategory_Invisible:
 		return "Invisible"
@@ -48373,7 +48392,7 @@ func (e BucketCategory) String() string {
 	return fmt.Sprintf("BucketCategory_%d", e)
 }
 
-func (e BucketScope) String() string {
+func (e BucketScope) Enum() string {
 	switch e {
 	case BucketScope_Character:
 		return "Character"
@@ -48383,7 +48402,7 @@ func (e BucketScope) String() string {
 	return fmt.Sprintf("BucketScope_%d", e)
 }
 
-func (e DamageType) String() string {
+func (e DamageType) Enum() string {
 	switch e {
 	case DamageType_None:
 		return "None"
@@ -48404,8 +48423,314 @@ func (e DamageType) String() string {
 	}
 	return fmt.Sprintf("DamageType_%d", e)
 }
+func (d ActivityModifierDefinition) DefinitionTable() string {
+	return "ActivityModifiers.DestinyActivityModifierDefinition"
+}
+func (d AnimationReference) DefinitionTable() string {
+	return "Animations.DestinyAnimationReference"
+}
+func (d ArtifactDefinition) DefinitionTable() string {
+	return "Artifacts.DestinyArtifactDefinition"
+}
+func (d ArtifactTierDefinition) DefinitionTable() string {
+	return "Artifacts.DestinyArtifactTierDefinition"
+}
+func (d ArtifactTierItemDefinition) DefinitionTable() string {
+	return "Artifacts.DestinyArtifactTierItemDefinition"
+}
+func (d BreakerTypeDefinition) DefinitionTable() string {
+	return "BreakerTypes.DestinyBreakerTypeDefinition"
+}
+func (d ChecklistDefinition) DefinitionTable() string {
+	return "Checklists.DestinyChecklistDefinition"
+}
+func (d ChecklistEntryDefinition) DefinitionTable() string {
+	return "Checklists.DestinyChecklistEntryDefinition"
+}
+func (d CollectibleAcquisitionBlock) DefinitionTable() string {
+	return "Collectibles.DestinyCollectibleAcquisitionBlock"
+}
+func (d CollectibleDefinition) DefinitionTable() string {
+	return "Collectibles.DestinyCollectibleDefinition"
+}
+func (d CollectibleStateBlock) DefinitionTable() string {
+	return "Collectibles.DestinyCollectibleStateBlock"
+}
+func (d DisplayPropertiesDefinition) DefinitionTable() string {
+	return "Common.DestinyDisplayPropertiesDefinition"
+}
+func (d IconSequenceDefinition) DefinitionTable() string {
+	return "Common.DestinyIconSequenceDefinition"
+}
+func (d PositionDefinition) DefinitionTable() string {
+	return "Common.DestinyPositionDefinition"
+}
+func (d ActivityChallengeDefinition) DefinitionTable() string {
+	return "DestinyActivityChallengeDefinition"
+}
+func (d ActivityDefinition) DefinitionTable() string {
+	return "DestinyActivityDefinition"
+}
+func (d ActivityGraphListEntryDefinition) DefinitionTable() string {
+	return "DestinyActivityGraphListEntryDefinition"
+}
+func (d ActivityGuidedBlockDefinition) DefinitionTable() string {
+	return "DestinyActivityGuidedBlockDefinition"
+}
+func (d ActivityInsertionPointDefinition) DefinitionTable() string {
+	return "DestinyActivityInsertionPointDefinition"
+}
+func (d ActivityLoadoutRequirement) DefinitionTable() string {
+	return "DestinyActivityLoadoutRequirement"
+}
+func (d ActivityLoadoutRequirementSet) DefinitionTable() string {
+	return "DestinyActivityLoadoutRequirementSet"
+}
+func (d ActivityMatchmakingBlockDefinition) DefinitionTable() string {
+	return "DestinyActivityMatchmakingBlockDefinition"
+}
+func (d ActivityModeDefinition) DefinitionTable() string {
+	return "DestinyActivityModeDefinition"
+}
+func (d ActivityModifierReferenceDefinition) DefinitionTable() string {
+	return "DestinyActivityModifierReferenceDefinition"
+}
+func (d ActivityPlaylistItemDefinition) DefinitionTable() string {
+	return "DestinyActivityPlaylistItemDefinition"
+}
+func (d ActivityRewardDefinition) DefinitionTable() string {
+	return "DestinyActivityRewardDefinition"
+}
+func (d ActivityTypeDefinition) DefinitionTable() string {
+	return "DestinyActivityTypeDefinition"
+}
+func (d ActivityUnlockStringDefinition) DefinitionTable() string {
+	return "DestinyActivityUnlockStringDefinition"
+}
+func (d ArrangementRegionFilterDefinition) DefinitionTable() string {
+	return "DestinyArrangementRegionFilterDefinition"
+}
+func (d ArtDyeReference) DefinitionTable() string {
+	return "DestinyArtDyeReference"
+}
+func (d BubbleDefinition) DefinitionTable() string {
+	return "DestinyBubbleDefinition"
+}
+func (d ClassDefinition) DefinitionTable() string {
+	return "DestinyClassDefinition"
+}
+func (d DamageTypeDefinition) DefinitionTable() string {
+	return "DestinyDamageTypeDefinition"
+}
+func (d Definition) DefinitionTable() string {
+	return "DestinyDefinition"
+}
+func (d DestinationBubbleSettingDefinition) DefinitionTable() string {
+	return "DestinyDestinationBubbleSettingDefinition"
+}
+func (d DestinationDefinition) DefinitionTable() string {
+	return "DestinyDestinationDefinition"
+}
+func (d DisplayCategoryDefinition) DefinitionTable() string {
+	return "DestinyDisplayCategoryDefinition"
+}
+func (d EntitySearchResult) DefinitionTable() string {
+	return "DestinyEntitySearchResult"
+}
+func (d EntitySearchResultItem) DefinitionTable() string {
+	return "DestinyEntitySearchResultItem"
+}
+func (d EquipmentSlotDefinition) DefinitionTable() string {
+	return "DestinyEquipmentSlotDefinition"
+}
+func (d EquippingBlockDefinition) DefinitionTable() string {
+	return "DestinyEquippingBlockDefinition"
+}
+func (d FactionDefinition) DefinitionTable() string {
+	return "DestinyFactionDefinition"
+}
+func (d FactionVendorDefinition) DefinitionTable() string {
+	return "DestinyFactionVendorDefinition"
+}
+func (d GearArtArrangementReference) DefinitionTable() string {
+	return "DestinyGearArtArrangementReference"
+}
+func (d GenderDefinition) DefinitionTable() string {
+	return "DestinyGenderDefinition"
+}
+func (d InventoryBucketDefinition) DefinitionTable() string {
+	return "DestinyInventoryBucketDefinition"
+}
+func (d InventoryItemDefinition) DefinitionTable() string {
+	return "DestinyInventoryItemDefinition"
+}
+func (d InventoryItemStatDefinition) DefinitionTable() string {
+	return "DestinyInventoryItemStatDefinition"
+}
+func (d ItemActionBlockDefinition) DefinitionTable() string {
+	return "DestinyItemActionBlockDefinition"
+}
+func (d ItemActionRequiredItemDefinition) DefinitionTable() string {
+	return "DestinyItemActionRequiredItemDefinition"
+}
+func (d ItemCategoryDefinition) DefinitionTable() string {
+	return "DestinyItemCategoryDefinition"
+}
+func (d ItemCraftingBlockBonusPlugDefinition) DefinitionTable() string {
+	return "DestinyItemCraftingBlockBonusPlugDefinition"
+}
+func (d ItemCraftingBlockDefinition) DefinitionTable() string {
+	return "DestinyItemCraftingBlockDefinition"
+}
+func (d ItemCreationEntryLevelDefinition) DefinitionTable() string {
+	return "DestinyItemCreationEntryLevelDefinition"
+}
+func (d ItemGearsetBlockDefinition) DefinitionTable() string {
+	return "DestinyItemGearsetBlockDefinition"
+}
+func (d ItemIntrinsicSocketEntryDefinition) DefinitionTable() string {
+	return "DestinyItemIntrinsicSocketEntryDefinition"
+}
+func (d ItemInventoryBlockDefinition) DefinitionTable() string {
+	return "DestinyItemInventoryBlockDefinition"
+}
+func (d ItemInvestmentStatDefinition) DefinitionTable() string {
+	return "DestinyItemInvestmentStatDefinition"
+}
+func (d ItemMetricBlockDefinition) DefinitionTable() string {
+	return "DestinyItemMetricBlockDefinition"
+}
+func (d ItemObjectiveBlockDefinition) DefinitionTable() string {
+	return "DestinyItemObjectiveBlockDefinition"
+}
+func (d ItemPerkEntryDefinition) DefinitionTable() string {
+	return "DestinyItemPerkEntryDefinition"
+}
+func (d ItemPreviewBlockDefinition) DefinitionTable() string {
+	return "DestinyItemPreviewBlockDefinition"
+}
+func (d ItemQualityBlockDefinition) DefinitionTable() string {
+	return "DestinyItemQualityBlockDefinition"
+}
+func (d ItemSackBlockDefinition) DefinitionTable() string {
+	return "DestinyItemSackBlockDefinition"
+}
+func (d ItemSetBlockDefinition) DefinitionTable() string {
+	return "DestinyItemSetBlockDefinition"
+}
+func (d ItemSetBlockEntryDefinition) DefinitionTable() string {
+	return "DestinyItemSetBlockEntryDefinition"
+}
+func (d ItemSocketBlockDefinition) DefinitionTable() string {
+	return "DestinyItemSocketBlockDefinition"
+}
+func (d ItemSocketCategoryDefinition) DefinitionTable() string {
+	return "DestinyItemSocketCategoryDefinition"
+}
+func (d ItemSocketEntryDefinition) DefinitionTable() string {
+	return "DestinyItemSocketEntryDefinition"
+}
+func (d ItemSocketEntryPlugItemDefinition) DefinitionTable() string {
+	return "DestinyItemSocketEntryPlugItemDefinition"
+}
+func (d ItemSocketEntryPlugItemRandomizedDefinition) DefinitionTable() string {
+	return "DestinyItemSocketEntryPlugItemRandomizedDefinition"
+}
+func (d ItemSourceBlockDefinition) DefinitionTable() string {
+	return "DestinyItemSourceBlockDefinition"
+}
+func (d ItemStatBlockDefinition) DefinitionTable() string {
+	return "DestinyItemStatBlockDefinition"
+}
+func (d ItemSummaryBlockDefinition) DefinitionTable() string {
+	return "DestinyItemSummaryBlockDefinition"
+}
+func (d ItemTalentGridBlockDefinition) DefinitionTable() string {
+	return "DestinyItemTalentGridBlockDefinition"
+}
+func (d ItemTooltipNotification) DefinitionTable() string {
+	return "DestinyItemTooltipNotification"
+}
+func (d ItemTranslationBlockDefinition) DefinitionTable() string {
+	return "DestinyItemTranslationBlockDefinition"
+}
+func (d ItemValueBlockDefinition) DefinitionTable() string {
+	return "DestinyItemValueBlockDefinition"
+}
+func (d ItemVendorSourceReference) DefinitionTable() string {
+	return "DestinyItemVendorSourceReference"
+}
+func (d ItemVersionDefinition) DefinitionTable() string {
+	return "DestinyItemVersionDefinition"
+}
+func (d LocationDefinition) DefinitionTable() string {
+	return "DestinyLocationDefinition"
+}
+func (d LocationReleaseDefinition) DefinitionTable() string {
+	return "DestinyLocationReleaseDefinition"
+}
+func (d MaterialRequirement) DefinitionTable() string {
+	return "DestinyMaterialRequirement"
+}
+func (d MaterialRequirementSetDefinition) DefinitionTable() string {
+	return "DestinyMaterialRequirementSetDefinition"
+}
+func (d MedalTierDefinition) DefinitionTable() string {
+	return "DestinyMedalTierDefinition"
+}
+func (d NodeActivationRequirement) DefinitionTable() string {
+	return "DestinyNodeActivationRequirement"
+}
+func (d NodeSocketReplaceResponse) DefinitionTable() string {
+	return "DestinyNodeSocketReplaceResponse"
+}
+func (d NodeStepDefinition) DefinitionTable() string {
+	return "DestinyNodeStepDefinition"
+}
+func (d ObjectiveDefinition) DefinitionTable() string {
+	return "DestinyObjectiveDefinition"
+}
+func (d ObjectiveDisplayProperties) DefinitionTable() string {
+	return "DestinyObjectiveDisplayProperties"
+}
+func (d ObjectivePerkEntryDefinition) DefinitionTable() string {
+	return "DestinyObjectivePerkEntryDefinition"
+}
+func (d ObjectiveStatEntryDefinition) DefinitionTable() string {
+	return "DestinyObjectiveStatEntryDefinition"
+}
+func (d PlaceDefinition) DefinitionTable() string {
+	return "DestinyPlaceDefinition"
+}
+func (d PlugItemCraftingRequirements) DefinitionTable() string {
+	return "DestinyPlugItemCraftingRequirements"
+}
+func (d PlugItemCraftingUnlockRequirement) DefinitionTable() string {
+	return "DestinyPlugItemCraftingUnlockRequirement"
+}
+func (d ProgressionDefinition) DefinitionTable() string {
+	return "DestinyProgressionDefinition"
+}
+func (d ProgressionDisplayPropertiesDefinition) DefinitionTable() string {
+	return "DestinyProgressionDisplayPropertiesDefinition"
+}
+func (d ProgressionMappingDefinition) DefinitionTable() string {
+	return "DestinyProgressionMappingDefinition"
+}
+func (d ProgressionRewardDefinition) DefinitionTable() string {
+	return "DestinyProgressionRewardDefinition"
+}
+func (d ProgressionRewardItemQuantity) DefinitionTable() string {
+	return "DestinyProgressionRewardItemQuantity"
+}
+func (d ProgressionStepDefinition) DefinitionTable() string {
+	return "DestinyProgressionStepDefinition"
+}
+func (d RaceDefinition) DefinitionTable() string {
+	return "DestinyRaceDefinition"
+}
 
-func (e RewardSourceCategory) String() string {
+func (e RewardSourceCategory) Enum() string {
 	switch e {
 	case RewardSourceCategory_None:
 		return "None"
@@ -48418,8 +48743,44 @@ func (e RewardSourceCategory) String() string {
 	}
 	return fmt.Sprintf("RewardSourceCategory_%d", e)
 }
+func (d RewardSourceDefinition) DefinitionTable() string {
+	return "DestinyRewardSourceDefinition"
+}
+func (d SandboxPatternDefinition) DefinitionTable() string {
+	return "DestinySandboxPatternDefinition"
+}
+func (d SandboxPerkDefinition) DefinitionTable() string {
+	return "DestinySandboxPerkDefinition"
+}
+func (d StatDefinition) DefinitionTable() string {
+	return "DestinyStatDefinition"
+}
+func (d StatDisplayDefinition) DefinitionTable() string {
+	return "DestinyStatDisplayDefinition"
+}
+func (d StatGroupDefinition) DefinitionTable() string {
+	return "DestinyStatGroupDefinition"
+}
+func (d StatOverrideDefinition) DefinitionTable() string {
+	return "DestinyStatOverrideDefinition"
+}
+func (d TalentExclusiveGroup) DefinitionTable() string {
+	return "DestinyTalentExclusiveGroup"
+}
+func (d TalentGridDefinition) DefinitionTable() string {
+	return "DestinyTalentGridDefinition"
+}
+func (d TalentNodeCategory) DefinitionTable() string {
+	return "DestinyTalentNodeCategory"
+}
+func (d TalentNodeDefinition) DefinitionTable() string {
+	return "DestinyTalentNodeDefinition"
+}
+func (d TalentNodeExclusiveSetDefinition) DefinitionTable() string {
+	return "DestinyTalentNodeExclusiveSetDefinition"
+}
 
-func (e TalentNodeStepDamageTypes) String() string {
+func (e TalentNodeStepDamageTypes) Enum() string {
 	switch e {
 	case TalentNodeStepDamageTypes_None:
 		return "None"
@@ -48436,8 +48797,11 @@ func (e TalentNodeStepDamageTypes) String() string {
 	}
 	return fmt.Sprintf("TalentNodeStepDamageTypes_%d", e)
 }
+func (d TalentNodeStepGroups) DefinitionTable() string {
+	return "DestinyTalentNodeStepGroups"
+}
 
-func (e TalentNodeStepGuardianAttributes) String() string {
+func (e TalentNodeStepGuardianAttributes) Enum() string {
 	switch e {
 	case TalentNodeStepGuardianAttributes_None:
 		return "None"
@@ -48463,7 +48827,7 @@ func (e TalentNodeStepGuardianAttributes) String() string {
 	return fmt.Sprintf("TalentNodeStepGuardianAttributes_%d", e)
 }
 
-func (e TalentNodeStepImpactEffects) String() string {
+func (e TalentNodeStepImpactEffects) Enum() string {
 	switch e {
 	case TalentNodeStepImpactEffects_None:
 		return "None"
@@ -48485,7 +48849,7 @@ func (e TalentNodeStepImpactEffects) String() string {
 	return fmt.Sprintf("TalentNodeStepImpactEffects_%d", e)
 }
 
-func (e TalentNodeStepLightAbilities) String() string {
+func (e TalentNodeStepLightAbilities) Enum() string {
 	switch e {
 	case TalentNodeStepLightAbilities_None:
 		return "None"
@@ -48507,7 +48871,7 @@ func (e TalentNodeStepLightAbilities) String() string {
 	return fmt.Sprintf("TalentNodeStepLightAbilities_%d", e)
 }
 
-func (e TalentNodeStepWeaponPerformances) String() string {
+func (e TalentNodeStepWeaponPerformances) Enum() string {
 	switch e {
 	case TalentNodeStepWeaponPerformances_None:
 		return "None"
@@ -48542,8 +48906,185 @@ func (e TalentNodeStepWeaponPerformances) String() string {
 	}
 	return fmt.Sprintf("TalentNodeStepWeaponPerformances_%d", e)
 }
+func (d UnlockDefinition) DefinitionTable() string {
+	return "DestinyUnlockDefinition"
+}
+func (d UnlockExpressionDefinition) DefinitionTable() string {
+	return "DestinyUnlockExpressionDefinition"
+}
+func (d UnlockValueDefinition) DefinitionTable() string {
+	return "DestinyUnlockValueDefinition"
+}
+func (d VendorAcceptedItemDefinition) DefinitionTable() string {
+	return "DestinyVendorAcceptedItemDefinition"
+}
+func (d VendorActionDefinition) DefinitionTable() string {
+	return "DestinyVendorActionDefinition"
+}
+func (d VendorCategoryEntryDefinition) DefinitionTable() string {
+	return "DestinyVendorCategoryEntryDefinition"
+}
+func (d VendorCategoryOverlayDefinition) DefinitionTable() string {
+	return "DestinyVendorCategoryOverlayDefinition"
+}
+func (d VendorDefinition) DefinitionTable() string {
+	return "DestinyVendorDefinition"
+}
+func (d VendorDisplayPropertiesDefinition) DefinitionTable() string {
+	return "DestinyVendorDisplayPropertiesDefinition"
+}
+func (d VendorGroupDefinition) DefinitionTable() string {
+	return "DestinyVendorGroupDefinition"
+}
+func (d VendorGroupReference) DefinitionTable() string {
+	return "DestinyVendorGroupReference"
+}
+func (d VendorInteractionDefinition) DefinitionTable() string {
+	return "DestinyVendorInteractionDefinition"
+}
+func (d VendorInteractionReplyDefinition) DefinitionTable() string {
+	return "DestinyVendorInteractionReplyDefinition"
+}
+func (d VendorInteractionSackEntryDefinition) DefinitionTable() string {
+	return "DestinyVendorInteractionSackEntryDefinition"
+}
+func (d VendorInventoryFlyoutBucketDefinition) DefinitionTable() string {
+	return "DestinyVendorInventoryFlyoutBucketDefinition"
+}
+func (d VendorInventoryFlyoutDefinition) DefinitionTable() string {
+	return "DestinyVendorInventoryFlyoutDefinition"
+}
+func (d VendorItemDefinition) DefinitionTable() string {
+	return "DestinyVendorItemDefinition"
+}
+func (d VendorItemQuantity) DefinitionTable() string {
+	return "DestinyVendorItemQuantity"
+}
+func (d VendorItemSocketOverride) DefinitionTable() string {
+	return "DestinyVendorItemSocketOverride"
+}
+func (d VendorRequirementDisplayEntryDefinition) DefinitionTable() string {
+	return "DestinyVendorRequirementDisplayEntryDefinition"
+}
+func (d VendorSaleItemActionBlockDefinition) DefinitionTable() string {
+	return "DestinyVendorSaleItemActionBlockDefinition"
+}
+func (d VendorServiceDefinition) DefinitionTable() string {
+	return "DestinyVendorServiceDefinition"
+}
+func (d ActivityGraphArtElementDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphArtElementDefinition"
+}
+func (d ActivityGraphConnectionDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphConnectionDefinition"
+}
+func (d ActivityGraphDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphDefinition"
+}
+func (d ActivityGraphDisplayObjectiveDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphDisplayObjectiveDefinition"
+}
+func (d ActivityGraphDisplayProgressionDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphDisplayProgressionDefinition"
+}
+func (d ActivityGraphNodeActivityDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphNodeActivityDefinition"
+}
+func (d ActivityGraphNodeDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphNodeDefinition"
+}
+func (d ActivityGraphNodeFeaturingStateDefinition) DefinitionTable() string {
+	return "Director.DestinyActivityGraphNodeFeaturingStateDefinition"
+}
+func (d ActivityGraphNodeStateEntry) DefinitionTable() string {
+	return "Director.DestinyActivityGraphNodeStateEntry"
+}
+func (d LinkedGraphDefinition) DefinitionTable() string {
+	return "Director.DestinyLinkedGraphDefinition"
+}
+func (d LinkedGraphEntryDefinition) DefinitionTable() string {
+	return "Director.DestinyLinkedGraphEntryDefinition"
+}
+func (d EnergyTypeDefinition) DefinitionTable() string {
+	return "EnergyTypes.DestinyEnergyTypeDefinition"
+}
+func (d GuardianRankConstantsDefinition) DefinitionTable() string {
+	return "GuardianRanks.DestinyGuardianRankConstantsDefinition"
+}
+func (d GuardianRankDefinition) DefinitionTable() string {
+	return "GuardianRanks.DestinyGuardianRankDefinition"
+}
+func (d GuardianRankIconBackgroundsDefinition) DefinitionTable() string {
+	return "GuardianRanks.DestinyGuardianRankIconBackgroundsDefinition"
+}
+func (d DerivedItemCategoryDefinition) DefinitionTable() string {
+	return "Items.DestinyDerivedItemCategoryDefinition"
+}
+func (d DerivedItemDefinition) DefinitionTable() string {
+	return "Items.DestinyDerivedItemDefinition"
+}
+func (d EnergyCapacityEntry) DefinitionTable() string {
+	return "Items.DestinyEnergyCapacityEntry"
+}
+func (d EnergyCostEntry) DefinitionTable() string {
+	return "Items.DestinyEnergyCostEntry"
+}
+func (d ItemPlugDefinition) DefinitionTable() string {
+	return "Items.DestinyItemPlugDefinition"
+}
+func (d ItemTierTypeDefinition) DefinitionTable() string {
+	return "Items.DestinyItemTierTypeDefinition"
+}
+func (d ItemTierTypeInfusionBlock) DefinitionTable() string {
+	return "Items.DestinyItemTierTypeInfusionBlock"
+}
+func (d ParentItemOverride) DefinitionTable() string {
+	return "Items.DestinyParentItemOverride"
+}
+func (d PlugRuleDefinition) DefinitionTable() string {
+	return "Items.DestinyPlugRuleDefinition"
+}
+func (d LoadoutColorDefinition) DefinitionTable() string {
+	return "Loadouts.DestinyLoadoutColorDefinition"
+}
+func (d LoadoutConstantsDefinition) DefinitionTable() string {
+	return "Loadouts.DestinyLoadoutConstantsDefinition"
+}
+func (d LoadoutIconDefinition) DefinitionTable() string {
+	return "Loadouts.DestinyLoadoutIconDefinition"
+}
+func (d LoadoutNameDefinition) DefinitionTable() string {
+	return "Loadouts.DestinyLoadoutNameDefinition"
+}
+func (d LoreDefinition) DefinitionTable() string {
+	return "Lore.DestinyLoreDefinition"
+}
+func (d MetricDefinition) DefinitionTable() string {
+	return "Metrics.DestinyMetricDefinition"
+}
+func (d MilestoneActivityDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneActivityDefinition"
+}
+func (d MilestoneActivityVariantDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneActivityVariantDefinition"
+}
+func (d MilestoneChallengeActivityDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneChallengeActivityDefinition"
+}
+func (d MilestoneChallengeActivityGraphNodeEntry) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneChallengeActivityGraphNodeEntry"
+}
+func (d MilestoneChallengeActivityPhase) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneChallengeActivityPhase"
+}
+func (d MilestoneChallengeDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneChallengeDefinition"
+}
+func (d MilestoneDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneDefinition"
+}
 
-func (e MilestoneDisplayPreference) String() string {
+func (e MilestoneDisplayPreference) Enum() string {
 	switch e {
 	case MilestoneDisplayPreference_MilestoneDefinition:
 		return "MilestoneDefinition"
@@ -48554,8 +49095,23 @@ func (e MilestoneDisplayPreference) String() string {
 	}
 	return fmt.Sprintf("MilestoneDisplayPreference_%d", e)
 }
+func (d MilestoneQuestDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneQuestDefinition"
+}
+func (d MilestoneQuestRewardItem) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneQuestRewardItem"
+}
+func (d MilestoneQuestRewardsDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneQuestRewardsDefinition"
+}
+func (d MilestoneRewardCategoryDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneRewardCategoryDefinition"
+}
+func (d MilestoneRewardEntryDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneRewardEntryDefinition"
+}
 
-func (e MilestoneType) String() string {
+func (e MilestoneType) Enum() string {
 	switch e {
 	case MilestoneType_Unknown:
 		return "Unknown"
@@ -48572,8 +49128,137 @@ func (e MilestoneType) String() string {
 	}
 	return fmt.Sprintf("MilestoneType_%d", e)
 }
+func (d MilestoneValueDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneValueDefinition"
+}
+func (d MilestoneVendorDefinition) DefinitionTable() string {
+	return "Milestones.DestinyMilestoneVendorDefinition"
+}
+func (d PowerCapDefinition) DefinitionTable() string {
+	return "PowerCaps.DestinyPowerCapDefinition"
+}
+func (d PresentationChildBlock) DefinitionTable() string {
+	return "Presentation.DestinyPresentationChildBlock"
+}
+func (d PresentationNodeBaseDefinition) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeBaseDefinition"
+}
+func (d PresentationNodeChildEntry) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeChildEntry"
+}
+func (d PresentationNodeChildEntryBase) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeChildEntryBase"
+}
+func (d PresentationNodeChildrenBlock) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeChildrenBlock"
+}
+func (d PresentationNodeCollectibleChildEntry) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeCollectibleChildEntry"
+}
+func (d PresentationNodeCraftableChildEntry) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeCraftableChildEntry"
+}
+func (d PresentationNodeDefinition) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeDefinition"
+}
+func (d PresentationNodeMetricChildEntry) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeMetricChildEntry"
+}
+func (d PresentationNodeRecordChildEntry) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeRecordChildEntry"
+}
+func (d PresentationNodeRequirementsBlock) DefinitionTable() string {
+	return "Presentation.DestinyPresentationNodeRequirementsBlock"
+}
+func (d ScoredPresentationNodeBaseDefinition) DefinitionTable() string {
+	return "Presentation.DestinyScoredPresentationNodeBaseDefinition"
+}
+func (d ProgressionLevelRequirementDefinition) DefinitionTable() string {
+	return "Progression.DestinyProgressionLevelRequirementDefinition"
+}
+func (d RecordCompletionBlock) DefinitionTable() string {
+	return "Records.DestinyRecordCompletionBlock"
+}
+func (d RecordDefinition) DefinitionTable() string {
+	return "Records.DestinyRecordDefinition"
+}
+func (d RecordExpirationBlock) DefinitionTable() string {
+	return "Records.DestinyRecordExpirationBlock"
+}
+func (d RecordIntervalBlock) DefinitionTable() string {
+	return "Records.DestinyRecordIntervalBlock"
+}
+func (d RecordIntervalObjective) DefinitionTable() string {
+	return "Records.DestinyRecordIntervalObjective"
+}
+func (d RecordIntervalRewards) DefinitionTable() string {
+	return "Records.DestinyRecordIntervalRewards"
+}
+func (d RecordTitleBlock) DefinitionTable() string {
+	return "Records.DestinyRecordTitleBlock"
+}
+func (d SchemaRecordStateBlock) DefinitionTable() string {
+	return "Records.SchemaRecordStateBlock"
+}
+func (d ReportReasonCategoryDefinition) DefinitionTable() string {
+	return "Reporting.DestinyReportReasonCategoryDefinition"
+}
+func (d ReportReasonDefinition) DefinitionTable() string {
+	return "Reporting.DestinyReportReasonDefinition"
+}
+func (d EventCardDefinition) DefinitionTable() string {
+	return "Seasons.DestinyEventCardDefinition"
+}
+func (d EventCardImages) DefinitionTable() string {
+	return "Seasons.DestinyEventCardImages"
+}
+func (d SeasonDefinition) DefinitionTable() string {
+	return "Seasons.DestinySeasonDefinition"
+}
+func (d SeasonPassDefinition) DefinitionTable() string {
+	return "Seasons.DestinySeasonPassDefinition"
+}
+func (d SeasonPreviewDefinition) DefinitionTable() string {
+	return "Seasons.DestinySeasonPreviewDefinition"
+}
+func (d SeasonPreviewImageDefinition) DefinitionTable() string {
+	return "Seasons.DestinySeasonPreviewImageDefinition"
+}
+func (d SocialCommendationDefinition) DefinitionTable() string {
+	return "Social.DestinySocialCommendationDefinition"
+}
+func (d SocialCommendationNodeDefinition) DefinitionTable() string {
+	return "Social.DestinySocialCommendationNodeDefinition"
+}
+func (d InsertPlugActionDefinition) DefinitionTable() string {
+	return "Sockets.DestinyInsertPlugActionDefinition"
+}
+func (d PlugSetDefinition) DefinitionTable() string {
+	return "Sockets.DestinyPlugSetDefinition"
+}
+func (d PlugWhitelistEntryDefinition) DefinitionTable() string {
+	return "Sockets.DestinyPlugWhitelistEntryDefinition"
+}
+func (d SocketCategoryDefinition) DefinitionTable() string {
+	return "Sockets.DestinySocketCategoryDefinition"
+}
+func (d SocketTypeDefinition) DefinitionTable() string {
+	return "Sockets.DestinySocketTypeDefinition"
+}
+func (d SocketTypeScalarMaterialRequirementEntry) DefinitionTable() string {
+	return "Sockets.DestinySocketTypeScalarMaterialRequirementEntry"
+}
+func (d ItemSourceDefinition) DefinitionTable() string {
+	return "Sources.DestinyItemSourceDefinition"
+}
+func (d TraitDefinition) DefinitionTable() string {
+	return "Traits.DestinyTraitDefinition"
+}
+func (d VendorLocationDefinition) DefinitionTable() string {
+	return "Vendors.DestinyVendorLocationDefinition"
+}
 
-func (e ActivityDifficultyTier) String() string {
+func (e ActivityDifficultyTier) Enum() string {
 	switch e {
 	case ActivityDifficultyTier_Trivial:
 		return "Trivial"
@@ -48595,7 +49280,7 @@ func (e ActivityDifficultyTier) String() string {
 	return fmt.Sprintf("ActivityDifficultyTier_%d", e)
 }
 
-func (e ActivityModeCategory) String() string {
+func (e ActivityModeCategory) Enum() string {
 	switch e {
 	case ActivityModeCategory_None:
 		return "None"
@@ -48609,7 +49294,7 @@ func (e ActivityModeCategory) String() string {
 	return fmt.Sprintf("ActivityModeCategory_%d", e)
 }
 
-func (e ActivityNavPointType) String() string {
+func (e ActivityNavPointType) Enum() string {
 	switch e {
 	case ActivityNavPointType_Inactive:
 		return "Inactive"
@@ -48649,7 +49334,7 @@ func (e ActivityNavPointType) String() string {
 	return fmt.Sprintf("ActivityNavPointType_%d", e)
 }
 
-func (e AmmunitionType) String() string {
+func (e AmmunitionType) Enum() string {
 	switch e {
 	case AmmunitionType_None:
 		return "None"
@@ -48665,7 +49350,7 @@ func (e AmmunitionType) String() string {
 	return fmt.Sprintf("AmmunitionType_%d", e)
 }
 
-func (e BreakerType) String() string {
+func (e BreakerType) Enum() string {
 	switch e {
 	case BreakerType_None:
 		return "None"
@@ -48679,7 +49364,7 @@ func (e BreakerType) String() string {
 	return fmt.Sprintf("BreakerType_%d", e)
 }
 
-func (e Class) String() string {
+func (e Class) Enum() string {
 	switch e {
 	case Class_Titan:
 		return "Titan"
@@ -48693,7 +49378,7 @@ func (e Class) String() string {
 	return fmt.Sprintf("Class_%d", e)
 }
 
-func (e CollectibleState) String() string {
+func (e CollectibleState) Enum() string {
 	switch e {
 	case CollectibleState_None:
 		return "None"
@@ -48715,7 +49400,7 @@ func (e CollectibleState) String() string {
 	return fmt.Sprintf("CollectibleState_%d", e)
 }
 
-func (e ComponentType) String() string {
+func (e ComponentType) Enum() string {
 	switch e {
 	case ComponentType_None:
 		return "None"
@@ -48797,7 +49482,7 @@ func (e ComponentType) String() string {
 	return fmt.Sprintf("ComponentType_%d", e)
 }
 
-func (e EnergyType) String() string {
+func (e EnergyType) Enum() string {
 	switch e {
 	case EnergyType_Any:
 		return "Any"
@@ -48817,7 +49502,7 @@ func (e EnergyType) String() string {
 	return fmt.Sprintf("EnergyType_%d", e)
 }
 
-func (e GamePrivacySetting) String() string {
+func (e GamePrivacySetting) Enum() string {
 	switch e {
 	case GamePrivacySetting_Open:
 		return "Open"
@@ -48833,7 +49518,7 @@ func (e GamePrivacySetting) String() string {
 	return fmt.Sprintf("GamePrivacySetting_%d", e)
 }
 
-func (e GameVersions) String() string {
+func (e GameVersions) Enum() string {
 	switch e {
 	case GameVersions_None:
 		return "None"
@@ -48861,7 +49546,7 @@ func (e GameVersions) String() string {
 	return fmt.Sprintf("GameVersions_%d", e)
 }
 
-func (e GatingScope) String() string {
+func (e GatingScope) Enum() string {
 	switch e {
 	case GatingScope_None:
 		return "None"
@@ -48881,7 +49566,7 @@ func (e GatingScope) String() string {
 	return fmt.Sprintf("GatingScope_%d", e)
 }
 
-func (e Gender) String() string {
+func (e Gender) Enum() string {
 	switch e {
 	case Gender_Male:
 		return "Male"
@@ -48893,7 +49578,7 @@ func (e Gender) String() string {
 	return fmt.Sprintf("Gender_%d", e)
 }
 
-func (e GraphNodeState) String() string {
+func (e GraphNodeState) Enum() string {
 	switch e {
 	case GraphNodeState_Hidden:
 		return "Hidden"
@@ -48909,7 +49594,7 @@ func (e GraphNodeState) String() string {
 	return fmt.Sprintf("GraphNodeState_%d", e)
 }
 
-func (e ItemSortType) String() string {
+func (e ItemSortType) Enum() string {
 	switch e {
 	case ItemSortType_ItemId:
 		return "ItemId"
@@ -48921,7 +49606,7 @@ func (e ItemSortType) String() string {
 	return fmt.Sprintf("ItemSortType_%d", e)
 }
 
-func (e ItemSubType) String() string {
+func (e ItemSubType) Enum() string {
 	switch e {
 	case ItemSubType_None:
 		return "None"
@@ -48989,7 +49674,7 @@ func (e ItemSubType) String() string {
 	return fmt.Sprintf("ItemSubType_%d", e)
 }
 
-func (e ItemType) String() string {
+func (e ItemType) Enum() string {
 	switch e {
 	case ItemType_None:
 		return "None"
@@ -49051,7 +49736,7 @@ func (e ItemType) String() string {
 	return fmt.Sprintf("ItemType_%d", e)
 }
 
-func (e JoinClosedReasons) String() string {
+func (e JoinClosedReasons) Enum() string {
 	switch e {
 	case JoinClosedReasons_None:
 		return "None"
@@ -49071,7 +49756,7 @@ func (e JoinClosedReasons) String() string {
 	return fmt.Sprintf("JoinClosedReasons_%d", e)
 }
 
-func (e ObjectiveGrantStyle) String() string {
+func (e ObjectiveGrantStyle) Enum() string {
 	switch e {
 	case ObjectiveGrantStyle_WhenIncomplete:
 		return "WhenIncomplete"
@@ -49083,7 +49768,7 @@ func (e ObjectiveGrantStyle) String() string {
 	return fmt.Sprintf("ObjectiveGrantStyle_%d", e)
 }
 
-func (e ObjectiveUiStyle) String() string {
+func (e ObjectiveUiStyle) Enum() string {
 	switch e {
 	case ObjectiveUiStyle_None:
 		return "None"
@@ -49103,7 +49788,7 @@ func (e ObjectiveUiStyle) String() string {
 	return fmt.Sprintf("ObjectiveUiStyle_%d", e)
 }
 
-func (e PartyMemberStates) String() string {
+func (e PartyMemberStates) Enum() string {
 	switch e {
 	case PartyMemberStates_None:
 		return "None"
@@ -49119,7 +49804,7 @@ func (e PartyMemberStates) String() string {
 	return fmt.Sprintf("PartyMemberStates_%d", e)
 }
 
-func (e PresentationDisplayStyle) String() string {
+func (e PresentationDisplayStyle) Enum() string {
 	switch e {
 	case PresentationDisplayStyle_Category:
 		return "Category"
@@ -49139,7 +49824,7 @@ func (e PresentationDisplayStyle) String() string {
 	return fmt.Sprintf("PresentationDisplayStyle_%d", e)
 }
 
-func (e PresentationNodeState) String() string {
+func (e PresentationNodeState) Enum() string {
 	switch e {
 	case PresentationNodeState_None:
 		return "None"
@@ -49151,7 +49836,7 @@ func (e PresentationNodeState) String() string {
 	return fmt.Sprintf("PresentationNodeState_%d", e)
 }
 
-func (e PresentationNodeType) String() string {
+func (e PresentationNodeType) Enum() string {
 	switch e {
 	case PresentationNodeType_Default:
 		return "Default"
@@ -49169,7 +49854,7 @@ func (e PresentationNodeType) String() string {
 	return fmt.Sprintf("PresentationNodeType_%d", e)
 }
 
-func (e PresentationScreenStyle) String() string {
+func (e PresentationScreenStyle) Enum() string {
 	switch e {
 	case PresentationScreenStyle_Default:
 		return "Default"
@@ -49181,7 +49866,7 @@ func (e PresentationScreenStyle) String() string {
 	return fmt.Sprintf("PresentationScreenStyle_%d", e)
 }
 
-func (e ProgressionRewardItemAcquisitionBehavior) String() string {
+func (e ProgressionRewardItemAcquisitionBehavior) Enum() string {
 	switch e {
 	case ProgressionRewardItemAcquisitionBehavior_Instant:
 		return "Instant"
@@ -49191,7 +49876,7 @@ func (e ProgressionRewardItemAcquisitionBehavior) String() string {
 	return fmt.Sprintf("ProgressionRewardItemAcquisitionBehavior_%d", e)
 }
 
-func (e ProgressionRewardItemState) String() string {
+func (e ProgressionRewardItemState) Enum() string {
 	switch e {
 	case ProgressionRewardItemState_None:
 		return "None"
@@ -49207,7 +49892,7 @@ func (e ProgressionRewardItemState) String() string {
 	return fmt.Sprintf("ProgressionRewardItemState_%d", e)
 }
 
-func (e ProgressionScope) String() string {
+func (e ProgressionScope) Enum() string {
 	switch e {
 	case ProgressionScope_Account:
 		return "Account"
@@ -49231,7 +49916,7 @@ func (e ProgressionScope) String() string {
 	return fmt.Sprintf("ProgressionScope_%d", e)
 }
 
-func (e ProgressionStepDisplayEffect) String() string {
+func (e ProgressionStepDisplayEffect) Enum() string {
 	switch e {
 	case ProgressionStepDisplayEffect_None:
 		return "None"
@@ -49243,7 +49928,7 @@ func (e ProgressionStepDisplayEffect) String() string {
 	return fmt.Sprintf("ProgressionStepDisplayEffect_%d", e)
 }
 
-func (e Race) String() string {
+func (e Race) Enum() string {
 	switch e {
 	case Race_Human:
 		return "Human"
@@ -49257,7 +49942,7 @@ func (e Race) String() string {
 	return fmt.Sprintf("Race_%d", e)
 }
 
-func (e RecordState) String() string {
+func (e RecordState) Enum() string {
 	switch e {
 	case RecordState_None:
 		return "None"
@@ -49279,7 +49964,7 @@ func (e RecordState) String() string {
 	return fmt.Sprintf("RecordState_%d", e)
 }
 
-func (e RecordToastStyle) String() string {
+func (e RecordToastStyle) Enum() string {
 	switch e {
 	case RecordToastStyle_None:
 		return "None"
@@ -49305,7 +49990,7 @@ func (e RecordToastStyle) String() string {
 	return fmt.Sprintf("RecordToastStyle_%d", e)
 }
 
-func (e RecordValueStyle) String() string {
+func (e RecordValueStyle) Enum() string {
 	switch e {
 	case RecordValueStyle_Integer:
 		return "Integer"
@@ -49321,7 +50006,7 @@ func (e RecordValueStyle) String() string {
 	return fmt.Sprintf("RecordValueStyle_%d", e)
 }
 
-func (e Scope) String() string {
+func (e Scope) Enum() string {
 	switch e {
 	case Scope_Profile:
 		return "Profile"
@@ -49331,7 +50016,7 @@ func (e Scope) String() string {
 	return fmt.Sprintf("Scope_%d", e)
 }
 
-func (e SocketCategoryStyle) String() string {
+func (e SocketCategoryStyle) Enum() string {
 	switch e {
 	case SocketCategoryStyle_Unknown:
 		return "Unknown"
@@ -49355,7 +50040,7 @@ func (e SocketCategoryStyle) String() string {
 	return fmt.Sprintf("SocketCategoryStyle_%d", e)
 }
 
-func (e SocketVisibility) String() string {
+func (e SocketVisibility) Enum() string {
 	switch e {
 	case SocketVisibility_Visible:
 		return "Visible"
@@ -49369,7 +50054,7 @@ func (e SocketVisibility) String() string {
 	return fmt.Sprintf("SocketVisibility_%d", e)
 }
 
-func (e StatAggregationType) String() string {
+func (e StatAggregationType) Enum() string {
 	switch e {
 	case StatAggregationType_CharacterAverage:
 		return "CharacterAverage"
@@ -49381,7 +50066,7 @@ func (e StatAggregationType) String() string {
 	return fmt.Sprintf("StatAggregationType_%d", e)
 }
 
-func (e StatCategory) String() string {
+func (e StatCategory) Enum() string {
 	switch e {
 	case StatCategory_Gameplay:
 		return "Gameplay"
@@ -49395,7 +50080,7 @@ func (e StatCategory) String() string {
 	return fmt.Sprintf("StatCategory_%d", e)
 }
 
-func (e TalentNodeState) String() string {
+func (e TalentNodeState) Enum() string {
 	switch e {
 	case TalentNodeState_Invalid:
 		return "Invalid"
@@ -49429,7 +50114,7 @@ func (e TalentNodeState) String() string {
 	return fmt.Sprintf("TalentNodeState_%d", e)
 }
 
-func (e UnlockValueUIStyle) String() string {
+func (e UnlockValueUIStyle) Enum() string {
 	switch e {
 	case UnlockValueUIStyle_Automatic:
 		return "Automatic"
@@ -49465,7 +50150,7 @@ func (e UnlockValueUIStyle) String() string {
 	return fmt.Sprintf("UnlockValueUIStyle_%d", e)
 }
 
-func (e VendorFilter) String() string {
+func (e VendorFilter) Enum() string {
 	switch e {
 	case VendorFilter_None:
 		return "None"
@@ -49475,7 +50160,7 @@ func (e VendorFilter) String() string {
 	return fmt.Sprintf("VendorFilter_%d", e)
 }
 
-func (e VendorInteractionRewardSelection) String() string {
+func (e VendorInteractionRewardSelection) Enum() string {
 	switch e {
 	case VendorInteractionRewardSelection_None:
 		return "None"
@@ -49487,7 +50172,7 @@ func (e VendorInteractionRewardSelection) String() string {
 	return fmt.Sprintf("VendorInteractionRewardSelection_%d", e)
 }
 
-func (e VendorItemRefundPolicy) String() string {
+func (e VendorItemRefundPolicy) Enum() string {
 	switch e {
 	case VendorItemRefundPolicy_NotRefundable:
 		return "NotRefundable"
@@ -49499,7 +50184,7 @@ func (e VendorItemRefundPolicy) String() string {
 	return fmt.Sprintf("VendorItemRefundPolicy_%d", e)
 }
 
-func (e VendorItemState) String() string {
+func (e VendorItemState) Enum() string {
 	switch e {
 	case VendorItemState_None:
 		return "None"
@@ -49549,7 +50234,7 @@ func (e VendorItemState) String() string {
 	return fmt.Sprintf("VendorItemState_%d", e)
 }
 
-func (e VendorProgressionType) String() string {
+func (e VendorProgressionType) Enum() string {
 	switch e {
 	case VendorProgressionType_Default:
 		return "Default"
@@ -49561,7 +50246,7 @@ func (e VendorProgressionType) String() string {
 	return fmt.Sprintf("VendorProgressionType_%d", e)
 }
 
-func (e VendorReplyType) String() string {
+func (e VendorReplyType) Enum() string {
 	switch e {
 	case VendorReplyType_Accept:
 		return "Accept"
@@ -49573,7 +50258,7 @@ func (e VendorReplyType) String() string {
 	return fmt.Sprintf("VendorReplyType_%d", e)
 }
 
-func (e EquipFailureReason) String() string {
+func (e EquipFailureReason) Enum() string {
 	switch e {
 	case EquipFailureReason_None:
 		return "None"
@@ -49597,7 +50282,7 @@ func (e EquipFailureReason) String() string {
 	return fmt.Sprintf("EquipFailureReason_%d", e)
 }
 
-func (e EquippingItemBlockAttributes) String() string {
+func (e EquippingItemBlockAttributes) Enum() string {
 	switch e {
 	case EquippingItemBlockAttributes_None:
 		return "None"
@@ -49607,7 +50292,7 @@ func (e EquippingItemBlockAttributes) String() string {
 	return fmt.Sprintf("EquippingItemBlockAttributes_%d", e)
 }
 
-func (e ActivityModeType) String() string {
+func (e ActivityModeType) Enum() string {
 	switch e {
 	case ActivityModeType_None:
 		return "None"
@@ -49781,7 +50466,7 @@ func (e ActivityModeType) String() string {
 	return fmt.Sprintf("ActivityModeType_%d", e)
 }
 
-func (e StatsCategoryType) String() string {
+func (e StatsCategoryType) Enum() string {
 	switch e {
 	case StatsCategoryType_None:
 		return "None"
@@ -49819,7 +50504,7 @@ func (e StatsCategoryType) String() string {
 	return fmt.Sprintf("StatsCategoryType_%d", e)
 }
 
-func (e StatsGroupType) String() string {
+func (e StatsGroupType) Enum() string {
 	switch e {
 	case StatsGroupType_None:
 		return "None"
@@ -49843,7 +50528,7 @@ func (e StatsGroupType) String() string {
 	return fmt.Sprintf("StatsGroupType_%d", e)
 }
 
-func (e StatsMergeMethod) String() string {
+func (e StatsMergeMethod) Enum() string {
 	switch e {
 	case StatsMergeMethod_Add:
 		return "Add"
@@ -49855,7 +50540,7 @@ func (e StatsMergeMethod) String() string {
 	return fmt.Sprintf("StatsMergeMethod_%d", e)
 }
 
-func (e PeriodType) String() string {
+func (e PeriodType) Enum() string {
 	switch e {
 	case PeriodType_None:
 		return "None"
@@ -49869,7 +50554,7 @@ func (e PeriodType) String() string {
 	return fmt.Sprintf("PeriodType_%d", e)
 }
 
-func (e UnitType) String() string {
+func (e UnitType) Enum() string {
 	switch e {
 	case UnitType_None:
 		return "None"
@@ -49903,7 +50588,7 @@ func (e UnitType) String() string {
 	return fmt.Sprintf("UnitType_%d", e)
 }
 
-func (e ItemBindStatus) String() string {
+func (e ItemBindStatus) Enum() string {
 	switch e {
 	case ItemBindStatus_NotBound:
 		return "NotBound"
@@ -49917,7 +50602,7 @@ func (e ItemBindStatus) String() string {
 	return fmt.Sprintf("ItemBindStatus_%d", e)
 }
 
-func (e ItemLocation) String() string {
+func (e ItemLocation) Enum() string {
 	switch e {
 	case ItemLocation_Unknown:
 		return "Unknown"
@@ -49933,7 +50618,7 @@ func (e ItemLocation) String() string {
 	return fmt.Sprintf("ItemLocation_%d", e)
 }
 
-func (e ItemPerkVisibility) String() string {
+func (e ItemPerkVisibility) Enum() string {
 	switch e {
 	case ItemPerkVisibility_Visible:
 		return "Visible"
@@ -49945,7 +50630,7 @@ func (e ItemPerkVisibility) String() string {
 	return fmt.Sprintf("ItemPerkVisibility_%d", e)
 }
 
-func (e ItemState) String() string {
+func (e ItemState) Enum() string {
 	switch e {
 	case ItemState_None:
 		return "None"
@@ -49963,7 +50648,7 @@ func (e ItemState) String() string {
 	return fmt.Sprintf("ItemState_%d", e)
 }
 
-func (e PlugAvailabilityMode) String() string {
+func (e PlugAvailabilityMode) Enum() string {
 	switch e {
 	case PlugAvailabilityMode_Normal:
 		return "Normal"
@@ -49975,7 +50660,7 @@ func (e PlugAvailabilityMode) String() string {
 	return fmt.Sprintf("PlugAvailabilityMode_%d", e)
 }
 
-func (e PlugUiStyles) String() string {
+func (e PlugUiStyles) Enum() string {
 	switch e {
 	case PlugUiStyles_None:
 		return "None"
@@ -49985,7 +50670,7 @@ func (e PlugUiStyles) String() string {
 	return fmt.Sprintf("PlugUiStyles_%d", e)
 }
 
-func (e SocketArrayType) String() string {
+func (e SocketArrayType) Enum() string {
 	switch e {
 	case SocketArrayType_Default:
 		return "Default"
@@ -49995,7 +50680,7 @@ func (e SocketArrayType) String() string {
 	return fmt.Sprintf("SocketArrayType_%d", e)
 }
 
-func (e SocketPlugSources) String() string {
+func (e SocketPlugSources) Enum() string {
 	switch e {
 	case SocketPlugSources_None:
 		return "None"
@@ -50011,7 +50696,7 @@ func (e SocketPlugSources) String() string {
 	return fmt.Sprintf("SocketPlugSources_%d", e)
 }
 
-func (e SocketTypeActionType) String() string {
+func (e SocketTypeActionType) Enum() string {
 	switch e {
 	case SocketTypeActionType_InsertPlug:
 		return "InsertPlug"
@@ -50023,7 +50708,7 @@ func (e SocketTypeActionType) String() string {
 	return fmt.Sprintf("SocketTypeActionType_%d", e)
 }
 
-func (e SpecialItemType) String() string {
+func (e SpecialItemType) Enum() string {
 	switch e {
 	case SpecialItemType_None:
 		return "None"
@@ -50047,7 +50732,7 @@ func (e SpecialItemType) String() string {
 	return fmt.Sprintf("SpecialItemType_%d", e)
 }
 
-func (e TierType) String() string {
+func (e TierType) Enum() string {
 	switch e {
 	case TierType_Unknown:
 		return "Unknown"
@@ -50067,7 +50752,7 @@ func (e TierType) String() string {
 	return fmt.Sprintf("TierType_%d", e)
 }
 
-func (e TransferStatuses) String() string {
+func (e TransferStatuses) Enum() string {
 	switch e {
 	case TransferStatuses_CanTransfer:
 		return "CanTransfer"
@@ -50081,7 +50766,7 @@ func (e TransferStatuses) String() string {
 	return fmt.Sprintf("TransferStatuses_%d", e)
 }
 
-func (e VendorDisplayCategorySortOrder) String() string {
+func (e VendorDisplayCategorySortOrder) Enum() string {
 	switch e {
 	case VendorDisplayCategorySortOrder_Default:
 		return "Default"
@@ -50091,7 +50776,7 @@ func (e VendorDisplayCategorySortOrder) String() string {
 	return fmt.Sprintf("VendorDisplayCategorySortOrder_%d", e)
 }
 
-func (e VendorInteractionType) String() string {
+func (e VendorInteractionType) Enum() string {
 	switch e {
 	case VendorInteractionType_Unknown:
 		return "Unknown"
@@ -50119,7 +50804,7 @@ func (e VendorInteractionType) String() string {
 	return fmt.Sprintf("VendorInteractionType_%d", e)
 }
 
-func (e VendorItemStatus) String() string {
+func (e VendorItemStatus) Enum() string {
 	switch e {
 	case VendorItemStatus_Success:
 		return "Success"
@@ -50155,7 +50840,7 @@ func (e VendorItemStatus) String() string {
 	return fmt.Sprintf("VendorItemStatus_%d", e)
 }
 
-func (e PlatformErrorCodes) String() string {
+func (e PlatformErrorCodes) Enum() string {
 	switch e {
 	case PlatformErrorCodes_None:
 		return "None"
@@ -51849,7 +52534,7 @@ func (e PlatformErrorCodes) String() string {
 	return fmt.Sprintf("PlatformErrorCodes_%d", e)
 }
 
-func (e FireteamDateRange) String() string {
+func (e FireteamDateRange) Enum() string {
 	switch e {
 	case FireteamDateRange_All:
 		return "All"
@@ -51865,7 +52550,7 @@ func (e FireteamDateRange) String() string {
 	return fmt.Sprintf("FireteamDateRange_%d", e)
 }
 
-func (e FireteamPlatform) String() string {
+func (e FireteamPlatform) Enum() string {
 	switch e {
 	case FireteamPlatform_Any:
 		return "Any"
@@ -51885,7 +52570,7 @@ func (e FireteamPlatform) String() string {
 	return fmt.Sprintf("FireteamPlatform_%d", e)
 }
 
-func (e FireteamPlatformInviteResult) String() string {
+func (e FireteamPlatformInviteResult) Enum() string {
 	switch e {
 	case FireteamPlatformInviteResult_None:
 		return "None"
@@ -51901,7 +52586,7 @@ func (e FireteamPlatformInviteResult) String() string {
 	return fmt.Sprintf("FireteamPlatformInviteResult_%d", e)
 }
 
-func (e FireteamPublicSearchOption) String() string {
+func (e FireteamPublicSearchOption) Enum() string {
 	switch e {
 	case FireteamPublicSearchOption_PublicAndPrivate:
 		return "PublicAndPrivate"
@@ -51913,7 +52598,7 @@ func (e FireteamPublicSearchOption) String() string {
 	return fmt.Sprintf("FireteamPublicSearchOption_%d", e)
 }
 
-func (e FireteamSlotSearch) String() string {
+func (e FireteamSlotSearch) Enum() string {
 	switch e {
 	case FireteamSlotSearch_NoSlotRestriction:
 		return "NoSlotRestriction"
@@ -51925,7 +52610,7 @@ func (e FireteamSlotSearch) String() string {
 	return fmt.Sprintf("FireteamSlotSearch_%d", e)
 }
 
-func (e CommunityContentSortMode) String() string {
+func (e CommunityContentSortMode) Enum() string {
 	switch e {
 	case CommunityContentSortMode_Trending:
 		return "Trending"
@@ -51937,7 +52622,7 @@ func (e CommunityContentSortMode) String() string {
 	return fmt.Sprintf("CommunityContentSortMode_%d", e)
 }
 
-func (e ForumMediaType) String() string {
+func (e ForumMediaType) Enum() string {
 	switch e {
 	case ForumMediaType_None:
 		return "None"
@@ -51951,7 +52636,7 @@ func (e ForumMediaType) String() string {
 	return fmt.Sprintf("ForumMediaType_%d", e)
 }
 
-func (e ForumPostPopularity) String() string {
+func (e ForumPostPopularity) Enum() string {
 	switch e {
 	case ForumPostPopularity_Empty:
 		return "Empty"
@@ -51969,7 +52654,7 @@ func (e ForumPostPopularity) String() string {
 	return fmt.Sprintf("ForumPostPopularity_%d", e)
 }
 
-func (e ForumPostSort) String() string {
+func (e ForumPostSort) Enum() string {
 	switch e {
 	case ForumPostSort_Default:
 		return "Default"
@@ -51979,7 +52664,7 @@ func (e ForumPostSort) String() string {
 	return fmt.Sprintf("ForumPostSort_%d", e)
 }
 
-func (e ForumRecruitmentIntensityLabel) String() string {
+func (e ForumRecruitmentIntensityLabel) Enum() string {
 	switch e {
 	case ForumRecruitmentIntensityLabel_None:
 		return "None"
@@ -51991,7 +52676,7 @@ func (e ForumRecruitmentIntensityLabel) String() string {
 	return fmt.Sprintf("ForumRecruitmentIntensityLabel_%d", e)
 }
 
-func (e ForumRecruitmentToneLabel) String() string {
+func (e ForumRecruitmentToneLabel) Enum() string {
 	switch e {
 	case ForumRecruitmentToneLabel_None:
 		return "None"
@@ -52003,7 +52688,7 @@ func (e ForumRecruitmentToneLabel) String() string {
 	return fmt.Sprintf("ForumRecruitmentToneLabel_%d", e)
 }
 
-func (e ForumTopicsCategoryFilters) String() string {
+func (e ForumTopicsCategoryFilters) Enum() string {
 	switch e {
 	case ForumTopicsCategoryFilters_None:
 		return "None"
@@ -52027,7 +52712,7 @@ func (e ForumTopicsCategoryFilters) String() string {
 	return fmt.Sprintf("ForumTopicsCategoryFilters_%d", e)
 }
 
-func (e ForumTopicsQuickDate) String() string {
+func (e ForumTopicsQuickDate) Enum() string {
 	switch e {
 	case ForumTopicsQuickDate_All:
 		return "All"
@@ -52043,7 +52728,7 @@ func (e ForumTopicsQuickDate) String() string {
 	return fmt.Sprintf("ForumTopicsQuickDate_%d", e)
 }
 
-func (e ForumTopicsSort) String() string {
+func (e ForumTopicsSort) Enum() string {
 	switch e {
 	case ForumTopicsSort_Default:
 		return "Default"
@@ -52065,7 +52750,7 @@ func (e ForumTopicsSort) String() string {
 	return fmt.Sprintf("ForumTopicsSort_%d", e)
 }
 
-func (e ForumFlags) String() string {
+func (e ForumFlags) Enum() string {
 	switch e {
 	case ForumFlags_None:
 		return "None"
@@ -52089,7 +52774,7 @@ func (e ForumFlags) String() string {
 	return fmt.Sprintf("ForumFlags_%d", e)
 }
 
-func (e ForumPostCategory) String() string {
+func (e ForumPostCategory) Enum() string {
 	switch e {
 	case ForumPostCategory_None:
 		return "None"
@@ -52119,7 +52804,7 @@ func (e ForumPostCategory) String() string {
 	return fmt.Sprintf("ForumPostCategory_%d", e)
 }
 
-func (e GlobalAlertLevel) String() string {
+func (e GlobalAlertLevel) Enum() string {
 	switch e {
 	case GlobalAlertLevel_Unknown:
 		return "Unknown"
@@ -52133,7 +52818,7 @@ func (e GlobalAlertLevel) String() string {
 	return fmt.Sprintf("GlobalAlertLevel_%d", e)
 }
 
-func (e GlobalAlertType) String() string {
+func (e GlobalAlertType) Enum() string {
 	switch e {
 	case GlobalAlertType_GlobalAlert:
 		return "GlobalAlert"
@@ -52143,7 +52828,7 @@ func (e GlobalAlertType) String() string {
 	return fmt.Sprintf("GlobalAlertType_%d", e)
 }
 
-func (e Capabilities) String() string {
+func (e Capabilities) Enum() string {
 	switch e {
 	case Capabilities_None:
 		return "None"
@@ -52165,7 +52850,7 @@ func (e Capabilities) String() string {
 	return fmt.Sprintf("Capabilities_%d", e)
 }
 
-func (e ChatSecuritySetting) String() string {
+func (e ChatSecuritySetting) Enum() string {
 	switch e {
 	case ChatSecuritySetting_Group:
 		return "Group"
@@ -52175,7 +52860,7 @@ func (e ChatSecuritySetting) String() string {
 	return fmt.Sprintf("ChatSecuritySetting_%d", e)
 }
 
-func (e GroupAllianceStatus) String() string {
+func (e GroupAllianceStatus) Enum() string {
 	switch e {
 	case GroupAllianceStatus_Unallied:
 		return "Unallied"
@@ -52187,7 +52872,7 @@ func (e GroupAllianceStatus) String() string {
 	return fmt.Sprintf("GroupAllianceStatus_%d", e)
 }
 
-func (e GroupApplicationResolveState) String() string {
+func (e GroupApplicationResolveState) Enum() string {
 	switch e {
 	case GroupApplicationResolveState_Unresolved:
 		return "Unresolved"
@@ -52201,7 +52886,7 @@ func (e GroupApplicationResolveState) String() string {
 	return fmt.Sprintf("GroupApplicationResolveState_%d", e)
 }
 
-func (e GroupDateRange) String() string {
+func (e GroupDateRange) Enum() string {
 	switch e {
 	case GroupDateRange_All:
 		return "All"
@@ -52217,7 +52902,7 @@ func (e GroupDateRange) String() string {
 	return fmt.Sprintf("GroupDateRange_%d", e)
 }
 
-func (e GroupHomepage) String() string {
+func (e GroupHomepage) Enum() string {
 	switch e {
 	case GroupHomepage_Wall:
 		return "Wall"
@@ -52229,7 +52914,7 @@ func (e GroupHomepage) String() string {
 	return fmt.Sprintf("GroupHomepage_%d", e)
 }
 
-func (e GroupMemberCountFilter) String() string {
+func (e GroupMemberCountFilter) Enum() string {
 	switch e {
 	case GroupMemberCountFilter_All:
 		return "All"
@@ -52243,7 +52928,7 @@ func (e GroupMemberCountFilter) String() string {
 	return fmt.Sprintf("GroupMemberCountFilter_%d", e)
 }
 
-func (e GroupPostPublicity) String() string {
+func (e GroupPostPublicity) Enum() string {
 	switch e {
 	case GroupPostPublicity_Public:
 		return "Public"
@@ -52255,7 +52940,7 @@ func (e GroupPostPublicity) String() string {
 	return fmt.Sprintf("GroupPostPublicity_%d", e)
 }
 
-func (e GroupPotentialMemberStatus) String() string {
+func (e GroupPotentialMemberStatus) Enum() string {
 	switch e {
 	case GroupPotentialMemberStatus_None:
 		return "None"
@@ -52267,7 +52952,7 @@ func (e GroupPotentialMemberStatus) String() string {
 	return fmt.Sprintf("GroupPotentialMemberStatus_%d", e)
 }
 
-func (e GroupSortBy) String() string {
+func (e GroupSortBy) Enum() string {
 	switch e {
 	case GroupSortBy_Name:
 		return "Name"
@@ -52281,7 +52966,7 @@ func (e GroupSortBy) String() string {
 	return fmt.Sprintf("GroupSortBy_%d", e)
 }
 
-func (e GroupType) String() string {
+func (e GroupType) Enum() string {
 	switch e {
 	case GroupType_General:
 		return "General"
@@ -52291,7 +52976,7 @@ func (e GroupType) String() string {
 	return fmt.Sprintf("GroupType_%d", e)
 }
 
-func (e GroupsForMemberFilter) String() string {
+func (e GroupsForMemberFilter) Enum() string {
 	switch e {
 	case GroupsForMemberFilter_All:
 		return "All"
@@ -52303,7 +52988,7 @@ func (e GroupsForMemberFilter) String() string {
 	return fmt.Sprintf("GroupsForMemberFilter_%d", e)
 }
 
-func (e HostGuidedGamesPermissionLevel) String() string {
+func (e HostGuidedGamesPermissionLevel) Enum() string {
 	switch e {
 	case HostGuidedGamesPermissionLevel_None:
 		return "None"
@@ -52315,7 +53000,7 @@ func (e HostGuidedGamesPermissionLevel) String() string {
 	return fmt.Sprintf("HostGuidedGamesPermissionLevel_%d", e)
 }
 
-func (e MembershipOption) String() string {
+func (e MembershipOption) Enum() string {
 	switch e {
 	case MembershipOption_Reviewed:
 		return "Reviewed"
@@ -52327,7 +53012,7 @@ func (e MembershipOption) String() string {
 	return fmt.Sprintf("MembershipOption_%d", e)
 }
 
-func (e RuntimeGroupMemberType) String() string {
+func (e RuntimeGroupMemberType) Enum() string {
 	switch e {
 	case RuntimeGroupMemberType_None:
 		return "None"
@@ -52345,7 +53030,7 @@ func (e RuntimeGroupMemberType) String() string {
 	return fmt.Sprintf("RuntimeGroupMemberType_%d", e)
 }
 
-func (e IgnoreLength) String() string {
+func (e IgnoreLength) Enum() string {
 	switch e {
 	case IgnoreLength_None:
 		return "None"
@@ -52375,7 +53060,7 @@ func (e IgnoreLength) String() string {
 	return fmt.Sprintf("IgnoreLength_%d", e)
 }
 
-func (e IgnoreStatus) String() string {
+func (e IgnoreStatus) Enum() string {
 	switch e {
 	case IgnoreStatus_NotIgnored:
 		return "NotIgnored"
@@ -52395,7 +53080,7 @@ func (e IgnoreStatus) String() string {
 	return fmt.Sprintf("IgnoreStatus_%d", e)
 }
 
-func (e FriendRelationshipState) String() string {
+func (e FriendRelationshipState) Enum() string {
 	switch e {
 	case FriendRelationshipState_Unknown:
 		return "Unknown"
@@ -52409,7 +53094,7 @@ func (e FriendRelationshipState) String() string {
 	return fmt.Sprintf("FriendRelationshipState_%d", e)
 }
 
-func (e PlatformFriendType) String() string {
+func (e PlatformFriendType) Enum() string {
 	switch e {
 	case PlatformFriendType_Unknown:
 		return "Unknown"
@@ -52425,7 +53110,7 @@ func (e PlatformFriendType) String() string {
 	return fmt.Sprintf("PlatformFriendType_%d", e)
 }
 
-func (e PresenceOnlineStateFlags) String() string {
+func (e PresenceOnlineStateFlags) Enum() string {
 	switch e {
 	case PresenceOnlineStateFlags_None:
 		return "None"
@@ -52437,7 +53122,7 @@ func (e PresenceOnlineStateFlags) String() string {
 	return fmt.Sprintf("PresenceOnlineStateFlags_%d", e)
 }
 
-func (e PresenceStatus) String() string {
+func (e PresenceStatus) Enum() string {
 	switch e {
 	case PresenceStatus_OfflineOrUnknown:
 		return "OfflineOrUnknown"
@@ -52447,7 +53132,7 @@ func (e PresenceStatus) String() string {
 	return fmt.Sprintf("PresenceStatus_%d", e)
 }
 
-func (e DropState) String() string {
+func (e DropState) Enum() string {
 	switch e {
 	case DropState_Claimed:
 		return "Claimed"
@@ -52459,7 +53144,7 @@ func (e DropState) String() string {
 	return fmt.Sprintf("DropState_%d", e)
 }
 
-func (e TrendingEntryType) String() string {
+func (e TrendingEntryType) Enum() string {
 	switch e {
 	case TrendingEntryType_News:
 		return "News"
@@ -52489,7 +53174,7 @@ func (e TrendingEntryType) String() string {
 	return fmt.Sprintf("TrendingEntryType_%d", e)
 }
 
-func (e OptInFlags) String() string {
+func (e OptInFlags) Enum() string {
 	switch e {
 	case OptInFlags_None:
 		return "None"

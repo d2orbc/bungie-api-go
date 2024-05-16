@@ -1,18 +1,122 @@
 package bnet
 
 import (
+	"bytes"
 	"context"
+	"debug/buildinfo"
 	"encoding/json"
+	"fmt"
+	"io"
+	"log"
 	"net/http"
+	"net/url"
+	"os"
+	"strings"
 )
 
 type API struct {
-	client Client
+	client      Client
+	UserAgent   string
+	Application string
+}
+
+func NewAPI(apiKey string) *API {
+	return &API{
+		client: &defaultClient{
+			h:      http.DefaultClient,
+			base:   "https://www.bungie.net/Platform",
+			apiKey: apiKey,
+		},
+		UserAgent: "bungie-api-go/" + Version(),
+	}
+}
+
+func Version() string {
+	path, err := os.Executable()
+	if err != nil {
+		return "0.u"
+	}
+	bi, err := buildinfo.ReadFile(path)
+	if err != nil {
+		return "0.u"
+	}
+	for _, dep := range bi.Deps {
+		log.Print(dep)
+		if strings.Contains(dep.Path, "bungie-api-go") {
+			return dep.Version
+		}
+	}
+	return "0.dev"
 }
 
 type Client interface {
-	Get(ctx context.Context, pathSpec string, pathParams map[string]string) ([]byte, error)
-	Post(ctx context.Context, pathSpec string, pathParams map[string]string, body []byte) ([]byte, error)
+	Do(ctx context.Context,
+		operation string,
+		method string,
+		pathSpec string,
+		headers map[string]string,
+		pathParams map[string]string,
+		queryParams url.Values,
+		body any,
+		resp any) error
+}
+
+type defaultClient struct {
+	h      *http.Client
+	base   string
+	apiKey string
+}
+
+func (c *defaultClient) Do(ctx context.Context,
+	operation string,
+	method string,
+	pathSpec string,
+	headers map[string]string,
+	pathParams map[string]string,
+	queryParams url.Values,
+	body any,
+	resp any) error {
+
+	requestBody, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
+	url := c.base + getPath(pathSpec, pathParams, queryParams)
+	req, err := http.NewRequestWithContext(ctx, method, url, bytes.NewReader(requestBody))
+	req.Header.Set("X-Api-Key", c.apiKey)
+	if body != nil {
+		req.Header.Set("Content-Type", "application/json")
+	}
+	for k, v := range headers {
+		req.Header.Set(k, v)
+	}
+	if err != nil {
+		return err
+	}
+	hResp, err := c.h.Do(req)
+	if err != nil {
+		return err
+	}
+	defer hResp.Body.Close()
+	bodyBytes, err := io.ReadAll(hResp.Body)
+	if err != nil {
+		return err
+	}
+	if serverResponse, ok := resp.(interface{ setRaw([]byte) }); ok {
+		serverResponse.setRaw(bodyBytes)
+	}
+	return json.Unmarshal(bodyBytes, &resp)
+}
+
+func getPath(spec string, params map[string]string, queryParams url.Values) string {
+	url := spec
+	for field, val := range params {
+		url = strings.ReplaceAll(url, "{"+field+"}", val)
+	}
+	if len(queryParams) != 0 {
+		url += "?" + queryParams.Encode()
+	}
+	return url
 }
 
 type DefaultClient *http.Client
@@ -25,6 +129,30 @@ type ServerResponse[T any] struct {
 	Message            string
 	MessageData        map[string]string
 	DetailedErrorTrace string
+
+	raw json.RawMessage
+}
+
+func (r ServerResponse[T]) Raw() []byte {
+	return r.raw
+}
+
+func (r *ServerResponse[T]) setRaw(b []byte) {
+	r.raw = b
+}
+
+type Int64 int64
+
+func (n *Int64) UnmarshalJSON(raw []byte) error {
+	unquoted := bytes.ReplaceAll(raw, []byte{'"'}, []byte{})
+	var out int64
+	err := json.Unmarshal(unquoted, &out)
+	*n = Int64(out)
+	return err
+}
+
+func (n Int64) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf(`"%d"`, n)), nil
 }
 
 type Nullable[T any] struct{ v *T }
@@ -39,6 +167,14 @@ func (n Nullable[T]) Value() (v T, ok bool) {
 		return zero, false
 	}
 	return *n.v, true
+}
+
+func (n Nullable[T]) Must() T {
+	if n.v == nil {
+		var zero T
+		return zero
+	}
+	return *n.v
 }
 
 func (n *Nullable[T]) UnmarshalJSON(raw []byte) error {
@@ -63,12 +199,42 @@ func (n Nullable[T]) MarshalJSON() ([]byte, error) {
 
 type Timestamp string
 
-type Hash[T any] uint32
+//type Hash[T ActivityDefinition | ActivityGraphDefinition | ActivityModeDefinition | ActivityModifierDefinition | ActivityTypeDefinition | ArtifactDefinition | BreakerTypeDefinition | ChecklistDefinition | ClassDefinition | CollectibleDefinition | DamageTypeDefinition | DestinationDefinition | EnergyTypeDefinition | EquipmentSlotDefinition | EventCardDefinition | FactionDefinition | GenderDefinition | GuardianRankConstantsDefinition | GuardianRankDefinition | InventoryBucketDefinition | InventoryItemDefinition | ItemCategoryDefinition | ItemTierTypeDefinition | LoadoutColorDefinition | LoadoutConstantsDefinition | LoadoutIconDefinition | LoadoutNameDefinition | LocationDefinition | LoreDefinition | MaterialRequirementSetDefinition | MedalTierDefinition | MetricDefinition | MilestoneDefinition | ObjectiveDefinition | PlaceDefinition | PlugSetDefinition | PowerCapDefinition | PresentationNodeDefinition | ProgressionDefinition | ProgressionLevelRequirementDefinition | ProgressionMappingDefinition | RaceDefinition | RecordDefinition | ReportReasonCategoryDefinition | RewardSourceDefinition | SandboxPatternDefinition | SandboxPerkDefinition | SeasonDefinition | SeasonPassDefinition | SocialCommendationDefinition | SocialCommendationNodeDefinition | SocketCategoryDefinition | SocketTypeDefinition | StatDefinition | StatGroupDefinition | TalentGridDefinition | TraitDefinition | UnlockDefinition | UnlockValueDefinition | VendorDefinition | VendorGroupDefinition] uint32
+
+type defTable interface {
+	DefinitionTable() string
+}
+
+type Hash[T defTable] uint32
 
 type BitmaskSet[T ~uint32 | ~uint64 | ~int32 | OptInFlags] uint64
 
 func (h Hash[T]) Get(fetcher func(Hash[T]) (*T, error)) (*T, error) {
 	return fetcher(h)
+}
+
+func (h Hash[T]) Fetch(api *API) (*T, error) {
+	var t T
+	if err := api.GetDef(t.DefinitionTable(), uint32(h), &t); err != nil {
+		return nil, err
+	}
+	return &t, nil
+}
+
+func (a API) GetDef(table string, hash uint32, out any) error {
+	ctx := context.Background()
+	def, err := a.Destiny2GetDestinyEntityDefinition(ctx, Destiny2GetDestinyEntityDefinitionRequest{
+		EntityType:     table,
+		HashIdentifier: hash,
+	})
+	if err != nil {
+		return err
+	}
+	r := struct {
+		Response any
+	}{}
+	r.Response = out
+	return json.Unmarshal(def.Raw(), &r)
 }
 
 func (b BitmaskSet[T]) Has(value T) bool {
@@ -96,27 +262,6 @@ func (b BitmaskSet[T]) Clear(value T) BitmaskSet[T] {
 	return BitmaskSet[T](0)
 }
 
-/*
-// DictionaryComponentResponse
-type DictionaryComponentResponse[K comparable, V any] struct {
-	Data map[K]V `json:"data"`
-
-	Privacy ComponentPrivacySetting `json:"privacy"`
-
-	// If true, this component is disabled.
-	Disabled Nullable[bool] `json:"disabled"`
-}
-
-type SingleComponentResponse[T any] struct {
-	Data T `json:"data"`
-
-	Privacy ComponentPrivacySetting `json:"privacy"`
-
-	// If true, this component is disabled.
-	Disabled Nullable[bool] `json:"disabled"`
-}
-*/
-
 type BaseItemComponentSet[T comparable] struct {
 	Objectives ComponentResponse[map[T]ItemObjectivesComponent] `json:"objectives"`
 }
@@ -136,4 +281,12 @@ type ItemComponentSet[T comparable] struct {
 
 type VendorSaleItemSetComponent[T any] struct {
 	SaleItems map[int32]T `json:"saleItems"`
+}
+
+func joinArray[T any](a []T) string {
+	var out []string
+	for _, v := range a {
+		out = append(out, fmt.Sprint(v))
+	}
+	return strings.Join(out, ",")
 }
