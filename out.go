@@ -12375,7 +12375,7 @@ type PlatformSilverComponent struct {
 
 	// If a Profile is played on multiple platforms, this is the silver they have for each platform, keyed
 	// by Membership Type.
-	PlatformSilver map[BungieMembershipType]ItemComponent `json:"platformSilver"`
+	PlatformSilver map[string]ItemComponent `json:"platformSilver"`
 }
 
 // Destiny.Components.Items.DestinyItemPlugComponent
@@ -45112,7 +45112,7 @@ type GroupResponse struct {
 	// This property will be populated if the authenticated user is a member of the group. Note that
 	// because of account linking, a user can sometimes be part of a clan more than once. As such, this
 	// returns the highest member type available.
-	CurrentUserMemberMap map[BungieMembershipType]GroupMember `json:"currentUserMemberMap"`
+	CurrentUserMemberMap map[string]GroupMember `json:"currentUserMemberMap"`
 
 	// A convenience property that indicates if every membership you (the current user) have that is a part
 	// of this group are part of an account that is considered inactive - for example, overridden accounts

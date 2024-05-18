@@ -31,6 +31,32 @@ func NewAPI(apiKey string) *API {
 	}
 }
 
+func (a *API) withInterceptor(interceptor func(c Client) Client) *API {
+	new := *a
+	new.client = interceptor(a.client)
+	return &new
+}
+
+func (a *API) WithAuthToken(tok string) *API {
+	return a.withInterceptor(func(c Client) Client {
+		return addHeaderClient{c, "Authorization", "Bearer " + tok}
+	})
+}
+
+type addHeaderClient struct {
+	base      Client
+	headerKey string
+	headerVal string
+}
+
+func (tc addHeaderClient) Do(ctx context.Context, operation string, method string, pathSpec string, headers map[string]string, pathParams map[string]string, queryParams url.Values, body any, resp any) error {
+	if headers == nil {
+		headers = map[string]string{}
+	}
+	headers[tc.headerKey] = tc.headerVal
+	return tc.base.Do(ctx, operation, method, pathSpec, headers, pathParams, queryParams, body, resp)
+}
+
 func Version() string {
 	path, err := os.Executable()
 	if err != nil {

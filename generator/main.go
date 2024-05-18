@@ -193,6 +193,14 @@ func main() {
 						structOpt += ",omitempty"
 					}
 					structTag := fmt.Sprintf(`json:"%s%s"`, fieldName, structOpt)
+					if ident == "GroupResponse" && fieldName == "currentUserMemberMap" {
+						// https://github.com/Bungie-net/api/issues/1374
+						fieldType = "map[string]GroupMember"
+					}
+					if ident == "PlatformSilverComponent" && fieldName == "platformSilver" {
+						// https://github.com/Bungie-net/api/issues/1374
+						fieldType = "map[string]ItemComponent"
+					}
 					types.Out("%s %s `%s`", capitalize(fieldName), fieldType, structTag)
 
 					// if prop.Value != nil {
@@ -273,6 +281,7 @@ func handleGenerics(schemas openapi3.Schemas) {
 				b, _ := schema.MarshalJSON()
 				panic(fmt.Errorf("result schema %s", b))
 			}
+			// TODO: use x-destiny-component-type-dependency
 			refToTypeOverride[ref] = "ComponentResponse[" + resultType + "]"
 		} else if strings.Contains(ref, "DictionaryComponentResponseOf") {
 			s := schema.Value.Properties["data"]
@@ -445,6 +454,7 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 				ref := enumSchema["$ref"].(string)
 				keyType = refToIdent(ref)
 				if ref == "#/components/schemas/Destiny.DestinyGender" {
+					// https://github.com/Bungie-net/api/issues/1575
 					keyType = "string"
 				}
 			}
