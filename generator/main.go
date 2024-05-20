@@ -14,6 +14,10 @@ import (
 	"github.com/mitchellh/go-wordwrap"
 )
 
+// TODO: use x-destiny-component-type-dependency
+// TODO: use x-documentation-attributes
+// TODO: automatic ThrottleSecondsBetweenActionPerUser ?
+
 var (
 	specFile = flag.String("spec", "../api-src/openapi.json", "path to openapi spec (v3)")
 )
@@ -154,6 +158,11 @@ func main() {
 			types.Comment(schema.Value.Description)
 
 			if schema.Value.Type.Is("object") {
+				if len(schema.Value.Properties) == 0 {
+					types.Out("type %s map[string]any", ident)
+					types.Debug(schema)
+					continue
+				}
 				if ident == "ComponentResponse" {
 					types.Out(`type %s[T any] struct{`, ident)
 					types.Out("Data T `json:\"data\"`")
@@ -179,7 +188,6 @@ func main() {
 
 				for _, fieldName := range orderedKeys(schema.Value.Properties) {
 					prop := schema.Value.Properties[fieldName]
-					// TODO: use x-destiny-component-type-dependency
 					types.Out("")
 					if prop.Value != nil && prop.Value.Description != "" {
 						types.Comment(prop.Value.Description)
@@ -193,14 +201,14 @@ func main() {
 						structOpt += ",omitempty"
 					}
 					structTag := fmt.Sprintf(`json:"%s%s"`, fieldName, structOpt)
-					if ident == "GroupResponse" && fieldName == "currentUserMemberMap" {
-						// https://github.com/Bungie-net/api/issues/1374
-						fieldType = "map[string]GroupMember"
-					}
-					if ident == "PlatformSilverComponent" && fieldName == "platformSilver" {
-						// https://github.com/Bungie-net/api/issues/1374
-						fieldType = "map[string]ItemComponent"
-					}
+					// if ident == "GroupResponse" && fieldName == "currentUserMemberMap" {
+					// 	// https://github.com/Bungie-net/api/issues/1374
+					// 	fieldType = "map[string]GroupMember"
+					// }
+					// if ident == "PlatformSilverComponent" && fieldName == "platformSilver" {
+					// 	// https://github.com/Bungie-net/api/issues/1374
+					// 	fieldType = "map[string]ItemComponent"
+					// }
 					types.Out("%s %s `%s`", capitalize(fieldName), fieldType, structTag)
 
 					// if prop.Value != nil {
@@ -253,9 +261,11 @@ func main() {
 	fmt.Println(`
 package bnet
 
-import "context"
-import "fmt"
-import "net/url"
+import (
+"context"
+"fmt"
+"net/url"
+)
 	`)
 	os.Stdout.ReadFrom(&paths)
 	os.Stdout.ReadFrom(&types)
@@ -281,7 +291,6 @@ func handleGenerics(schemas openapi3.Schemas) {
 				b, _ := schema.MarshalJSON()
 				panic(fmt.Errorf("result schema %s", b))
 			}
-			// TODO: use x-destiny-component-type-dependency
 			refToTypeOverride[ref] = "ComponentResponse[" + resultType + "]"
 		} else if strings.Contains(ref, "DictionaryComponentResponseOf") {
 			s := schema.Value.Properties["data"]
@@ -455,6 +464,14 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 				keyType = refToIdent(ref)
 				if ref == "#/components/schemas/Destiny.DestinyGender" {
 					// https://github.com/Bungie-net/api/issues/1575
+					keyType = "string"
+				}
+				if ref == "#/components/schemas/BungieCredentialType" {
+					// https://github.com/Bungie-net/api/issues/1888
+					keyType = "string"
+				}
+				if ref == "#/components/schemas/BungieMembershipType" {
+					// https://github.com/Bungie-net/api/issues/1374
 					keyType = "string"
 				}
 			}

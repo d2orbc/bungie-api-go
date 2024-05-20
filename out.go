@@ -1,8 +1,10 @@
 package bnet
 
-import "context"
-import "fmt"
-import "net/url"
+import (
+	"context"
+	"fmt"
+	"net/url"
+)
 
 // GetUserSystemOverridesRequest are the request parameters for operation .GetUserSystemOverrides
 type GetUserSystemOverridesRequest struct {
@@ -1728,7 +1730,7 @@ type UserGetSanitizedPlatformDisplayNamesRequest struct {
 // URL: /User/GetSanitizedPlatformDisplayNames/{membershipId}/
 //
 // Operation: User.GetSanitizedPlatformDisplayNames
-func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserGetSanitizedPlatformDisplayNamesRequest) (*ServerResponse[map[BungieCredentialType]string], error) {
+func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserGetSanitizedPlatformDisplayNamesRequest) (*ServerResponse[map[string]string], error) {
 	//	{
 	//	  "description": "Gets a list of all display names linked to this membership id but sanitized (profanity filtered). Obeys all visibility rules of calling user and is heavily cached.",
 	//	  "operationId": "User.GetSanitizedPlatformDisplayNames",
@@ -1753,7 +1755,7 @@ func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserG
 	//	    "User"
 	//	  ]
 	//	}
-	var resp ServerResponse[map[BungieCredentialType]string]
+	var resp ServerResponse[map[string]string]
 	err := a.client.Do(ctx, "User.GetSanitizedPlatformDisplayNames",
 		"GET",
 		"/User/GetSanitizedPlatformDisplayNames/{membershipId}/", nil, map[string]string{
@@ -10491,12 +10493,12 @@ type ClanBannerDecal struct {
 }
 
 // Config.ClanBanner.ClanBannerSource
-type ClanBannerSource struct {
-	//	{
-	//	  "type": "object"
-	//	}
-}
+type ClanBannerSource map[string]any
 
+//	{
+//	  "type": "object"
+//	}
+//
 // Config.GroupTheme
 type GroupTheme struct {
 	// {
@@ -35275,18 +35277,18 @@ type HistoricalStatsPeriodGroup struct {
 }
 
 // Destiny.HistoricalStats.DestinyHistoricalStatsResults
-type HistoricalStatsResults struct {
-	//	{
-	//	  "additionalProperties": {
-	//	    "$ref": "#/components/schemas/Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod"
-	//	  },
-	//	  "type": "object",
-	//	  "x-dictionary-key": {
-	//	    "type": "string"
-	//	  }
-	//	}
-}
+type HistoricalStatsResults map[string]any
 
+//	{
+//	  "additionalProperties": {
+//	    "$ref": "#/components/schemas/Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod"
+//	  },
+//	  "type": "object",
+//	  "x-dictionary-key": {
+//	    "type": "string"
+//	  }
+//	}
+//
 // Destiny.HistoricalStats.DestinyHistoricalStatsValue
 type HistoricalStatsValue struct {
 	// {
@@ -45122,7 +45124,7 @@ type GroupResponse struct {
 	// This property will be populated if the authenticated user is an applicant or has an outstanding
 	// invitation to join. Note that because of account linking, a user can sometimes be part of a clan
 	// more than once.
-	CurrentUserPotentialMemberMap map[BungieMembershipType]GroupPotentialMember `json:"currentUserPotentialMemberMap"`
+	CurrentUserPotentialMemberMap map[string]GroupPotentialMember `json:"currentUserPotentialMemberMap"`
 
 	Detail GroupV2 `json:"detail"`
 
