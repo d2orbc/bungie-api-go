@@ -30,9 +30,9 @@ func (a API) GetUserSystemOverrides(ctx context.Context, req GetUserSystemOverri
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]CoreSystem]
-	err := a.client.Do(ctx, ".GetUserSystemOverrides",
-		"GET",
-		"/UserSystemOverrides/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: ".GetUserSystemOverrides",
+		method:   "GET",
+		pathSpec: "/UserSystemOverrides/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -70,9 +70,9 @@ func (a API) UserGetMembershipDataForCurrentUser(ctx context.Context, req UserGe
 	//	  ]
 	//	}
 	var resp ServerResponse[UserMembershipData]
-	err := a.client.Do(ctx, "User.GetMembershipDataForCurrentUser",
-		"GET",
-		"/User/GetMembershipsForCurrentUser/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetMembershipDataForCurrentUser",
+		method:   "GET",
+		pathSpec: "/User/GetMembershipsForCurrentUser/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -99,9 +99,9 @@ func (a API) UserGetAvailableThemes(ctx context.Context, req UserGetAvailableThe
 	//	  ]
 	//	}
 	var resp ServerResponse[[]UserTheme]
-	err := a.client.Do(ctx, "User.GetAvailableThemes",
-		"GET",
-		"/User/GetAvailableThemes/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetAvailableThemes",
+		method:   "GET",
+		pathSpec: "/User/GetAvailableThemes/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -130,9 +130,9 @@ func (a API) TrendingGetTrendingCategories(ctx context.Context, req TrendingGetT
 	//	  ]
 	//	}
 	var resp ServerResponse[TrendingCategories]
-	err := a.client.Do(ctx, "Trending.GetTrendingCategories",
-		"GET",
-		"/Trending/Categories/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Trending.GetTrendingCategories",
+		method:   "GET",
+		pathSpec: "/Trending/Categories/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -160,9 +160,9 @@ func (a API) TokensGetBungieRewardsList(ctx context.Context, req TokensGetBungie
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]BungieRewardDisplay]
-	err := a.client.Do(ctx, "Tokens.GetBungieRewardsList",
-		"GET",
-		"/Tokens/Rewards/BungieRewards/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.GetBungieRewardsList",
+		method:   "GET",
+		pathSpec: "/Tokens/Rewards/BungieRewards/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -199,9 +199,9 @@ func (a API) TokensForceDropsRepair(ctx context.Context, req TokensForceDropsRep
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Tokens.ForceDropsRepair",
-		"POST",
-		"/Tokens/Partner/ForceDropsRepair/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.ForceDropsRepair",
+		method:   "POST",
+		pathSpec: "/Tokens/Partner/ForceDropsRepair/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -250,9 +250,9 @@ func (a API) TokensClaimPartnerOffer(ctx context.Context, req TokensClaimPartner
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Tokens.ClaimPartnerOffer",
-		"POST",
-		"/Tokens/Partner/ClaimOffer/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.ClaimPartnerOffer",
+		method:   "POST",
+		pathSpec: "/Tokens/Partner/ClaimOffer/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -289,9 +289,9 @@ func (a API) SocialGetFriendRequestList(ctx context.Context, req SocialGetFriend
 	//	  ]
 	//	}
 	var resp ServerResponse[BungieFriendRequestListResponse]
-	err := a.client.Do(ctx, "Social.GetFriendRequestList",
-		"GET",
-		"/Social/Friends/Requests/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Social.GetFriendRequestList",
+		method:   "GET",
+		pathSpec: "/Social/Friends/Requests/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -327,9 +327,9 @@ func (a API) SocialGetFriendList(ctx context.Context, req SocialGetFriendListReq
 	//	  ]
 	//	}
 	var resp ServerResponse[BungieFriendListResponse]
-	err := a.client.Do(ctx, "Social.GetFriendList",
-		"GET",
-		"/Social/Friends/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Social.GetFriendList",
+		method:   "GET",
+		pathSpec: "/Social/Friends/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -356,9 +356,9 @@ func (a API) GetCommonSettings(ctx context.Context, req GetCommonSettingsRequest
 	//	  ]
 	//	}
 	var resp ServerResponse[CoreSettingsConfiguration]
-	err := a.client.Do(ctx, ".GetCommonSettings",
-		"GET",
-		"/Settings/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: ".GetCommonSettings",
+		method:   "GET",
+		pathSpec: "/Settings/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -398,9 +398,9 @@ func (a API) GroupV2GroupSearch(ctx context.Context, req GroupV2GroupSearchReque
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupSearchResponse]
-	err := a.client.Do(ctx, "GroupV2.GroupSearch",
-		"POST",
-		"/GroupV2/Search/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GroupSearch",
+		method:   "POST",
+		pathSpec: "/GroupV2/Search/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -441,9 +441,9 @@ func (a API) GroupV2GetGroupByNameV2(ctx context.Context, req GroupV2GetGroupByN
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupResponse]
-	err := a.client.Do(ctx, "GroupV2.GetGroupByNameV2",
-		"POST",
-		"/GroupV2/NameV2/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetGroupByNameV2",
+		method:   "POST",
+		pathSpec: "/GroupV2/NameV2/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -470,9 +470,9 @@ func (a API) GroupV2GetAvailableThemes(ctx context.Context, req GroupV2GetAvaila
 	//	  ]
 	//	}
 	var resp ServerResponse[[]GroupTheme]
-	err := a.client.Do(ctx, "GroupV2.GetAvailableThemes",
-		"GET",
-		"/GroupV2/GetAvailableThemes/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetAvailableThemes",
+		method:   "GET",
+		pathSpec: "/GroupV2/GetAvailableThemes/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -500,9 +500,9 @@ func (a API) GroupV2GetAvailableAvatars(ctx context.Context, req GroupV2GetAvail
 	//	  ]
 	//	}
 	var resp ServerResponse[map[int32]string]
-	err := a.client.Do(ctx, "GroupV2.GetAvailableAvatars",
-		"GET",
-		"/GroupV2/GetAvailableAvatars/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetAvailableAvatars",
+		method:   "GET",
+		pathSpec: "/GroupV2/GetAvailableAvatars/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -543,11 +543,11 @@ func (a API) GetGlobalAlerts(ctx context.Context, req GetGlobalAlertsRequest) (*
 	//	  ]
 	//	}
 	var resp ServerResponse[[]GlobalAlert]
-	err := a.client.Do(ctx, ".GetGlobalAlerts",
-		"GET",
-		"/GlobalAlerts/", nil, map[string]string{}, url.Values{
+	err := a.client.Do(ctx, clientRequest{operation: ".GetGlobalAlerts",
+		method:   "GET",
+		pathSpec: "/GlobalAlerts/", pathParams: map[string]string{}, queryParams: url.Values{
 			"includestreaming": {fmt.Sprint(req.Includestreaming)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -574,9 +574,9 @@ func (a API) GetAvailableLocales(ctx context.Context, req GetAvailableLocalesReq
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]string]
-	err := a.client.Do(ctx, ".GetAvailableLocales",
-		"GET",
-		"/GetAvailableLocales/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: ".GetAvailableLocales",
+		method:   "GET",
+		pathSpec: "/GetAvailableLocales/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -622,9 +622,9 @@ func (a API) ForumGetRecruitmentThreadSummaries(ctx context.Context, req ForumGe
 	//	  ]
 	//	}
 	var resp ServerResponse[[]ForumRecruitmentDetail]
-	err := a.client.Do(ctx, "Forum.GetRecruitmentThreadSummaries",
-		"POST",
-		"/Forum/Recruit/Summaries/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetRecruitmentThreadSummaries",
+		method:   "POST",
+		pathSpec: "/Forum/Recruit/Summaries/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -666,11 +666,11 @@ func (a API) ForumGetForumTagSuggestions(ctx context.Context, req ForumGetForumT
 	//	  ]
 	//	}
 	var resp ServerResponse[[]TagResponse]
-	err := a.client.Do(ctx, "Forum.GetForumTagSuggestions",
-		"GET",
-		"/Forum/GetForumTagSuggestions/", nil, map[string]string{}, url.Values{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetForumTagSuggestions",
+		method:   "GET",
+		pathSpec: "/Forum/GetForumTagSuggestions/", pathParams: map[string]string{}, queryParams: url.Values{
 			"partialtag": {fmt.Sprint(req.Partialtag)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -726,11 +726,11 @@ func (a API) Destiny2GetPublicVendors(ctx context.Context, req Destiny2GetPublic
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[PublicVendorsResponse]
-	err := a.client.Do(ctx, "Destiny2.GetPublicVendors",
-		"GET",
-		"/Destiny2/Vendors/", nil, map[string]string{}, url.Values{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetPublicVendors",
+		method:   "GET",
+		pathSpec: "/Destiny2/Vendors/", pathParams: map[string]string{}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -758,9 +758,9 @@ func (a API) Destiny2GetHistoricalStatsDefinition(ctx context.Context, req Desti
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]HistoricalStatsDefinition]
-	err := a.client.Do(ctx, "Destiny2.GetHistoricalStatsDefinition",
-		"GET",
-		"/Destiny2/Stats/Definition/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetHistoricalStatsDefinition",
+		method:   "GET",
+		pathSpec: "/Destiny2/Stats/Definition/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -788,9 +788,9 @@ func (a API) Destiny2GetPublicMilestones(ctx context.Context, req Destiny2GetPub
 	//	  ]
 	//	}
 	var resp ServerResponse[map[uint32]PublicMilestone]
-	err := a.client.Do(ctx, "Destiny2.GetPublicMilestones",
-		"GET",
-		"/Destiny2/Milestones/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetPublicMilestones",
+		method:   "GET",
+		pathSpec: "/Destiny2/Milestones/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -818,9 +818,9 @@ func (a API) Destiny2GetDestinyManifest(ctx context.Context, req Destiny2GetDest
 	//	  ]
 	//	}
 	var resp ServerResponse[Manifest]
-	err := a.client.Do(ctx, "Destiny2.GetDestinyManifest",
-		"GET",
-		"/Destiny2/Manifest/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetDestinyManifest",
+		method:   "GET",
+		pathSpec: "/Destiny2/Manifest/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -848,9 +848,9 @@ func (a API) Destiny2GetClanBannerSource(ctx context.Context, req Destiny2GetCla
 	//	  ]
 	//	}
 	var resp ServerResponse[ClanBannerSource]
-	err := a.client.Do(ctx, "Destiny2.GetClanBannerSource",
-		"GET",
-		"/Destiny2/Clan/ClanBannerDictionary/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetClanBannerSource",
+		method:   "GET",
+		pathSpec: "/Destiny2/Clan/ClanBannerDictionary/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -900,9 +900,9 @@ func (a API) Destiny2AwaInitializeRequest(ctx context.Context, req Destiny2AwaIn
 	//	  ]
 	//	}
 	var resp ServerResponse[AwaInitializeResponse]
-	err := a.client.Do(ctx, "Destiny2.AwaInitializeRequest",
-		"POST",
-		"/Destiny2/Awa/Initialize/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.AwaInitializeRequest",
+		method:   "POST",
+		pathSpec: "/Destiny2/Awa/Initialize/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -944,9 +944,9 @@ func (a API) Destiny2AwaProvideAuthorizationResult(ctx context.Context, req Dest
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.AwaProvideAuthorizationResult",
-		"POST",
-		"/Destiny2/Awa/AwaProvideAuthorizationResult/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.AwaProvideAuthorizationResult",
+		method:   "POST",
+		pathSpec: "/Destiny2/Awa/AwaProvideAuthorizationResult/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -999,9 +999,9 @@ func (a API) Destiny2UpdateLoadoutIdentifiers(ctx context.Context, req Destiny2U
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.UpdateLoadoutIdentifiers",
-		"POST",
-		"/Destiny2/Actions/Loadouts/UpdateLoadoutIdentifiers/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.UpdateLoadoutIdentifiers",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Loadouts/UpdateLoadoutIdentifiers/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1053,9 +1053,9 @@ func (a API) Destiny2SnapshotLoadout(ctx context.Context, req Destiny2SnapshotLo
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.SnapshotLoadout",
-		"POST",
-		"/Destiny2/Actions/Loadouts/SnapshotLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.SnapshotLoadout",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Loadouts/SnapshotLoadout/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1108,9 +1108,9 @@ func (a API) Destiny2EquipLoadout(ctx context.Context, req Destiny2EquipLoadoutR
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.EquipLoadout",
-		"POST",
-		"/Destiny2/Actions/Loadouts/EquipLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.EquipLoadout",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Loadouts/EquipLoadout/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1162,9 +1162,9 @@ func (a API) Destiny2ClearLoadout(ctx context.Context, req Destiny2ClearLoadoutR
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.ClearLoadout",
-		"POST",
-		"/Destiny2/Actions/Loadouts/ClearLoadout/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.ClearLoadout",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Loadouts/ClearLoadout/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1217,9 +1217,9 @@ func (a API) Destiny2TransferItem(ctx context.Context, req Destiny2TransferItemR
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.TransferItem",
-		"POST",
-		"/Destiny2/Actions/Items/TransferItem/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.TransferItem",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/TransferItem/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1273,9 +1273,9 @@ func (a API) Destiny2SetQuestTrackedState(ctx context.Context, req Destiny2SetQu
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.SetQuestTrackedState",
-		"POST",
-		"/Destiny2/Actions/Items/SetTrackedState/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.SetQuestTrackedState",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/SetTrackedState/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1328,9 +1328,9 @@ func (a API) Destiny2SetItemLockState(ctx context.Context, req Destiny2SetItemLo
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.SetItemLockState",
-		"POST",
-		"/Destiny2/Actions/Items/SetLockState/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.SetItemLockState",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/SetLockState/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1385,9 +1385,9 @@ func (a API) Destiny2PullFromPostmaster(ctx context.Context, req Destiny2PullFro
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.PullFromPostmaster",
-		"POST",
-		"/Destiny2/Actions/Items/PullFromPostmaster/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.PullFromPostmaster",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/PullFromPostmaster/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1445,9 +1445,9 @@ func (a API) Destiny2InsertSocketPlugFree(ctx context.Context, req Destiny2Inser
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[ItemChangeResponse]
-	err := a.client.Do(ctx, "Destiny2.InsertSocketPlugFree",
-		"POST",
-		"/Destiny2/Actions/Items/InsertSocketPlugFree/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.InsertSocketPlugFree",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/InsertSocketPlugFree/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1506,9 +1506,9 @@ func (a API) Destiny2InsertSocketPlug(ctx context.Context, req Destiny2InsertSoc
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[ItemChangeResponse]
-	err := a.client.Do(ctx, "Destiny2.InsertSocketPlug",
-		"POST",
-		"/Destiny2/Actions/Items/InsertSocketPlug/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.InsertSocketPlug",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/InsertSocketPlug/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1562,9 +1562,9 @@ func (a API) Destiny2EquipItems(ctx context.Context, req Destiny2EquipItemsReque
 	//	  }
 	//	}
 	var resp ServerResponse[EquipItemResults]
-	err := a.client.Do(ctx, "Destiny2.EquipItems",
-		"POST",
-		"/Destiny2/Actions/Items/EquipItems/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.EquipItems",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/EquipItems/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1617,9 +1617,9 @@ func (a API) Destiny2EquipItem(ctx context.Context, req Destiny2EquipItemRequest
 	//	  }
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.EquipItem",
-		"POST",
-		"/Destiny2/Actions/Items/EquipItem/", nil, map[string]string{}, url.Values{}, req.Body, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.EquipItem",
+		method:   "POST",
+		pathSpec: "/Destiny2/Actions/Items/EquipItem/", pathParams: map[string]string{}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1646,9 +1646,9 @@ func (a API) AppGetBungieApplications(ctx context.Context, req AppGetBungieAppli
 	//	  ]
 	//	}
 	var resp ServerResponse[[]Application]
-	err := a.client.Do(ctx, "App.GetBungieApplications",
-		"GET",
-		"/App/FirstParty/", nil, map[string]string{}, url.Values{}, nil, &resp)
+	err := a.client.Do(ctx, clientRequest{operation: "App.GetBungieApplications",
+		method:   "GET",
+		pathSpec: "/App/FirstParty/", pathParams: map[string]string{}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -1706,11 +1706,11 @@ func (a API) UserSearchByGlobalNamePost(ctx context.Context, req UserSearchByGlo
 	//	  ]
 	//	}
 	var resp ServerResponse[UserSearchResponse]
-	err := a.client.Do(ctx, "User.SearchByGlobalNamePost",
-		"POST",
-		"/User/Search/GlobalName/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.SearchByGlobalNamePost",
+		method:   "POST",
+		pathSpec: "/User/Search/GlobalName/{page}/", pathParams: map[string]string{
 			"page": fmt.Sprint(req.Page),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -1756,11 +1756,11 @@ func (a API) UserGetSanitizedPlatformDisplayNames(ctx context.Context, req UserG
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]string]
-	err := a.client.Do(ctx, "User.GetSanitizedPlatformDisplayNames",
-		"GET",
-		"/User/GetSanitizedPlatformDisplayNames/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetSanitizedPlatformDisplayNames",
+		method:   "GET",
+		pathSpec: "/User/GetSanitizedPlatformDisplayNames/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -1805,11 +1805,11 @@ func (a API) UserGetCredentialTypesForTargetAccount(ctx context.Context, req Use
 	//	  ]
 	//	}
 	var resp ServerResponse[[]GetCredentialTypesForAccountResponse]
-	err := a.client.Do(ctx, "User.GetCredentialTypesForTargetAccount",
-		"GET",
-		"/User/GetCredentialTypesForTargetAccount/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetCredentialTypesForTargetAccount",
+		method:   "GET",
+		pathSpec: "/User/GetCredentialTypesForTargetAccount/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -1852,11 +1852,11 @@ func (a API) UserGetBungieNetUserById(ctx context.Context, req UserGetBungieNetU
 	//	  ]
 	//	}
 	var resp ServerResponse[GeneralUser]
-	err := a.client.Do(ctx, "User.GetBungieNetUserById",
-		"GET",
-		"/User/GetBungieNetUserById/{id}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetBungieNetUserById",
+		method:   "GET",
+		pathSpec: "/User/GetBungieNetUserById/{id}/", pathParams: map[string]string{
 			"id": fmt.Sprint(req.Id),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -1910,11 +1910,11 @@ func (a API) TokensGetBungieRewardsForUser(ctx context.Context, req TokensGetBun
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]BungieRewardDisplay]
-	err := a.client.Do(ctx, "Tokens.GetBungieRewardsForUser",
-		"GET",
-		"/Tokens/Rewards/GetRewardsForUser/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.GetBungieRewardsForUser",
+		method:   "GET",
+		pathSpec: "/Tokens/Rewards/GetRewardsForUser/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -1966,11 +1966,11 @@ func (a API) SocialRemoveFriendRequest(ctx context.Context, req SocialRemoveFrie
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Social.RemoveFriendRequest",
-		"POST",
-		"/Social/Friends/Requests/Remove/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.RemoveFriendRequest",
+		method:   "POST",
+		pathSpec: "/Social/Friends/Requests/Remove/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2023,11 +2023,11 @@ func (a API) SocialDeclineFriendRequest(ctx context.Context, req SocialDeclineFr
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Social.DeclineFriendRequest",
-		"POST",
-		"/Social/Friends/Requests/Decline/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.DeclineFriendRequest",
+		method:   "POST",
+		pathSpec: "/Social/Friends/Requests/Decline/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2079,11 +2079,11 @@ func (a API) SocialAcceptFriendRequest(ctx context.Context, req SocialAcceptFrie
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Social.AcceptFriendRequest",
-		"POST",
-		"/Social/Friends/Requests/Accept/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.AcceptFriendRequest",
+		method:   "POST",
+		pathSpec: "/Social/Friends/Requests/Accept/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2135,11 +2135,11 @@ func (a API) SocialRemoveFriend(ctx context.Context, req SocialRemoveFriendReque
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Social.RemoveFriend",
-		"POST",
-		"/Social/Friends/Remove/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.RemoveFriend",
+		method:   "POST",
+		pathSpec: "/Social/Friends/Remove/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2191,11 +2191,11 @@ func (a API) SocialIssueFriendRequest(ctx context.Context, req SocialIssueFriend
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Social.IssueFriendRequest",
-		"POST",
-		"/Social/Friends/Add/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.IssueFriendRequest",
+		method:   "POST",
+		pathSpec: "/Social/Friends/Add/{membershipId}/", pathParams: map[string]string{
 			"membershipId": fmt.Sprint(req.MembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2262,11 +2262,11 @@ func (a API) GroupV2AddOptionalConversation(ctx context.Context, req GroupV2AddO
 	//	  ]
 	//	}
 	var resp ServerResponse[Int64]
-	err := a.client.Do(ctx, "GroupV2.AddOptionalConversation",
-		"POST",
-		"/GroupV2/{groupId}/OptionalConversations/Add/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.AddOptionalConversation",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/OptionalConversations/Add/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2311,11 +2311,11 @@ func (a API) GroupV2GetGroupOptionalConversations(ctx context.Context, req Group
 	//	  ]
 	//	}
 	var resp ServerResponse[[]GroupOptionalConversation]
-	err := a.client.Do(ctx, "GroupV2.GetGroupOptionalConversations",
-		"GET",
-		"/GroupV2/{groupId}/OptionalConversations/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetGroupOptionalConversations",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/OptionalConversations/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2383,12 +2383,12 @@ func (a API) GroupV2GetPendingMemberships(ctx context.Context, req GroupV2GetPen
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[GroupMemberApplication]]
-	err := a.client.Do(ctx, "GroupV2.GetPendingMemberships",
-		"GET",
-		"/GroupV2/{groupId}/Members/Pending/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetPendingMemberships",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/Members/Pending/", pathParams: map[string]string{
 			"currentpage": fmt.Sprint(req.Currentpage),
 			"groupId":     fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2455,12 +2455,12 @@ func (a API) GroupV2GetInvitedIndividuals(ctx context.Context, req GroupV2GetInv
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[GroupMemberApplication]]
-	err := a.client.Do(ctx, "GroupV2.GetInvitedIndividuals",
-		"GET",
-		"/GroupV2/{groupId}/Members/InvitedIndividuals/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetInvitedIndividuals",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/Members/InvitedIndividuals/", pathParams: map[string]string{
 			"currentpage": fmt.Sprint(req.Currentpage),
 			"groupId":     fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -2526,11 +2526,11 @@ func (a API) GroupV2DenyPendingForList(ctx context.Context, req GroupV2DenyPendi
 	//	  ]
 	//	}
 	var resp ServerResponse[[]EntityActionResult]
-	err := a.client.Do(ctx, "GroupV2.DenyPendingForList",
-		"POST",
-		"/GroupV2/{groupId}/Members/DenyList/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.DenyPendingForList",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/DenyList/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2595,11 +2595,11 @@ func (a API) GroupV2DenyAllPending(ctx context.Context, req GroupV2DenyAllPendin
 	//	  ]
 	//	}
 	var resp ServerResponse[[]EntityActionResult]
-	err := a.client.Do(ctx, "GroupV2.DenyAllPending",
-		"POST",
-		"/GroupV2/{groupId}/Members/DenyAll/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.DenyAllPending",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/DenyAll/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2665,11 +2665,11 @@ func (a API) GroupV2ApprovePendingForList(ctx context.Context, req GroupV2Approv
 	//	  ]
 	//	}
 	var resp ServerResponse[[]EntityActionResult]
-	err := a.client.Do(ctx, "GroupV2.ApprovePendingForList",
-		"POST",
-		"/GroupV2/{groupId}/Members/ApproveList/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.ApprovePendingForList",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/ApproveList/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2734,11 +2734,11 @@ func (a API) GroupV2ApproveAllPending(ctx context.Context, req GroupV2ApproveAll
 	//	  ]
 	//	}
 	var resp ServerResponse[[]EntityActionResult]
-	err := a.client.Do(ctx, "GroupV2.ApproveAllPending",
-		"POST",
-		"/GroupV2/{groupId}/Members/ApproveAll/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.ApproveAllPending",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/ApproveAll/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2824,15 +2824,15 @@ func (a API) GroupV2GetMembersOfGroup(ctx context.Context, req GroupV2GetMembers
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[GroupMember]]
-	err := a.client.Do(ctx, "GroupV2.GetMembersOfGroup",
-		"GET",
-		"/GroupV2/{groupId}/Members/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetMembersOfGroup",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/Members/", pathParams: map[string]string{
 			"currentpage": fmt.Sprint(req.Currentpage),
 			"groupId":     fmt.Sprint(req.GroupID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"memberType": {fmt.Sprint(req.MemberType)},
 			"nameSearch": {fmt.Sprint(req.NameSearch)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -2898,11 +2898,11 @@ func (a API) GroupV2EditFounderOptions(ctx context.Context, req GroupV2EditFound
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.EditFounderOptions",
-		"POST",
-		"/GroupV2/{groupId}/EditFounderOptions/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.EditFounderOptions",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/EditFounderOptions/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -2968,11 +2968,11 @@ func (a API) GroupV2EditClanBanner(ctx context.Context, req GroupV2EditClanBanne
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.EditClanBanner",
-		"POST",
-		"/GroupV2/{groupId}/EditClanBanner/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.EditClanBanner",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/EditClanBanner/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -3039,11 +3039,11 @@ func (a API) GroupV2EditGroup(ctx context.Context, req GroupV2EditGroupRequest) 
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.EditGroup",
-		"POST",
-		"/GroupV2/{groupId}/Edit/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.EditGroup",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Edit/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -3111,12 +3111,12 @@ func (a API) GroupV2GetBannedMembersOfGroup(ctx context.Context, req GroupV2GetB
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[GroupBan]]
-	err := a.client.Do(ctx, "GroupV2.GetBannedMembersOfGroup",
-		"GET",
-		"/GroupV2/{groupId}/Banned/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetBannedMembersOfGroup",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/Banned/", pathParams: map[string]string{
 			"currentpage": fmt.Sprint(req.Currentpage),
 			"groupId":     fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3175,12 +3175,12 @@ func (a API) GroupV2GetAdminsAndFounderOfGroup(ctx context.Context, req GroupV2G
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[GroupMember]]
-	err := a.client.Do(ctx, "GroupV2.GetAdminsAndFounderOfGroup",
-		"GET",
-		"/GroupV2/{groupId}/AdminsAndFounder/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetAdminsAndFounderOfGroup",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/AdminsAndFounder/", pathParams: map[string]string{
 			"currentpage": fmt.Sprint(req.Currentpage),
 			"groupId":     fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3223,11 +3223,11 @@ func (a API) GroupV2GetGroup(ctx context.Context, req GroupV2GetGroupRequest) (*
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupResponse]
-	err := a.client.Do(ctx, "GroupV2.GetGroup",
-		"GET",
-		"/GroupV2/{groupId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetGroup",
+		method:   "GET",
+		pathSpec: "/GroupV2/{groupId}/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3286,11 +3286,11 @@ func (a API) GroupV2GetUserClanInviteSetting(ctx context.Context, req GroupV2Get
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "GroupV2.GetUserClanInviteSetting",
-		"GET",
-		"/GroupV2/GetUserClanInviteSetting/{mType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetUserClanInviteSetting",
+		method:   "GET",
+		pathSpec: "/GroupV2/GetUserClanInviteSetting/{mType}/", pathParams: map[string]string{
 			"mType": fmt.Sprint(req.MType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3333,11 +3333,11 @@ func (a API) ForumGetPoll(ctx context.Context, req ForumGetPollRequest) (*Server
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetPoll",
-		"GET",
-		"/Forum/Poll/{topicId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetPoll",
+		method:   "GET",
+		pathSpec: "/Forum/Poll/{topicId}/", pathParams: map[string]string{
 			"topicId": fmt.Sprint(req.TopicID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3378,11 +3378,11 @@ func (a API) ForumGetTopicForContent(ctx context.Context, req ForumGetTopicForCo
 	//	  ]
 	//	}
 	var resp ServerResponse[Int64]
-	err := a.client.Do(ctx, "Forum.GetTopicForContent",
-		"GET",
-		"/Forum/GetTopicForContent/{contentId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetTopicForContent",
+		method:   "GET",
+		pathSpec: "/Forum/GetTopicForContent/{contentId}/", pathParams: map[string]string{
 			"contentId": fmt.Sprint(req.ContentID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3436,13 +3436,13 @@ func (a API) ForumGetPostAndParentAwaitingApproval(ctx context.Context, req Foru
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetPostAndParentAwaitingApproval",
-		"GET",
-		"/Forum/GetPostAndParentAwaitingApproval/{childPostId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetPostAndParentAwaitingApproval",
+		method:   "GET",
+		pathSpec: "/Forum/GetPostAndParentAwaitingApproval/{childPostId}/", pathParams: map[string]string{
 			"childPostId": fmt.Sprint(req.ChildPostID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"showbanned": {fmt.Sprint(req.Showbanned)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -3494,13 +3494,13 @@ func (a API) ForumGetPostAndParent(ctx context.Context, req ForumGetPostAndParen
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetPostAndParent",
-		"GET",
-		"/Forum/GetPostAndParent/{childPostId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetPostAndParent",
+		method:   "GET",
+		pathSpec: "/Forum/GetPostAndParent/{childPostId}/", pathParams: map[string]string{
 			"childPostId": fmt.Sprint(req.ChildPostID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"showbanned": {fmt.Sprint(req.Showbanned)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -3554,11 +3554,11 @@ func (a API) FireteamGetActivePrivateClanFireteamCount(ctx context.Context, req 
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Fireteam.GetActivePrivateClanFireteamCount",
-		"GET",
-		"/Fireteam/Clan/{groupId}/ActiveCount/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Fireteam.GetActivePrivateClanFireteamCount",
+		method:   "GET",
+		pathSpec: "/Fireteam/Clan/{groupId}/ActiveCount/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3627,11 +3627,11 @@ func (a API) Destiny2ReportOffensivePostGameCarnageReportPlayer(ctx context.Cont
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "Destiny2.ReportOffensivePostGameCarnageReportPlayer",
-		"POST",
-		"/Destiny2/Stats/PostGameCarnageReport/{activityId}/Report/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.ReportOffensivePostGameCarnageReportPlayer",
+		method:   "POST",
+		pathSpec: "/Destiny2/Stats/PostGameCarnageReport/{activityId}/Report/", pathParams: map[string]string{
 			"activityId": fmt.Sprint(req.ActivityID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -3675,11 +3675,11 @@ func (a API) Destiny2GetPostGameCarnageReport(ctx context.Context, req Destiny2G
 	//	  ]
 	//	}
 	var resp ServerResponse[PostGameCarnageReportData]
-	err := a.client.Do(ctx, "Destiny2.GetPostGameCarnageReport",
-		"GET",
-		"/Destiny2/Stats/PostGameCarnageReport/{activityId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetPostGameCarnageReport",
+		method:   "GET",
+		pathSpec: "/Destiny2/Stats/PostGameCarnageReport/{activityId}/", pathParams: map[string]string{
 			"activityId": fmt.Sprint(req.ActivityID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3762,15 +3762,15 @@ func (a API) Destiny2GetClanLeaderboards(ctx context.Context, req Destiny2GetCla
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[map[string]map[string]Leaderboard]
-	err := a.client.Do(ctx, "Destiny2.GetClanLeaderboards",
-		"GET",
-		"/Destiny2/Stats/Leaderboards/Clans/{groupId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetClanLeaderboards",
+		method:   "GET",
+		pathSpec: "/Destiny2/Stats/Leaderboards/Clans/{groupId}/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"maxtop": {fmt.Sprint(req.Maxtop)},
 			"modes":  {fmt.Sprint(req.Modes)},
 			"statid": {fmt.Sprint(req.Statid)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -3830,13 +3830,13 @@ func (a API) Destiny2GetClanAggregateStats(ctx context.Context, req Destiny2GetC
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[[]ClanAggregateStat]
-	err := a.client.Do(ctx, "Destiny2.GetClanAggregateStats",
-		"GET",
-		"/Destiny2/Stats/AggregateClanStats/{groupId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetClanAggregateStats",
+		method:   "GET",
+		pathSpec: "/Destiny2/Stats/AggregateClanStats/{groupId}/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"modes": {fmt.Sprint(req.Modes)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -3900,11 +3900,11 @@ func (a API) Destiny2SearchDestinyPlayerByBungieName(ctx context.Context, req De
 	//	  ]
 	//	}
 	var resp ServerResponse[[]UserInfoCard]
-	err := a.client.Do(ctx, "Destiny2.SearchDestinyPlayerByBungieName",
-		"POST",
-		"/Destiny2/SearchDestinyPlayerByBungieName/{membershipType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.SearchDestinyPlayerByBungieName",
+		method:   "POST",
+		pathSpec: "/Destiny2/SearchDestinyPlayerByBungieName/{membershipType}/", pathParams: map[string]string{
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -3949,11 +3949,11 @@ func (a API) Destiny2GetPublicMilestoneContent(ctx context.Context, req Destiny2
 	//	  ]
 	//	}
 	var resp ServerResponse[MilestoneContent]
-	err := a.client.Do(ctx, "Destiny2.GetPublicMilestoneContent",
-		"GET",
-		"/Destiny2/Milestones/{milestoneHash}/Content/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetPublicMilestoneContent",
+		method:   "GET",
+		pathSpec: "/Destiny2/Milestones/{milestoneHash}/Content/", pathParams: map[string]string{
 			"milestoneHash": fmt.Sprint(req.MilestoneHash),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3998,11 +3998,11 @@ func (a API) Destiny2GetClanWeeklyRewardState(ctx context.Context, req Destiny2G
 	//	  ]
 	//	}
 	var resp ServerResponse[Milestone]
-	err := a.client.Do(ctx, "Destiny2.GetClanWeeklyRewardState",
-		"GET",
-		"/Destiny2/Clan/{groupId}/WeeklyRewardState/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetClanWeeklyRewardState",
+		method:   "GET",
+		pathSpec: "/Destiny2/Clan/{groupId}/WeeklyRewardState/", pathParams: map[string]string{
 			"groupId": fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4053,11 +4053,11 @@ func (a API) Destiny2AwaGetActionToken(ctx context.Context, req Destiny2AwaGetAc
 	//	  ]
 	//	}
 	var resp ServerResponse[AwaAuthorizationResult]
-	err := a.client.Do(ctx, "Destiny2.AwaGetActionToken",
-		"GET",
-		"/Destiny2/Awa/GetActionToken/{correlationId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.AwaGetActionToken",
+		method:   "GET",
+		pathSpec: "/Destiny2/Awa/GetActionToken/{correlationId}/", pathParams: map[string]string{
 			"correlationId": fmt.Sprint(req.CorrelationID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4166,18 +4166,18 @@ func (a API) ContentSearchContentWithText(ctx context.Context, req ContentSearch
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[ContentItemPublicContract]]
-	err := a.client.Do(ctx, "Content.SearchContentWithText",
-		"GET",
-		"/Content/Search/{locale}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.SearchContentWithText",
+		method:   "GET",
+		pathSpec: "/Content/Search/{locale}/", pathParams: map[string]string{
 			"locale": fmt.Sprint(req.Locale),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"ctype":       {fmt.Sprint(req.Ctype)},
 			"currentpage": {fmt.Sprint(req.Currentpage)},
 			"head":        {fmt.Sprint(req.Head)},
 			"searchtext":  {fmt.Sprint(req.Searchtext)},
 			"source":      {fmt.Sprint(req.Source)},
 			"tag":         {fmt.Sprint(req.Tag)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -4241,14 +4241,14 @@ func (a API) ContentRssNewsArticles(ctx context.Context, req ContentRssNewsArtic
 	//	  ]
 	//	}
 	var resp ServerResponse[NewsArticleRssResponse]
-	err := a.client.Do(ctx, "Content.RssNewsArticles",
-		"GET",
-		"/Content/Rss/NewsArticles/{pageToken}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.RssNewsArticles",
+		method:   "GET",
+		pathSpec: "/Content/Rss/NewsArticles/{pageToken}/", pathParams: map[string]string{
 			"pageToken": fmt.Sprint(req.PageToken),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"categoryfilter": {fmt.Sprint(req.Categoryfilter)},
 			"includebody":    {fmt.Sprint(req.Includebody)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -4288,11 +4288,11 @@ func (a API) ContentGetContentType(ctx context.Context, req ContentGetContentTyp
 	//	  ]
 	//	}
 	var resp ServerResponse[ContentTypeDescription]
-	err := a.client.Do(ctx, "Content.GetContentType",
-		"GET",
-		"/Content/GetContentType/{type}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.GetContentType",
+		method:   "GET",
+		pathSpec: "/Content/GetContentType/{type}/", pathParams: map[string]string{
 			"type": fmt.Sprint(req.Type),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4370,14 +4370,14 @@ func (a API) AppGetApplicationApiUsage(ctx context.Context, req AppGetApplicatio
 	//	  ]
 	//	}
 	var resp ServerResponse[ApiUsage]
-	err := a.client.Do(ctx, "App.GetApplicationApiUsage",
-		"GET",
-		"/App/ApiUsage/{applicationId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "App.GetApplicationApiUsage",
+		method:   "GET",
+		pathSpec: "/App/ApiUsage/{applicationId}/", pathParams: map[string]string{
 			"applicationId": fmt.Sprint(req.ApplicationID),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"end":   {fmt.Sprint(req.End)},
 			"start": {fmt.Sprint(req.Start)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -4435,12 +4435,12 @@ func (a API) UserSearchByGlobalNamePrefix(ctx context.Context, req UserSearchByG
 	//	  ]
 	//	}
 	var resp ServerResponse[UserSearchResponse]
-	err := a.client.Do(ctx, "User.SearchByGlobalNamePrefix",
-		"GET",
-		"/User/Search/Prefix/{displayNamePrefix}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.SearchByGlobalNamePrefix",
+		method:   "GET",
+		pathSpec: "/User/Search/Prefix/{displayNamePrefix}/{page}/", pathParams: map[string]string{
 			"displayNamePrefix": fmt.Sprint(req.DisplayNamePrefix),
 			"page":              fmt.Sprint(req.Page),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4504,12 +4504,12 @@ func (a API) UserGetMembershipDataById(ctx context.Context, req UserGetMembershi
 	//	  ]
 	//	}
 	var resp ServerResponse[UserMembershipData]
-	err := a.client.Do(ctx, "User.GetMembershipDataById",
-		"GET",
-		"/User/GetMembershipsById/{membershipId}/{membershipType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetMembershipDataById",
+		method:   "GET",
+		pathSpec: "/User/GetMembershipsById/{membershipId}/{membershipType}/", pathParams: map[string]string{
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4572,12 +4572,12 @@ func (a API) UserGetMembershipFromHardLinkedCredential(ctx context.Context, req 
 	//	  ]
 	//	}
 	var resp ServerResponse[HardLinkedUserMembership]
-	err := a.client.Do(ctx, "User.GetMembershipFromHardLinkedCredential",
-		"GET",
-		"/User/GetMembershipFromHardLinkedCredential/{crType}/{credential}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "User.GetMembershipFromHardLinkedCredential",
+		method:   "GET",
+		pathSpec: "/User/GetMembershipFromHardLinkedCredential/{crType}/{credential}/", pathParams: map[string]string{
 			"credential": fmt.Sprint(req.Credential),
 			"crType":     fmt.Sprint(req.CrType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4641,12 +4641,12 @@ func (a API) TrendingGetTrendingEntryDetail(ctx context.Context, req TrendingGet
 	//	  ]
 	//	}
 	var resp ServerResponse[TrendingDetail]
-	err := a.client.Do(ctx, "Trending.GetTrendingEntryDetail",
-		"GET",
-		"/Trending/Details/{trendingEntryType}/{identifier}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Trending.GetTrendingEntryDetail",
+		method:   "GET",
+		pathSpec: "/Trending/Details/{trendingEntryType}/{identifier}/", pathParams: map[string]string{
 			"identifier":        fmt.Sprint(req.Identifier),
 			"trendingEntryType": fmt.Sprint(req.TrendingEntryType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4703,12 +4703,12 @@ func (a API) TrendingGetTrendingCategory(ctx context.Context, req TrendingGetTre
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[TrendingEntry]]
-	err := a.client.Do(ctx, "Trending.GetTrendingCategory",
-		"GET",
-		"/Trending/Categories/{categoryId}/{pageNumber}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Trending.GetTrendingCategory",
+		method:   "GET",
+		pathSpec: "/Trending/Categories/{categoryId}/{pageNumber}/", pathParams: map[string]string{
 			"categoryId": fmt.Sprint(req.CategoryID),
 			"pageNumber": fmt.Sprint(req.PageNumber),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4782,12 +4782,12 @@ func (a API) TokensGetBungieRewardsForPlatformUser(ctx context.Context, req Toke
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]BungieRewardDisplay]
-	err := a.client.Do(ctx, "Tokens.GetBungieRewardsForPlatformUser",
-		"GET",
-		"/Tokens/Rewards/GetRewardsForPlatformUser/{membershipId}/{membershipType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.GetBungieRewardsForPlatformUser",
+		method:   "GET",
+		pathSpec: "/Tokens/Rewards/GetRewardsForPlatformUser/{membershipId}/{membershipType}/", pathParams: map[string]string{
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4855,12 +4855,12 @@ func (a API) TokensGetPartnerRewardHistory(ctx context.Context, req TokensGetPar
 	//	  ]
 	//	}
 	var resp ServerResponse[PartnerRewardHistoryResponse]
-	err := a.client.Do(ctx, "Tokens.GetPartnerRewardHistory",
-		"GET",
-		"/Tokens/Partner/History/{targetBnetMembershipId}/Application/{partnerApplicationId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.GetPartnerRewardHistory",
+		method:   "GET",
+		pathSpec: "/Tokens/Partner/History/{targetBnetMembershipId}/Application/{partnerApplicationId}/", pathParams: map[string]string{
 			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
 			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -4928,12 +4928,12 @@ func (a API) TokensGetPartnerOfferSkuHistory(ctx context.Context, req TokensGetP
 	//	  ]
 	//	}
 	var resp ServerResponse[[]PartnerOfferSkuHistoryResponse]
-	err := a.client.Do(ctx, "Tokens.GetPartnerOfferSkuHistory",
-		"GET",
-		"/Tokens/Partner/History/{partnerApplicationId}/{targetBnetMembershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.GetPartnerOfferSkuHistory",
+		method:   "GET",
+		pathSpec: "/Tokens/Partner/History/{partnerApplicationId}/{targetBnetMembershipId}/", pathParams: map[string]string{
 			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
 			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5002,12 +5002,12 @@ func (a API) TokensApplyMissingPartnerOffersWithoutClaim(ctx context.Context, re
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "Tokens.ApplyMissingPartnerOffersWithoutClaim",
-		"POST",
-		"/Tokens/Partner/ApplyMissingOffers/{partnerApplicationId}/{targetBnetMembershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Tokens.ApplyMissingPartnerOffersWithoutClaim",
+		method:   "POST",
+		pathSpec: "/Tokens/Partner/ApplyMissingOffers/{partnerApplicationId}/{targetBnetMembershipId}/", pathParams: map[string]string{
 			"partnerApplicationId":   fmt.Sprint(req.PartnerApplicationID),
 			"targetBnetMembershipId": fmt.Sprint(req.TargetBnetMembershipID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5069,12 +5069,12 @@ func (a API) SocialGetPlatformFriendList(ctx context.Context, req SocialGetPlatf
 	//	  ]
 	//	}
 	var resp ServerResponse[PlatformFriendResponse]
-	err := a.client.Do(ctx, "Social.GetPlatformFriendList",
-		"GET",
-		"/Social/PlatformFriends/{friendPlatform}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Social.GetPlatformFriendList",
+		method:   "GET",
+		pathSpec: "/Social/PlatformFriends/{friendPlatform}/{page}/", pathParams: map[string]string{
 			"friendPlatform": fmt.Sprint(req.FriendPlatform),
 			"page":           fmt.Sprint(req.Page),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5155,12 +5155,12 @@ func (a API) GroupV2EditOptionalConversation(ctx context.Context, req GroupV2Edi
 	//	  ]
 	//	}
 	var resp ServerResponse[Int64]
-	err := a.client.Do(ctx, "GroupV2.EditOptionalConversation",
-		"POST",
-		"/GroupV2/{groupId}/OptionalConversations/Edit/{conversationId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.EditOptionalConversation",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/OptionalConversations/Edit/{conversationId}/", pathParams: map[string]string{
 			"conversationId": fmt.Sprint(req.ConversationID),
 			"groupId":        fmt.Sprint(req.GroupID),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -5236,12 +5236,12 @@ func (a API) GroupV2GetRecommendedGroups(ctx context.Context, req GroupV2GetReco
 	//	  ]
 	//	}
 	var resp ServerResponse[[]GroupV2Card]
-	err := a.client.Do(ctx, "GroupV2.GetRecommendedGroups",
-		"POST",
-		"/GroupV2/Recommended/{groupType}/{createDateRange}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetRecommendedGroups",
+		method:   "POST",
+		pathSpec: "/GroupV2/Recommended/{groupType}/{createDateRange}/", pathParams: map[string]string{
 			"createDateRange": fmt.Sprint(req.CreateDateRange),
 			"groupType":       fmt.Sprint(req.GroupType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5301,12 +5301,12 @@ func (a API) GroupV2GetGroupByName(ctx context.Context, req GroupV2GetGroupByNam
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupResponse]
-	err := a.client.Do(ctx, "GroupV2.GetGroupByName",
-		"GET",
-		"/GroupV2/Name/{groupName}/{groupType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetGroupByName",
+		method:   "GET",
+		pathSpec: "/GroupV2/Name/{groupName}/{groupType}/", pathParams: map[string]string{
 			"groupName": fmt.Sprint(req.GroupName),
 			"groupType": fmt.Sprint(req.GroupType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5372,12 +5372,12 @@ func (a API) FireteamGetClanFireteam(ctx context.Context, req FireteamGetClanFir
 	//	  ]
 	//	}
 	var resp ServerResponse[FireteamResponse]
-	err := a.client.Do(ctx, "Fireteam.GetClanFireteam",
-		"GET",
-		"/Fireteam/Clan/{groupId}/Summary/{fireteamId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Fireteam.GetClanFireteam",
+		method:   "GET",
+		pathSpec: "/Fireteam/Clan/{groupId}/Summary/{fireteamId}/", pathParams: map[string]string{
 			"fireteamId": fmt.Sprint(req.FireteamID),
 			"groupId":    fmt.Sprint(req.GroupID),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5458,14 +5458,14 @@ func (a API) Destiny2GetLinkedProfiles(ctx context.Context, req Destiny2GetLinke
 	//	  ]
 	//	}
 	var resp ServerResponse[LinkedProfilesResponse]
-	err := a.client.Do(ctx, "Destiny2.GetLinkedProfiles",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetLinkedProfiles",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/", pathParams: map[string]string{
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"getAllMemberships": {fmt.Sprint(req.GetAllMemberships)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -5549,14 +5549,14 @@ func (a API) Destiny2GetProfile(ctx context.Context, req Destiny2GetProfileReque
 	//	  ]
 	//	}
 	var resp ServerResponse[ProfileResponse]
-	err := a.client.Do(ctx, "Destiny2.GetProfile",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetProfile",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/", pathParams: map[string]string{
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -5657,16 +5657,16 @@ func (a API) Destiny2GetLeaderboards(ctx context.Context, req Destiny2GetLeaderb
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[map[string]map[string]Leaderboard]
-	err := a.client.Do(ctx, "Destiny2.GetLeaderboards",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/Leaderboards/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetLeaderboards",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/Leaderboards/", pathParams: map[string]string{
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"maxtop": {fmt.Sprint(req.Maxtop)},
 			"modes":  {fmt.Sprint(req.Modes)},
 			"statid": {fmt.Sprint(req.Statid)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -5751,14 +5751,14 @@ func (a API) Destiny2GetHistoricalStatsForAccount(ctx context.Context, req Desti
 	//	  ]
 	//	}
 	var resp ServerResponse[HistoricalStatsAccountResult]
-	err := a.client.Do(ctx, "Destiny2.GetHistoricalStatsForAccount",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetHistoricalStatsForAccount",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/", pathParams: map[string]string{
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"groups": {joinArray(req.Groups)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -5824,12 +5824,12 @@ func (a API) Destiny2GetDestinyEntityDefinition(ctx context.Context, req Destiny
 	//	  ]
 	//	}
 	var resp ServerResponse[Definition]
-	err := a.client.Do(ctx, "Destiny2.GetDestinyEntityDefinition",
-		"GET",
-		"/Destiny2/Manifest/{entityType}/{hashIdentifier}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetDestinyEntityDefinition",
+		method:   "GET",
+		pathSpec: "/Destiny2/Manifest/{entityType}/{hashIdentifier}/", pathParams: map[string]string{
 			"entityType":     fmt.Sprint(req.EntityType),
 			"hashIdentifier": fmt.Sprint(req.HashIdentifier),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -5899,14 +5899,14 @@ func (a API) Destiny2SearchDestinyEntities(ctx context.Context, req Destiny2Sear
 	//	  ]
 	//	}
 	var resp ServerResponse[EntitySearchResult]
-	err := a.client.Do(ctx, "Destiny2.SearchDestinyEntities",
-		"GET",
-		"/Destiny2/Armory/Search/{type}/{searchTerm}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.SearchDestinyEntities",
+		method:   "GET",
+		pathSpec: "/Destiny2/Armory/Search/{type}/{searchTerm}/", pathParams: map[string]string{
 			"searchTerm": fmt.Sprint(req.SearchTerm),
 			"type":       fmt.Sprint(req.Type),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"page": {fmt.Sprint(req.Page)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -5957,12 +5957,12 @@ func (a API) ContentSearchHelpArticles(ctx context.Context, req ContentSearchHel
 	//	  ]
 	//	}
 	var resp ServerResponse[any]
-	err := a.client.Do(ctx, "Content.SearchHelpArticles",
-		"GET",
-		"/Content/SearchHelpArticles/{searchtext}/{size}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.SearchHelpArticles",
+		method:   "GET",
+		pathSpec: "/Content/SearchHelpArticles/{searchtext}/{size}/", pathParams: map[string]string{
 			"searchtext": fmt.Sprint(req.Searchtext),
 			"size":       fmt.Sprint(req.Size),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6025,14 +6025,14 @@ func (a API) ContentGetContentById(ctx context.Context, req ContentGetContentByI
 	//	  ]
 	//	}
 	var resp ServerResponse[ContentItemPublicContract]
-	err := a.client.Do(ctx, "Content.GetContentById",
-		"GET",
-		"/Content/GetContentById/{id}/{locale}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.GetContentById",
+		method:   "GET",
+		pathSpec: "/Content/GetContentById/{id}/{locale}/", pathParams: map[string]string{
 			"id":     fmt.Sprint(req.Id),
 			"locale": fmt.Sprint(req.Locale),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"head": {fmt.Sprint(req.Head)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -6115,13 +6115,13 @@ func (a API) GroupV2UnbanMember(ctx context.Context, req GroupV2UnbanMemberReque
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.UnbanMember",
-		"POST",
-		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Unban/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.UnbanMember",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Unban/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6207,13 +6207,13 @@ func (a API) GroupV2KickMember(ctx context.Context, req GroupV2KickMemberRequest
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupMemberLeaveResult]
-	err := a.client.Do(ctx, "GroupV2.KickMember",
-		"POST",
-		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Kick/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.KickMember",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Kick/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6312,13 +6312,13 @@ func (a API) GroupV2BanMember(ctx context.Context, req GroupV2BanMemberRequest) 
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.BanMember",
-		"POST",
-		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Ban/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.BanMember",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Ban/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -6404,13 +6404,13 @@ func (a API) GroupV2IndividualGroupInviteCancel(ctx context.Context, req GroupV2
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupApplicationResponse]
-	err := a.client.Do(ctx, "GroupV2.IndividualGroupInviteCancel",
-		"POST",
-		"/GroupV2/{groupId}/Members/IndividualInviteCancel/{membershipType}/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.IndividualGroupInviteCancel",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/IndividualInviteCancel/{membershipType}/{membershipId}/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6509,13 +6509,13 @@ func (a API) GroupV2IndividualGroupInvite(ctx context.Context, req GroupV2Indivi
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupApplicationResponse]
-	err := a.client.Do(ctx, "GroupV2.IndividualGroupInvite",
-		"POST",
-		"/GroupV2/{groupId}/Members/IndividualInvite/{membershipType}/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.IndividualGroupInvite",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/IndividualInvite/{membershipType}/{membershipId}/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -6614,13 +6614,13 @@ func (a API) GroupV2ApprovePending(ctx context.Context, req GroupV2ApprovePendin
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "GroupV2.ApprovePending",
-		"POST",
-		"/GroupV2/{groupId}/Members/Approve/{membershipType}/{membershipId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.ApprovePending",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/Approve/{membershipType}/{membershipId}/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, req.Body, &resp)
+		}, queryParams: url.Values{}, body: req.Body}, &resp)
 	return &resp, err
 }
 
@@ -6698,13 +6698,13 @@ func (a API) GroupV2AbdicateFoundership(ctx context.Context, req GroupV2Abdicate
 	//	  ]
 	//	}
 	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, "GroupV2.AbdicateFoundership",
-		"POST",
-		"/GroupV2/{groupId}/Admin/AbdicateFoundership/{membershipType}/{founderIdNew}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.AbdicateFoundership",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Admin/AbdicateFoundership/{membershipType}/{founderIdNew}/", pathParams: map[string]string{
 			"founderIdNew":   fmt.Sprint(req.FounderIdNew),
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6786,13 +6786,13 @@ func (a API) GroupV2RecoverGroupForFounder(ctx context.Context, req GroupV2Recov
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupMembershipSearchResponse]
-	err := a.client.Do(ctx, "GroupV2.RecoverGroupForFounder",
-		"GET",
-		"/GroupV2/Recover/{membershipType}/{membershipId}/{groupType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.RecoverGroupForFounder",
+		method:   "GET",
+		pathSpec: "/GroupV2/Recover/{membershipType}/{membershipId}/{groupType}/", pathParams: map[string]string{
 			"groupType":      fmt.Sprint(req.GroupType),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -6892,15 +6892,15 @@ func (a API) Destiny2GetItem(ctx context.Context, req Destiny2GetItemRequest) (*
 	//	  ]
 	//	}
 	var resp ServerResponse[ItemResponse]
-	err := a.client.Do(ctx, "Destiny2.GetItem",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetItem",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/", pathParams: map[string]string{
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"itemInstanceId":      fmt.Sprint(req.ItemInstanceID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7018,16 +7018,16 @@ func (a API) Destiny2GetVendors(ctx context.Context, req Destiny2GetVendorsReque
 	//	  ]
 	//	}
 	var resp ServerResponse[VendorsResponse]
-	err := a.client.Do(ctx, "Destiny2.GetVendors",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetVendors",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
 			"filter":     {fmt.Sprint(req.Filter)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7125,15 +7125,15 @@ func (a API) Destiny2GetCharacter(ctx context.Context, req Destiny2GetCharacterR
 	//	  ]
 	//	}
 	var resp ServerResponse[CharacterResponse]
-	err := a.client.Do(ctx, "Destiny2.GetCharacter",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetCharacter",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7212,13 +7212,13 @@ func (a API) Destiny2GetUniqueWeaponHistory(ctx context.Context, req Destiny2Get
 	//	  ]
 	//	}
 	var resp ServerResponse[HistoricalWeaponStatsData]
-	err := a.client.Do(ctx, "Destiny2.GetUniqueWeaponHistory",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetUniqueWeaponHistory",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -7297,13 +7297,13 @@ func (a API) Destiny2GetDestinyAggregateActivityStats(ctx context.Context, req D
 	//	  ]
 	//	}
 	var resp ServerResponse[AggregateActivityResults]
-	err := a.client.Do(ctx, "Destiny2.GetDestinyAggregateActivityStats",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetDestinyAggregateActivityStats",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -7423,17 +7423,17 @@ func (a API) Destiny2GetActivityHistory(ctx context.Context, req Destiny2GetActi
 	//	  ]
 	//	}
 	var resp ServerResponse[ActivityHistoryResults]
-	err := a.client.Do(ctx, "Destiny2.GetActivityHistory",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetActivityHistory",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"count": {fmt.Sprint(req.Count)},
 			"mode":  {fmt.Sprint(req.Mode)},
 			"page":  {fmt.Sprint(req.Page)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7595,19 +7595,19 @@ func (a API) Destiny2GetHistoricalStats(ctx context.Context, req Destiny2GetHist
 	//	  ]
 	//	}
 	var resp ServerResponse[map[string]HistoricalStatsByPeriod]
-	err := a.client.Do(ctx, "Destiny2.GetHistoricalStats",
-		"GET",
-		"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetHistoricalStats",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"dayend":     {fmt.Sprint(req.Dayend)},
 			"daystart":   {fmt.Sprint(req.Daystart)},
 			"groups":     {joinArray(req.Groups)},
 			"modes":      {joinArray(req.Modes)},
 			"periodType": {fmt.Sprint(req.PeriodType)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7724,17 +7724,17 @@ func (a API) Destiny2GetLeaderboardsForCharacter(ctx context.Context, req Destin
 	//	  "x-preview": true
 	//	}
 	var resp ServerResponse[map[string]map[string]Leaderboard]
-	err := a.client.Do(ctx, "Destiny2.GetLeaderboardsForCharacter",
-		"GET",
-		"/Destiny2/Stats/Leaderboards/{membershipType}/{destinyMembershipId}/{characterId}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetLeaderboardsForCharacter",
+		method:   "GET",
+		pathSpec: "/Destiny2/Stats/Leaderboards/{membershipType}/{destinyMembershipId}/{characterId}/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"maxtop": {fmt.Sprint(req.Maxtop)},
 			"modes":  {fmt.Sprint(req.Modes)},
 			"statid": {fmt.Sprint(req.Statid)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7833,17 +7833,17 @@ func (a API) ContentSearchContentByTagAndType(ctx context.Context, req ContentSe
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[ContentItemPublicContract]]
-	err := a.client.Do(ctx, "Content.SearchContentByTagAndType",
-		"GET",
-		"/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.SearchContentByTagAndType",
+		method:   "GET",
+		pathSpec: "/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/", pathParams: map[string]string{
 			"locale": fmt.Sprint(req.Locale),
 			"tag":    fmt.Sprint(req.Tag),
 			"type":   fmt.Sprint(req.Type),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"currentpage":  {fmt.Sprint(req.Currentpage)},
 			"head":         {fmt.Sprint(req.Head)},
 			"itemsperpage": {fmt.Sprint(req.Itemsperpage)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -7917,15 +7917,15 @@ func (a API) ContentGetContentByTagAndType(ctx context.Context, req ContentGetCo
 	//	  ]
 	//	}
 	var resp ServerResponse[ContentItemPublicContract]
-	err := a.client.Do(ctx, "Content.GetContentByTagAndType",
-		"GET",
-		"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Content.GetContentByTagAndType",
+		method:   "GET",
+		pathSpec: "/Content/GetContentByTagAndType/{tag}/{type}/{locale}/", pathParams: map[string]string{
 			"locale": fmt.Sprint(req.Locale),
 			"tag":    fmt.Sprint(req.Tag),
 			"type":   fmt.Sprint(req.Type),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"head": {fmt.Sprint(req.Head)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -8005,13 +8005,13 @@ func (a API) CommunityContentGetCommunityContent(ctx context.Context, req Commun
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "CommunityContent.GetCommunityContent",
-		"GET",
-		"/CommunityContent/Get/{sort}/{mediaFilter}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "CommunityContent.GetCommunityContent",
+		method:   "GET",
+		pathSpec: "/CommunityContent/Get/{sort}/{mediaFilter}/{page}/", pathParams: map[string]string{
 			"mediaFilter": fmt.Sprint(req.MediaFilter),
 			"page":        fmt.Sprint(req.Page),
 			"sort":        fmt.Sprint(req.Sort),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -8117,14 +8117,14 @@ func (a API) GroupV2EditGroupMembership(ctx context.Context, req GroupV2EditGrou
 	//	  ]
 	//	}
 	var resp ServerResponse[int32]
-	err := a.client.Do(ctx, "GroupV2.EditGroupMembership",
-		"POST",
-		"/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/SetMembershipType/{memberType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.EditGroupMembership",
+		method:   "POST",
+		pathSpec: "/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/SetMembershipType/{memberType}/", pathParams: map[string]string{
 			"groupId":        fmt.Sprint(req.GroupID),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
 			"memberType":     fmt.Sprint(req.MemberType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -8222,14 +8222,14 @@ func (a API) GroupV2GetGroupsForMember(ctx context.Context, req GroupV2GetGroups
 	//	  ]
 	//	}
 	var resp ServerResponse[GetGroupsForMemberResponse]
-	err := a.client.Do(ctx, "GroupV2.GetGroupsForMember",
-		"GET",
-		"/GroupV2/User/{membershipType}/{membershipId}/{filter}/{groupType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetGroupsForMember",
+		method:   "GET",
+		pathSpec: "/GroupV2/User/{membershipType}/{membershipId}/{filter}/{groupType}/", pathParams: map[string]string{
 			"filter":         fmt.Sprint(req.Filter),
 			"groupType":      fmt.Sprint(req.GroupType),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -8329,14 +8329,14 @@ func (a API) GroupV2GetPotentialGroupsForMember(ctx context.Context, req GroupV2
 	//	  ]
 	//	}
 	var resp ServerResponse[GroupPotentialMembershipSearchResponse]
-	err := a.client.Do(ctx, "GroupV2.GetPotentialGroupsForMember",
-		"GET",
-		"/GroupV2/User/Potential/{membershipType}/{membershipId}/{filter}/{groupType}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "GroupV2.GetPotentialGroupsForMember",
+		method:   "GET",
+		pathSpec: "/GroupV2/User/Potential/{membershipType}/{membershipId}/{filter}/{groupType}/", pathParams: map[string]string{
 			"filter":         fmt.Sprint(req.Filter),
 			"groupType":      fmt.Sprint(req.GroupType),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
-		}, url.Values{}, nil, &resp)
+		}, queryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -8444,16 +8444,16 @@ func (a API) ForumGetCoreTopicsPaged(ctx context.Context, req ForumGetCoreTopics
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetCoreTopicsPaged",
-		"GET",
-		"/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetCoreTopicsPaged",
+		method:   "GET",
+		pathSpec: "/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/", pathParams: map[string]string{
 			"categoryFilter": fmt.Sprint(req.CategoryFilter),
 			"page":           fmt.Sprint(req.Page),
 			"quickDate":      fmt.Sprint(req.QuickDate),
 			"sort":           fmt.Sprint(req.Sort),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"locales": {fmt.Sprint(req.Locales)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -8576,17 +8576,17 @@ func (a API) FireteamGetMyClanFireteams(ctx context.Context, req FireteamGetMyCl
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[FireteamResponse]]
-	err := a.client.Do(ctx, "Fireteam.GetMyClanFireteams",
-		"GET",
-		"/Fireteam/Clan/{groupId}/My/{platform}/{includeClosed}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Fireteam.GetMyClanFireteams",
+		method:   "GET",
+		pathSpec: "/Fireteam/Clan/{groupId}/My/{platform}/{includeClosed}/{page}/", pathParams: map[string]string{
 			"groupId":       fmt.Sprint(req.GroupID),
 			"includeClosed": fmt.Sprint(req.IncludeClosed),
 			"page":          fmt.Sprint(req.Page),
 			"platform":      fmt.Sprint(req.Platform),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"groupFilter": {fmt.Sprint(req.GroupFilter)},
 			"langFilter":  {fmt.Sprint(req.LangFilter)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -8699,16 +8699,16 @@ func (a API) Destiny2GetVendor(ctx context.Context, req Destiny2GetVendorRequest
 	//	  ]
 	//	}
 	var resp ServerResponse[VendorResponse]
-	err := a.client.Do(ctx, "Destiny2.GetVendor",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetVendor",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/", pathParams: map[string]string{
 			"characterId":         fmt.Sprint(req.CharacterID),
 			"destinyMembershipId": fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":      fmt.Sprint(req.MembershipType),
 			"vendorHash":          fmt.Sprint(req.VendorHash),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -8825,16 +8825,16 @@ func (a API) Destiny2GetCollectibleNodeDetails(ctx context.Context, req Destiny2
 	//	  ]
 	//	}
 	var resp ServerResponse[CollectibleNodeDetailResponse]
-	err := a.client.Do(ctx, "Destiny2.GetCollectibleNodeDetails",
-		"GET",
-		"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Destiny2.GetCollectibleNodeDetails",
+		method:   "GET",
+		pathSpec: "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/", pathParams: map[string]string{
 			"characterId":                     fmt.Sprint(req.CharacterID),
 			"collectiblePresentationNodeHash": fmt.Sprint(req.CollectiblePresentationNodeHash),
 			"destinyMembershipId":             fmt.Sprint(req.DestinyMembershipID),
 			"membershipType":                  fmt.Sprint(req.MembershipType),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"components": {joinArray(req.Components)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -8979,18 +8979,18 @@ func (a API) FireteamSearchPublicAvailableClanFireteams(ctx context.Context, req
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[FireteamSummary]]
-	err := a.client.Do(ctx, "Fireteam.SearchPublicAvailableClanFireteams",
-		"GET",
-		"/Fireteam/Search/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Fireteam.SearchPublicAvailableClanFireteams",
+		method:   "GET",
+		pathSpec: "/Fireteam/Search/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{page}/", pathParams: map[string]string{
 			"activityType": fmt.Sprint(req.ActivityType),
 			"dateRange":    fmt.Sprint(req.DateRange),
 			"page":         fmt.Sprint(req.Page),
 			"platform":     fmt.Sprint(req.Platform),
 			"slotFilter":   fmt.Sprint(req.SlotFilter),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"excludeImmediate": {fmt.Sprint(req.ExcludeImmediate)},
 			"langFilter":       {fmt.Sprint(req.LangFilter)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -9137,19 +9137,19 @@ func (a API) ForumGetTopicsPaged(ctx context.Context, req ForumGetTopicsPagedReq
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetTopicsPaged",
-		"GET",
-		"/Forum/GetTopicsPaged/{page}/{pageSize}/{group}/{sort}/{quickDate}/{categoryFilter}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetTopicsPaged",
+		method:   "GET",
+		pathSpec: "/Forum/GetTopicsPaged/{page}/{pageSize}/{group}/{sort}/{quickDate}/{categoryFilter}/", pathParams: map[string]string{
 			"categoryFilter": fmt.Sprint(req.CategoryFilter),
 			"group":          fmt.Sprint(req.Group),
 			"page":           fmt.Sprint(req.Page),
 			"pageSize":       fmt.Sprint(req.PageSize),
 			"quickDate":      fmt.Sprint(req.QuickDate),
 			"sort":           fmt.Sprint(req.Sort),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"locales":   {fmt.Sprint(req.Locales)},
 			"tagstring": {fmt.Sprint(req.Tagstring)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -9267,18 +9267,18 @@ func (a API) ForumGetPostsThreadedPagedFromChild(ctx context.Context, req ForumG
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetPostsThreadedPagedFromChild",
-		"GET",
-		"/Forum/GetPostsThreadedPagedFromChild/{childPostId}/{page}/{pageSize}/{replySize}/{rootThreadMode}/{sortMode}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetPostsThreadedPagedFromChild",
+		method:   "GET",
+		pathSpec: "/Forum/GetPostsThreadedPagedFromChild/{childPostId}/{page}/{pageSize}/{replySize}/{rootThreadMode}/{sortMode}/", pathParams: map[string]string{
 			"childPostId":    fmt.Sprint(req.ChildPostID),
 			"page":           fmt.Sprint(req.Page),
 			"pageSize":       fmt.Sprint(req.PageSize),
 			"replySize":      fmt.Sprint(req.ReplySize),
 			"rootThreadMode": fmt.Sprint(req.RootThreadMode),
 			"sortMode":       fmt.Sprint(req.SortMode),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"showbanned": {fmt.Sprint(req.Showbanned)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -9407,9 +9407,9 @@ func (a API) ForumGetPostsThreadedPaged(ctx context.Context, req ForumGetPostsTh
 	//	  ]
 	//	}
 	var resp ServerResponse[PostSearchResponse]
-	err := a.client.Do(ctx, "Forum.GetPostsThreadedPaged",
-		"GET",
-		"/Forum/GetPostsThreadedPaged/{parentPostId}/{page}/{pageSize}/{replySize}/{getParentPost}/{rootThreadMode}/{sortMode}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Forum.GetPostsThreadedPaged",
+		method:   "GET",
+		pathSpec: "/Forum/GetPostsThreadedPaged/{parentPostId}/{page}/{pageSize}/{replySize}/{getParentPost}/{rootThreadMode}/{sortMode}/", pathParams: map[string]string{
 			"getParentPost":  fmt.Sprint(req.GetParentPost),
 			"page":           fmt.Sprint(req.Page),
 			"pageSize":       fmt.Sprint(req.PageSize),
@@ -9417,9 +9417,9 @@ func (a API) ForumGetPostsThreadedPaged(ctx context.Context, req ForumGetPostsTh
 			"replySize":      fmt.Sprint(req.ReplySize),
 			"rootThreadMode": fmt.Sprint(req.RootThreadMode),
 			"sortMode":       fmt.Sprint(req.SortMode),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"showbanned": {fmt.Sprint(req.Showbanned)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 
@@ -9597,9 +9597,9 @@ func (a API) FireteamGetAvailableClanFireteams(ctx context.Context, req Fireteam
 	//	  ]
 	//	}
 	var resp ServerResponse[SearchResult[FireteamSummary]]
-	err := a.client.Do(ctx, "Fireteam.GetAvailableClanFireteams",
-		"GET",
-		"/Fireteam/Clan/{groupId}/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{publicOnly}/{page}/", nil, map[string]string{
+	err := a.client.Do(ctx, clientRequest{operation: "Fireteam.GetAvailableClanFireteams",
+		method:   "GET",
+		pathSpec: "/Fireteam/Clan/{groupId}/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{publicOnly}/{page}/", pathParams: map[string]string{
 			"activityType": fmt.Sprint(req.ActivityType),
 			"dateRange":    fmt.Sprint(req.DateRange),
 			"groupId":      fmt.Sprint(req.GroupID),
@@ -9607,10 +9607,10 @@ func (a API) FireteamGetAvailableClanFireteams(ctx context.Context, req Fireteam
 			"platform":     fmt.Sprint(req.Platform),
 			"publicOnly":   fmt.Sprint(req.PublicOnly),
 			"slotFilter":   fmt.Sprint(req.SlotFilter),
-		}, url.Values{
+		}, queryParams: url.Values{
 			"excludeImmediate": {fmt.Sprint(req.ExcludeImmediate)},
 			"langFilter":       {fmt.Sprint(req.LangFilter)},
-		}, nil, &resp)
+		}}, &resp)
 	return &resp, err
 }
 

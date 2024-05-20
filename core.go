@@ -21,20 +21,23 @@ type API struct {
 }
 
 func NewAPI(apiKey string) *API {
-	return &API{
+	return (&API{
 		client: &defaultClient{
-			h:      http.DefaultClient,
-			base:   "https://www.bungie.net/Platform",
-			apiKey: apiKey,
+			h:       http.DefaultClient,
+			baseURL: "https://www.bungie.net/Platform",
+			apiKey:  apiKey,
 		},
 		UserAgent: "bungie-api-go/" + Version(),
-	}
+	})
 }
 
-func (a *API) withInterceptor(interceptor func(c Client) Client) *API {
-	new := *a
-	new.client = interceptor(a.client)
-	return &new
+// WithBaseURL sets the base URL. The default is "https://www.bungie.net/Platform".
+func (a *API) WithBaseURL(url string) *API {
+	url = strings.TrimSuffix(url, "/")
+	return a.withInterceptorFunc(func(base Client, ctx context.Context, r clientRequest, resp any) error {
+		r.baseURL = url
+		return base.Do(ctx, r, resp)
+	})
 }
 
 func (a *API) WithAuthToken(tok string) *API {
@@ -43,18 +46,54 @@ func (a *API) WithAuthToken(tok string) *API {
 	})
 }
 
+func (a *API) withInterceptor(interceptor func(c Client) Client) *API {
+	new := *a
+	new.client = interceptor(a.client)
+	return &new
+}
+
+type interceptorFunc func(base Client, ctx context.Context, r clientRequest, resp any) error
+
+type interceptorFuncClient struct {
+	base Client
+	f    interceptorFunc
+}
+
+func (fc interceptorFuncClient) Do(ctx context.Context, r clientRequest, resp any) error {
+	return fc.f(fc.base, ctx, r, resp)
+}
+
+func (a *API) withInterceptorFunc(f interceptorFunc) *API {
+	return a.withInterceptor(func(base Client) Client {
+		return interceptorFuncClient{base, f}
+	})
+
+}
+
 type addHeaderClient struct {
 	base      Client
 	headerKey string
 	headerVal string
 }
 
-func (tc addHeaderClient) Do(ctx context.Context, operation string, method string, pathSpec string, headers map[string]string, pathParams map[string]string, queryParams url.Values, body any, resp any) error {
-	if headers == nil {
-		headers = map[string]string{}
+type clientRequest struct {
+	operation   string
+	method      string
+	baseURL     string
+	pathSpec    string
+	headers     map[string]string
+	pathParams  map[string]string
+	queryParams url.Values
+	body        any
+}
+
+func (tc addHeaderClient) Do(ctx context.Context, r clientRequest, resp any) error {
+
+	if r.headers == nil {
+		r.headers = map[string]string{}
 	}
-	headers[tc.headerKey] = tc.headerVal
-	return tc.base.Do(ctx, operation, method, pathSpec, headers, pathParams, queryParams, body, resp)
+	r.headers[tc.headerKey] = tc.headerVal
+	return tc.base.Do(ctx, r, resp)
 }
 
 func Version() string {
@@ -76,44 +115,31 @@ func Version() string {
 }
 
 type Client interface {
-	Do(ctx context.Context,
-		operation string,
-		method string,
-		pathSpec string,
-		headers map[string]string,
-		pathParams map[string]string,
-		queryParams url.Values,
-		body any,
-		resp any) error
+	Do(ctx context.Context, r clientRequest, resp any) error
 }
 
 type defaultClient struct {
-	h      *http.Client
-	base   string
-	apiKey string
+	h       *http.Client
+	apiKey  string
+	baseURL string
 }
 
-func (c *defaultClient) Do(ctx context.Context,
-	operation string,
-	method string,
-	pathSpec string,
-	headers map[string]string,
-	pathParams map[string]string,
-	queryParams url.Values,
-	body any,
-	resp any) error {
-
-	requestBody, err := json.Marshal(body)
+func (c *defaultClient) Do(ctx context.Context, r clientRequest, resp any) error {
+	requestBody, err := json.Marshal(r.body)
 	if err != nil {
 		return err
 	}
-	url := c.base + getPath(pathSpec, pathParams, queryParams)
-	req, err := http.NewRequestWithContext(ctx, method, url, bytes.NewReader(requestBody))
+	baseURL := c.baseURL
+	if r.baseURL != "" {
+		baseURL = r.baseURL
+	}
+	url := baseURL + getPath(r.pathSpec, r.pathParams, r.queryParams)
+	req, err := http.NewRequestWithContext(ctx, r.method, url, bytes.NewReader(requestBody))
 	req.Header.Set("X-Api-Key", c.apiKey)
-	if body != nil {
+	if r.body != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
-	for k, v := range headers {
+	for k, v := range r.headers {
 		req.Header.Set(k, v)
 	}
 	if err != nil {
