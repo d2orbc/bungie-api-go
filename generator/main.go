@@ -113,20 +113,20 @@ func main() {
 		paths.Out(`func (a API) %s(ctx context.Context, req %sRequest) (*ServerResponse[%s], error) {`, method, method, responseIdent)
 		paths.Debug(operation)
 		paths.Out(`var resp ServerResponse[%s]`, responseIdent)
-		paths.Out(`err := a.client.Do(ctx, clientRequest{operation:%q,`, operation.OperationID)
+		paths.Out(`err := a.client.Do(ctx, ClientRequest{Operation:%q,`, operation.OperationID)
 		if path.Get != nil {
-			paths.Out("method:%q,", "GET")
+			paths.Out("Method:%q,", "GET")
 		} else if path.Post != nil {
-			paths.Out("method:%q,", "POST")
+			paths.Out("Method:%q,", "POST")
 		}
-		paths.Out(`pathSpec:%q, pathParams:map[string]string{`, url)
+		paths.Out(`PathSpec:%q, PathParams:map[string]string{`, url)
 		paths.Out(paramBuf.String())
-		paths.Out("}, queryParams: url.Values{")
+		paths.Out("}, QueryParams: url.Values{")
 		paths.Out(queryBuf.String())
 		if operation.RequestBody == nil {
 			paths.Out("}}, &resp)")
 		} else {
-			paths.Out("}, body:req.Body}, &resp)")
+			paths.Out("}, Body:req.Body}, &resp)")
 		}
 		paths.Out("return &resp, err")
 		paths.Out(`}`)

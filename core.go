@@ -34,40 +34,28 @@ func NewAPI(apiKey string) *API {
 // WithBaseURL sets the base URL. The default is "https://www.bungie.net/Platform".
 func (a *API) WithBaseURL(url string) *API {
 	url = strings.TrimSuffix(url, "/")
-	return a.withInterceptorFunc(func(base Client, ctx context.Context, r clientRequest, resp any) error {
-		r.baseURL = url
+	return a.WithInterceptorFunc(func(base Client, ctx context.Context, r ClientRequest, resp any) error {
+		r.BaseURL = url
 		return base.Do(ctx, r, resp)
 	})
 }
 
 func (a *API) WithAuthToken(tok string) *API {
-	return a.withInterceptor(func(c Client) Client {
+	return a.WithInterceptor(func(c Client) Client {
 		return addHeaderClient{c, "Authorization", "Bearer " + tok}
 	})
 }
 
-func (a *API) withInterceptor(interceptor func(c Client) Client) *API {
+func (a *API) WithInterceptor(interceptor func(c Client) Client) *API {
 	new := *a
 	new.client = interceptor(a.client)
 	return &new
 }
 
-type interceptorFunc func(base Client, ctx context.Context, r clientRequest, resp any) error
-
-type interceptorFuncClient struct {
-	base Client
-	f    interceptorFunc
-}
-
-func (fc interceptorFuncClient) Do(ctx context.Context, r clientRequest, resp any) error {
-	return fc.f(fc.base, ctx, r, resp)
-}
-
-func (a *API) withInterceptorFunc(f interceptorFunc) *API {
-	return a.withInterceptor(func(base Client) Client {
-		return interceptorFuncClient{base, f}
+func (a *API) WithInterceptorFunc(f InterceptorFunc) *API {
+	return a.WithInterceptor(func(base Client) Client {
+		return InterceptorFuncClient{Base: base, F: f}
 	})
-
 }
 
 type addHeaderClient struct {
@@ -76,23 +64,11 @@ type addHeaderClient struct {
 	headerVal string
 }
 
-type clientRequest struct {
-	operation   string
-	method      string
-	baseURL     string
-	pathSpec    string
-	headers     map[string]string
-	pathParams  map[string]string
-	queryParams url.Values
-	body        any
-}
-
-func (tc addHeaderClient) Do(ctx context.Context, r clientRequest, resp any) error {
-
-	if r.headers == nil {
-		r.headers = map[string]string{}
+func (tc addHeaderClient) Do(ctx context.Context, r ClientRequest, resp any) error {
+	if r.Headers == nil {
+		r.Headers = map[string]string{}
 	}
-	r.headers[tc.headerKey] = tc.headerVal
+	r.Headers[tc.headerKey] = tc.headerVal
 	return tc.base.Do(ctx, r, resp)
 }
 
@@ -114,32 +90,28 @@ func Version() string {
 	return "0.dev"
 }
 
-type Client interface {
-	Do(ctx context.Context, r clientRequest, resp any) error
-}
-
 type defaultClient struct {
 	h       *http.Client
 	apiKey  string
 	baseURL string
 }
 
-func (c *defaultClient) Do(ctx context.Context, r clientRequest, resp any) error {
-	requestBody, err := json.Marshal(r.body)
+func (c *defaultClient) Do(ctx context.Context, r ClientRequest, resp any) error {
+	requestBody, err := json.Marshal(r.Body)
 	if err != nil {
 		return err
 	}
 	baseURL := c.baseURL
-	if r.baseURL != "" {
-		baseURL = r.baseURL
+	if r.BaseURL != "" {
+		baseURL = r.BaseURL
 	}
-	url := baseURL + getPath(r.pathSpec, r.pathParams, r.queryParams)
-	req, err := http.NewRequestWithContext(ctx, r.method, url, bytes.NewReader(requestBody))
+	url := baseURL + getPath(r.PathSpec, r.PathParams, r.QueryParams)
+	req, err := http.NewRequestWithContext(ctx, r.Method, url, bytes.NewReader(requestBody))
 	req.Header.Set("X-Api-Key", c.apiKey)
-	if r.body != nil {
+	if r.Body != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
-	for k, v := range r.headers {
+	for k, v := range r.Headers {
 		req.Header.Set(k, v)
 	}
 	if err != nil {
@@ -150,14 +122,30 @@ func (c *defaultClient) Do(ctx context.Context, r clientRequest, resp any) error
 		return err
 	}
 	defer hResp.Body.Close()
+
 	bodyBytes, err := io.ReadAll(hResp.Body)
 	if err != nil {
 		return err
 	}
-	if serverResponse, ok := resp.(interface{ setRaw([]byte) }); ok {
+
+	serverResponse, ok := resp.(interface {
+		setRaw([]byte)
+		asError() error
+	})
+	if ok {
 		serverResponse.setRaw(bodyBytes)
 	}
-	return json.Unmarshal(bodyBytes, &resp)
+
+	if err := json.Unmarshal(bodyBytes, &resp); err != nil {
+		if hResp.StatusCode > 299 {
+			return &HTTPError{Code: hResp.StatusCode, Status: hResp.Status, Body: bodyBytes}
+		}
+		return err
+	}
+	if ok {
+		return serverResponse.asError()
+	}
+	return nil
 }
 
 func getPath(spec string, params map[string]string, queryParams url.Values) string {
@@ -191,6 +179,47 @@ func (r ServerResponse[T]) Raw() []byte {
 
 func (r *ServerResponse[T]) setRaw(b []byte) {
 	r.raw = b
+}
+
+func (r *ServerResponse[T]) asError() error {
+	if r.ErrorCode == PlatformErrorCodes_Success {
+		return nil
+	}
+	return &BungieError{
+		Code:            r.ErrorCode,
+		Status:          r.ErrorStatus,
+		ThrottleSeconds: r.ThrottleSeconds,
+	}
+}
+
+type BungieError struct {
+	Code            PlatformErrorCodes
+	Status          string
+	ThrottleSeconds int32
+}
+
+func (err BungieError) Error() string {
+	if err.Status == "" || err.Status == err.Code.Enum() {
+		return err.Code.Enum()
+	}
+	return fmt.Sprintf("%s (%s)", err.Code.Enum(), err.Status)
+}
+
+func (err BungieError) Unwrap() error {
+	return err.Code
+}
+
+type HTTPError struct {
+	Code   int
+	Status string
+	Body   []byte
+}
+
+func (err *HTTPError) Error() string {
+	if err.Status != "" {
+		return err.Status
+	}
+	return fmt.Sprintf("HTTP Error %d", err.Code)
 }
 
 type Int64 int64
@@ -247,6 +276,14 @@ func (n Nullable[T]) MarshalJSON() ([]byte, error) {
 		return []byte("null"), nil
 	}
 	return json.Marshal(n.v)
+}
+
+func (n Nullable[T]) Format(f fmt.State, verb rune) {
+	if n.IsNull() {
+		io.WriteString(f, "null")
+		return
+	}
+	fmt.Fprintf(f, fmt.FormatString(f, verb), n.Must())
 }
 
 type Timestamp string
@@ -341,4 +378,34 @@ func joinArray[T any](a []T) string {
 		out = append(out, fmt.Sprint(v))
 	}
 	return strings.Join(out, ",")
+}
+
+type InterceptorFunc func(base Client, ctx context.Context, r ClientRequest, resp any) error
+
+type InterceptorFuncClient struct {
+	Base Client
+	F    InterceptorFunc
+}
+
+func (fc InterceptorFuncClient) Do(ctx context.Context, r ClientRequest, resp any) error {
+	return fc.F(fc.Base, ctx, r, resp)
+}
+
+type ClientRequest struct {
+	Operation   string
+	Method      string
+	BaseURL     string
+	PathSpec    string
+	Headers     map[string]string
+	PathParams  map[string]string
+	QueryParams url.Values
+	Body        any
+}
+
+type Client interface {
+	Do(ctx context.Context, r ClientRequest, resp any) error
+}
+
+func (err PlatformErrorCodes) Error() string {
+	return err.Enum()
 }
