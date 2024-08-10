@@ -64,11 +64,13 @@ func (c *Cache) ensureTable(ctx context.Context, table string) error {
 	t := c.m[table]
 	t.mu.Lock()
 	defer t.mu.Unlock()
+	mani := c.manifest
 	c.mu.Unlock()
-	if t.version == c.manifest.Version {
+
+	if t.version == mani.Version {
 		return nil
 	}
-	path, ok := c.manifest.JsonWorldComponentContentPaths["en"][table]
+	path, ok := mani.JsonWorldComponentContentPaths["en"][table]
 	if !ok {
 		return fmt.Errorf("unknown definition table %q", table)
 	}
@@ -83,7 +85,13 @@ func (c *Cache) ensureTable(ctx context.Context, table string) error {
 	if err != nil {
 		return err
 	}
-	return json.Unmarshal(body, &t.defs)
+	var newDefs map[uint32]json.RawMessage
+	if err := json.Unmarshal(body, &newDefs); err != nil {
+		return err
+	}
+	t.defs = newDefs
+	t.version = mani.Version
+	return nil
 }
 
 func (c *Cache) CheckUpdates(ctx context.Context) error {
