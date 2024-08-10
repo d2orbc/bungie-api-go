@@ -31,6 +31,11 @@ func NewAPI(apiKey string) *API {
 	})
 }
 
+// GetClient returns the API client. You probably don't want to use this.
+func (a *API) GetClient() Client {
+	return a.client
+}
+
 // WithBaseURL sets the base URL. The default is "https://www.bungie.net/Platform".
 func (a *API) WithBaseURL(url string) *API {
 	url = strings.TrimSuffix(url, "/")
@@ -298,13 +303,17 @@ type Hash[T defTable] uint32
 
 type BitmaskSet[T ~uint32 | ~uint64 | ~int32 | OptInFlags] uint64
 
-func (h Hash[T]) Get(fetcher func(Hash[T]) (*T, error)) (*T, error) {
-	return fetcher(h)
+type DefSource interface {
+	GetDef(table string, hash uint32, out any) error
 }
 
-func (h Hash[T]) Fetch(api *API) (*T, error) {
+// func (h Hash[T]) Get(fetcher func(Hash[T]) (*T, error)) (*T, error) {
+// 	return fetcher(h)
+// }
+
+func (h Hash[T]) Get(defs DefSource) (*T, error) {
 	var t T
-	if err := api.GetDef(t.DefinitionTable(), uint32(h), &t); err != nil {
+	if err := defs.GetDef(t.DefinitionTable(), uint32(h), &t); err != nil {
 		return nil, err
 	}
 	return &t, nil
