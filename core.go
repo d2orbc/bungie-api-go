@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"time"
 )
 
 type API struct {
@@ -292,6 +293,11 @@ func (n Nullable[T]) Format(f fmt.State, verb rune) {
 }
 
 type Timestamp string
+
+func (t Timestamp) Time() time.Time {
+	v, _ := time.Parse(time.RFC3339, string(t))
+	return v
+}
 
 //type Hash[T ActivityDefinition | ActivityGraphDefinition | ActivityModeDefinition | ActivityModifierDefinition | ActivityTypeDefinition | ArtifactDefinition | BreakerTypeDefinition | ChecklistDefinition | ClassDefinition | CollectibleDefinition | DamageTypeDefinition | DestinationDefinition | EnergyTypeDefinition | EquipmentSlotDefinition | EventCardDefinition | FactionDefinition | GenderDefinition | GuardianRankConstantsDefinition | GuardianRankDefinition | InventoryBucketDefinition | InventoryItemDefinition | ItemCategoryDefinition | ItemTierTypeDefinition | LoadoutColorDefinition | LoadoutConstantsDefinition | LoadoutIconDefinition | LoadoutNameDefinition | LocationDefinition | LoreDefinition | MaterialRequirementSetDefinition | MedalTierDefinition | MetricDefinition | MilestoneDefinition | ObjectiveDefinition | PlaceDefinition | PlugSetDefinition | PowerCapDefinition | PresentationNodeDefinition | ProgressionDefinition | ProgressionLevelRequirementDefinition | ProgressionMappingDefinition | RaceDefinition | RecordDefinition | ReportReasonCategoryDefinition | RewardSourceDefinition | SandboxPatternDefinition | SandboxPerkDefinition | SeasonDefinition | SeasonPassDefinition | SocialCommendationDefinition | SocialCommendationNodeDefinition | SocketCategoryDefinition | SocketTypeDefinition | StatDefinition | StatGroupDefinition | TalentGridDefinition | TraitDefinition | UnlockDefinition | UnlockValueDefinition | VendorDefinition | VendorGroupDefinition] uint32
 
