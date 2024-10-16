@@ -7,7 +7,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -88,7 +87,6 @@ func Version() string {
 		return "0.u"
 	}
 	for _, dep := range bi.Deps {
-		log.Print(dep)
 		if strings.Contains(dep.Path, "bungie-api-go") {
 			return dep.Version
 		}
