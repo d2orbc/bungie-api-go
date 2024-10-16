@@ -48426,46 +48426,46 @@ func (e DamageType) Enum() string {
 	return fmt.Sprintf("DamageType_%d", e)
 }
 func (d ActivityModifierDefinition) DefinitionTable() string {
-	return "ActivityModifiers.DestinyActivityModifierDefinition"
+	return "DestinyActivityModifierDefinition"
 }
 func (d AnimationReference) DefinitionTable() string {
-	return "Animations.DestinyAnimationReference"
+	return "DestinyAnimationReference"
 }
 func (d ArtifactDefinition) DefinitionTable() string {
-	return "Artifacts.DestinyArtifactDefinition"
+	return "DestinyArtifactDefinition"
 }
 func (d ArtifactTierDefinition) DefinitionTable() string {
-	return "Artifacts.DestinyArtifactTierDefinition"
+	return "DestinyArtifactTierDefinition"
 }
 func (d ArtifactTierItemDefinition) DefinitionTable() string {
-	return "Artifacts.DestinyArtifactTierItemDefinition"
+	return "DestinyArtifactTierItemDefinition"
 }
 func (d BreakerTypeDefinition) DefinitionTable() string {
-	return "BreakerTypes.DestinyBreakerTypeDefinition"
+	return "DestinyBreakerTypeDefinition"
 }
 func (d ChecklistDefinition) DefinitionTable() string {
-	return "Checklists.DestinyChecklistDefinition"
+	return "DestinyChecklistDefinition"
 }
 func (d ChecklistEntryDefinition) DefinitionTable() string {
-	return "Checklists.DestinyChecklistEntryDefinition"
+	return "DestinyChecklistEntryDefinition"
 }
 func (d CollectibleAcquisitionBlock) DefinitionTable() string {
-	return "Collectibles.DestinyCollectibleAcquisitionBlock"
+	return "DestinyCollectibleAcquisitionBlock"
 }
 func (d CollectibleDefinition) DefinitionTable() string {
-	return "Collectibles.DestinyCollectibleDefinition"
+	return "DestinyCollectibleDefinition"
 }
 func (d CollectibleStateBlock) DefinitionTable() string {
-	return "Collectibles.DestinyCollectibleStateBlock"
+	return "DestinyCollectibleStateBlock"
 }
 func (d DisplayPropertiesDefinition) DefinitionTable() string {
-	return "Common.DestinyDisplayPropertiesDefinition"
+	return "DestinyDisplayPropertiesDefinition"
 }
 func (d IconSequenceDefinition) DefinitionTable() string {
-	return "Common.DestinyIconSequenceDefinition"
+	return "DestinyIconSequenceDefinition"
 }
 func (d PositionDefinition) DefinitionTable() string {
-	return "Common.DestinyPositionDefinition"
+	return "DestinyPositionDefinition"
 }
 func (d ActivityChallengeDefinition) DefinitionTable() string {
 	return "DestinyActivityChallengeDefinition"
@@ -48975,115 +48975,115 @@ func (d VendorServiceDefinition) DefinitionTable() string {
 	return "DestinyVendorServiceDefinition"
 }
 func (d ActivityGraphArtElementDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphArtElementDefinition"
+	return "DestinyActivityGraphArtElementDefinition"
 }
 func (d ActivityGraphConnectionDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphConnectionDefinition"
+	return "DestinyActivityGraphConnectionDefinition"
 }
 func (d ActivityGraphDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphDefinition"
+	return "DestinyActivityGraphDefinition"
 }
 func (d ActivityGraphDisplayObjectiveDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphDisplayObjectiveDefinition"
+	return "DestinyActivityGraphDisplayObjectiveDefinition"
 }
 func (d ActivityGraphDisplayProgressionDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphDisplayProgressionDefinition"
+	return "DestinyActivityGraphDisplayProgressionDefinition"
 }
 func (d ActivityGraphNodeActivityDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphNodeActivityDefinition"
+	return "DestinyActivityGraphNodeActivityDefinition"
 }
 func (d ActivityGraphNodeDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphNodeDefinition"
+	return "DestinyActivityGraphNodeDefinition"
 }
 func (d ActivityGraphNodeFeaturingStateDefinition) DefinitionTable() string {
-	return "Director.DestinyActivityGraphNodeFeaturingStateDefinition"
+	return "DestinyActivityGraphNodeFeaturingStateDefinition"
 }
 func (d ActivityGraphNodeStateEntry) DefinitionTable() string {
-	return "Director.DestinyActivityGraphNodeStateEntry"
+	return "DestinyActivityGraphNodeStateEntry"
 }
 func (d LinkedGraphDefinition) DefinitionTable() string {
-	return "Director.DestinyLinkedGraphDefinition"
+	return "DestinyLinkedGraphDefinition"
 }
 func (d LinkedGraphEntryDefinition) DefinitionTable() string {
-	return "Director.DestinyLinkedGraphEntryDefinition"
+	return "DestinyLinkedGraphEntryDefinition"
 }
 func (d EnergyTypeDefinition) DefinitionTable() string {
-	return "EnergyTypes.DestinyEnergyTypeDefinition"
+	return "DestinyEnergyTypeDefinition"
 }
 func (d GuardianRankConstantsDefinition) DefinitionTable() string {
-	return "GuardianRanks.DestinyGuardianRankConstantsDefinition"
+	return "DestinyGuardianRankConstantsDefinition"
 }
 func (d GuardianRankDefinition) DefinitionTable() string {
-	return "GuardianRanks.DestinyGuardianRankDefinition"
+	return "DestinyGuardianRankDefinition"
 }
 func (d GuardianRankIconBackgroundsDefinition) DefinitionTable() string {
-	return "GuardianRanks.DestinyGuardianRankIconBackgroundsDefinition"
+	return "DestinyGuardianRankIconBackgroundsDefinition"
 }
 func (d DerivedItemCategoryDefinition) DefinitionTable() string {
-	return "Items.DestinyDerivedItemCategoryDefinition"
+	return "DestinyDerivedItemCategoryDefinition"
 }
 func (d DerivedItemDefinition) DefinitionTable() string {
-	return "Items.DestinyDerivedItemDefinition"
+	return "DestinyDerivedItemDefinition"
 }
 func (d EnergyCapacityEntry) DefinitionTable() string {
-	return "Items.DestinyEnergyCapacityEntry"
+	return "DestinyEnergyCapacityEntry"
 }
 func (d EnergyCostEntry) DefinitionTable() string {
-	return "Items.DestinyEnergyCostEntry"
+	return "DestinyEnergyCostEntry"
 }
 func (d ItemPlugDefinition) DefinitionTable() string {
-	return "Items.DestinyItemPlugDefinition"
+	return "DestinyItemPlugDefinition"
 }
 func (d ItemTierTypeDefinition) DefinitionTable() string {
-	return "Items.DestinyItemTierTypeDefinition"
+	return "DestinyItemTierTypeDefinition"
 }
 func (d ItemTierTypeInfusionBlock) DefinitionTable() string {
-	return "Items.DestinyItemTierTypeInfusionBlock"
+	return "DestinyItemTierTypeInfusionBlock"
 }
 func (d ParentItemOverride) DefinitionTable() string {
-	return "Items.DestinyParentItemOverride"
+	return "DestinyParentItemOverride"
 }
 func (d PlugRuleDefinition) DefinitionTable() string {
-	return "Items.DestinyPlugRuleDefinition"
+	return "DestinyPlugRuleDefinition"
 }
 func (d LoadoutColorDefinition) DefinitionTable() string {
-	return "Loadouts.DestinyLoadoutColorDefinition"
+	return "DestinyLoadoutColorDefinition"
 }
 func (d LoadoutConstantsDefinition) DefinitionTable() string {
-	return "Loadouts.DestinyLoadoutConstantsDefinition"
+	return "DestinyLoadoutConstantsDefinition"
 }
 func (d LoadoutIconDefinition) DefinitionTable() string {
-	return "Loadouts.DestinyLoadoutIconDefinition"
+	return "DestinyLoadoutIconDefinition"
 }
 func (d LoadoutNameDefinition) DefinitionTable() string {
-	return "Loadouts.DestinyLoadoutNameDefinition"
+	return "DestinyLoadoutNameDefinition"
 }
 func (d LoreDefinition) DefinitionTable() string {
-	return "Lore.DestinyLoreDefinition"
+	return "DestinyLoreDefinition"
 }
 func (d MetricDefinition) DefinitionTable() string {
-	return "Metrics.DestinyMetricDefinition"
+	return "DestinyMetricDefinition"
 }
 func (d MilestoneActivityDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneActivityDefinition"
+	return "DestinyMilestoneActivityDefinition"
 }
 func (d MilestoneActivityVariantDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneActivityVariantDefinition"
+	return "DestinyMilestoneActivityVariantDefinition"
 }
 func (d MilestoneChallengeActivityDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneChallengeActivityDefinition"
+	return "DestinyMilestoneChallengeActivityDefinition"
 }
 func (d MilestoneChallengeActivityGraphNodeEntry) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneChallengeActivityGraphNodeEntry"
+	return "DestinyMilestoneChallengeActivityGraphNodeEntry"
 }
 func (d MilestoneChallengeActivityPhase) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneChallengeActivityPhase"
+	return "DestinyMilestoneChallengeActivityPhase"
 }
 func (d MilestoneChallengeDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneChallengeDefinition"
+	return "DestinyMilestoneChallengeDefinition"
 }
 func (d MilestoneDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneDefinition"
+	return "DestinyMilestoneDefinition"
 }
 
 func (e MilestoneDisplayPreference) Enum() string {
@@ -49098,19 +49098,19 @@ func (e MilestoneDisplayPreference) Enum() string {
 	return fmt.Sprintf("MilestoneDisplayPreference_%d", e)
 }
 func (d MilestoneQuestDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneQuestDefinition"
+	return "DestinyMilestoneQuestDefinition"
 }
 func (d MilestoneQuestRewardItem) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneQuestRewardItem"
+	return "DestinyMilestoneQuestRewardItem"
 }
 func (d MilestoneQuestRewardsDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneQuestRewardsDefinition"
+	return "DestinyMilestoneQuestRewardsDefinition"
 }
 func (d MilestoneRewardCategoryDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneRewardCategoryDefinition"
+	return "DestinyMilestoneRewardCategoryDefinition"
 }
 func (d MilestoneRewardEntryDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneRewardEntryDefinition"
+	return "DestinyMilestoneRewardEntryDefinition"
 }
 
 func (e MilestoneType) Enum() string {
@@ -49131,133 +49131,133 @@ func (e MilestoneType) Enum() string {
 	return fmt.Sprintf("MilestoneType_%d", e)
 }
 func (d MilestoneValueDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneValueDefinition"
+	return "DestinyMilestoneValueDefinition"
 }
 func (d MilestoneVendorDefinition) DefinitionTable() string {
-	return "Milestones.DestinyMilestoneVendorDefinition"
+	return "DestinyMilestoneVendorDefinition"
 }
 func (d PowerCapDefinition) DefinitionTable() string {
-	return "PowerCaps.DestinyPowerCapDefinition"
+	return "DestinyPowerCapDefinition"
 }
 func (d PresentationChildBlock) DefinitionTable() string {
-	return "Presentation.DestinyPresentationChildBlock"
+	return "DestinyPresentationChildBlock"
 }
 func (d PresentationNodeBaseDefinition) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeBaseDefinition"
+	return "DestinyPresentationNodeBaseDefinition"
 }
 func (d PresentationNodeChildEntry) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeChildEntry"
+	return "DestinyPresentationNodeChildEntry"
 }
 func (d PresentationNodeChildEntryBase) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeChildEntryBase"
+	return "DestinyPresentationNodeChildEntryBase"
 }
 func (d PresentationNodeChildrenBlock) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeChildrenBlock"
+	return "DestinyPresentationNodeChildrenBlock"
 }
 func (d PresentationNodeCollectibleChildEntry) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeCollectibleChildEntry"
+	return "DestinyPresentationNodeCollectibleChildEntry"
 }
 func (d PresentationNodeCraftableChildEntry) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeCraftableChildEntry"
+	return "DestinyPresentationNodeCraftableChildEntry"
 }
 func (d PresentationNodeDefinition) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeDefinition"
+	return "DestinyPresentationNodeDefinition"
 }
 func (d PresentationNodeMetricChildEntry) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeMetricChildEntry"
+	return "DestinyPresentationNodeMetricChildEntry"
 }
 func (d PresentationNodeRecordChildEntry) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeRecordChildEntry"
+	return "DestinyPresentationNodeRecordChildEntry"
 }
 func (d PresentationNodeRequirementsBlock) DefinitionTable() string {
-	return "Presentation.DestinyPresentationNodeRequirementsBlock"
+	return "DestinyPresentationNodeRequirementsBlock"
 }
 func (d ScoredPresentationNodeBaseDefinition) DefinitionTable() string {
-	return "Presentation.DestinyScoredPresentationNodeBaseDefinition"
+	return "DestinyScoredPresentationNodeBaseDefinition"
 }
 func (d ProgressionLevelRequirementDefinition) DefinitionTable() string {
-	return "Progression.DestinyProgressionLevelRequirementDefinition"
+	return "DestinyProgressionLevelRequirementDefinition"
 }
 func (d RecordCompletionBlock) DefinitionTable() string {
-	return "Records.DestinyRecordCompletionBlock"
+	return "DestinyRecordCompletionBlock"
 }
 func (d RecordDefinition) DefinitionTable() string {
-	return "Records.DestinyRecordDefinition"
+	return "DestinyRecordDefinition"
 }
 func (d RecordExpirationBlock) DefinitionTable() string {
-	return "Records.DestinyRecordExpirationBlock"
+	return "DestinyRecordExpirationBlock"
 }
 func (d RecordIntervalBlock) DefinitionTable() string {
-	return "Records.DestinyRecordIntervalBlock"
+	return "DestinyRecordIntervalBlock"
 }
 func (d RecordIntervalObjective) DefinitionTable() string {
-	return "Records.DestinyRecordIntervalObjective"
+	return "DestinyRecordIntervalObjective"
 }
 func (d RecordIntervalRewards) DefinitionTable() string {
-	return "Records.DestinyRecordIntervalRewards"
+	return "DestinyRecordIntervalRewards"
 }
 func (d RecordTitleBlock) DefinitionTable() string {
-	return "Records.DestinyRecordTitleBlock"
+	return "DestinyRecordTitleBlock"
 }
 func (d SchemaRecordStateBlock) DefinitionTable() string {
-	return "Records.SchemaRecordStateBlock"
+	return "SchemaRecordStateBlock"
 }
 func (d ReportReasonCategoryDefinition) DefinitionTable() string {
-	return "Reporting.DestinyReportReasonCategoryDefinition"
+	return "DestinyReportReasonCategoryDefinition"
 }
 func (d ReportReasonDefinition) DefinitionTable() string {
-	return "Reporting.DestinyReportReasonDefinition"
+	return "DestinyReportReasonDefinition"
 }
 func (d EventCardDefinition) DefinitionTable() string {
-	return "Seasons.DestinyEventCardDefinition"
+	return "DestinyEventCardDefinition"
 }
 func (d EventCardImages) DefinitionTable() string {
-	return "Seasons.DestinyEventCardImages"
+	return "DestinyEventCardImages"
 }
 func (d SeasonDefinition) DefinitionTable() string {
-	return "Seasons.DestinySeasonDefinition"
+	return "DestinySeasonDefinition"
 }
 func (d SeasonPassDefinition) DefinitionTable() string {
-	return "Seasons.DestinySeasonPassDefinition"
+	return "DestinySeasonPassDefinition"
 }
 func (d SeasonPreviewDefinition) DefinitionTable() string {
-	return "Seasons.DestinySeasonPreviewDefinition"
+	return "DestinySeasonPreviewDefinition"
 }
 func (d SeasonPreviewImageDefinition) DefinitionTable() string {
-	return "Seasons.DestinySeasonPreviewImageDefinition"
+	return "DestinySeasonPreviewImageDefinition"
 }
 func (d SocialCommendationDefinition) DefinitionTable() string {
-	return "Social.DestinySocialCommendationDefinition"
+	return "DestinySocialCommendationDefinition"
 }
 func (d SocialCommendationNodeDefinition) DefinitionTable() string {
-	return "Social.DestinySocialCommendationNodeDefinition"
+	return "DestinySocialCommendationNodeDefinition"
 }
 func (d InsertPlugActionDefinition) DefinitionTable() string {
-	return "Sockets.DestinyInsertPlugActionDefinition"
+	return "DestinyInsertPlugActionDefinition"
 }
 func (d PlugSetDefinition) DefinitionTable() string {
-	return "Sockets.DestinyPlugSetDefinition"
+	return "DestinyPlugSetDefinition"
 }
 func (d PlugWhitelistEntryDefinition) DefinitionTable() string {
-	return "Sockets.DestinyPlugWhitelistEntryDefinition"
+	return "DestinyPlugWhitelistEntryDefinition"
 }
 func (d SocketCategoryDefinition) DefinitionTable() string {
-	return "Sockets.DestinySocketCategoryDefinition"
+	return "DestinySocketCategoryDefinition"
 }
 func (d SocketTypeDefinition) DefinitionTable() string {
-	return "Sockets.DestinySocketTypeDefinition"
+	return "DestinySocketTypeDefinition"
 }
 func (d SocketTypeScalarMaterialRequirementEntry) DefinitionTable() string {
-	return "Sockets.DestinySocketTypeScalarMaterialRequirementEntry"
+	return "DestinySocketTypeScalarMaterialRequirementEntry"
 }
 func (d ItemSourceDefinition) DefinitionTable() string {
-	return "Sources.DestinyItemSourceDefinition"
+	return "DestinyItemSourceDefinition"
 }
 func (d TraitDefinition) DefinitionTable() string {
-	return "Traits.DestinyTraitDefinition"
+	return "DestinyTraitDefinition"
 }
 func (d VendorLocationDefinition) DefinitionTable() string {
-	return "Vendors.DestinyVendorLocationDefinition"
+	return "DestinyVendorLocationDefinition"
 }
 
 func (e ActivityDifficultyTier) Enum() string {

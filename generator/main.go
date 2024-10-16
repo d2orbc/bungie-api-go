@@ -179,7 +179,8 @@ func main() {
 				// if table, ok := schema.Value.Extensions["x-mobile-manifest-name"]; ok {
 				// table := table.(string)
 				if strings.HasPrefix(ref, "Destiny.Definitions.") {
-					table := strings.TrimPrefix(ref, "Destiny.Definitions.")
+					parts := strings.Split(ref, ".")
+					table := parts[len(parts)-1]
 					helpers.Out("func (d %s) DefinitionTable() string {", ident)
 					helpers.Out("return %q", table)
 					helpers.Out("}")
