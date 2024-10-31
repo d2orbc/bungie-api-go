@@ -45,6 +45,14 @@ func (a *API) WithBaseURL(url string) *API {
 	})
 }
 
+// WithCacheBust adds a query parameter "cache_bust" that changes every interval of the provided duration.
+func (a *API) WithCacheBust(d time.Duration) *API {
+	return a.WithInterceptorFunc(func(base Client, ctx context.Context, r ClientRequest, resp any) error {
+		r.QueryParams.Set("cache_bust", fmt.Sprintf("%d", time.Now().Truncate(d).UnixMilli()))
+		return base.Do(ctx, r, resp)
+	})
+}
+
 func (a *API) WithAuthToken(tok string) *API {
 	return a.WithInterceptor(func(c Client) Client {
 		return addHeaderClient{c, "Authorization", "Bearer " + tok}
@@ -111,15 +119,15 @@ func (c *defaultClient) Do(ctx context.Context, r ClientRequest, resp any) error
 	}
 	url := baseURL + getPath(r.PathSpec, r.PathParams, r.QueryParams)
 	req, err := http.NewRequestWithContext(ctx, r.Method, url, bytes.NewReader(requestBody))
+	if err != nil {
+		return err
+	}
 	req.Header.Set("X-Api-Key", c.apiKey)
 	if r.Body != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
 	for k, v := range r.Headers {
 		req.Header.Set(k, v)
-	}
-	if err != nil {
-		return err
 	}
 	hResp, err := c.h.Do(req)
 	if err != nil {
@@ -153,14 +161,15 @@ func (c *defaultClient) Do(ctx context.Context, r ClientRequest, resp any) error
 }
 
 func getPath(spec string, params map[string]string, queryParams url.Values) string {
-	url := spec
+	outURL := spec
 	for field, val := range params {
-		url = strings.ReplaceAll(url, "{"+field+"}", val)
+		val = url.PathEscape(val)
+		outURL = strings.ReplaceAll(outURL, "{"+field+"}", val)
 	}
 	if len(queryParams) != 0 {
-		url += "?" + queryParams.Encode()
+		outURL += "?" + queryParams.Encode()
 	}
-	return url
+	return outURL
 }
 
 type DefaultClient *http.Client
