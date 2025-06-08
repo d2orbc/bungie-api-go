@@ -7,9 +7,10 @@ import (
 	bnet "github.com/d2orbc/bungie-api-go"
 )
 
+var defs bnet.DefSource
+
 func Example_A() {
 	ctx := context.Background()
-	defs := &Defs{}
 	var api = &bnet.API{}
 
 	resp, err := api.Destiny2GetPostGameCarnageReport(ctx,
@@ -24,13 +25,13 @@ func Example_A() {
 		log.Fatal("PGCR not found")
 	}
 
-	activity, _ := resp.Response.ActivityDetails.DirectorActivityHash.Get(defs.Activity)
-	dest, _ := activity.DestinationHash.Get(defs.Destination)
+	activity, _ := resp.Response.ActivityDetails.DirectorActivityHash.Get(defs)
+	dest, _ := activity.DestinationHash.Get(defs)
 	log.Print(dest.DisplayProperties.Name)
 
 	for _, entry := range resp.Response.Entries {
 		for _, weapon := range entry.Extended.Weapons {
-			weaponDef, _ := weapon.ReferenceID.Get(defs.InventoryItem)
+			weaponDef, _ := weapon.ReferenceID.Get(defs)
 			weaponName := weaponDef.DisplayProperties.Name
 			kills := weapon.Values["uniqueWeaponKills"].Basic.Value
 			log.Printf("%s: %d", weaponName, int(kills))
@@ -63,7 +64,6 @@ func Example_B() {
 
 func Example_Chiri() {
 	ctx := context.Background()
-	defs := &Defs{}
 	var api = &bnet.API{}
 
 	const (
@@ -82,7 +82,7 @@ func Example_Chiri() {
 		log.Fatal(err)
 	}
 	if eventHash, ok := profile.Response.Profile.Data.ActiveEventCardHash.Value(); ok {
-		eventDef, _ := eventHash.Get(defs.EventCard)
+		eventDef, _ := eventHash.Get(defs)
 		log.Print(eventDef.DisplayProperties.Name)
 	}
 
@@ -105,9 +105,9 @@ func Example_Chiri() {
 			}
 			vendorSeen[vendorHash] = true
 			// NOTE: we have to cast here because Bungie doesn't type the map key.
-			vendorDef, _ := defs.Vendor(bnet.Hash[bnet.VendorDefinition](vendorHash))
+			vendorDef, _ := bnet.Hash[bnet.VendorDefinition](vendorHash).Get(defs)
 			for _, loc := range vendorDef.Locations {
-				locationDef, _ := loc.DestinationHash.Get(defs.Destination)
+				locationDef, _ := loc.DestinationHash.Get(defs)
 				log.Printf("%s %s", vendorDef.DisplayProperties.Name, locationDef.DisplayProperties.Name)
 			}
 		}
@@ -173,26 +173,4 @@ func Example_getClan_API(memID bnet.Int64, membershipType bnet.Nullable[bnet.Bun
 			log.Print(clan.Group.GroupID)
 		}
 	}
-}
-
-type Defs struct{}
-
-func (f *Defs) Destination(h bnet.Hash[bnet.DestinationDefinition]) (*bnet.DestinationDefinition, error) {
-	return nil, nil
-}
-
-func (f *Defs) Activity(h bnet.Hash[bnet.ActivityDefinition]) (*bnet.ActivityDefinition, error) {
-	return nil, nil
-}
-
-func (f *Defs) InventoryItem(h bnet.Hash[bnet.InventoryItemDefinition]) (*bnet.InventoryItemDefinition, error) {
-	return nil, nil
-}
-
-func (f *Defs) EventCard(h bnet.Hash[bnet.EventCardDefinition]) (*bnet.EventCardDefinition, error) {
-	return nil, nil
-}
-
-func (f *Defs) Vendor(h bnet.Hash[bnet.VendorDefinition]) (*bnet.VendorDefinition, error) {
-	return nil, nil
 }

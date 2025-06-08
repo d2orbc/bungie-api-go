@@ -541,6 +541,14 @@ func typeFromSchema(s *openapi3.SchemaRef) (ident string) {
 		return "float64"
 	}
 
+	if s.Value.Enum != nil {
+		if _, ok := s.Value.Extensions["x-enum-values"]; ok {
+			if s.Value.Type.Is("integer") {
+				return "int"
+			}
+		}
+	}
+
 	b, _ := s.MarshalJSON()
 	panic(fmt.Errorf("unknown type %s", b))
 }
@@ -558,6 +566,9 @@ func refToIdent(ref string) (ident string) {
 	t = strings.TrimPrefix(t, "Destiny")
 	t = strings.TrimSuffix(t, "Enum")
 	t = strings.TrimSuffix(t, "Enums")
+	if strings.HasSuffix(t, "Request") {
+		t = t + "Body"
+	}
 	wantSchema[t] = true
 	return t
 }

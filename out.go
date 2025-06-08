@@ -209,7 +209,7 @@ func (a API) TokensForceDropsRepair(ctx context.Context, req TokensForceDropsRep
 type TokensClaimPartnerOfferRequest struct {
 
 	// Required.
-	Body PartnerOfferClaimRequest
+	Body PartnerOfferClaimRequestBody
 }
 
 // TokensClaimPartnerOffer: Claim a partner offer as the authenticated user.
@@ -408,7 +408,7 @@ func (a API) GroupV2GroupSearch(ctx context.Context, req GroupV2GroupSearchReque
 type GroupV2GetGroupByNameV2Request struct {
 
 	// Required.
-	Body GroupNameSearchRequest
+	Body GroupNameSearchRequestBody
 }
 
 // GroupV2GetGroupByNameV2: Get information about a specific group with the given name and type. The
@@ -955,7 +955,7 @@ func (a API) Destiny2AwaProvideAuthorizationResult(ctx context.Context, req Dest
 type Destiny2UpdateLoadoutIdentifiersRequest struct {
 
 	// Required.
-	Body LoadoutUpdateActionRequest
+	Body LoadoutUpdateActionRequestBody
 }
 
 // Destiny2UpdateLoadoutIdentifiers: Update the color, icon, and name of a loadout.
@@ -1009,7 +1009,7 @@ func (a API) Destiny2UpdateLoadoutIdentifiers(ctx context.Context, req Destiny2U
 type Destiny2SnapshotLoadoutRequest struct {
 
 	// Required.
-	Body LoadoutUpdateActionRequest
+	Body LoadoutUpdateActionRequestBody
 }
 
 // Destiny2SnapshotLoadout: Snapshot a loadout with the currently equipped items.
@@ -1063,7 +1063,7 @@ func (a API) Destiny2SnapshotLoadout(ctx context.Context, req Destiny2SnapshotLo
 type Destiny2EquipLoadoutRequest struct {
 
 	// Required.
-	Body LoadoutActionRequest
+	Body LoadoutActionRequestBody
 }
 
 // Destiny2EquipLoadout: Equip a loadout. You must have a valid Destiny Account, and either be in a
@@ -1118,7 +1118,7 @@ func (a API) Destiny2EquipLoadout(ctx context.Context, req Destiny2EquipLoadoutR
 type Destiny2ClearLoadoutRequest struct {
 
 	// Required.
-	Body LoadoutActionRequest
+	Body LoadoutActionRequestBody
 }
 
 // Destiny2ClearLoadout: Clear the identifiers and items of a loadout.
@@ -1172,7 +1172,7 @@ func (a API) Destiny2ClearLoadout(ctx context.Context, req Destiny2ClearLoadoutR
 type Destiny2TransferItemRequest struct {
 
 	// Required.
-	Body ItemTransferRequest
+	Body ItemTransferRequestBody
 }
 
 // Destiny2TransferItem: Transfer an item to/from your vault. You must have a valid Destiny account.
@@ -1228,7 +1228,7 @@ func (a API) Destiny2TransferItem(ctx context.Context, req Destiny2TransferItemR
 type Destiny2SetQuestTrackedStateRequest struct {
 
 	// Required.
-	Body ItemStateRequest
+	Body ItemStateRequestBody
 }
 
 // Destiny2SetQuestTrackedState: Set the Tracking State for an instanced item, if that item is a Quest
@@ -1283,7 +1283,7 @@ func (a API) Destiny2SetQuestTrackedState(ctx context.Context, req Destiny2SetQu
 type Destiny2SetItemLockStateRequest struct {
 
 	// Required.
-	Body ItemStateRequest
+	Body ItemStateRequestBody
 }
 
 // Destiny2SetItemLockState: Set the Lock State for an instanced item. You must have a valid Destiny
@@ -1339,7 +1339,7 @@ func (a API) Destiny2SetItemLockState(ctx context.Context, req Destiny2SetItemLo
 type Destiny2PullFromPostmasterRequest struct {
 
 	// Required.
-	Body PostmasterTransferRequest
+	Body PostmasterTransferRequestBody
 }
 
 // Destiny2PullFromPostmaster: Extract an item from the Postmaster, with whatever implications that may
@@ -1396,7 +1396,7 @@ func (a API) Destiny2PullFromPostmaster(ctx context.Context, req Destiny2PullFro
 type Destiny2InsertSocketPlugFreeRequest struct {
 
 	// Required.
-	Body InsertPlugsFreeActionRequest
+	Body InsertPlugsFreeActionRequestBody
 }
 
 // Destiny2InsertSocketPlugFree: Insert a 'free' plug into an item's socket. This does not require
@@ -1455,7 +1455,7 @@ func (a API) Destiny2InsertSocketPlugFree(ctx context.Context, req Destiny2Inser
 type Destiny2InsertSocketPlugRequest struct {
 
 	// Required.
-	Body InsertPlugsActionRequest
+	Body InsertPlugsActionRequestBody
 }
 
 // Destiny2InsertSocketPlug: Insert a plug into a socketed item. I know how it sounds, but I assure you
@@ -1516,7 +1516,7 @@ func (a API) Destiny2InsertSocketPlug(ctx context.Context, req Destiny2InsertSoc
 type Destiny2EquipItemsRequest struct {
 
 	// Required.
-	Body ItemSetActionRequest
+	Body ItemSetActionRequestBody
 }
 
 // Destiny2EquipItems: Equip a list of items by itemInstanceIds. You must have a valid Destiny Account,
@@ -1572,7 +1572,7 @@ func (a API) Destiny2EquipItems(ctx context.Context, req Destiny2EquipItemsReque
 type Destiny2EquipItemRequest struct {
 
 	// Required.
-	Body ItemActionRequest
+	Body ItemActionRequestBody
 }
 
 // Destiny2EquipItem: Equip an item. You must have a valid Destiny Account, and either be in a social
@@ -1661,7 +1661,7 @@ type UserSearchByGlobalNamePostRequest struct {
 	Page int32
 
 	// Required.
-	Body UserSearchPrefixRequest
+	Body UserSearchPrefixRequestBody
 }
 
 // UserSearchByGlobalNamePost: Given the prefix of a global display name, returns all users who share
@@ -2208,7 +2208,7 @@ type GroupV2AddOptionalConversationRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupOptionalConversationAddRequest
+	Body GroupOptionalConversationAddRequestBody
 }
 
 // GroupV2AddOptionalConversation: Add a new optional conversation/chat channel. Requires admin
@@ -2472,7 +2472,7 @@ type GroupV2DenyPendingForListRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupApplicationListRequest
+	Body GroupApplicationListRequestBody
 }
 
 // GroupV2DenyPendingForList: Deny all of the pending users for the given group that match the
@@ -2542,7 +2542,7 @@ type GroupV2DenyAllPendingRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupApplicationRequest
+	Body GroupApplicationRequestBody
 }
 
 // GroupV2DenyAllPending: Deny all of the pending users for the given group.
@@ -2612,7 +2612,7 @@ type GroupV2ApprovePendingForListRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupApplicationListRequest
+	Body GroupApplicationListRequestBody
 }
 
 // GroupV2ApprovePendingForList: Approve all of the pending users for the given group.
@@ -2681,7 +2681,7 @@ type GroupV2ApproveAllPendingRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupApplicationRequest
+	Body GroupApplicationRequestBody
 }
 
 // GroupV2ApproveAllPending: Approve all of the pending users for the given group.
@@ -2833,6 +2833,79 @@ func (a API) GroupV2GetMembersOfGroup(ctx context.Context, req GroupV2GetMembers
 			"memberType": {fmt.Sprint(req.MemberType)},
 			"nameSearch": {fmt.Sprint(req.NameSearch)},
 		}}, &resp)
+	return &resp, err
+}
+
+// GroupV2GetGroupEditHistoryRequest are the request parameters for operation
+// GroupV2.GetGroupEditHistory
+type GroupV2GetGroupEditHistoryRequest struct {
+
+	// Page number (starting with 1). Each page has a fixed size of 50 entries.
+	// Required.
+	Currentpage int32
+
+	// Group ID whose edit history you are fetching
+	// Required.
+	GroupID Int64
+}
+
+// GroupV2GetGroupEditHistory: Get the list of edits made to a given group. Only accessible to group
+// Admins and above.
+//
+// URL: /GroupV2/{groupId}/EditHistory/
+//
+// Operation: GroupV2.GetGroupEditHistory
+//
+// Scope: oauth2 [AdminGroups]
+func (a API) GroupV2GetGroupEditHistory(ctx context.Context, req GroupV2GetGroupEditHistoryRequest) (*ServerResponse[SearchResult[GroupEditHistory]], error) {
+	//	{
+	//	  "description": "Get the list of edits made to a given group. Only accessible to group Admins and above.",
+	//	  "operationId": "GroupV2.GetGroupEditHistory",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "Page number (starting with 1). Each page has a fixed size of 50 entries.",
+	//	      "in": "path",
+	//	      "name": "currentpage",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Group ID whose edit history you are fetching",
+	//	      "in": "path",
+	//	      "name": "groupId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/SearchResultOfGroupEditHistory"
+	//	    }
+	//	  },
+	//	  "security": [
+	//	    {
+	//	      "oauth2": [
+	//	        "AdminGroups"
+	//	      ]
+	//	    }
+	//	  ],
+	//	  "tags": [
+	//	    "GroupV2"
+	//	  ]
+	//	}
+	var resp ServerResponse[SearchResult[GroupEditHistory]]
+	err := a.client.Do(ctx, ClientRequest{Operation: "GroupV2.GetGroupEditHistory",
+		Method:   "GET",
+		PathSpec: "/GroupV2/{groupId}/EditHistory/", PathParams: map[string]string{
+			"currentpage": fmt.Sprint(req.Currentpage),
+			"groupId":     fmt.Sprint(req.GroupID),
+		}, QueryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -3504,6 +3577,53 @@ func (a API) ForumGetPostAndParent(ctx context.Context, req ForumGetPostAndParen
 	return &resp, err
 }
 
+// FireteamFinderGetListingRequest are the request parameters for operation FireteamFinder.GetListing
+type FireteamFinderGetListingRequest struct {
+
+	// The ID of the listing to retrieve.
+	// Required.
+	ListingID Int64
+}
+
+// FireteamFinderGetListing: Retrieves a Fireteam listing.
+//
+// URL: /FireteamFinder/Listing/{listingId}/
+//
+// Operation: FireteamFinder.GetListing
+func (a API) FireteamFinderGetListing(ctx context.Context, req FireteamFinderGetListingRequest) (*ServerResponse[FireteamFinderListing], error) {
+	//	{
+	//	  "description": "Retrieves a Fireteam listing.",
+	//	  "operationId": "FireteamFinder.GetListing",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the listing to retrieve.",
+	//	      "in": "path",
+	//	      "name": "listingId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderListing"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderListing]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetListing",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Listing/{listingId}/", PathParams: map[string]string{
+			"listingId": fmt.Sprint(req.ListingID),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
 // FireteamGetActivePrivateClanFireteamCountRequest are the request parameters for operation
 // Fireteam.GetActivePrivateClanFireteamCount
 type FireteamGetActivePrivateClanFireteamCountRequest struct {
@@ -3571,7 +3691,7 @@ type Destiny2ReportOffensivePostGameCarnageReportPlayerRequest struct {
 	ActivityID Int64
 
 	// Required.
-	Body ReportOffensePgcrRequest
+	Body ReportOffensePgcrRequestBody
 }
 
 // Destiny2ReportOffensivePostGameCarnageReportPlayer: Report a player that you met in an activity that
@@ -3850,7 +3970,7 @@ type Destiny2SearchDestinyPlayerByBungieNameRequest struct {
 	MembershipType BungieMembershipType
 
 	// Required.
-	Body ExactSearchRequest
+	Body ExactSearchRequestBody
 }
 
 // Destiny2SearchDestinyPlayerByBungieName: Returns a list of Destiny memberships given a global Bungie
@@ -5091,7 +5211,7 @@ type GroupV2EditOptionalConversationRequest struct {
 	GroupID Int64
 
 	// Required.
-	Body GroupOptionalConversationEditRequest
+	Body GroupOptionalConversationEditRequestBody
 }
 
 // GroupV2EditOptionalConversation: Edit the settings of an optional conversation/chat channel.
@@ -6233,7 +6353,7 @@ type GroupV2BanMemberRequest struct {
 	MembershipType BungieMembershipType
 
 	// Required.
-	Body GroupBanRequest
+	Body GroupBanRequestBody
 }
 
 // GroupV2BanMember: Bans the requested member from the requested group for the specified period of
@@ -6431,7 +6551,7 @@ type GroupV2IndividualGroupInviteRequest struct {
 	MembershipType BungieMembershipType
 
 	// Required.
-	Body GroupApplicationRequest
+	Body GroupApplicationRequestBody
 }
 
 // GroupV2IndividualGroupInvite: Invite a user to join this group.
@@ -6535,7 +6655,7 @@ type GroupV2ApprovePendingRequest struct {
 	MembershipType BungieMembershipType
 
 	// Required.
-	Body GroupApplicationRequest
+	Body GroupApplicationRequestBody
 }
 
 // GroupV2ApprovePending: Approve the given membershipId to join the group/clan as long as they have
@@ -6792,6 +6912,914 @@ func (a API) GroupV2RecoverGroupForFounder(ctx context.Context, req GroupV2Recov
 			"groupType":      fmt.Sprint(req.GroupType),
 			"membershipId":   fmt.Sprint(req.MembershipID),
 			"membershipType": fmt.Sprint(req.MembershipType),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderSearchListingsByFiltersRequest are the request parameters for operation
+// FireteamFinder.SearchListingsByFilters
+type FireteamFinderSearchListingsByFiltersRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Optional boolean to bypass the offline-only check, so the client can pull fireteam from the game.
+	OverrideOfflineFilter bool
+
+	// Required.
+	Body FireteamFinderSearchListingsByFiltersRequestBody
+}
+
+// FireteamFinderSearchListingsByFilters: Returns search results for available Fireteams provided
+// search filters.
+//
+// URL: /FireteamFinder/Search/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.SearchListingsByFilters
+func (a API) FireteamFinderSearchListingsByFilters(ctx context.Context, req FireteamFinderSearchListingsByFiltersRequest) (*ServerResponse[FireteamFinderSearchListingsByFiltersResponse], error) {
+	//	{
+	//	  "description": "Returns search results for available Fireteams provided search filters.",
+	//	  "operationId": "FireteamFinder.SearchListingsByFilters",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Optional boolean to bypass the offline-only check, so the client can pull fireteam from the game.",
+	//	      "in": "query",
+	//	      "name": "overrideOfflineFilter",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderSearchListingsByFiltersResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.SearchListingsByFilters",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Search/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{
+			"overrideOfflineFilter": {fmt.Sprint(req.OverrideOfflineFilter)},
+		}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderSearchListingsByClanRequest are the request parameters for operation
+// FireteamFinder.SearchListingsByClan
+type FireteamFinderSearchListingsByClanRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderSearchListingsByClanRequestBody
+}
+
+// FireteamFinderSearchListingsByClan: Returns search results for available Fireteams provided a clan.
+//
+// URL: /FireteamFinder/Search/Clan/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.SearchListingsByClan
+func (a API) FireteamFinderSearchListingsByClan(ctx context.Context, req FireteamFinderSearchListingsByClanRequest) (*ServerResponse[FireteamFinderSearchListingsByClanResponse], error) {
+	//	{
+	//	  "description": "Returns search results for available Fireteams provided a clan.",
+	//	  "operationId": "FireteamFinder.SearchListingsByClan",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderSearchListingsByClanRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderSearchListingsByClanResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderSearchListingsByClanResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.SearchListingsByClan",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Search/Clan/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetPlayerOffersRequest are the request parameters for operation
+// FireteamFinder.GetPlayerOffers
+type FireteamFinderGetPlayerOffersRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// An optional token from a previous response to fetch the next page of results.
+	NextPageToken string
+
+	// The maximum number of results to be returned with this page.
+	PageSize int32
+}
+
+// FireteamFinderGetPlayerOffers: Retrieves Fireteam offers that this player has recieved.
+//
+// URL:
+// /FireteamFinder/PlayerOffers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetPlayerOffers
+func (a API) FireteamFinderGetPlayerOffers(ctx context.Context, req FireteamFinderGetPlayerOffersRequest) (*ServerResponse[FireteamFinderGetPlayerOffersResponse], error) {
+	//	{
+	//	  "description": "Retrieves Fireteam offers that this player has recieved.",
+	//	  "operationId": "FireteamFinder.GetPlayerOffers",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional token from a previous response to fetch the next page of results.",
+	//	      "in": "query",
+	//	      "name": "nextPageToken",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The maximum number of results to be returned with this page.",
+	//	      "in": "query",
+	//	      "name": "pageSize",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerOffersResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetPlayerOffersResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerOffers",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/PlayerOffers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{
+			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
+			"pageSize":      {fmt.Sprint(req.PageSize)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetPlayerLobbiesRequest are the request parameters for operation
+// FireteamFinder.GetPlayerLobbies
+type FireteamFinderGetPlayerLobbiesRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// An optional token from a previous response to fetch the next page of results.
+	NextPageToken string
+
+	// The maximum number of results to be returned with this page.
+	PageSize int32
+}
+
+// FireteamFinderGetPlayerLobbies: Retrieves the information for a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/PlayerLobbies/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetPlayerLobbies
+func (a API) FireteamFinderGetPlayerLobbies(ctx context.Context, req FireteamFinderGetPlayerLobbiesRequest) (*ServerResponse[FireteamFinderGetPlayerLobbiesResponse], error) {
+	//	{
+	//	  "description": "Retrieves the information for a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.GetPlayerLobbies",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional token from a previous response to fetch the next page of results.",
+	//	      "in": "query",
+	//	      "name": "nextPageToken",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The maximum number of results to be returned with this page.",
+	//	      "in": "query",
+	//	      "name": "pageSize",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerLobbiesResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetPlayerLobbiesResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerLobbies",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/PlayerLobbies/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{
+			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
+			"pageSize":      {fmt.Sprint(req.PageSize)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetPlayerApplicationsRequest are the request parameters for operation
+// FireteamFinder.GetPlayerApplications
+type FireteamFinderGetPlayerApplicationsRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// An optional token from a previous response to fetch the next page of results.
+	NextPageToken string
+
+	// The maximum number of results to be returned with this page.
+	PageSize int32
+}
+
+// FireteamFinderGetPlayerApplications: Retrieves Fireteam applications that this player has sent or
+// recieved.
+//
+// URL:
+// /FireteamFinder/PlayerApplications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetPlayerApplications
+func (a API) FireteamFinderGetPlayerApplications(ctx context.Context, req FireteamFinderGetPlayerApplicationsRequest) (*ServerResponse[FireteamFinderGetPlayerApplicationsResponse], error) {
+	//	{
+	//	  "description": "Retrieves Fireteam applications that this player has sent or recieved.",
+	//	  "operationId": "FireteamFinder.GetPlayerApplications",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional token from a previous response to fetch the next page of results.",
+	//	      "in": "query",
+	//	      "name": "nextPageToken",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The maximum number of results to be returned with this page.",
+	//	      "in": "query",
+	//	      "name": "pageSize",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerApplicationsResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetPlayerApplicationsResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerApplications",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/PlayerApplications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{
+			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
+			"pageSize":      {fmt.Sprint(req.PageSize)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderJoinLobbyRequest are the request parameters for operation FireteamFinder.JoinLobby
+type FireteamFinderJoinLobbyRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderJoinLobbyRequestBody
+}
+
+// FireteamFinderJoinLobby: Sends a request to join an available Fireteam lobby.
+//
+// URL: /FireteamFinder/Lobby/Join/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.JoinLobby
+func (a API) FireteamFinderJoinLobby(ctx context.Context, req FireteamFinderJoinLobbyRequest) (*ServerResponse[FireteamFinderLobbyResponse], error) {
+	//	{
+	//	  "description": "Sends a request to join an available Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.JoinLobby",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderJoinLobbyRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderLobbyResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderLobbyResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.JoinLobby",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/Join/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderHostLobbyRequest are the request parameters for operation FireteamFinder.HostLobby
+type FireteamFinderHostLobbyRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderHostLobbyRequestBody
+}
+
+// FireteamFinderHostLobby: Creates a new Fireteam lobby and Fireteam Finder listing.
+//
+// URL: /FireteamFinder/Lobby/Host/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.HostLobby
+func (a API) FireteamFinderHostLobby(ctx context.Context, req FireteamFinderHostLobbyRequest) (*ServerResponse[FireteamFinderHostLobbyResponse], error) {
+	//	{
+	//	  "description": "Creates a new Fireteam lobby and Fireteam Finder listing.",
+	//	  "operationId": "FireteamFinder.HostLobby",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderHostLobbyRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderHostLobbyResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderHostLobbyResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.HostLobby",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/Host/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderBulkGetListingStatusRequest are the request parameters for operation
+// FireteamFinder.BulkGetListingStatus
+type FireteamFinderBulkGetListingStatusRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderBulkGetListingStatusRequestBody
+}
+
+// FireteamFinderBulkGetListingStatus: Retrieves Fireteam listing statuses in bulk.
+//
+// URL:
+// /FireteamFinder/Listing/BulkStatus/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.BulkGetListingStatus
+func (a API) FireteamFinderBulkGetListingStatus(ctx context.Context, req FireteamFinderBulkGetListingStatusRequest) (*ServerResponse[FireteamFinderBulkGetListingStatusResponse], error) {
+	//	{
+	//	  "description": "Retrieves Fireteam listing statuses in bulk.",
+	//	  "operationId": "FireteamFinder.BulkGetListingStatus",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderBulkGetListingStatusRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderBulkGetListingStatusResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderBulkGetListingStatusResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.BulkGetListingStatus",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Listing/BulkStatus/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetCharacterActivityAccessRequest are the request parameters for operation
+// FireteamFinder.GetCharacterActivityAccess
+type FireteamFinderGetCharacterActivityAccessRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+}
+
+// FireteamFinderGetCharacterActivityAccess: Retrieves the information for a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/CharacterActivityAccess/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetCharacterActivityAccess
+func (a API) FireteamFinderGetCharacterActivityAccess(ctx context.Context, req FireteamFinderGetCharacterActivityAccessRequest) (*ServerResponse[FireteamFinderGetCharacterActivityAccessResponse], error) {
+	//	{
+	//	  "description": "Retrieves the information for a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.GetCharacterActivityAccess",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetCharacterActivityAccessResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetCharacterActivityAccessResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetCharacterActivityAccess",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/CharacterActivityAccess/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
 		}, QueryParams: url.Values{}}, &resp)
 	return &resp, err
 }
@@ -8457,6 +9485,1432 @@ func (a API) ForumGetCoreTopicsPaged(ctx context.Context, req ForumGetCoreTopics
 	return &resp, err
 }
 
+// FireteamFinderGetOfferRequest are the request parameters for operation FireteamFinder.GetOffer
+type FireteamFinderGetOfferRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The unique ID of the offer.
+	// Required.
+	OfferID Int64
+}
+
+// FireteamFinderGetOffer: Retrieves an offer to a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Offer/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetOffer
+func (a API) FireteamFinderGetOffer(ctx context.Context, req FireteamFinderGetOfferRequest) (*ServerResponse[FireteamFinderOffer], error) {
+	//	{
+	//	  "description": "Retrieves an offer to a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.GetOffer",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The unique ID of the offer.",
+	//	      "in": "path",
+	//	      "name": "offerId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderOffer"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderOffer]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetOffer",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Offer/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"offerId":               fmt.Sprint(req.OfferID),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderRespondToOfferRequest are the request parameters for operation
+// FireteamFinder.RespondToOffer
+type FireteamFinderRespondToOfferRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The unique ID of the offer.
+	// Required.
+	OfferID Int64
+
+	// Required.
+	Body FireteamFinderRespondToOfferRequestBody
+}
+
+// FireteamFinderRespondToOffer: Responds to a Fireteam lobby offer.
+//
+// URL:
+// /FireteamFinder/Offer/Respond/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.RespondToOffer
+func (a API) FireteamFinderRespondToOffer(ctx context.Context, req FireteamFinderRespondToOfferRequest) (*ServerResponse[FireteamFinderRespondToOfferResponse], error) {
+	//	{
+	//	  "description": "Responds to a Fireteam lobby offer.",
+	//	  "operationId": "FireteamFinder.RespondToOffer",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The unique ID of the offer.",
+	//	      "in": "path",
+	//	      "name": "offerId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToOfferRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToOfferResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderRespondToOfferResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToOffer",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Offer/Respond/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"offerId":               fmt.Sprint(req.OfferID),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetLobbyRequest are the request parameters for operation FireteamFinder.GetLobby
+type FireteamFinderGetLobbyRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The ID of the lobby to retrieve.
+	// Required.
+	LobbyID Int64
+}
+
+// FireteamFinderGetLobby: Retrieves the information for a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Lobby/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetLobby
+func (a API) FireteamFinderGetLobby(ctx context.Context, req FireteamFinderGetLobbyRequest) (*ServerResponse[FireteamFinderLobbyResponse], error) {
+	//	{
+	//	  "description": "Retrieves the information for a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.GetLobby",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to retrieve.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderLobbyResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderLobbyResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetLobby",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetLobbyOffersRequest are the request parameters for operation
+// FireteamFinder.GetLobbyOffers
+type FireteamFinderGetLobbyOffersRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The unique ID of the lobby.
+	// Required.
+	LobbyID Int64
+
+	// An optional token from a previous response to fetch the next page of results.
+	NextPageToken string
+
+	// The maximum number of results to be returned with this page.
+	PageSize int32
+}
+
+// FireteamFinderGetLobbyOffers: Retrieves all offers relevant to a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Lobby/{lobbyId}/Offers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetLobbyOffers
+func (a API) FireteamFinderGetLobbyOffers(ctx context.Context, req FireteamFinderGetLobbyOffersRequest) (*ServerResponse[FireteamFinderGetLobbyOffersResponse], error) {
+	//	{
+	//	  "description": "Retrieves all offers relevant to a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.GetLobbyOffers",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The unique ID of the lobby.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional token from a previous response to fetch the next page of results.",
+	//	      "in": "query",
+	//	      "name": "nextPageToken",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The maximum number of results to be returned with this page.",
+	//	      "in": "query",
+	//	      "name": "pageSize",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetLobbyOffersResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetLobbyOffersResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetLobbyOffers",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/Offers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{
+			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
+			"pageSize":      {fmt.Sprint(req.PageSize)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderUpdateLobbySettingsRequest are the request parameters for operation
+// FireteamFinder.UpdateLobbySettings
+type FireteamFinderUpdateLobbySettingsRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The ID of the lobby to update.
+	// Required.
+	LobbyID Int64
+
+	// Required.
+	Body FireteamFinderUpdateLobbySettingsRequestBody
+}
+
+// FireteamFinderUpdateLobbySettings: Updates the settings for a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Lobby/UpdateSettings/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.UpdateLobbySettings
+func (a API) FireteamFinderUpdateLobbySettings(ctx context.Context, req FireteamFinderUpdateLobbySettingsRequest) (*ServerResponse[FireteamFinderUpdateLobbySettingsResponse], error) {
+	//	{
+	//	  "description": "Updates the settings for a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.UpdateLobbySettings",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to update.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderUpdateLobbySettingsResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.UpdateLobbySettings",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/UpdateSettings/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderLeaveLobbyRequest are the request parameters for operation FireteamFinder.LeaveLobby
+type FireteamFinderLeaveLobbyRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The ID of the lobby to leave.
+	// Required.
+	LobbyID Int64
+}
+
+// FireteamFinderLeaveLobby: Sends a request to leave a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Lobby/Leave/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.LeaveLobby
+func (a API) FireteamFinderLeaveLobby(ctx context.Context, req FireteamFinderLeaveLobbyRequest) (*ServerResponse[bool], error) {
+	//	{
+	//	  "description": "Sends a request to leave a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.LeaveLobby",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to leave.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.LeaveLobby",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/Leave/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderActivateLobbyForNewListingIdRequest are the request parameters for operation
+// FireteamFinder.ActivateLobbyForNewListingId
+type FireteamFinderActivateLobbyForNewListingIdRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Optional boolean to forcibly activate the lobby, kicking pending applicants.
+	ForceActivation bool
+
+	// The ID of the lobby to activate.
+	// Required.
+	LobbyID Int64
+}
+
+// FireteamFinderActivateLobbyForNewListingId: Activates a lobby and initializes it as an active
+// Fireteam, returning the updated Listing ID.
+//
+// URL:
+// /FireteamFinder/Lobby/ActivateForNewListingId/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.ActivateLobbyForNewListingId
+func (a API) FireteamFinderActivateLobbyForNewListingId(ctx context.Context, req FireteamFinderActivateLobbyForNewListingIdRequest) (*ServerResponse[bool], error) {
+	//	{
+	//	  "description": "Activates a lobby and initializes it as an active Fireteam, returning the updated Listing ID.",
+	//	  "operationId": "FireteamFinder.ActivateLobbyForNewListingId",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Optional boolean to forcibly activate the lobby, kicking pending applicants.",
+	//	      "in": "query",
+	//	      "name": "forceActivation",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to activate.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ActivateLobbyForNewListingId",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/ActivateForNewListingId/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{
+			"forceActivation": {fmt.Sprint(req.ForceActivation)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderActivateLobbyRequest are the request parameters for operation
+// FireteamFinder.ActivateLobby
+type FireteamFinderActivateLobbyRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Optional boolean to forcibly activate the lobby, kicking pending applicants.
+	ForceActivation bool
+
+	// The ID of the lobby to activate.
+	// Required.
+	LobbyID Int64
+}
+
+// FireteamFinderActivateLobby: Activates a lobby and initializes it as an active Fireteam.
+//
+// URL:
+// /FireteamFinder/Lobby/Activate/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.ActivateLobby
+func (a API) FireteamFinderActivateLobby(ctx context.Context, req FireteamFinderActivateLobbyRequest) (*ServerResponse[bool], error) {
+	//	{
+	//	  "description": "Activates a lobby and initializes it as an active Fireteam.",
+	//	  "operationId": "FireteamFinder.ActivateLobby",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Optional boolean to forcibly activate the lobby, kicking pending applicants.",
+	//	      "in": "query",
+	//	      "name": "forceActivation",
+	//	      "schema": {
+	//	        "type": "boolean"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to activate.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ActivateLobby",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/Activate/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+		}, QueryParams: url.Values{
+			"forceActivation": {fmt.Sprint(req.ForceActivation)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetListingApplicationsRequest are the request parameters for operation
+// FireteamFinder.GetListingApplications
+type FireteamFinderGetListingApplicationsRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Optional flag representing a filter on the state of the application.
+	Flags Int64
+
+	// The ID of the listing whose applications to retrieve.
+	// Required.
+	ListingID Int64
+
+	// An optional token from a previous response to fetch the next page of results.
+	NextPageToken string
+
+	// The maximum number of results to be returned with this page.
+	PageSize int32
+}
+
+// FireteamFinderGetListingApplications: Retrieves all applications to a Fireteam Finder listing.
+//
+// URL:
+// /FireteamFinder/Listing/{listingId}/Applications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetListingApplications
+func (a API) FireteamFinderGetListingApplications(ctx context.Context, req FireteamFinderGetListingApplicationsRequest) (*ServerResponse[FireteamFinderGetListingApplicationsResponse], error) {
+	//	{
+	//	  "description": "Retrieves all applications to a Fireteam Finder listing.",
+	//	  "operationId": "FireteamFinder.GetListingApplications",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "Optional flag representing a filter on the state of the application.",
+	//	      "in": "query",
+	//	      "name": "flags",
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the listing whose applications to retrieve.",
+	//	      "in": "path",
+	//	      "name": "listingId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "An optional token from a previous response to fetch the next page of results.",
+	//	      "in": "query",
+	//	      "name": "nextPageToken",
+	//	      "schema": {
+	//	        "type": "string"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The maximum number of results to be returned with this page.",
+	//	      "in": "query",
+	//	      "name": "pageSize",
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetListingApplicationsResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetListingApplicationsResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetListingApplications",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Listing/{listingId}/Applications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"listingId":             fmt.Sprint(req.ListingID),
+		}, QueryParams: url.Values{
+			"flags":         {fmt.Sprint(req.Flags)},
+			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
+			"pageSize":      {fmt.Sprint(req.PageSize)},
+		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderRespondToAuthenticationRequest are the request parameters for operation
+// FireteamFinder.RespondToAuthentication
+type FireteamFinderRespondToAuthenticationRequest struct {
+
+	// The ID of the application whose authentication to confirm.
+	// Required.
+	ApplicationID Int64
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderRespondToAuthenticationRequestBody
+}
+
+// FireteamFinderRespondToAuthentication: Responds to an authentication request for a Fireteam.
+//
+// URL:
+// /FireteamFinder/Authentication/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.RespondToAuthentication
+func (a API) FireteamFinderRespondToAuthentication(ctx context.Context, req FireteamFinderRespondToAuthenticationRequest) (*ServerResponse[FireteamFinderRespondToAuthenticationResponse], error) {
+	//	{
+	//	  "description": "Responds to an authentication request for a Fireteam.",
+	//	  "operationId": "FireteamFinder.RespondToAuthentication",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the application whose authentication to confirm.",
+	//	      "in": "path",
+	//	      "name": "applicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToAuthenticationRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToAuthenticationResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderRespondToAuthenticationResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToAuthentication",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Authentication/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"applicationId":         fmt.Sprint(req.ApplicationID),
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderGetApplicationRequest are the request parameters for operation
+// FireteamFinder.GetApplication
+type FireteamFinderGetApplicationRequest struct {
+
+	// Required.
+	ApplicationID Int64
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+}
+
+// FireteamFinderGetApplication: Retrieves a Fireteam application.
+//
+// URL:
+// /FireteamFinder/Application/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.GetApplication
+func (a API) FireteamFinderGetApplication(ctx context.Context, req FireteamFinderGetApplicationRequest) (*ServerResponse[FireteamFinderGetApplicationResponse], error) {
+	//	{
+	//	  "description": "Retrieves a Fireteam application.",
+	//	  "operationId": "FireteamFinder.GetApplication",
+	//	  "parameters": [
+	//	    {
+	//	      "in": "path",
+	//	      "name": "applicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetApplicationResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderGetApplicationResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetApplication",
+		Method:   "GET",
+		PathSpec: "/FireteamFinder/Application/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"applicationId":         fmt.Sprint(req.ApplicationID),
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderRespondToApplicationRequest are the request parameters for operation
+// FireteamFinder.RespondToApplication
+type FireteamFinderRespondToApplicationRequest struct {
+
+	// The application ID to respond to.
+	// Required.
+	ApplicationID Int64
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// Required.
+	Body FireteamFinderRespondToApplicationRequestBody
+}
+
+// FireteamFinderRespondToApplication: Responds to an application sent to a Fireteam lobby.
+//
+// URL:
+// /FireteamFinder/Application/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.RespondToApplication
+func (a API) FireteamFinderRespondToApplication(ctx context.Context, req FireteamFinderRespondToApplicationRequest) (*ServerResponse[FireteamFinderRespondToApplicationResponse], error) {
+	//	{
+	//	  "description": "Responds to an application sent to a Fireteam lobby.",
+	//	  "operationId": "FireteamFinder.RespondToApplication",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The application ID to respond to.",
+	//	      "in": "path",
+	//	      "name": "applicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToApplicationRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToApplicationResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderRespondToApplicationResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToApplication",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Application/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"applicationId":         fmt.Sprint(req.ApplicationID),
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderLeaveApplicationRequest are the request parameters for operation
+// FireteamFinder.LeaveApplication
+type FireteamFinderLeaveApplicationRequest struct {
+
+	// The ID of the application to leave.
+	// Required.
+	ApplicationID Int64
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+}
+
+// FireteamFinderLeaveApplication: Sends a request to leave a Fireteam listing application.
+//
+// URL:
+// /FireteamFinder/Application/Leave/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.LeaveApplication
+func (a API) FireteamFinderLeaveApplication(ctx context.Context, req FireteamFinderLeaveApplicationRequest) (*ServerResponse[bool], error) {
+	//	{
+	//	  "description": "Sends a request to leave a Fireteam listing application.",
+	//	  "operationId": "FireteamFinder.LeaveApplication",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The ID of the application to leave.",
+	//	      "in": "path",
+	//	      "name": "applicationId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.LeaveApplication",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Application/Leave/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"applicationId":         fmt.Sprint(req.ApplicationID),
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+		}, QueryParams: url.Values{}}, &resp)
+	return &resp, err
+}
+
 // FireteamGetMyClanFireteamsRequest are the request parameters for operation
 // Fireteam.GetMyClanFireteams
 type FireteamGetMyClanFireteamsRequest struct {
@@ -8835,6 +11289,250 @@ func (a API) Destiny2GetCollectibleNodeDetails(ctx context.Context, req Destiny2
 		}, QueryParams: url.Values{
 			"components": {joinArray(req.Components)},
 		}}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderKickPlayerRequest are the request parameters for operation FireteamFinder.KickPlayer
+type FireteamFinderKickPlayerRequest struct {
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The ID of the lobby to kick the player from.
+	// Required.
+	LobbyID Int64
+
+	// A valid Destiny membership ID of the player to kick.
+	// Required.
+	TargetMembershipID Int64
+
+	// Required.
+	Body FireteamFinderKickPlayerRequestBody
+}
+
+// FireteamFinderKickPlayer: Kicks a player from a Fireteam Finder lobby.
+//
+// URL:
+// /FireteamFinder/Lobby/{lobbyId}/KickPlayer/{targetMembershipId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.KickPlayer
+func (a API) FireteamFinderKickPlayer(ctx context.Context, req FireteamFinderKickPlayerRequest) (*ServerResponse[bool], error) {
+	//	{
+	//	  "description": "Kicks a player from a Fireteam Finder lobby.",
+	//	  "operationId": "FireteamFinder.KickPlayer",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The ID of the lobby to kick the player from.",
+	//	      "in": "path",
+	//	      "name": "lobbyId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID of the player to kick.",
+	//	      "in": "path",
+	//	      "name": "targetMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "requestBody": {
+	//	    "content": {
+	//	      "application/json": {
+	//	        "schema": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderKickPlayerRequest"
+	//	        }
+	//	      }
+	//	    },
+	//	    "required": true
+	//	  },
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/boolean"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[bool]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.KickPlayer",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/KickPlayer/{targetMembershipId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"lobbyId":               fmt.Sprint(req.LobbyID),
+			"targetMembershipId":    fmt.Sprint(req.TargetMembershipID),
+		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
+	return &resp, err
+}
+
+// FireteamFinderApplyToListingRequest are the request parameters for operation
+// FireteamFinder.ApplyToListing
+type FireteamFinderApplyToListingRequest struct {
+
+	// The type of application to apply
+	// Required.
+	ApplicationType FireteamFinderApplicationType
+
+	// A valid Destiny character ID.
+	// Required.
+	DestinyCharacterID Int64
+
+	// A valid Destiny membership ID.
+	// Required.
+	DestinyMembershipID Int64
+
+	// A valid Destiny membership type.
+	// Required.
+	DestinyMembershipType BungieMembershipType
+
+	// The id of the listing to apply to
+	// Required.
+	ListingID Int64
+}
+
+// FireteamFinderApplyToListing: Applies to have a character join a fireteam.
+//
+// URL:
+// /FireteamFinder/Listing/{listingId}/Apply/{applicationType}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
+//
+// Operation: FireteamFinder.ApplyToListing
+func (a API) FireteamFinderApplyToListing(ctx context.Context, req FireteamFinderApplyToListingRequest) (*ServerResponse[FireteamFinderApplyToListingResponse], error) {
+	//	{
+	//	  "description": "Applies to have a character join a fireteam.",
+	//	  "operationId": "FireteamFinder.ApplyToListing",
+	//	  "parameters": [
+	//	    {
+	//	      "description": "The type of application to apply",
+	//	      "in": "path",
+	//	      "name": "applicationType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny character ID.",
+	//	      "in": "path",
+	//	      "name": "destinyCharacterId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership ID.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "A valid Destiny membership type.",
+	//	      "in": "path",
+	//	      "name": "destinyMembershipType",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
+	//	        "format": "int32",
+	//	        "type": "integer",
+	//	        "x-enum-is-bitmask": false,
+	//	        "x-enum-reference": {
+	//	          "$ref": "#/components/schemas/BungieMembershipType"
+	//	        }
+	//	      }
+	//	    },
+	//	    {
+	//	      "description": "The id of the listing to apply to",
+	//	      "in": "path",
+	//	      "name": "listingId",
+	//	      "required": true,
+	//	      "schema": {
+	//	        "format": "int64",
+	//	        "type": "integer"
+	//	      }
+	//	    }
+	//	  ],
+	//	  "responses": {
+	//	    "200": {
+	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderApplyToListingResponse"
+	//	    }
+	//	  },
+	//	  "tags": [
+	//	    "FireteamFinder"
+	//	  ]
+	//	}
+	var resp ServerResponse[FireteamFinderApplyToListingResponse]
+	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ApplyToListing",
+		Method:   "POST",
+		PathSpec: "/FireteamFinder/Listing/{listingId}/Apply/{applicationType}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
+			"applicationType":       fmt.Sprint(req.ApplicationType),
+			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
+			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
+			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
+			"listingId":             fmt.Sprint(req.ListingID),
+		}, QueryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -9652,6 +12350,14 @@ type Application struct {
 	//       "format": "int32",
 	//       "type": "integer"
 	//     },
+	//     "applicationType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Applications.OAuthApplicationType"
+	//       }
+	//     },
 	//     "creationDate": {
 	//       "description": "Date the application was first added to our database.",
 	//       "format": "date-time",
@@ -9714,6 +12420,8 @@ type Application struct {
 
 	// Unique ID assigned to the application
 	ApplicationID int32 `json:"applicationId"`
+
+	ApplicationType OAuthApplicationType `json:"applicationType"`
 
 	// Date the application was first added to our database.
 	CreationDate Timestamp `json:"creationDate"`
@@ -9845,6 +12553,15 @@ const (
 	DeveloperRole_None       = DeveloperRole(0)
 	DeveloperRole_Owner      = DeveloperRole(1)
 	DeveloperRole_TeamMember = DeveloperRole(2)
+)
+
+// Applications.OAuthApplicationType
+type OAuthApplicationType int32
+
+const (
+	OAuthApplicationType_None         = OAuthApplicationType(0)
+	OAuthApplicationType_Confidential = OAuthApplicationType(1)
+	OAuthApplicationType_Public       = OAuthApplicationType(2)
 )
 
 // Applications.Series
@@ -10235,11 +12952,28 @@ type CoreSettings struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyVendorDefinition"
 	//       }
 	//     },
+	//     "enabledFireteamFinderActivityGraphHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
 	//     "exoticCatalystsRootNodeHash": {
 	//       "format": "uint32",
 	//       "type": "integer",
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+	//       }
+	//     },
+	//     "fireteamFinderConstantsHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderConstantsDefinition"
 	//       }
 	//     },
 	//     "futureSeasonHashes": {
@@ -10389,7 +13123,11 @@ type CoreSettings struct {
 
 	CurrentSeasonalArtifactHash Hash[VendorDefinition] `json:"currentSeasonalArtifactHash"`
 
+	EnabledFireteamFinderActivityGraphHashes []uint32 `json:"enabledFireteamFinderActivityGraphHashes"`
+
 	ExoticCatalystsRootNodeHash Hash[PresentationNodeDefinition] `json:"exoticCatalystsRootNodeHash"`
+
+	FireteamFinderConstantsHash Hash[FireteamFinderConstantsDefinition] `json:"fireteamFinderConstantsHash"`
 
 	FutureSeasonHashes []uint32 `json:"futureSeasonHashes"`
 
@@ -11355,6 +14093,9 @@ type NewsArticleRssResponse struct {
 	//       "nullable": true,
 	//       "type": "integer"
 	//     },
+	//     "PagerAction": {
+	//       "type": "string"
+	//     },
 	//     "ResultCountThisPage": {
 	//       "format": "int32",
 	//       "type": "integer"
@@ -11370,6 +14111,8 @@ type NewsArticleRssResponse struct {
 	NewsArticles []NewsArticleRssItem `json:"NewsArticles"`
 
 	NextPaginationToken Nullable[int32] `json:"NextPaginationToken,omitempty"`
+
+	PagerAction string `json:"PagerAction"`
 
 	ResultCountThisPage int32 `json:"ResultCountThisPage"`
 }
@@ -11822,6 +14565,9 @@ type ArtifactTierItem struct {
 	//     "isActive": {
 	//       "type": "boolean"
 	//     },
+	//     "isVisible": {
+	//       "type": "boolean"
+	//     },
 	//     "itemHash": {
 	//       "format": "uint32",
 	//       "type": "integer",
@@ -11834,6 +14580,8 @@ type ArtifactTierItem struct {
 	// }
 
 	IsActive bool `json:"isActive"`
+
+	IsVisible bool `json:"isVisible"`
 
 	ItemHash Hash[InventoryItemDefinition] `json:"itemHash"`
 }
@@ -12317,11 +15065,11 @@ type CraftablesComponent struct {
 // operations that have costs.
 // You *could* figure this out yourself by doing a GetCharacter or GetProfile request and forming your
 // own lookup table, but that is inconvenient enough that this feels like a worthwhile (and optional)
-// redundency. Don't bother requesting it if you have already created your own lookup from prior
+// redundancy. Don't bother requesting it if you have already created your own lookup from prior
 // GetCharacter/GetProfile calls.
 type CurrenciesComponent struct {
 	// {
-	//   "description": "This component provides a quick lookup of every item the requested character has and how much of that item they have.\r\nRequesting this component will allow you to circumvent manually putting together the list of which currencies you have for the purpose of testing currency requirements on an item being purchased, or operations that have costs.\r\nYou *could* figure this out yourself by doing a GetCharacter or GetProfile request and forming your own lookup table, but that is inconvenient enough that this feels like a worthwhile (and optional) redundency. Don't bother requesting it if you have already created your own lookup from prior GetCharacter/GetProfile calls.",
+	//   "description": "This component provides a quick lookup of every item the requested character has and how much of that item they have.\r\nRequesting this component will allow you to circumvent manually putting together the list of which currencies you have for the purpose of testing currency requirements on an item being purchased, or operations that have costs.\r\nYou *could* figure this out yourself by doing a GetCharacter or GetProfile request and forming your own lookup table, but that is inconvenient enough that this feels like a worthwhile (and optional) redundancy. Don't bother requesting it if you have already created your own lookup from prior GetCharacter/GetProfile calls.",
 	//   "properties": {
 	//     "itemQuantities": {
 	//       "additionalProperties": {
@@ -12337,6 +15085,17 @@ type CurrenciesComponent struct {
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
 	//       }
+	//     },
+	//     "materialRequirementSetStates": {
+	//       "additionalProperties": {
+	//         "$ref": "#/components/schemas/Destiny.Components.Inventory.DestinyMaterialRequirementSetState"
+	//       },
+	//       "description": "A map of material requirement hashes and their status information.",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       }
 	//     }
 	//   },
 	//   "type": "object",
@@ -12348,6 +15107,75 @@ type CurrenciesComponent struct {
 	// This allows you to see whether the requesting character can afford any given purchase/action without
 	// having to re-create this list itself.
 	ItemQuantities map[Hash[InventoryItemDefinition]]int32 `json:"itemQuantities"`
+
+	// A map of material requirement hashes and their status information.
+	MaterialRequirementSetStates map[uint32]MaterialRequirementSetState `json:"materialRequirementSetStates"`
+}
+
+// Destiny.Components.Inventory.DestinyMaterialRequirementSetState
+type MaterialRequirementSetState struct {
+	// {
+	//   "properties": {
+	//     "materialRequirementSetHash": {
+	//       "description": "The hash identifier of the material requirement set. Use it to look up the DestinyMaterialRequirementSetDefinition.",
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyMaterialRequirementSetDefinition"
+	//       }
+	//     },
+	//     "materialRequirementStates": {
+	//       "description": "The dynamic state values for individual material requirements.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Components.Inventory.DestinyMaterialRequirementState"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The hash identifier of the material requirement set. Use it to look up the
+	// DestinyMaterialRequirementSetDefinition.
+	MaterialRequirementSetHash Hash[MaterialRequirementSetDefinition] `json:"materialRequirementSetHash"`
+
+	// The dynamic state values for individual material requirements.
+	MaterialRequirementStates []MaterialRequirementState `json:"materialRequirementStates"`
+}
+
+// Destiny.Components.Inventory.DestinyMaterialRequirementState
+type MaterialRequirementState struct {
+	// {
+	//   "properties": {
+	//     "count": {
+	//       "description": "The amount of the material required.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "itemHash": {
+	//       "description": "The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "stackSize": {
+	//       "description": "A value for the amount of a (possibly virtual) material on some scope. For example: Dawning cookie baking material requirements.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The amount of the material required.
+	Count int32 `json:"count"`
+
+	// The hash identifier of the material required. Use it to look up the material's
+	// DestinyInventoryItemDefinition.
+	ItemHash uint32 `json:"itemHash"`
+
+	// A value for the amount of a (possibly virtual) material on some scope. For example: Dawning cookie
+	// baking material requirements.
+	StackSize int32 `json:"stackSize"`
 }
 
 // Destiny.Components.Inventory.DestinyPlatformSilverComponent
@@ -12414,6 +15242,12 @@ type ItemPlugComponent struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "maxStackSize": {
+	//       "description": "If available, this is the maximum stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "plugItemHash": {
 	//       "description": "The hash identifier of the DestinyInventoryItemDefinition that represents this plug.",
 	//       "format": "uint32",
@@ -12428,6 +15262,12 @@ type ItemPlugComponent struct {
 	//         "$ref": "#/components/schemas/Destiny.Quests.DestinyObjectiveProgress"
 	//       },
 	//       "type": "array"
+	//     },
+	//     "stackSize": {
+	//       "description": "If available, this is the stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
 	//     }
 	//   },
 	//   "type": "object",
@@ -12450,6 +15290,9 @@ type ItemPlugComponent struct {
 	// This list will be empty if the plug can be inserted.
 	InsertFailIndexes []int32 `json:"insertFailIndexes"`
 
+	// If available, this is the maximum stack size to display for the socket plug item.
+	MaxStackSize Nullable[int32] `json:"maxStackSize,omitempty"`
+
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
 
@@ -12461,6 +15304,9 @@ type ItemPlugComponent struct {
 	// the DestinyObjectiveDefinition's progressDescription property. Refer to the plug's itemHash and
 	// objective property for more information if you would like to display even more data.
 	PlugObjectives []ObjectiveProgress `json:"plugObjectives"`
+
+	// If available, this is the stack size to display for the socket plug item.
+	StackSize Nullable[int32] `json:"stackSize,omitempty"`
 }
 
 // Destiny.Components.Items.DestinyItemPlugObjectivesComponent
@@ -13553,6 +16399,18 @@ type RecordsComponent struct {
 type SocialCommendationsComponent struct {
 	// {
 	//   "properties": {
+	//     "commendationNodePercentagesByHash": {
+	//       "additionalProperties": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "description": "The percentage for each commendation type out of total received",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       }
+	//     },
 	//     "commendationNodeScoresByHash": {
 	//       "additionalProperties": {
 	//         "format": "int32",
@@ -13596,6 +16454,9 @@ type SocialCommendationsComponent struct {
 	//   "type": "object",
 	//   "x-destiny-component-type-dependency": "SocialCommendations"
 	// }
+
+	// The percentage for each commendation type out of total received
+	CommendationNodePercentagesByHash map[uint32]uint32 `json:"commendationNodePercentagesByHash"`
 
 	CommendationNodeScoresByHash map[Hash[SocialCommendationNodeDefinition]]int32 `json:"commendationNodeScoresByHash"`
 
@@ -14211,6 +17072,83 @@ const (
 	DamageType_Stasis  = DamageType(6)
 	DamageType_Strand  = DamageType(7)
 )
+
+// Destiny.Definitions.Activities.DestinyActivityInteractableDefinition
+//
+// There are times in every Activity's life when interacting with an object in the world will result in
+// another Activity activating. Well, not every Activity. Just certain ones.
+// Anyways, this defines a set of interactable components, the activities that they spawn when you
+// interact with them, and the conditions under which they can be interacted with.
+// Sadly, we don't get any *really* good data for them, like positional data... yet. I have hopes for
+// future data that we could put on this.
+type ActivityInteractableDefinition struct {
+	// {
+	//   "description": "There are times in every Activity's life when interacting with an object in the world will result in another Activity activating. Well, not every Activity. Just certain ones.\r\nAnyways, this defines a set of interactable components, the activities that they spawn when you interact with them, and the conditions under which they can be interacted with.\r\nSadly, we don't get any *really* good data for them, like positional data... yet. I have hopes for future data that we could put on this.",
+	//   "properties": {
+	//     "entries": {
+	//       "description": "The possible interactables in this activity interactable definition.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityInteractableEntryDefinition"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivityInteractables"
+	// }
+
+	// The possible interactables in this activity interactable definition.
+	Entries []ActivityInteractableEntryDefinition `json:"entries"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivityInteractableEntryDefinition
+//
+// Defines a specific interactable and the action that can occur when triggered.
+type ActivityInteractableEntryDefinition struct {
+	// {
+	//   "description": "Defines a specific interactable and the action that can occur when triggered.",
+	//   "properties": {
+	//     "activityHash": {
+	//       "description": "The activity that will trigger when you interact with this interactable.",
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The activity that will trigger when you interact with this interactable.
+	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
+}
 
 // Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
 //
@@ -15219,7 +18157,8 @@ type ActivityDefinition struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -15562,6 +18501,10 @@ type ActivityDefinition struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     },
@@ -15678,6 +18621,9 @@ type ActivityDefinition struct {
 	//       "description": "If the activity will not be visible until a specific and known time, this will be the seconds since the Epoch when it will become visible.",
 	//       "format": "int32",
 	//       "type": "integer"
+	//     },
+	//     "requirements": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRequirementsBlock"
 	//     },
 	//     "rewards": {
 	//       "description": "The expected possible rewards for the activity. These rewards may or may not be accessible for an individual player based on their character state, the account state, and even the game's state overall. But it is a useful reference for possible rewards you can earn in the activity. These match up to rewards displayed when you hover over the Activity in the in-game Director, and often refer to Placeholder or \"Dummy\" items: items that tell you what you can earn in vague terms rather than what you'll specifically be earning (partly because the game doesn't even know what you'll earn specifically until you roll for it at the end)",
@@ -15833,6 +18779,8 @@ type ActivityDefinition struct {
 	// If the activity will not be visible until a specific and known time, this will be the seconds since
 	// the Epoch when it will become visible.
 	ReleaseTime int32 `json:"releaseTime"`
+
+	Requirements ActivityRequirementsBlock `json:"requirements"`
 
 	// The expected possible rewards for the activity. These rewards may or may not be accessible for an
 	// individual player based on their character state, the account state, and even the game's state
@@ -16378,7 +19326,8 @@ type ActivityPlaylistItemDefinition struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -16721,6 +19670,10 @@ type ActivityPlaylistItemDefinition struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     }
@@ -16745,6 +19698,49 @@ type ActivityPlaylistItemDefinition struct {
 	// If the playlist entry had an activity mode directly defined on it, this will be the enum value of
 	// that mode.
 	DirectActivityModeType Nullable[int32] `json:"directActivityModeType,omitempty"`
+}
+
+// Destiny.Definitions.DestinyActivityRequirementLabel
+type ActivityRequirementLabel struct {
+	// {
+	//   "properties": {
+	//     "displayString": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	DisplayString string `json:"displayString"`
+}
+
+// Destiny.Definitions.DestinyActivityRequirementsBlock
+type ActivityRequirementsBlock struct {
+	// {
+	//   "properties": {
+	//     "fireteamRequirementLabels": {
+	//       "description": "If being a fireteam member in this activity is gated, this is the gate being checked.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRequirementLabel"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "leaderRequirementLabels": {
+	//       "description": "If being a fireteam Leader in this activity is gated, this is the gate being checked.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRequirementLabel"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// If being a fireteam member in this activity is gated, this is the gate being checked.
+	FireteamRequirementLabels []ActivityRequirementLabel `json:"fireteamRequirementLabels"`
+
+	// If being a fireteam Leader in this activity is gated, this is the gate being checked.
+	LeaderRequirementLabels []ActivityRequirementLabel `json:"leaderRequirementLabels"`
 }
 
 // Destiny.Definitions.DestinyActivityRewardDefinition
@@ -21120,6 +24116,10 @@ type MaterialRequirement struct {
 	//       "description": "If True, the material will be removed from the character's inventory when the action is performed.",
 	//       "type": "boolean"
 	//     },
+	//     "hasVirtualStackSize": {
+	//       "description": "If true, this material requirement references a virtual item stack size value. You can get that value from a corresponding DestinyMaterialRequirementSetState.",
+	//       "type": "boolean"
+	//     },
 	//     "itemHash": {
 	//       "description": "The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.",
 	//       "format": "uint32",
@@ -21145,6 +24145,10 @@ type MaterialRequirement struct {
 
 	// If True, the material will be removed from the character's inventory when the action is performed.
 	DeleteOnAction bool `json:"deleteOnAction"`
+
+	// If true, this material requirement references a virtual item stack size value. You can get that
+	// value from a corresponding DestinyMaterialRequirementSetState.
+	HasVirtualStackSize bool `json:"hasVirtualStackSize"`
 
 	// The hash identifier of the material required. Use it to look up the material's
 	// DestinyInventoryItemDefinition.
@@ -22362,9 +25366,19 @@ type ProgressionRewardItemQuantity struct {
 	//       "format": "int32",
 	//       "type": "integer"
 	//     },
+	//     "rewardItemIndex": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
 	//     "rewardedAtProgressionLevel": {
 	//       "format": "int32",
 	//       "type": "integer"
+	//     },
+	//     "socketOverrides": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyProgressionSocketPlugOverride"
+	//       },
+	//       "type": "array"
 	//     },
 	//     "uiDisplayStyle": {
 	//       "type": "string"
@@ -22393,9 +25407,42 @@ type ProgressionRewardItemQuantity struct {
 	// being used.
 	Quantity int32 `json:"quantity"`
 
+	RewardItemIndex int32 `json:"rewardItemIndex"`
+
 	RewardedAtProgressionLevel int32 `json:"rewardedAtProgressionLevel"`
 
+	SocketOverrides []ProgressionSocketPlugOverride `json:"socketOverrides"`
+
 	UiDisplayStyle string `json:"uiDisplayStyle"`
+}
+
+// Destiny.Definitions.DestinyProgressionSocketPlugOverride
+//
+// The information for how progression item definitions should override a given socket with custom plug
+// data.
+type ProgressionSocketPlugOverride struct {
+	// {
+	//   "description": "The information for how progression item definitions should override a given socket with custom plug data.",
+	//   "properties": {
+	//     "overrideSingleItemHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+	//       }
+	//     },
+	//     "socketTypeHash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	OverrideSingleItemHash Nullable[Hash[InventoryItemDefinition]] `json:"overrideSingleItemHash,omitempty"`
+
+	SocketTypeHash uint32 `json:"socketTypeHash"`
 }
 
 // Destiny.Definitions.DestinyProgressionStepDefinition
@@ -22722,7 +25769,7 @@ type SandboxPatternDefinition struct {
 // Destiny.Definitions.DestinySandboxPerkDefinition
 //
 // Perks are modifiers to a character or item that can be applied situationally.
-// - Perks determine a weapons' damage type.
+// - Perks determine a weapon's damage type.
 // - Perks put the Mods in Modifiers (they are literally the entity that bestows the Sandbox benefit
 // for whatever fluff text about the modifier in the Socket, Plug or Talent Node)
 // - Perks are applied for unique alterations of state in Objectives
@@ -22734,7 +25781,7 @@ type SandboxPatternDefinition struct {
 // and undocumented.
 type SandboxPerkDefinition struct {
 	// {
-	//   "description": "Perks are modifiers to a character or item that can be applied situationally.\r\n- Perks determine a weapons' damage type.\r\n- Perks put the Mods in Modifiers (they are literally the entity that bestows the Sandbox benefit for whatever fluff text about the modifier in the Socket, Plug or Talent Node)\r\n- Perks are applied for unique alterations of state in Objectives\r\nAnyways, I'm sure you can see why perks are so interesting.\r\nWhat Perks often don't have is human readable information, so we attempt to reverse engineer that by pulling that data from places that uniquely refer to these perks: namely, Talent Nodes and Plugs. That only gives us a subset of perks that are human readable, but those perks are the ones people generally care about anyways. The others are left as a mystery, their true purpose mostly unknown and undocumented.",
+	//   "description": "Perks are modifiers to a character or item that can be applied situationally.\r\n- Perks determine a weapon's damage type.\r\n- Perks put the Mods in Modifiers (they are literally the entity that bestows the Sandbox benefit for whatever fluff text about the modifier in the Socket, Plug or Talent Node)\r\n- Perks are applied for unique alterations of state in Objectives\r\nAnyways, I'm sure you can see why perks are so interesting.\r\nWhat Perks often don't have is human readable information, so we attempt to reverse engineer that by pulling that data from places that uniquely refer to these perks: namely, Talent Nodes and Plugs. That only gives us a subset of perks that are human readable, but those perks are the ones people generally care about anyways. The others are left as a mystery, their true purpose mostly unknown and undocumented.",
 	//   "properties": {
 	//     "damageType": {
 	//       "description": "If this perk grants a damage type to a weapon, the damage type will be defined here.\r\nUnless you have a compelling reason to use this enum value, use the damageTypeHash instead to look up the actual DestinyDamageTypeDefinition.",
@@ -22777,15 +25824,6 @@ type SandboxPerkDefinition struct {
 	//       "description": "If true, you can actually show the perk in the UI. Otherwise, it doesn't have useful player-facing information.",
 	//       "type": "boolean"
 	//     },
-	//     "perkGroups": {
-	//       "allOf": [
-	//         {
-	//           "$ref": "#/components/schemas/Destiny.Definitions.DestinyTalentNodeStepGroups"
-	//         }
-	//       ],
-	//       "description": "An old holdover from the original Armory, this was an attempt to group perks by functionality.\r\nIt is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order.",
-	//       "type": "object"
-	//     },
 	//     "perkIdentifier": {
 	//       "description": "The string identifier for the perk.",
 	//       "type": "string"
@@ -22825,11 +25863,6 @@ type SandboxPerkDefinition struct {
 	// If true, you can actually show the perk in the UI. Otherwise, it doesn't have useful player-facing
 	// information.
 	IsDisplayable bool `json:"isDisplayable"`
-
-	// An old holdover from the original Armory, this was an attempt to group perks by functionality.
-	// It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former
-	// working order.
-	PerkGroups TalentNodeStepGroups `json:"perkGroups"`
 
 	// The string identifier for the perk.
 	PerkIdentifier string `json:"perkIdentifier"`
@@ -26168,12 +29201,791 @@ type EnergyTypeDefinition struct {
 	TransparentIconPath string `json:"transparentIconPath"`
 }
 
+// Destiny.Definitions.FireteamFinder.DestinyActivityGraphReference
+type ActivityGraphReference struct {
+	// {
+	//   "properties": {
+	//     "activityGraphHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Director.DestinyActivityGraphDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityGraphHash Hash[ActivityGraphDefinition] `json:"activityGraphHash"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference
+type ActivityInteractableReference struct {
+	// {
+	//   "properties": {
+	//     "activityInteractableElementIndex": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "activityInteractableHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityInteractableDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityInteractableElementIndex int32 `json:"activityInteractableElementIndex"`
+
+	ActivityInteractableHash Hash[ActivityInteractableDefinition] `json:"activityInteractableHash"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition
+type FireteamFinderActivityGraphDefinition struct {
+	// {
+	//   "properties": {
+	//     "children": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "color": {
+	//       "$ref": "#/components/schemas/Destiny.Misc.DestinyColor"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "isPlayerElectedDifficultyNode": {
+	//       "type": "boolean"
+	//     },
+	//     "parentHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "relatedActivityHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     },
+	//     "relatedActivitySetHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition"
+	//       }
+	//     },
+	//     "relatedDirectorNodes": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyActivityGraphReference"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "relatedInteractableActivities": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "relatedLocationHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyLocationDefinition"
+	//       }
+	//     },
+	//     "selfAndAllDescendantHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "specificActivitySetHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderActivityGraphs"
+	// }
+
+	Children []uint32 `json:"children"`
+
+	Color Color `json:"color"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	IsPlayerElectedDifficultyNode bool `json:"isPlayerElectedDifficultyNode"`
+
+	ParentHash Nullable[Hash[FireteamFinderActivityGraphDefinition]] `json:"parentHash,omitempty"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	RelatedActivityHashes []uint32 `json:"relatedActivityHashes"`
+
+	RelatedActivitySetHashes []uint32 `json:"relatedActivitySetHashes"`
+
+	RelatedDirectorNodes []ActivityGraphReference `json:"relatedDirectorNodes"`
+
+	RelatedInteractableActivities []ActivityInteractableReference `json:"relatedInteractableActivities"`
+
+	RelatedLocationHashes []uint32 `json:"relatedLocationHashes"`
+
+	SelfAndAllDescendantHashes []uint32 `json:"selfAndAllDescendantHashes"`
+
+	SpecificActivitySetHash Nullable[Hash[FireteamFinderActivitySetDefinition]] `json:"specificActivitySetHash,omitempty"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition
+type FireteamFinderActivitySetDefinition struct {
+	// {
+	//   "properties": {
+	//     "activityGraphHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "activityHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "labelHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelDefinition"
+	//       }
+	//     },
+	//     "maximumPartySize": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "optionHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionDefinition"
+	//       }
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderActivitySets"
+	// }
+
+	ActivityGraphHashes []uint32 `json:"activityGraphHashes"`
+
+	ActivityHashes []uint32 `json:"activityHashes"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	LabelHashes []uint32 `json:"labelHashes"`
+
+	MaximumPartySize int32 `json:"maximumPartySize"`
+
+	OptionHashes []uint32 `json:"optionHashes"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderConstantsDefinition
+type FireteamFinderConstantsDefinition struct {
+	// {
+	//   "properties": {
+	//     "allFireteamFinderActivityHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "fireteamFinderActivityGraphRootCategoryHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "guardianOathDisplayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "guardianOathTenets": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderConstants"
+	// }
+
+	AllFireteamFinderActivityHashes []uint32 `json:"allFireteamFinderActivityHashes"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	FireteamFinderActivityGraphRootCategoryHashes []uint32 `json:"fireteamFinderActivityGraphRootCategoryHashes"`
+
+	GuardianOathDisplayProperties DisplayPropertiesDefinition `json:"guardianOathDisplayProperties"`
+
+	GuardianOathTenets []DisplayPropertiesDefinition `json:"guardianOathTenets"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelDefinition
+type FireteamFinderLabelDefinition struct {
+	// {
+	//   "properties": {
+	//     "allowInFields": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderLabelFieldType"
+	//       }
+	//     },
+	//     "descendingSortPriority": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "groupHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelGroupDefinition"
+	//       }
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderLabels"
+	// }
+
+	AllowInFields FireteamFinderLabelFieldType `json:"allowInFields"`
+
+	DescendingSortPriority int32 `json:"descendingSortPriority"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	GroupHash Hash[FireteamFinderLabelGroupDefinition] `json:"groupHash"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelGroupDefinition
+type FireteamFinderLabelGroupDefinition struct {
+	// {
+	//   "properties": {
+	//     "descendingSortPriority": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderLabelGroups"
+	// }
+
+	DescendingSortPriority int32 `json:"descendingSortPriority"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionCreatorSettings
+type FireteamFinderOptionCreatorSettings struct {
+	// {
+	//   "properties": {
+	//     "control": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSettingsControl"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Control FireteamFinderOptionSettingsControl `json:"control"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionDefinition
+type FireteamFinderOptionDefinition struct {
+	// {
+	//   "properties": {
+	//     "availability": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": true,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionAvailability"
+	//       }
+	//     },
+	//     "codeOptionType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderCodeOptionType"
+	//       }
+	//     },
+	//     "creatorSettings": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionCreatorSettings"
+	//     },
+	//     "descendingSortPriority": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "groupHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionGroupDefinition"
+	//       }
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "searcherSettings": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSearcherSettings"
+	//     },
+	//     "uiDisplayStyle": {
+	//       "type": "string"
+	//     },
+	//     "values": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionValues"
+	//     },
+	//     "visibility": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionVisibility"
+	//       }
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderOptions"
+	// }
+
+	Availability BitmaskSet[FireteamFinderOptionAvailability] `json:"availability"`
+
+	CodeOptionType FireteamFinderCodeOptionType `json:"codeOptionType"`
+
+	CreatorSettings FireteamFinderOptionCreatorSettings `json:"creatorSettings"`
+
+	DescendingSortPriority int32 `json:"descendingSortPriority"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	GroupHash Hash[FireteamFinderOptionGroupDefinition] `json:"groupHash"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	SearcherSettings FireteamFinderOptionSearcherSettings `json:"searcherSettings"`
+
+	UiDisplayStyle string `json:"uiDisplayStyle"`
+
+	Values FireteamFinderOptionValues `json:"values"`
+
+	Visibility FireteamFinderOptionVisibility `json:"visibility"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionGroupDefinition
+type FireteamFinderOptionGroupDefinition struct {
+	// {
+	//   "properties": {
+	//     "descendingSortPriority": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "FireteamFinderOptionGroups"
+	// }
+
+	DescendingSortPriority int32 `json:"descendingSortPriority"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSearcherSettings
+type FireteamFinderOptionSearcherSettings struct {
+	// {
+	//   "properties": {
+	//     "control": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSettingsControl"
+	//     },
+	//     "searchFilterType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionSearchFilterType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Control FireteamFinderOptionSettingsControl `json:"control"`
+
+	SearchFilterType FireteamFinderOptionSearchFilterType `json:"searchFilterType"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSettingsControl
+type FireteamFinderOptionSettingsControl struct {
+	// {
+	//   "properties": {
+	//     "maxSelectedItems": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "minSelectedItems": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "type": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionControlType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	MaxSelectedItems int32 `json:"maxSelectedItems"`
+
+	MinSelectedItems int32 `json:"minSelectedItems"`
+
+	Type FireteamFinderOptionControlType `json:"type"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionValueDefinition
+type FireteamFinderOptionValueDefinition struct {
+	// {
+	//   "properties": {
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "flags": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": true,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionValueFlags"
+	//       }
+	//     },
+	//     "value": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	Flags BitmaskSet[FireteamFinderOptionValueFlags] `json:"flags"`
+
+	Value uint32 `json:"value"`
+}
+
+// Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionValues
+type FireteamFinderOptionValues struct {
+	// {
+	//   "properties": {
+	//     "displayFormatType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionDisplayFormat"
+	//       }
+	//     },
+	//     "optionalFormatString": {
+	//       "type": "string"
+	//     },
+	//     "optionalNull": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "type": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.FireteamFinderOptionValueProviderType"
+	//       }
+	//     },
+	//     "valueDefinitions": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionValueDefinition"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	DisplayFormatType FireteamFinderOptionDisplayFormat `json:"displayFormatType"`
+
+	OptionalFormatString string `json:"optionalFormatString"`
+
+	OptionalNull DisplayPropertiesDefinition `json:"optionalNull"`
+
+	Type FireteamFinderOptionValueProviderType `json:"type"`
+
+	ValueDefinitions []FireteamFinderOptionValueDefinition `json:"valueDefinitions"`
+}
+
 // Destiny.Definitions.GuardianRanks.DestinyGuardianRankConstantsDefinition
 type GuardianRankConstantsDefinition struct {
 	// {
 	//   "properties": {
 	//     "displayProperties": {
 	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "guardianRankHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+	//       }
 	//     },
 	//     "hash": {
 	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
@@ -26209,6 +30021,8 @@ type GuardianRankConstantsDefinition struct {
 	// }
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	GuardianRankHashes []uint32 `json:"guardianRankHashes"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -28589,6 +32403,10 @@ type PresentationNodeDefinition struct {
 	//       "format": "int32",
 	//       "type": "integer"
 	//     },
+	//     "isSeasonal": {
+	//       "description": "Primarily for Guardian Ranks, this property if the contents of this node are tied to the current season. These nodes are shown with a different color for the in-game Guardian Ranks display.",
+	//       "type": "boolean"
+	//     },
 	//     "maxCategoryRecordScore": {
 	//       "format": "int32",
 	//       "type": "integer"
@@ -28712,6 +32530,10 @@ type PresentationNodeDefinition struct {
 
 	// The index of the entity as it was found in the investment tables.
 	Index int32 `json:"index"`
+
+	// Primarily for Guardian Ranks, this property if the contents of this node are tied to the current
+	// season. These nodes are shown with a different color for the in-game Guardian Ranks display.
+	IsSeasonal bool `json:"isSeasonal"`
 
 	MaxCategoryRecordScore int32 `json:"maxCategoryRecordScore"`
 
@@ -29098,6 +32920,10 @@ type RecordDefinition struct {
 	//         "$ref": "#/components/schemas/Destiny.DestinyPresentationNodeType"
 	//       }
 	//     },
+	//     "recordTypeName": {
+	//       "description": "A display name for the type of record this is (Triumphs, Lore, Medals, Seasonal Challenge, etc.).",
+	//       "type": "string"
+	//     },
 	//     "recordValueStyle": {
 	//       "format": "int32",
 	//       "type": "integer",
@@ -29191,6 +33017,9 @@ type RecordDefinition struct {
 	PresentationInfo PresentationChildBlock `json:"presentationInfo"`
 
 	PresentationNodeType PresentationNodeType `json:"presentationNodeType"`
+
+	// A display name for the type of record this is (Triumphs, Lore, Medals, Seasonal Challenge, etc.).
+	RecordTypeName string `json:"recordTypeName"`
 
 	RecordValueStyle RecordValueStyle `json:"recordValueStyle"`
 
@@ -29388,7 +33217,12 @@ type SchemaRecordStateBlock struct {
 	//       "format": "int32",
 	//       "type": "integer"
 	//     },
-	//     "obscuredString": {
+	//     "obscuredDescription": {
+	//       "description": "A display description override to show when this record is 'obscured' instead of the default obscured display description.",
+	//       "type": "string"
+	//     },
+	//     "obscuredName": {
+	//       "description": "A display name override to show when this record is 'obscured' instead of the default obscured display name.",
 	//       "type": "string"
 	//     }
 	//   },
@@ -29397,7 +33231,13 @@ type SchemaRecordStateBlock struct {
 
 	FeaturedPriority int32 `json:"featuredPriority"`
 
-	ObscuredString string `json:"obscuredString"`
+	// A display description override to show when this record is 'obscured' instead of the default
+	// obscured display description.
+	ObscuredDescription string `json:"obscuredDescription"`
+
+	// A display name override to show when this record is 'obscured' instead of the default obscured
+	// display name.
+	ObscuredName string `json:"obscuredName"`
 }
 
 // Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition
@@ -29511,6 +33351,16 @@ type EventCardDefinition struct {
 	//       "format": "int64",
 	//       "type": "integer"
 	//     },
+	//     "eventCardCurrencyList": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+	//       }
+	//     },
 	//     "hash": {
 	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
 	//       "format": "uint32",
@@ -29530,6 +33380,14 @@ type EventCardDefinition struct {
 	//     "redacted": {
 	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
 	//       "type": "boolean"
+	//     },
+	//     "rewardProgressionHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyProgressionDefinition"
+	//       }
 	//     },
 	//     "sealPresentationNodeHash": {
 	//       "format": "uint32",
@@ -29562,6 +33420,14 @@ type EventCardDefinition struct {
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
 	//       }
+	//     },
+	//     "weeklyChallengesPresentationNodeHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+	//       }
 	//     }
 	//   },
 	//   "type": "object",
@@ -29573,6 +33439,8 @@ type EventCardDefinition struct {
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
 	EndTime Int64 `json:"endTime"`
+
+	EventCardCurrencyList []uint32 `json:"eventCardCurrencyList"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -29590,6 +33458,8 @@ type EventCardDefinition struct {
 	// allowed to show it. Sorry!
 	Redacted bool `json:"redacted"`
 
+	RewardProgressionHash Nullable[Hash[ProgressionDefinition]] `json:"rewardProgressionHash,omitempty"`
+
 	SealPresentationNodeHash Hash[PresentationNodeDefinition] `json:"sealPresentationNodeHash"`
 
 	TicketCurrencyItemHash Hash[InventoryItemDefinition] `json:"ticketCurrencyItemHash"`
@@ -29599,6 +33469,8 @@ type EventCardDefinition struct {
 	TicketVendorHash Hash[VendorDefinition] `json:"ticketVendorHash"`
 
 	TriumphsPresentationNodeHash Hash[PresentationNodeDefinition] `json:"triumphsPresentationNodeHash"`
+
+	WeeklyChallengesPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"weeklyChallengesPresentationNodeHash,omitempty"`
 }
 
 // Destiny.Definitions.Seasons.DestinyEventCardImages
@@ -29645,6 +33517,41 @@ type EventCardImages struct {
 	UnownedCardSleeveWrapImagePath string `json:"unownedCardSleeveWrapImagePath"`
 }
 
+// Destiny.Definitions.Seasons.DestinySeasonActDefinition
+//
+// Defines the name, start time and ranks included in an Act of an Episode.
+type SeasonActDefinition struct {
+	// {
+	//   "description": "Defines the name, start time and ranks included in an Act of an Episode.",
+	//   "properties": {
+	//     "displayName": {
+	//       "description": "The name of the Act.",
+	//       "type": "string"
+	//     },
+	//     "rankCount": {
+	//       "description": "The number of ranks included in the Act.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "startTime": {
+	//       "description": "The start time of the Act.",
+	//       "format": "date-time",
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The name of the Act.
+	DisplayName string `json:"displayName"`
+
+	// The number of ranks included in the Act.
+	RankCount int32 `json:"rankCount"`
+
+	// The start time of the Act.
+	StartTime Timestamp `json:"startTime"`
+}
+
 // Destiny.Definitions.Seasons.DestinySeasonDefinition
 //
 // Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain
@@ -29653,6 +33560,13 @@ type SeasonDefinition struct {
 	// {
 	//   "description": "Defines a canonical \"Season\" of Destiny: a range of a few months where the game highlights certain challenges, provides new loot, has new Clan-related rewards and celebrates various seasonal events.",
 	//   "properties": {
+	//     "acts": {
+	//       "description": "A list of Acts for the Episode",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonActDefinition"
+	//       },
+	//       "type": "array"
+	//     },
 	//     "artifactItemHash": {
 	//       "format": "uint32",
 	//       "nullable": true,
@@ -29740,6 +33654,9 @@ type SeasonDefinition struct {
 	//   "type": "object",
 	//   "x-mobile-manifest-name": "Seasons"
 	// }
+
+	// A list of Acts for the Episode
+	Acts []SeasonActDefinition `json:"acts"`
 
 	ArtifactItemHash Nullable[Hash[InventoryItemDefinition]] `json:"artifactItemHash,omitempty"`
 
@@ -30058,6 +33975,10 @@ type SocialCommendationNodeDefinition struct {
 	//     "redacted": {
 	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
 	//       "type": "boolean"
+	//     },
+	//     "tintedIcon": {
+	//       "description": "A version of the displayProperties icon tinted with the color of this node.",
+	//       "type": "string"
 	//     }
 	//   },
 	//   "type": "object",
@@ -30089,6 +34010,9 @@ type SocialCommendationNodeDefinition struct {
 	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
 	// allowed to show it. Sorry!
 	Redacted bool `json:"redacted"`
+
+	// A version of the displayProperties icon tinted with the color of this node.
+	TintedIcon string `json:"tintedIcon"`
 }
 
 // Destiny.Definitions.Sockets.DestinyInsertPlugActionDefinition
@@ -31101,6 +35025,7 @@ const (
 	GameVersions_Anniversary30th   = GameVersions(128)
 	GameVersions_TheWitchQueen     = GameVersions(256)
 	GameVersions_Lightfall         = GameVersions(512)
+	GameVersions_TheFinalShape     = GameVersions(1024)
 )
 
 // Destiny.DestinyGatingScope
@@ -31387,13 +35312,27 @@ const (
 type PresentationDisplayStyle int32
 
 const (
-	PresentationDisplayStyle_Category        = PresentationDisplayStyle(0)
-	PresentationDisplayStyle_Badge           = PresentationDisplayStyle(1)
-	PresentationDisplayStyle_Medals          = PresentationDisplayStyle(2)
-	PresentationDisplayStyle_Collectible     = PresentationDisplayStyle(3)
-	PresentationDisplayStyle_Record          = PresentationDisplayStyle(4)
-	PresentationDisplayStyle_SeasonalTriumph = PresentationDisplayStyle(5)
-	PresentationDisplayStyle_GuardianRank    = PresentationDisplayStyle(6)
+	PresentationDisplayStyle_Category                 = PresentationDisplayStyle(0)
+	PresentationDisplayStyle_Badge                    = PresentationDisplayStyle(1)
+	PresentationDisplayStyle_Medals                   = PresentationDisplayStyle(2)
+	PresentationDisplayStyle_Collectible              = PresentationDisplayStyle(3)
+	PresentationDisplayStyle_Record                   = PresentationDisplayStyle(4)
+	PresentationDisplayStyle_SeasonalTriumph          = PresentationDisplayStyle(5)
+	PresentationDisplayStyle_GuardianRank             = PresentationDisplayStyle(6)
+	PresentationDisplayStyle_CategoryCollectibles     = PresentationDisplayStyle(7)
+	PresentationDisplayStyle_CategoryCurrencies       = PresentationDisplayStyle(8)
+	PresentationDisplayStyle_CategoryEmblems          = PresentationDisplayStyle(9)
+	PresentationDisplayStyle_CategoryEmotes           = PresentationDisplayStyle(10)
+	PresentationDisplayStyle_CategoryEngrams          = PresentationDisplayStyle(11)
+	PresentationDisplayStyle_CategoryFinishers        = PresentationDisplayStyle(12)
+	PresentationDisplayStyle_CategoryGhosts           = PresentationDisplayStyle(13)
+	PresentationDisplayStyle_CategoryMisc             = PresentationDisplayStyle(14)
+	PresentationDisplayStyle_CategoryMods             = PresentationDisplayStyle(15)
+	PresentationDisplayStyle_CategoryOrnaments        = PresentationDisplayStyle(16)
+	PresentationDisplayStyle_CategoryShaders          = PresentationDisplayStyle(17)
+	PresentationDisplayStyle_CategoryShips            = PresentationDisplayStyle(18)
+	PresentationDisplayStyle_CategorySpawnfx          = PresentationDisplayStyle(19)
+	PresentationDisplayStyle_CategoryUpgradeMaterials = PresentationDisplayStyle(20)
 )
 
 // Destiny.DestinyPresentationNodeState
@@ -31491,6 +35430,17 @@ type Progression struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyProgressionDefinition"
 	//       }
 	//     },
+	//     "rewardItemSocketOverrideStates": {
+	//       "additionalProperties": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyProgressionRewardItemSocketOverrideState"
+	//       },
+	//       "description": "Information about items stats and states that have socket overrides, if there is any data for it.",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "int32",
+	//         "type": "integer"
+	//       }
+	//     },
 	//     "rewardItemStates": {
 	//       "description": "Information about historical rewards for this progression, if there is any data for it.",
 	//       "items": {
@@ -31562,6 +35512,9 @@ type Progression struct {
 	// DestinyProgressionDefinition in static data.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
 
+	// Information about items stats and states that have socket overrides, if there is any data for it.
+	RewardItemSocketOverrideStates map[int32]ProgressionRewardItemSocketOverrideState `json:"rewardItemSocketOverrideStates"`
+
 	// Information about historical rewards for this progression, if there is any data for it.
 	RewardItemStates []BitmaskSet[ProgressionRewardItemState] `json:"rewardItemStates"`
 
@@ -31619,6 +35572,48 @@ const (
 	ProgressionRewardItemAcquisitionBehavior_Instant             = ProgressionRewardItemAcquisitionBehavior(0)
 	ProgressionRewardItemAcquisitionBehavior_PlayerClaimRequired = ProgressionRewardItemAcquisitionBehavior(1)
 )
+
+// Destiny.DestinyProgressionRewardItemSocketOverrideState
+//
+// Represents the stats and item state if applicable for progression reward items with socket overrides
+type ProgressionRewardItemSocketOverrideState struct {
+	// {
+	//   "description": "Represents the stats and item state if applicable for progression reward items with socket overrides",
+	//   "properties": {
+	//     "itemState": {
+	//       "description": "Information about the item state, specifically deepsight if there is any data for it",
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": true,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.ItemState"
+	//       }
+	//     },
+	//     "rewardItemStats": {
+	//       "additionalProperties": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyStat"
+	//       },
+	//       "description": "Information about the computed stats from socket and plug overrides for this progression, if there is any data for it.",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyStatDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// Information about the item state, specifically deepsight if there is any data for it
+	ItemState BitmaskSet[ItemState] `json:"itemState"`
+
+	// Information about the computed stats from socket and plug overrides for this progression, if there
+	// is any data for it.
+	RewardItemStats map[Hash[StatDefinition]]Stat `json:"rewardItemStats"`
+}
 
 // Destiny.DestinyProgressionRewardItemState
 //
@@ -31695,16 +35690,21 @@ const (
 type RecordToastStyle int32
 
 const (
-	RecordToastStyle_None                     = RecordToastStyle(0)
-	RecordToastStyle_Record                   = RecordToastStyle(1)
-	RecordToastStyle_Lore                     = RecordToastStyle(2)
-	RecordToastStyle_Badge                    = RecordToastStyle(3)
-	RecordToastStyle_MetaRecord               = RecordToastStyle(4)
-	RecordToastStyle_MedalComplete            = RecordToastStyle(5)
-	RecordToastStyle_SeasonChallengeComplete  = RecordToastStyle(6)
-	RecordToastStyle_GildedTitleComplete      = RecordToastStyle(7)
-	RecordToastStyle_CraftingRecipeUnlocked   = RecordToastStyle(8)
-	RecordToastStyle_ToastGuardianRankDetails = RecordToastStyle(9)
+	RecordToastStyle_None                               = RecordToastStyle(0)
+	RecordToastStyle_Record                             = RecordToastStyle(1)
+	RecordToastStyle_Lore                               = RecordToastStyle(2)
+	RecordToastStyle_Badge                              = RecordToastStyle(3)
+	RecordToastStyle_MetaRecord                         = RecordToastStyle(4)
+	RecordToastStyle_MedalComplete                      = RecordToastStyle(5)
+	RecordToastStyle_SeasonChallengeComplete            = RecordToastStyle(6)
+	RecordToastStyle_GildedTitleComplete                = RecordToastStyle(7)
+	RecordToastStyle_CraftingRecipeUnlocked             = RecordToastStyle(8)
+	RecordToastStyle_ToastGuardianRankDetails           = RecordToastStyle(9)
+	RecordToastStyle_PathfinderObjectiveCompleteRituals = RecordToastStyle(10)
+	RecordToastStyle_PathfinderObjectiveCompleteSchism  = RecordToastStyle(11)
+	RecordToastStyle_PathfinderObjectiveCompletePvp     = RecordToastStyle(12)
+	RecordToastStyle_PathfinderObjectiveCompleteStrikes = RecordToastStyle(13)
+	RecordToastStyle_PathfinderObjectiveCompleteGambit  = RecordToastStyle(14)
 )
 
 // Destiny.DestinyRecordValueStyle
@@ -32125,6 +36125,10 @@ const (
 	VendorItemState_Locked                   = VendorItemState(262144)
 	VendorItemState_Paracausal               = VendorItemState(524288)
 	VendorItemState_Cryptarch                = VendorItemState(1048576)
+	VendorItemState_ArtifactPerkOwned        = VendorItemState(2097152)
+	VendorItemState_Savings                  = VendorItemState(4194304)
+	VendorItemState_Ineligible               = VendorItemState(8388608)
+	VendorItemState_ArtifactPerkBoosted      = VendorItemState(16777216)
 )
 
 // Destiny.DestinyVendorProgressionType
@@ -32182,6 +36186,13 @@ type CharacterActivitiesComponent struct {
 	//       "description": "The list of activities that the user can play.",
 	//       "items": {
 	//         "$ref": "#/components/schemas/Destiny.DestinyActivity"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "availableActivityInteractables": {
+	//       "description": "The list of activity interactables that the player can interact with.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference"
 	//       },
 	//       "type": "array"
 	//     },
@@ -32298,7 +36309,8 @@ type CharacterActivitiesComponent struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -32641,6 +36653,10 @@ type CharacterActivitiesComponent struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     },
@@ -32686,6 +36702,9 @@ type CharacterActivitiesComponent struct {
 
 	// The list of activities that the user can play.
 	AvailableActivities []Activity `json:"availableActivities"`
+
+	// The list of activity interactables that the player can interact with.
+	AvailableActivityInteractables []ActivityInteractableReference `json:"availableActivityInteractables"`
 
 	// If the user is in an activity, this will be the hash of the Activity being played. Note that you
 	// must combine this info with currentActivityModeHash to get a real picture of what the user is doing
@@ -34027,7 +38046,7 @@ type ProfileComponent struct {
 	//       "type": "array"
 	//     },
 	//     "currentGuardianRank": {
-	//       "description": "The 'current' Guardian Rank value, which starts at rank 1.",
+	//       "description": "The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of a new season to your 'renewed' rank from the previous season.",
 	//       "format": "int32",
 	//       "type": "integer",
 	//       "x-mapped-definition": {
@@ -34066,7 +38085,15 @@ type ProfileComponent struct {
 	//       }
 	//     },
 	//     "lifetimeHighestGuardianRank": {
-	//       "description": "The 'lifetime highest' Guardian Rank value, which starts at rank 1.",
+	//       "description": "The 'lifetime highest' Guardian Rank value, which starts at rank 1. This rank value should never go down.",
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+	//       }
+	//     },
+	//     "renewedGuardianRank": {
+	//       "description": "The seasonal 'renewed' Guardian Rank value. This rank value resets at the start of each new season to the highest-earned non-advanced rank.",
 	//       "format": "int32",
 	//       "type": "integer",
 	//       "x-mapped-definition": {
@@ -34113,7 +38140,8 @@ type ProfileComponent struct {
 	// A list of the character IDs, for further querying on your part.
 	CharacterIds []Int64 `json:"characterIds"`
 
-	// The 'current' Guardian Rank value, which starts at rank 1.
+	// The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of
+	// a new season to your 'renewed' rank from the previous season.
 	CurrentGuardianRank Hash[GuardianRankDefinition] `json:"currentGuardianRank"`
 
 	// If populated, this is a reference to the season that is currently active.
@@ -34129,8 +38157,13 @@ type ProfileComponent struct {
 	// stay with the profile across all platforms.
 	EventCardHashesOwned []uint32 `json:"eventCardHashesOwned"`
 
-	// The 'lifetime highest' Guardian Rank value, which starts at rank 1.
+	// The 'lifetime highest' Guardian Rank value, which starts at rank 1. This rank value should never go
+	// down.
 	LifetimeHighestGuardianRank Hash[GuardianRankDefinition] `json:"lifetimeHighestGuardianRank"`
+
+	// The seasonal 'renewed' Guardian Rank value. This rank value resets at the start of each new season
+	// to the highest-earned non-advanced rank.
+	RenewedGuardianRank Hash[GuardianRankDefinition] `json:"renewedGuardianRank"`
 
 	// A list of seasons that this profile owns. Unlike versionsOwned, these stay with the profile across
 	// Platforms, and thus will be valid.
@@ -34545,6 +38578,101 @@ const (
 	EquippingItemBlockAttributes_EquipOnAcquire = EquippingItemBlockAttributes(1)
 )
 
+// Destiny.FireteamFinderCodeOptionType
+type FireteamFinderCodeOptionType int32
+
+const (
+	FireteamFinderCodeOptionType_None                = FireteamFinderCodeOptionType(0)
+	FireteamFinderCodeOptionType_ApplicationOnly     = FireteamFinderCodeOptionType(1)
+	FireteamFinderCodeOptionType_OnlineOnly          = FireteamFinderCodeOptionType(2)
+	FireteamFinderCodeOptionType_PlayerCount         = FireteamFinderCodeOptionType(3)
+	FireteamFinderCodeOptionType_Title               = FireteamFinderCodeOptionType(4)
+	FireteamFinderCodeOptionType_Tags                = FireteamFinderCodeOptionType(5)
+	FireteamFinderCodeOptionType_FinderActivityGraph = FireteamFinderCodeOptionType(6)
+	FireteamFinderCodeOptionType_MicrophoneRequired  = FireteamFinderCodeOptionType(7)
+)
+
+// Destiny.FireteamFinderLabelFieldType
+type FireteamFinderLabelFieldType int32
+
+const (
+	FireteamFinderLabelFieldType_Title = FireteamFinderLabelFieldType(0)
+	FireteamFinderLabelFieldType_Label = FireteamFinderLabelFieldType(1)
+)
+
+// Destiny.FireteamFinderOptionAvailability
+type FireteamFinderOptionAvailability int32
+
+const (
+	FireteamFinderOptionAvailability_None                 = FireteamFinderOptionAvailability(0)
+	FireteamFinderOptionAvailability_CreateListingBuilder = FireteamFinderOptionAvailability(1)
+	FireteamFinderOptionAvailability_SearchListingBuilder = FireteamFinderOptionAvailability(2)
+	FireteamFinderOptionAvailability_ListingViewer        = FireteamFinderOptionAvailability(4)
+	FireteamFinderOptionAvailability_LobbyViewer          = FireteamFinderOptionAvailability(8)
+)
+
+// Destiny.FireteamFinderOptionControlType
+type FireteamFinderOptionControlType int32
+
+const (
+	FireteamFinderOptionControlType_None            = FireteamFinderOptionControlType(0)
+	FireteamFinderOptionControlType_ValueCollection = FireteamFinderOptionControlType(1)
+	FireteamFinderOptionControlType_RadioButton     = FireteamFinderOptionControlType(2)
+)
+
+// Destiny.FireteamFinderOptionDisplayFormat
+type FireteamFinderOptionDisplayFormat int32
+
+const (
+	FireteamFinderOptionDisplayFormat_Text         = FireteamFinderOptionDisplayFormat(0)
+	FireteamFinderOptionDisplayFormat_Integer      = FireteamFinderOptionDisplayFormat(1)
+	FireteamFinderOptionDisplayFormat_Bool         = FireteamFinderOptionDisplayFormat(2)
+	FireteamFinderOptionDisplayFormat_FormatString = FireteamFinderOptionDisplayFormat(3)
+)
+
+// Destiny.FireteamFinderOptionSearchFilterType
+type FireteamFinderOptionSearchFilterType int32
+
+const (
+	FireteamFinderOptionSearchFilterType_None                 = FireteamFinderOptionSearchFilterType(0)
+	FireteamFinderOptionSearchFilterType_All                  = FireteamFinderOptionSearchFilterType(1)
+	FireteamFinderOptionSearchFilterType_Any                  = FireteamFinderOptionSearchFilterType(2)
+	FireteamFinderOptionSearchFilterType_InRangeInclusive     = FireteamFinderOptionSearchFilterType(3)
+	FireteamFinderOptionSearchFilterType_InRangeExclusive     = FireteamFinderOptionSearchFilterType(4)
+	FireteamFinderOptionSearchFilterType_GreaterThan          = FireteamFinderOptionSearchFilterType(5)
+	FireteamFinderOptionSearchFilterType_GreaterThanOrEqualTo = FireteamFinderOptionSearchFilterType(6)
+	FireteamFinderOptionSearchFilterType_LessThan             = FireteamFinderOptionSearchFilterType(7)
+	FireteamFinderOptionSearchFilterType_LessThanOrEqualTo    = FireteamFinderOptionSearchFilterType(8)
+)
+
+// Destiny.FireteamFinderOptionValueFlags
+type FireteamFinderOptionValueFlags int32
+
+const (
+	FireteamFinderOptionValueFlags_None                      = FireteamFinderOptionValueFlags(0)
+	FireteamFinderOptionValueFlags_CreateListingDefaultValue = FireteamFinderOptionValueFlags(1)
+	FireteamFinderOptionValueFlags_SearchFilterDefaultValue  = FireteamFinderOptionValueFlags(2)
+)
+
+// Destiny.FireteamFinderOptionValueProviderType
+type FireteamFinderOptionValueProviderType int32
+
+const (
+	FireteamFinderOptionValueProviderType_None                        = FireteamFinderOptionValueProviderType(0)
+	FireteamFinderOptionValueProviderType_Values                      = FireteamFinderOptionValueProviderType(1)
+	FireteamFinderOptionValueProviderType_PlayerCount                 = FireteamFinderOptionValueProviderType(2)
+	FireteamFinderOptionValueProviderType_FireteamFinderLabels        = FireteamFinderOptionValueProviderType(3)
+	FireteamFinderOptionValueProviderType_FireteamFinderActivityGraph = FireteamFinderOptionValueProviderType(4)
+)
+
+// Destiny.FireteamFinderOptionVisibility
+type FireteamFinderOptionVisibility int32
+
+const (
+	FireteamFinderOptionVisibility_Always                     = FireteamFinderOptionVisibility(0)
+	FireteamFinderOptionVisibility_ShowWhenChangedFromDefault = FireteamFinderOptionVisibility(1)
+)
+
 // Destiny.HistoricalStats.Definitions.DestinyActivityModeType
 //
 // For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please
@@ -34636,6 +38764,7 @@ const (
 	ActivityModeType_ZoneControl             = ActivityModeType(89)
 	ActivityModeType_IronBannerRift          = ActivityModeType(90)
 	ActivityModeType_IronBannerZoneControl   = ActivityModeType(91)
+	ActivityModeType_Relic                   = ActivityModeType(92)
 )
 
 // Destiny.HistoricalStats.Definitions.DestinyActivityModeType[]
@@ -36213,7 +40342,8 @@ type MilestoneActivity struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -36556,6 +40686,10 @@ type MilestoneActivity struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     },
@@ -36784,7 +40918,8 @@ type MilestoneActivityVariant struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -37127,6 +41262,10 @@ type MilestoneActivityVariant struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     },
@@ -37728,7 +41867,8 @@ type PublicMilestoneActivity struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -38071,6 +42211,10 @@ type PublicMilestoneActivity struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     },
@@ -38228,7 +42372,8 @@ type PublicMilestoneActivityVariant struct {
 	//         "88",
 	//         "89",
 	//         "90",
-	//         "91"
+	//         "91",
+	//         "92"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -38571,6 +42716,10 @@ type PublicMilestoneActivityVariant struct {
 	//         {
 	//           "identifier": "IronBannerZoneControl",
 	//           "numericValue": "91"
+	//         },
+	//         {
+	//           "identifier": "Relic",
+	//           "numericValue": "92"
 	//         }
 	//       ]
 	//     }
@@ -38993,6 +43142,17 @@ type FactionProgression struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyProgressionDefinition"
 	//       }
 	//     },
+	//     "rewardItemSocketOverrideStates": {
+	//       "additionalProperties": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyProgressionRewardItemSocketOverrideState"
+	//       },
+	//       "description": "Information about items stats and states that have socket overrides, if there is any data for it.",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "int32",
+	//         "type": "integer"
+	//       }
+	//     },
 	//     "rewardItemStates": {
 	//       "description": "Information about historical rewards for this progression, if there is any data for it.",
 	//       "items": {
@@ -39071,6 +43231,9 @@ type FactionProgression struct {
 	// The hash identifier of the Progression in question. Use it to look up the
 	// DestinyProgressionDefinition in static data.
 	ProgressionHash Hash[ProgressionDefinition] `json:"progressionHash"`
+
+	// Information about items stats and states that have socket overrides, if there is any data for it.
+	RewardItemSocketOverrideStates map[int32]ProgressionRewardItemSocketOverrideState `json:"rewardItemSocketOverrideStates"`
 
 	// Information about historical rewards for this progression, if there is any data for it.
 	RewardItemStates []BitmaskSet[ProgressionRewardItemState] `json:"rewardItemStates"`
@@ -39298,7 +43461,7 @@ type QuestStatus struct {
 // Note that this request object doesn't have the actual PGCR ID nor your Account/Character ID in it.
 // We will infer that information from your authentication information and the PGCR ID that you pass
 // into the URL of the reporting endpoint itself.
-type ReportOffensePgcrRequest struct {
+type ReportOffensePgcrRequestBody struct {
 	// {
 	//   "description": "If you want to report a player causing trouble in a game, this request will let you report that player and the specific PGCR in which the trouble was caused, along with why.\r\nPlease don't do this just because you dislike the person! I mean, I know people will do it anyways, but can you like take a good walk, or put a curse on them or something? Do me a solid and reconsider.\r\nNote that this request object doesn't have the actual PGCR ID nor your Account/Character ID in it. We will infer that information from your authentication information and the PGCR ID that you pass into the URL of the reporting endpoint itself.",
 	//   "properties": {
@@ -39346,7 +43509,7 @@ type ReportOffensePgcrRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyActionRequest
-type ActionRequest struct {
+type ActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "membershipType": {
@@ -39365,7 +43528,7 @@ type ActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyCharacterActionRequest
-type CharacterActionRequest struct {
+type CharacterActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39390,7 +43553,7 @@ type CharacterActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyInsertPlugsActionRequest
-type InsertPlugsActionRequest struct {
+type InsertPlugsActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "actionToken": {
@@ -39442,7 +43605,7 @@ type InsertPlugsActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyInsertPlugsFreeActionRequest
-type InsertPlugsFreeActionRequest struct {
+type InsertPlugsFreeActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39535,7 +43698,7 @@ type InsertPlugsRequestEntry struct {
 }
 
 // Destiny.Requests.Actions.DestinyItemActionRequest
-type ItemActionRequest struct {
+type ItemActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39568,7 +43731,7 @@ type ItemActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyItemSetActionRequest
-type ItemSetActionRequest struct {
+type ItemSetActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39602,7 +43765,7 @@ type ItemSetActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyItemStateRequest
-type ItemStateRequest struct {
+type ItemStateRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39640,7 +43803,7 @@ type ItemStateRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyLoadoutActionRequest
-type LoadoutActionRequest struct {
+type LoadoutActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39673,7 +43836,7 @@ type LoadoutActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest
-type LoadoutUpdateActionRequest struct {
+type LoadoutUpdateActionRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39727,7 +43890,7 @@ type LoadoutUpdateActionRequest struct {
 }
 
 // Destiny.Requests.Actions.DestinyPostmasterTransferRequest
-type PostmasterTransferRequest struct {
+type PostmasterTransferRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -39789,7 +43952,7 @@ const (
 )
 
 // Destiny.Requests.DestinyItemTransferRequest
-type ItemTransferRequest struct {
+type ItemTransferRequestBody struct {
 	// {
 	//   "properties": {
 	//     "characterId": {
@@ -41020,7 +45183,8 @@ type ProfileUserInfoCard struct {
 	//         "64",
 	//         "128",
 	//         "256",
-	//         "512"
+	//         "512",
+	//         "1024"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -41070,6 +45234,10 @@ type ProfileUserInfoCard struct {
 	//         {
 	//           "identifier": "Lightfall",
 	//           "numericValue": "512"
+	//         },
+	//         {
+	//           "identifier": "TheFinalShape",
+	//           "numericValue": "1024"
 	//         }
 	//       ]
 	//     }
@@ -41273,10 +45441,10 @@ type VendorResponse struct {
 	//     "itemComponents": {
 	//       "allOf": [
 	//         {
-	//           "$ref": "#/components/schemas/DestinyItemComponentSetOfint32"
+	//           "$ref": "#/components/schemas/DestinyVendorItemComponentSetOfint32"
 	//         }
 	//       ],
-	//       "description": "Item components, keyed by the vendorItemIndex of the active sale items.\r\nCOMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]",
+	//       "description": "Item components, keyed by the vendorItemIndex of the active sale items.\r\nCOMPONENT TYPE: [See inside the DestinyVendorItemComponentSet contract for component types.]",
 	//       "type": "object"
 	//     },
 	//     "sales": {
@@ -41323,8 +45491,8 @@ type VendorResponse struct {
 	CurrencyLookups ComponentResponse[CurrenciesComponent] `json:"currencyLookups"`
 
 	// Item components, keyed by the vendorItemIndex of the active sale items.
-	// COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
-	ItemComponents ItemComponentSet[int32] `json:"itemComponents"`
+	// COMPONENT TYPE: [See inside the DestinyVendorItemComponentSet contract for component types.]
+	ItemComponents VendorItemComponentSetOfint32 `json:"itemComponents"`
 
 	// Sales, keyed by the vendorItemIndex of the item being sold.
 	// COMPONENT TYPE: VendorSales
@@ -41368,7 +45536,7 @@ type VendorsResponse struct {
 	//     },
 	//     "itemComponents": {
 	//       "additionalProperties": {
-	//         "$ref": "#/components/schemas/DestinyItemComponentSetOfint32"
+	//         "$ref": "#/components/schemas/DestinyVendorItemComponentSetOfint32"
 	//       },
 	//       "description": "The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.\r\nThe components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor.",
 	//       "type": "object",
@@ -41383,7 +45551,7 @@ type VendorsResponse struct {
 	//           "$ref": "#/components/schemas/DictionaryComponentResponseOfuint32AndPersonalDestinyVendorSaleItemSetComponent"
 	//         }
 	//       ],
-	//       "description": "Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.\r\nNote that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor's definition.\r\nCOMPONENT TYPE: VendorSales",
+	//       "description": "Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.\r\nNote that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the current sale item definition within the Vendor's definition.\r\nCOMPONENT TYPE: VendorSales",
 	//       "type": "object",
 	//       "x-destiny-component-type-dependency": "VendorSales"
 	//     },
@@ -41436,12 +45604,12 @@ type VendorsResponse struct {
 	// The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever
 	// item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by
 	// the vendor.
-	ItemComponents map[uint32]ItemComponentSet[int32] `json:"itemComponents"`
+	ItemComponents map[uint32]VendorItemComponentSetOfint32 `json:"itemComponents"`
 
 	// Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so
 	// you will get one Sale Item Set Component per vendor returned.
 	// Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex,
-	// so you can relate it to the corrent sale item definition within the Vendor's definition.
+	// so you can relate it to the current sale item definition within the Vendor's definition.
 	// COMPONENT TYPE: VendorSales
 	Sales ComponentResponse[map[uint32]PersonalDestinyVendorSaleItemSetComponent] `json:"sales"`
 
@@ -41598,6 +45766,12 @@ type ItemPlug struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "maxStackSize": {
+	//       "description": "If available, this is the maximum stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "plugItemHash": {
 	//       "description": "The hash identifier of the DestinyInventoryItemDefinition that represents this plug.",
 	//       "format": "uint32",
@@ -41612,6 +45786,12 @@ type ItemPlug struct {
 	//         "$ref": "#/components/schemas/Destiny.Quests.DestinyObjectiveProgress"
 	//       },
 	//       "type": "array"
+	//     },
+	//     "stackSize": {
+	//       "description": "If available, this is the stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
 	//     }
 	//   },
 	//   "type": "object"
@@ -41633,6 +45813,9 @@ type ItemPlug struct {
 	// This list will be empty if the plug can be inserted.
 	InsertFailIndexes []int32 `json:"insertFailIndexes"`
 
+	// If available, this is the maximum stack size to display for the socket plug item.
+	MaxStackSize Nullable[int32] `json:"maxStackSize,omitempty"`
+
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
 
@@ -41644,6 +45827,9 @@ type ItemPlug struct {
 	// the DestinyObjectiveDefinition's progressDescription property. Refer to the plug's itemHash and
 	// objective property for more information if you would like to display even more data.
 	PlugObjectives []ObjectiveProgress `json:"plugObjectives"`
+
+	// If available, this is the stack size to display for the socket plug item.
+	StackSize Nullable[int32] `json:"stackSize,omitempty"`
 }
 
 // Destiny.Sockets.DestinyItemPlugBase
@@ -41674,6 +45860,12 @@ type ItemPlugBase struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "maxStackSize": {
+	//       "description": "If available, this is the maximum stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "plugItemHash": {
 	//       "description": "The hash identifier of the DestinyInventoryItemDefinition that represents this plug.",
 	//       "format": "uint32",
@@ -41681,6 +45873,12 @@ type ItemPlugBase struct {
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
 	//       }
+	//     },
+	//     "stackSize": {
+	//       "description": "If available, this is the stack size to display for the socket plug item.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
 	//     }
 	//   },
 	//   "type": "object"
@@ -41702,8 +45900,14 @@ type ItemPlugBase struct {
 	// This list will be empty if the plug can be inserted.
 	InsertFailIndexes []int32 `json:"insertFailIndexes"`
 
+	// If available, this is the maximum stack size to display for the socket plug item.
+	MaxStackSize Nullable[int32] `json:"maxStackSize,omitempty"`
+
 	// The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
 	PlugItemHash Hash[InventoryItemDefinition] `json:"plugItemHash"`
+
+	// If available, this is the stack size to display for the socket plug item.
+	StackSize Nullable[int32] `json:"stackSize,omitempty"`
 }
 
 // Destiny.SpecialItemType
@@ -41892,6 +46096,70 @@ type VendorReceipt struct {
 	TimeToExpiration Int64 `json:"timeToExpiration"`
 }
 
+// DestinyVendorItemComponentSetOfint32
+type VendorItemComponentSetOfint32 struct {
+	// {
+	//   "properties": {
+	//     "instances": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemInstanceComponent"
+	//     },
+	//     "itemComponents": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemComponent"
+	//     },
+	//     "objectives": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent"
+	//     },
+	//     "perks": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemPerksComponent"
+	//     },
+	//     "plugObjectives": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent"
+	//     },
+	//     "plugStates": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent"
+	//     },
+	//     "renderData": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemRenderComponent"
+	//     },
+	//     "reusablePlugs": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent"
+	//     },
+	//     "sockets": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemSocketsComponent"
+	//     },
+	//     "stats": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemStatsComponent"
+	//     },
+	//     "talentGrids": {
+	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Instances ComponentResponse[map[int32]ItemInstanceComponent] `json:"instances"`
+
+	ItemComponents ComponentResponse[map[int32]ItemComponent] `json:"itemComponents"`
+
+	Objectives ComponentResponse[map[int32]ItemObjectivesComponent] `json:"objectives"`
+
+	Perks ComponentResponse[map[int32]ItemPerksComponent] `json:"perks"`
+
+	PlugObjectives ComponentResponse[map[int32]ItemPlugObjectivesComponent] `json:"plugObjectives"`
+
+	PlugStates ComponentResponse[map[uint32]ItemPlugComponent] `json:"plugStates"`
+
+	RenderData ComponentResponse[map[int32]ItemRenderComponent] `json:"renderData"`
+
+	ReusablePlugs ComponentResponse[map[int32]ItemReusablePlugsComponent] `json:"reusablePlugs"`
+
+	Sockets ComponentResponse[map[int32]ItemSocketsComponent] `json:"sockets"`
+
+	Stats ComponentResponse[map[int32]ItemStatsComponent] `json:"stats"`
+
+	TalentGrids ComponentResponse[map[int32]ItemTalentGridComponent] `json:"talentGrids"`
+}
+
 // Entities.EntityActionResult
 type EntityActionResult struct {
 	// {
@@ -41921,850 +46189,906 @@ type EntityActionResult struct {
 type PlatformErrorCodes int32
 
 const (
-	PlatformErrorCodes_None                                                   = PlatformErrorCodes(0)
-	PlatformErrorCodes_Success                                                = PlatformErrorCodes(1)
-	PlatformErrorCodes_TransportException                                     = PlatformErrorCodes(2)
-	PlatformErrorCodes_UnhandledException                                     = PlatformErrorCodes(3)
-	PlatformErrorCodes_NotImplemented                                         = PlatformErrorCodes(4)
-	PlatformErrorCodes_SystemDisabled                                         = PlatformErrorCodes(5)
-	PlatformErrorCodes_FailedToLoadAvailableLocalesConfiguration              = PlatformErrorCodes(6)
-	PlatformErrorCodes_ParameterParseFailure                                  = PlatformErrorCodes(7)
-	PlatformErrorCodes_ParameterInvalidRange                                  = PlatformErrorCodes(8)
-	PlatformErrorCodes_BadRequest                                             = PlatformErrorCodes(9)
-	PlatformErrorCodes_AuthenticationInvalid                                  = PlatformErrorCodes(10)
-	PlatformErrorCodes_DataNotFound                                           = PlatformErrorCodes(11)
-	PlatformErrorCodes_InsufficientPrivileges                                 = PlatformErrorCodes(12)
-	PlatformErrorCodes_Duplicate                                              = PlatformErrorCodes(13)
-	PlatformErrorCodes_UnknownSqlResult                                       = PlatformErrorCodes(14)
-	PlatformErrorCodes_ValidationError                                        = PlatformErrorCodes(15)
-	PlatformErrorCodes_ValidationMissingFieldError                            = PlatformErrorCodes(16)
-	PlatformErrorCodes_ValidationInvalidInputError                            = PlatformErrorCodes(17)
-	PlatformErrorCodes_InvalidParameters                                      = PlatformErrorCodes(18)
-	PlatformErrorCodes_ParameterNotFound                                      = PlatformErrorCodes(19)
-	PlatformErrorCodes_UnhandledHttpException                                 = PlatformErrorCodes(20)
-	PlatformErrorCodes_NotFound                                               = PlatformErrorCodes(21)
-	PlatformErrorCodes_WebAuthModuleAsyncFailed                               = PlatformErrorCodes(22)
-	PlatformErrorCodes_InvalidReturnValue                                     = PlatformErrorCodes(23)
-	PlatformErrorCodes_UserBanned                                             = PlatformErrorCodes(24)
-	PlatformErrorCodes_InvalidPostBody                                        = PlatformErrorCodes(25)
-	PlatformErrorCodes_MissingPostBody                                        = PlatformErrorCodes(26)
-	PlatformErrorCodes_ExternalServiceTimeout                                 = PlatformErrorCodes(27)
-	PlatformErrorCodes_ValidationLengthError                                  = PlatformErrorCodes(28)
-	PlatformErrorCodes_ValidationRangeError                                   = PlatformErrorCodes(29)
-	PlatformErrorCodes_JsonDeserializationError                               = PlatformErrorCodes(30)
-	PlatformErrorCodes_ThrottleLimitExceeded                                  = PlatformErrorCodes(31)
-	PlatformErrorCodes_ValidationTagError                                     = PlatformErrorCodes(32)
-	PlatformErrorCodes_ValidationProfanityError                               = PlatformErrorCodes(33)
-	PlatformErrorCodes_ValidationUrlFormatError                               = PlatformErrorCodes(34)
-	PlatformErrorCodes_ThrottleLimitExceededMinutes                           = PlatformErrorCodes(35)
-	PlatformErrorCodes_ThrottleLimitExceededMomentarily                       = PlatformErrorCodes(36)
-	PlatformErrorCodes_ThrottleLimitExceededSeconds                           = PlatformErrorCodes(37)
-	PlatformErrorCodes_ExternalServiceUnknown                                 = PlatformErrorCodes(38)
-	PlatformErrorCodes_ValidationWordLengthError                              = PlatformErrorCodes(39)
-	PlatformErrorCodes_ValidationInvisibleUnicode                             = PlatformErrorCodes(40)
-	PlatformErrorCodes_ValidationBadNames                                     = PlatformErrorCodes(41)
-	PlatformErrorCodes_ExternalServiceFailed                                  = PlatformErrorCodes(42)
-	PlatformErrorCodes_ServiceRetired                                         = PlatformErrorCodes(43)
-	PlatformErrorCodes_UnknownSqlException                                    = PlatformErrorCodes(44)
-	PlatformErrorCodes_UnsupportedLocale                                      = PlatformErrorCodes(45)
-	PlatformErrorCodes_InvalidPageNumber                                      = PlatformErrorCodes(46)
-	PlatformErrorCodes_MaximumPageSizeExceeded                                = PlatformErrorCodes(47)
-	PlatformErrorCodes_ServiceUnsupported                                     = PlatformErrorCodes(48)
-	PlatformErrorCodes_ValidationMaximumUnicodeCombiningCharacters            = PlatformErrorCodes(49)
-	PlatformErrorCodes_ValidationMaximumSequentialCarriageReturns             = PlatformErrorCodes(50)
-	PlatformErrorCodes_PerEndpointRequestThrottleExceeded                     = PlatformErrorCodes(51)
-	PlatformErrorCodes_AuthContextCacheAssertion                              = PlatformErrorCodes(52)
-	PlatformErrorCodes_ExPlatformStringValidationError                        = PlatformErrorCodes(53)
-	PlatformErrorCodes_PerApplicationThrottleExceeded                         = PlatformErrorCodes(54)
-	PlatformErrorCodes_PerApplicationAnonymousThrottleExceeded                = PlatformErrorCodes(55)
-	PlatformErrorCodes_PerApplicationAuthenticatedThrottleExceeded            = PlatformErrorCodes(56)
-	PlatformErrorCodes_PerUserThrottleExceeded                                = PlatformErrorCodes(57)
-	PlatformErrorCodes_PayloadSignatureVerificationFailure                    = PlatformErrorCodes(58)
-	PlatformErrorCodes_InvalidServiceAuthContext                              = PlatformErrorCodes(59)
-	PlatformErrorCodes_ObsoleteCredentialType                                 = PlatformErrorCodes(89)
-	PlatformErrorCodes_UnableToUnPairMobileApp                                = PlatformErrorCodes(90)
-	PlatformErrorCodes_UnableToPairMobileApp                                  = PlatformErrorCodes(91)
-	PlatformErrorCodes_CannotUseMobileAuthWithNonMobileProvider               = PlatformErrorCodes(92)
-	PlatformErrorCodes_MissingDeviceCookie                                    = PlatformErrorCodes(93)
-	PlatformErrorCodes_FacebookTokenExpired                                   = PlatformErrorCodes(94)
-	PlatformErrorCodes_AuthTicketRequired                                     = PlatformErrorCodes(95)
-	PlatformErrorCodes_CookieContextRequired                                  = PlatformErrorCodes(96)
-	PlatformErrorCodes_UnknownAuthenticationError                             = PlatformErrorCodes(97)
-	PlatformErrorCodes_BungieNetAccountCreationRequired                       = PlatformErrorCodes(98)
-	PlatformErrorCodes_WebAuthRequired                                        = PlatformErrorCodes(99)
-	PlatformErrorCodes_ContentUnknownSqlResult                                = PlatformErrorCodes(100)
-	PlatformErrorCodes_ContentNeedUniquePath                                  = PlatformErrorCodes(101)
-	PlatformErrorCodes_ContentSqlException                                    = PlatformErrorCodes(102)
-	PlatformErrorCodes_ContentNotFound                                        = PlatformErrorCodes(103)
-	PlatformErrorCodes_ContentSuccessWithTagAddFail                           = PlatformErrorCodes(104)
-	PlatformErrorCodes_ContentSearchMissingParameters                         = PlatformErrorCodes(105)
-	PlatformErrorCodes_ContentInvalidId                                       = PlatformErrorCodes(106)
-	PlatformErrorCodes_ContentPhysicalFileDeletionError                       = PlatformErrorCodes(107)
-	PlatformErrorCodes_ContentPhysicalFileCreationError                       = PlatformErrorCodes(108)
-	PlatformErrorCodes_ContentPerforceSubmissionError                         = PlatformErrorCodes(109)
-	PlatformErrorCodes_ContentPerforceInitializationError                     = PlatformErrorCodes(110)
-	PlatformErrorCodes_ContentDeploymentPackageNotReadyError                  = PlatformErrorCodes(111)
-	PlatformErrorCodes_ContentUploadFailed                                    = PlatformErrorCodes(112)
-	PlatformErrorCodes_ContentTooManyResults                                  = PlatformErrorCodes(113)
-	PlatformErrorCodes_ContentInvalidState                                    = PlatformErrorCodes(115)
-	PlatformErrorCodes_ContentNavigationParentNotFound                        = PlatformErrorCodes(116)
-	PlatformErrorCodes_ContentNavigationParentUpdateError                     = PlatformErrorCodes(117)
-	PlatformErrorCodes_DeploymentPackageNotEditable                           = PlatformErrorCodes(118)
-	PlatformErrorCodes_ContentValidationError                                 = PlatformErrorCodes(119)
-	PlatformErrorCodes_ContentPropertiesValidationError                       = PlatformErrorCodes(120)
-	PlatformErrorCodes_ContentTypeNotFound                                    = PlatformErrorCodes(121)
-	PlatformErrorCodes_DeploymentPackageNotFound                              = PlatformErrorCodes(122)
-	PlatformErrorCodes_ContentSearchInvalidParameters                         = PlatformErrorCodes(123)
-	PlatformErrorCodes_ContentItemPropertyAggregationError                    = PlatformErrorCodes(124)
-	PlatformErrorCodes_DeploymentPackageFileNotFound                          = PlatformErrorCodes(125)
-	PlatformErrorCodes_ContentPerforceFileHistoryNotFound                     = PlatformErrorCodes(126)
-	PlatformErrorCodes_ContentAssetZipCreationFailure                         = PlatformErrorCodes(127)
-	PlatformErrorCodes_ContentAssetZipCreationBusy                            = PlatformErrorCodes(128)
-	PlatformErrorCodes_ContentProjectNotFound                                 = PlatformErrorCodes(129)
-	PlatformErrorCodes_ContentFolderNotFound                                  = PlatformErrorCodes(130)
-	PlatformErrorCodes_ContentPackagesInconsistent                            = PlatformErrorCodes(131)
-	PlatformErrorCodes_ContentPackagesInvalidState                            = PlatformErrorCodes(132)
-	PlatformErrorCodes_ContentPackagesInconsistentType                        = PlatformErrorCodes(133)
-	PlatformErrorCodes_ContentCannotDeletePackage                             = PlatformErrorCodes(134)
-	PlatformErrorCodes_ContentLockedForChanges                                = PlatformErrorCodes(135)
-	PlatformErrorCodes_ContentFileUploadFailed                                = PlatformErrorCodes(136)
-	PlatformErrorCodes_ContentNotReviewed                                     = PlatformErrorCodes(137)
-	PlatformErrorCodes_ContentPermissionDenied                                = PlatformErrorCodes(138)
-	PlatformErrorCodes_ContentInvalidExternalUrl                              = PlatformErrorCodes(139)
-	PlatformErrorCodes_ContentExternalFileCannotBeImportedLocally             = PlatformErrorCodes(140)
-	PlatformErrorCodes_ContentTagSaveFailure                                  = PlatformErrorCodes(141)
-	PlatformErrorCodes_ContentPerforceUnmatchedFileError                      = PlatformErrorCodes(142)
-	PlatformErrorCodes_ContentPerforceChangelistResultNotFound                = PlatformErrorCodes(143)
-	PlatformErrorCodes_ContentPerforceChangelistFileItemsNotFound             = PlatformErrorCodes(144)
-	PlatformErrorCodes_ContentPerforceInvalidRevisionError                    = PlatformErrorCodes(145)
-	PlatformErrorCodes_ContentUnloadedSaveResult                              = PlatformErrorCodes(146)
-	PlatformErrorCodes_ContentPropertyInvalidNumber                           = PlatformErrorCodes(147)
-	PlatformErrorCodes_ContentPropertyInvalidUrl                              = PlatformErrorCodes(148)
-	PlatformErrorCodes_ContentPropertyInvalidDate                             = PlatformErrorCodes(149)
-	PlatformErrorCodes_ContentPropertyInvalidSet                              = PlatformErrorCodes(150)
-	PlatformErrorCodes_ContentPropertyCannotDeserialize                       = PlatformErrorCodes(151)
-	PlatformErrorCodes_ContentRegexValidationFailOnProperty                   = PlatformErrorCodes(152)
-	PlatformErrorCodes_ContentMaxLengthFailOnProperty                         = PlatformErrorCodes(153)
-	PlatformErrorCodes_ContentPropertyUnexpectedDeserializationError          = PlatformErrorCodes(154)
-	PlatformErrorCodes_ContentPropertyRequired                                = PlatformErrorCodes(155)
-	PlatformErrorCodes_ContentCannotCreateFile                                = PlatformErrorCodes(156)
-	PlatformErrorCodes_ContentInvalidMigrationFile                            = PlatformErrorCodes(157)
-	PlatformErrorCodes_ContentMigrationAlteringProcessedItem                  = PlatformErrorCodes(158)
-	PlatformErrorCodes_ContentPropertyDefinitionNotFound                      = PlatformErrorCodes(159)
-	PlatformErrorCodes_ContentReviewDataChanged                               = PlatformErrorCodes(160)
-	PlatformErrorCodes_ContentRollbackRevisionNotInPackage                    = PlatformErrorCodes(161)
-	PlatformErrorCodes_ContentItemNotBasedOnLatestRevision                    = PlatformErrorCodes(162)
-	PlatformErrorCodes_ContentUnauthorized                                    = PlatformErrorCodes(163)
-	PlatformErrorCodes_ContentCannotCreateDeploymentPackage                   = PlatformErrorCodes(164)
-	PlatformErrorCodes_ContentUserNotFound                                    = PlatformErrorCodes(165)
-	PlatformErrorCodes_ContentLocalePermissionDenied                          = PlatformErrorCodes(166)
-	PlatformErrorCodes_ContentInvalidLinkToInternalEnvironment                = PlatformErrorCodes(167)
-	PlatformErrorCodes_ContentInvalidBlacklistedContent                       = PlatformErrorCodes(168)
-	PlatformErrorCodes_ContentMacroMalformedNoContentId                       = PlatformErrorCodes(169)
-	PlatformErrorCodes_ContentMacroMalformedNoTemplateType                    = PlatformErrorCodes(170)
-	PlatformErrorCodes_ContentIllegalBNetMembershipId                         = PlatformErrorCodes(171)
-	PlatformErrorCodes_ContentLocaleDidNotMatchExpected                       = PlatformErrorCodes(172)
-	PlatformErrorCodes_ContentBabelCallFailed                                 = PlatformErrorCodes(173)
-	PlatformErrorCodes_ContentEnglishPostLiveForbidden                        = PlatformErrorCodes(174)
-	PlatformErrorCodes_ContentLocaleEditPermissionDenied                      = PlatformErrorCodes(175)
-	PlatformErrorCodes_ContentStackUnknownError                               = PlatformErrorCodes(176)
-	PlatformErrorCodes_ContentStackNotFound                                   = PlatformErrorCodes(177)
-	PlatformErrorCodes_ContentStackRateLimited                                = PlatformErrorCodes(178)
-	PlatformErrorCodes_ContentStackTimeout                                    = PlatformErrorCodes(179)
-	PlatformErrorCodes_ContentStackServiceError                               = PlatformErrorCodes(180)
-	PlatformErrorCodes_ContentStackDeserializationFailure                     = PlatformErrorCodes(181)
-	PlatformErrorCodes_UserNonUniqueName                                      = PlatformErrorCodes(200)
-	PlatformErrorCodes_UserManualLinkingStepRequired                          = PlatformErrorCodes(201)
-	PlatformErrorCodes_UserCreateUnknownSqlResult                             = PlatformErrorCodes(202)
-	PlatformErrorCodes_UserCreateUnknownSqlException                          = PlatformErrorCodes(203)
-	PlatformErrorCodes_UserMalformedMembershipId                              = PlatformErrorCodes(204)
-	PlatformErrorCodes_UserCannotFindRequestedUser                            = PlatformErrorCodes(205)
-	PlatformErrorCodes_UserCannotLoadAccountCredentialLinkInfo                = PlatformErrorCodes(206)
-	PlatformErrorCodes_UserInvalidMobileAppType                               = PlatformErrorCodes(207)
-	PlatformErrorCodes_UserMissingMobilePairingInfo                           = PlatformErrorCodes(208)
-	PlatformErrorCodes_UserCannotGenerateMobileKeyWhileUsingMobileCredential  = PlatformErrorCodes(209)
-	PlatformErrorCodes_UserGenerateMobileKeyExistingSlotCollision             = PlatformErrorCodes(210)
-	PlatformErrorCodes_UserDisplayNameMissingOrInvalid                        = PlatformErrorCodes(211)
-	PlatformErrorCodes_UserCannotLoadAccountProfileData                       = PlatformErrorCodes(212)
-	PlatformErrorCodes_UserCannotSaveUserProfileData                          = PlatformErrorCodes(213)
-	PlatformErrorCodes_UserEmailMissingOrInvalid                              = PlatformErrorCodes(214)
-	PlatformErrorCodes_UserTermsOfUseRequired                                 = PlatformErrorCodes(215)
-	PlatformErrorCodes_UserCannotCreateNewAccountWhileLoggedIn                = PlatformErrorCodes(216)
-	PlatformErrorCodes_UserCannotResolveCentralAccount                        = PlatformErrorCodes(217)
-	PlatformErrorCodes_UserInvalidAvatar                                      = PlatformErrorCodes(218)
-	PlatformErrorCodes_UserMissingCreatedUserResult                           = PlatformErrorCodes(219)
-	PlatformErrorCodes_UserCannotChangeUniqueNameYet                          = PlatformErrorCodes(220)
-	PlatformErrorCodes_UserCannotChangeDisplayNameYet                         = PlatformErrorCodes(221)
-	PlatformErrorCodes_UserCannotChangeEmail                                  = PlatformErrorCodes(222)
-	PlatformErrorCodes_UserUniqueNameMustStartWithLetter                      = PlatformErrorCodes(223)
-	PlatformErrorCodes_UserNoLinkedAccountsSupportFriendListings              = PlatformErrorCodes(224)
-	PlatformErrorCodes_UserAcknowledgmentTableFull                            = PlatformErrorCodes(225)
-	PlatformErrorCodes_UserCreationDestinyMembershipRequired                  = PlatformErrorCodes(226)
-	PlatformErrorCodes_UserFriendsTokenNeedsRefresh                           = PlatformErrorCodes(227)
-	PlatformErrorCodes_UserEmailValidationUnknown                             = PlatformErrorCodes(228)
-	PlatformErrorCodes_UserEmailValidationLimit                               = PlatformErrorCodes(229)
-	PlatformErrorCodes_TransactionEmailSendFailure                            = PlatformErrorCodes(230)
-	PlatformErrorCodes_MailHookPermissionFailure                              = PlatformErrorCodes(231)
-	PlatformErrorCodes_MailServiceRateLimit                                   = PlatformErrorCodes(232)
-	PlatformErrorCodes_UserEmailMustBeVerified                                = PlatformErrorCodes(233)
-	PlatformErrorCodes_UserMustAllowCustomerServiceEmails                     = PlatformErrorCodes(234)
-	PlatformErrorCodes_NonTransactionalEmailSendFailure                       = PlatformErrorCodes(235)
-	PlatformErrorCodes_UnknownErrorSettingGlobalDisplayName                   = PlatformErrorCodes(236)
-	PlatformErrorCodes_DuplicateGlobalDisplayName                             = PlatformErrorCodes(237)
-	PlatformErrorCodes_ErrorRunningNameValidationChecks                       = PlatformErrorCodes(238)
-	PlatformErrorCodes_ErrorDatabaseGlobalName                                = PlatformErrorCodes(239)
-	PlatformErrorCodes_ErrorNoAvailableNameChanges                            = PlatformErrorCodes(240)
-	PlatformErrorCodes_ErrorNameAlreadySetToInput                             = PlatformErrorCodes(241)
-	PlatformErrorCodes_UserDisplayNameLessThanMinLength                       = PlatformErrorCodes(242)
-	PlatformErrorCodes_UserDisplayNameGreaterThanMaxLength                    = PlatformErrorCodes(243)
-	PlatformErrorCodes_UserDisplayNameContainsUnacceptableOrInvalidContent    = PlatformErrorCodes(244)
-	PlatformErrorCodes_MessagingUnknownError                                  = PlatformErrorCodes(300)
-	PlatformErrorCodes_MessagingSelfError                                     = PlatformErrorCodes(301)
-	PlatformErrorCodes_MessagingSendThrottle                                  = PlatformErrorCodes(302)
-	PlatformErrorCodes_MessagingNoBody                                        = PlatformErrorCodes(303)
-	PlatformErrorCodes_MessagingTooManyUsers                                  = PlatformErrorCodes(304)
-	PlatformErrorCodes_MessagingCanNotLeaveConversation                       = PlatformErrorCodes(305)
-	PlatformErrorCodes_MessagingUnableToSend                                  = PlatformErrorCodes(306)
-	PlatformErrorCodes_MessagingDeletedUserForbidden                          = PlatformErrorCodes(307)
-	PlatformErrorCodes_MessagingCannotDeleteExternalConversation              = PlatformErrorCodes(308)
-	PlatformErrorCodes_MessagingGroupChatDisabled                             = PlatformErrorCodes(309)
-	PlatformErrorCodes_MessagingMustIncludeSelfInPrivateMessage               = PlatformErrorCodes(310)
-	PlatformErrorCodes_MessagingSenderIsBanned                                = PlatformErrorCodes(311)
-	PlatformErrorCodes_MessagingGroupOptionalChatExceededMaximum              = PlatformErrorCodes(312)
-	PlatformErrorCodes_PrivateMessagingRequiresDestinyMembership              = PlatformErrorCodes(313)
-	PlatformErrorCodes_AddSurveyAnswersUnknownSqlException                    = PlatformErrorCodes(400)
-	PlatformErrorCodes_ForumBodyCannotBeEmpty                                 = PlatformErrorCodes(500)
-	PlatformErrorCodes_ForumSubjectCannotBeEmptyOnTopicPost                   = PlatformErrorCodes(501)
-	PlatformErrorCodes_ForumCannotLocateParentPost                            = PlatformErrorCodes(502)
-	PlatformErrorCodes_ForumThreadLockedForReplies                            = PlatformErrorCodes(503)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringCreatePost                  = PlatformErrorCodes(504)
-	PlatformErrorCodes_ForumUnknownTagCreationError                           = PlatformErrorCodes(505)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringTagItem                     = PlatformErrorCodes(506)
-	PlatformErrorCodes_ForumUnknownExceptionCreatePost                        = PlatformErrorCodes(507)
-	PlatformErrorCodes_ForumQuestionMustBeTopicPost                           = PlatformErrorCodes(508)
-	PlatformErrorCodes_ForumExceptionDuringTagSearch                          = PlatformErrorCodes(509)
-	PlatformErrorCodes_ForumExceptionDuringTopicRetrieval                     = PlatformErrorCodes(510)
-	PlatformErrorCodes_ForumAliasedTagError                                   = PlatformErrorCodes(511)
-	PlatformErrorCodes_ForumCannotLocateThread                                = PlatformErrorCodes(512)
-	PlatformErrorCodes_ForumUnknownExceptionEditPost                          = PlatformErrorCodes(513)
-	PlatformErrorCodes_ForumCannotLocatePost                                  = PlatformErrorCodes(514)
-	PlatformErrorCodes_ForumUnknownExceptionGetOrCreateTags                   = PlatformErrorCodes(515)
-	PlatformErrorCodes_ForumEditPermissionDenied                              = PlatformErrorCodes(516)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringTagIdRetrieval              = PlatformErrorCodes(517)
-	PlatformErrorCodes_ForumCannotGetRating                                   = PlatformErrorCodes(518)
-	PlatformErrorCodes_ForumUnknownExceptionGetRating                         = PlatformErrorCodes(519)
-	PlatformErrorCodes_ForumRatingsAccessError                                = PlatformErrorCodes(520)
-	PlatformErrorCodes_ForumRelatedPostAccessError                            = PlatformErrorCodes(521)
-	PlatformErrorCodes_ForumLatestReplyAccessError                            = PlatformErrorCodes(522)
-	PlatformErrorCodes_ForumUserStatusAccessError                             = PlatformErrorCodes(523)
-	PlatformErrorCodes_ForumAuthorAccessError                                 = PlatformErrorCodes(524)
-	PlatformErrorCodes_ForumGroupAccessError                                  = PlatformErrorCodes(525)
-	PlatformErrorCodes_ForumUrlExpectedButMissing                             = PlatformErrorCodes(526)
-	PlatformErrorCodes_ForumRepliesCannotBeEmpty                              = PlatformErrorCodes(527)
-	PlatformErrorCodes_ForumRepliesCannotBeInDifferentGroups                  = PlatformErrorCodes(528)
-	PlatformErrorCodes_ForumSubTopicCannotBeCreatedAtThisThreadLevel          = PlatformErrorCodes(529)
-	PlatformErrorCodes_ForumCannotCreateContentTopic                          = PlatformErrorCodes(530)
-	PlatformErrorCodes_ForumTopicDoesNotExist                                 = PlatformErrorCodes(531)
-	PlatformErrorCodes_ForumContentCommentsNotAllowed                         = PlatformErrorCodes(532)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringEditPost                    = PlatformErrorCodes(533)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringGetPost                     = PlatformErrorCodes(534)
-	PlatformErrorCodes_ForumPostValidationBadUrl                              = PlatformErrorCodes(535)
-	PlatformErrorCodes_ForumBodyTooLong                                       = PlatformErrorCodes(536)
-	PlatformErrorCodes_ForumSubjectTooLong                                    = PlatformErrorCodes(537)
-	PlatformErrorCodes_ForumAnnouncementNotAllowed                            = PlatformErrorCodes(538)
-	PlatformErrorCodes_ForumCannotShareOwnPost                                = PlatformErrorCodes(539)
-	PlatformErrorCodes_ForumEditNoOp                                          = PlatformErrorCodes(540)
-	PlatformErrorCodes_ForumUnknownDatabaseErrorDuringGetPost                 = PlatformErrorCodes(541)
-	PlatformErrorCodes_ForumExceeedMaximumRowLimit                            = PlatformErrorCodes(542)
-	PlatformErrorCodes_ForumCannotSharePrivatePost                            = PlatformErrorCodes(543)
-	PlatformErrorCodes_ForumCannotCrossPostBetweenGroups                      = PlatformErrorCodes(544)
-	PlatformErrorCodes_ForumIncompatibleCategories                            = PlatformErrorCodes(555)
-	PlatformErrorCodes_ForumCannotUseTheseCategoriesOnNonTopicPost            = PlatformErrorCodes(556)
-	PlatformErrorCodes_ForumCanOnlyDeleteTopics                               = PlatformErrorCodes(557)
-	PlatformErrorCodes_ForumDeleteSqlException                                = PlatformErrorCodes(558)
-	PlatformErrorCodes_ForumDeleteSqlUnknownResult                            = PlatformErrorCodes(559)
-	PlatformErrorCodes_ForumTooManyTags                                       = PlatformErrorCodes(560)
-	PlatformErrorCodes_ForumCanOnlyRateTopics                                 = PlatformErrorCodes(561)
-	PlatformErrorCodes_ForumBannedPostsCannotBeEdited                         = PlatformErrorCodes(562)
-	PlatformErrorCodes_ForumThreadRootIsBanned                                = PlatformErrorCodes(563)
-	PlatformErrorCodes_ForumCannotUseOfficialTagCategoryAsTag                 = PlatformErrorCodes(564)
-	PlatformErrorCodes_ForumAnswerCannotBeMadeOnCreatePost                    = PlatformErrorCodes(565)
-	PlatformErrorCodes_ForumAnswerCannotBeMadeOnEditPost                      = PlatformErrorCodes(566)
-	PlatformErrorCodes_ForumAnswerPostIdIsNotADirectReplyOfQuestion           = PlatformErrorCodes(567)
-	PlatformErrorCodes_ForumAnswerTopicIdIsNotAQuestion                       = PlatformErrorCodes(568)
-	PlatformErrorCodes_ForumUnknownExceptionDuringMarkAnswer                  = PlatformErrorCodes(569)
-	PlatformErrorCodes_ForumUnknownSqlResultDuringMarkAnswer                  = PlatformErrorCodes(570)
-	PlatformErrorCodes_ForumCannotRateYourOwnPosts                            = PlatformErrorCodes(571)
-	PlatformErrorCodes_ForumPollsMustBeTheFirstPostInTopic                    = PlatformErrorCodes(572)
-	PlatformErrorCodes_ForumInvalidPollInput                                  = PlatformErrorCodes(573)
-	PlatformErrorCodes_ForumGroupAdminEditNonMember                           = PlatformErrorCodes(574)
-	PlatformErrorCodes_ForumCannotEditModeratorEditedPost                     = PlatformErrorCodes(575)
-	PlatformErrorCodes_ForumRequiresDestinyMembership                         = PlatformErrorCodes(576)
-	PlatformErrorCodes_ForumUnexpectedError                                   = PlatformErrorCodes(577)
-	PlatformErrorCodes_ForumAgeLock                                           = PlatformErrorCodes(578)
-	PlatformErrorCodes_ForumMaxPages                                          = PlatformErrorCodes(579)
-	PlatformErrorCodes_ForumMaxPagesOldestFirst                               = PlatformErrorCodes(580)
-	PlatformErrorCodes_ForumCannotApplyForumIdWithoutTags                     = PlatformErrorCodes(581)
-	PlatformErrorCodes_ForumCannotApplyForumIdToNonTopics                     = PlatformErrorCodes(582)
-	PlatformErrorCodes_ForumCannotDownvoteCommunityCreations                  = PlatformErrorCodes(583)
-	PlatformErrorCodes_ForumTopicsMustHaveOfficialCategory                    = PlatformErrorCodes(584)
-	PlatformErrorCodes_ForumRecruitmentTopicMalformed                         = PlatformErrorCodes(585)
-	PlatformErrorCodes_ForumRecruitmentTopicNotFound                          = PlatformErrorCodes(586)
-	PlatformErrorCodes_ForumRecruitmentTopicNoSlotsRemaining                  = PlatformErrorCodes(587)
-	PlatformErrorCodes_ForumRecruitmentTopicKickBan                           = PlatformErrorCodes(588)
-	PlatformErrorCodes_ForumRecruitmentTopicRequirementsNotMet                = PlatformErrorCodes(589)
-	PlatformErrorCodes_ForumRecruitmentTopicNoPlayers                         = PlatformErrorCodes(590)
-	PlatformErrorCodes_ForumRecruitmentApproveFailMessageBan                  = PlatformErrorCodes(591)
-	PlatformErrorCodes_ForumRecruitmentGlobalBan                              = PlatformErrorCodes(592)
-	PlatformErrorCodes_ForumUserBannedFromThisTopic                           = PlatformErrorCodes(593)
-	PlatformErrorCodes_ForumRecruitmentFireteamMembersOnly                    = PlatformErrorCodes(594)
-	PlatformErrorCodes_ForumRequiresDestiny2Progress                          = PlatformErrorCodes(595)
-	PlatformErrorCodes_ForumRequiresDestiny2EntitlementPurchase               = PlatformErrorCodes(596)
-	PlatformErrorCodes_GroupMembershipApplicationAlreadyResolved              = PlatformErrorCodes(601)
-	PlatformErrorCodes_GroupMembershipAlreadyApplied                          = PlatformErrorCodes(602)
-	PlatformErrorCodes_GroupMembershipInsufficientPrivileges                  = PlatformErrorCodes(603)
-	PlatformErrorCodes_GroupIdNotReturnedFromCreation                         = PlatformErrorCodes(604)
-	PlatformErrorCodes_GroupSearchInvalidParameters                           = PlatformErrorCodes(605)
-	PlatformErrorCodes_GroupMembershipPendingApplicationNotFound              = PlatformErrorCodes(606)
-	PlatformErrorCodes_GroupInvalidId                                         = PlatformErrorCodes(607)
-	PlatformErrorCodes_GroupInvalidMembershipId                               = PlatformErrorCodes(608)
-	PlatformErrorCodes_GroupInvalidMembershipType                             = PlatformErrorCodes(609)
-	PlatformErrorCodes_GroupMissingTags                                       = PlatformErrorCodes(610)
-	PlatformErrorCodes_GroupMembershipNotFound                                = PlatformErrorCodes(611)
-	PlatformErrorCodes_GroupInvalidRating                                     = PlatformErrorCodes(612)
-	PlatformErrorCodes_GroupUserFollowingAccessError                          = PlatformErrorCodes(613)
-	PlatformErrorCodes_GroupUserMembershipAccessError                         = PlatformErrorCodes(614)
-	PlatformErrorCodes_GroupCreatorAccessError                                = PlatformErrorCodes(615)
-	PlatformErrorCodes_GroupAdminAccessError                                  = PlatformErrorCodes(616)
-	PlatformErrorCodes_GroupPrivatePostNotViewable                            = PlatformErrorCodes(617)
-	PlatformErrorCodes_GroupMembershipNotLoggedIn                             = PlatformErrorCodes(618)
-	PlatformErrorCodes_GroupNotDeleted                                        = PlatformErrorCodes(619)
-	PlatformErrorCodes_GroupUnknownErrorUndeletingGroup                       = PlatformErrorCodes(620)
-	PlatformErrorCodes_GroupDeleted                                           = PlatformErrorCodes(621)
-	PlatformErrorCodes_GroupNotFound                                          = PlatformErrorCodes(622)
-	PlatformErrorCodes_GroupMemberBanned                                      = PlatformErrorCodes(623)
-	PlatformErrorCodes_GroupMembershipClosed                                  = PlatformErrorCodes(624)
-	PlatformErrorCodes_GroupPrivatePostOverrideError                          = PlatformErrorCodes(625)
-	PlatformErrorCodes_GroupNameTaken                                         = PlatformErrorCodes(626)
-	PlatformErrorCodes_GroupDeletionGracePeriodExpired                        = PlatformErrorCodes(627)
-	PlatformErrorCodes_GroupCannotCheckBanStatus                              = PlatformErrorCodes(628)
-	PlatformErrorCodes_GroupMaximumMembershipCountReached                     = PlatformErrorCodes(629)
-	PlatformErrorCodes_NoDestinyAccountForClanPlatform                        = PlatformErrorCodes(630)
-	PlatformErrorCodes_AlreadyRequestingMembershipForClanPlatform             = PlatformErrorCodes(631)
-	PlatformErrorCodes_AlreadyClanMemberOnPlatform                            = PlatformErrorCodes(632)
-	PlatformErrorCodes_GroupJoinedCannotSetClanName                           = PlatformErrorCodes(633)
-	PlatformErrorCodes_GroupLeftCannotClearClanName                           = PlatformErrorCodes(634)
-	PlatformErrorCodes_GroupRelationshipRequestPending                        = PlatformErrorCodes(635)
-	PlatformErrorCodes_GroupRelationshipRequestBlocked                        = PlatformErrorCodes(636)
-	PlatformErrorCodes_GroupRelationshipRequestNotFound                       = PlatformErrorCodes(637)
-	PlatformErrorCodes_GroupRelationshipBlockNotFound                         = PlatformErrorCodes(638)
-	PlatformErrorCodes_GroupRelationshipNotFound                              = PlatformErrorCodes(639)
-	PlatformErrorCodes_GroupAlreadyAllied                                     = PlatformErrorCodes(641)
-	PlatformErrorCodes_GroupAlreadyMember                                     = PlatformErrorCodes(642)
-	PlatformErrorCodes_GroupRelationshipAlreadyExists                         = PlatformErrorCodes(643)
-	PlatformErrorCodes_InvalidGroupTypesForRelationshipRequest                = PlatformErrorCodes(644)
-	PlatformErrorCodes_GroupAtMaximumAlliances                                = PlatformErrorCodes(646)
-	PlatformErrorCodes_GroupCannotSetClanOnlySettings                         = PlatformErrorCodes(647)
-	PlatformErrorCodes_ClanCannotSetTwoDefaultPostTypes                       = PlatformErrorCodes(648)
-	PlatformErrorCodes_GroupMemberInvalidMemberType                           = PlatformErrorCodes(649)
-	PlatformErrorCodes_GroupInvalidPlatformType                               = PlatformErrorCodes(650)
-	PlatformErrorCodes_GroupMemberInvalidSort                                 = PlatformErrorCodes(651)
-	PlatformErrorCodes_GroupInvalidResolveState                               = PlatformErrorCodes(652)
-	PlatformErrorCodes_ClanAlreadyEnabledForPlatform                          = PlatformErrorCodes(653)
-	PlatformErrorCodes_ClanNotEnabledForPlatform                              = PlatformErrorCodes(654)
-	PlatformErrorCodes_ClanEnabledButCouldNotJoinNoAccount                    = PlatformErrorCodes(655)
-	PlatformErrorCodes_ClanEnabledButCouldNotJoinAlreadyMember                = PlatformErrorCodes(656)
-	PlatformErrorCodes_ClanCannotJoinNoCredential                             = PlatformErrorCodes(657)
-	PlatformErrorCodes_NoClanMembershipForPlatform                            = PlatformErrorCodes(658)
-	PlatformErrorCodes_GroupToGroupFollowLimitReached                         = PlatformErrorCodes(659)
-	PlatformErrorCodes_ChildGroupAlreadyInAlliance                            = PlatformErrorCodes(660)
-	PlatformErrorCodes_OwnerGroupAlreadyInAlliance                            = PlatformErrorCodes(661)
-	PlatformErrorCodes_AllianceOwnerCannotJoinAlliance                        = PlatformErrorCodes(662)
-	PlatformErrorCodes_GroupNotInAlliance                                     = PlatformErrorCodes(663)
-	PlatformErrorCodes_ChildGroupCannotInviteToAlliance                       = PlatformErrorCodes(664)
-	PlatformErrorCodes_GroupToGroupAlreadyFollowed                            = PlatformErrorCodes(665)
-	PlatformErrorCodes_GroupToGroupNotFollowing                               = PlatformErrorCodes(666)
-	PlatformErrorCodes_ClanMaximumMembershipReached                           = PlatformErrorCodes(667)
-	PlatformErrorCodes_ClanNameNotValid                                       = PlatformErrorCodes(668)
-	PlatformErrorCodes_ClanNameNotValidError                                  = PlatformErrorCodes(669)
-	PlatformErrorCodes_AllianceOwnerNotDefined                                = PlatformErrorCodes(670)
-	PlatformErrorCodes_AllianceChildNotDefined                                = PlatformErrorCodes(671)
-	PlatformErrorCodes_ClanCultureIllegalCharacters                           = PlatformErrorCodes(672)
-	PlatformErrorCodes_ClanTagIllegalCharacters                               = PlatformErrorCodes(673)
-	PlatformErrorCodes_ClanRequiresInvitation                                 = PlatformErrorCodes(674)
-	PlatformErrorCodes_ClanMembershipClosed                                   = PlatformErrorCodes(675)
-	PlatformErrorCodes_ClanInviteAlreadyMember                                = PlatformErrorCodes(676)
-	PlatformErrorCodes_GroupInviteAlreadyMember                               = PlatformErrorCodes(677)
-	PlatformErrorCodes_GroupJoinApprovalRequired                              = PlatformErrorCodes(678)
-	PlatformErrorCodes_ClanTagRequired                                        = PlatformErrorCodes(679)
-	PlatformErrorCodes_GroupNameCannotStartOrEndWithWhiteSpace                = PlatformErrorCodes(680)
-	PlatformErrorCodes_ClanCallsignCannotStartOrEndWithWhiteSpace             = PlatformErrorCodes(681)
-	PlatformErrorCodes_ClanMigrationFailed                                    = PlatformErrorCodes(682)
-	PlatformErrorCodes_ClanNotEnabledAlreadyMemberOfAnotherClan               = PlatformErrorCodes(683)
-	PlatformErrorCodes_GroupModerationNotPermittedOnNonMembers                = PlatformErrorCodes(684)
-	PlatformErrorCodes_ClanCreationInWorldServerFailed                        = PlatformErrorCodes(685)
-	PlatformErrorCodes_ClanNotFound                                           = PlatformErrorCodes(686)
-	PlatformErrorCodes_ClanMembershipLevelDoesNotPermitThatAction             = PlatformErrorCodes(687)
-	PlatformErrorCodes_ClanMemberNotFound                                     = PlatformErrorCodes(688)
-	PlatformErrorCodes_ClanMissingMembershipApprovers                         = PlatformErrorCodes(689)
-	PlatformErrorCodes_ClanInWrongStateForRequestedAction                     = PlatformErrorCodes(690)
-	PlatformErrorCodes_ClanNameAlreadyUsed                                    = PlatformErrorCodes(691)
-	PlatformErrorCodes_ClanTooFewMembers                                      = PlatformErrorCodes(692)
-	PlatformErrorCodes_ClanInfoCannotBeWhitespace                             = PlatformErrorCodes(693)
-	PlatformErrorCodes_GroupCultureThrottle                                   = PlatformErrorCodes(694)
-	PlatformErrorCodes_ClanTargetDisallowsInvites                             = PlatformErrorCodes(695)
-	PlatformErrorCodes_ClanInvalidOperation                                   = PlatformErrorCodes(696)
-	PlatformErrorCodes_ClanFounderCannotLeaveWithoutAbdication                = PlatformErrorCodes(697)
-	PlatformErrorCodes_ClanNameReserved                                       = PlatformErrorCodes(698)
-	PlatformErrorCodes_ClanApplicantInClanSoNowInvited                        = PlatformErrorCodes(699)
-	PlatformErrorCodes_ActivitiesUnknownException                             = PlatformErrorCodes(701)
-	PlatformErrorCodes_ActivitiesParameterNull                                = PlatformErrorCodes(702)
-	PlatformErrorCodes_ActivityCountsDiabled                                  = PlatformErrorCodes(703)
-	PlatformErrorCodes_ActivitySearchInvalidParameters                        = PlatformErrorCodes(704)
-	PlatformErrorCodes_ActivityPermissionDenied                               = PlatformErrorCodes(705)
-	PlatformErrorCodes_ShareAlreadyShared                                     = PlatformErrorCodes(706)
-	PlatformErrorCodes_ActivityLoggingDisabled                                = PlatformErrorCodes(707)
-	PlatformErrorCodes_ClanRequiresExistingDestinyAccount                     = PlatformErrorCodes(750)
-	PlatformErrorCodes_ClanNameRestricted                                     = PlatformErrorCodes(751)
-	PlatformErrorCodes_ClanCreationBan                                        = PlatformErrorCodes(752)
-	PlatformErrorCodes_ClanCreationTenureRequirementsNotMet                   = PlatformErrorCodes(753)
-	PlatformErrorCodes_ClanFieldContainsReservedTerms                         = PlatformErrorCodes(754)
-	PlatformErrorCodes_ClanFieldContainsInappropriateContent                  = PlatformErrorCodes(755)
-	PlatformErrorCodes_ItemAlreadyFollowed                                    = PlatformErrorCodes(801)
-	PlatformErrorCodes_ItemNotFollowed                                        = PlatformErrorCodes(802)
-	PlatformErrorCodes_CannotFollowSelf                                       = PlatformErrorCodes(803)
-	PlatformErrorCodes_GroupFollowLimitExceeded                               = PlatformErrorCodes(804)
-	PlatformErrorCodes_TagFollowLimitExceeded                                 = PlatformErrorCodes(805)
-	PlatformErrorCodes_UserFollowLimitExceeded                                = PlatformErrorCodes(806)
-	PlatformErrorCodes_FollowUnsupportedEntityType                            = PlatformErrorCodes(807)
-	PlatformErrorCodes_NoValidTagsInList                                      = PlatformErrorCodes(900)
-	PlatformErrorCodes_BelowMinimumSuggestionLength                           = PlatformErrorCodes(901)
-	PlatformErrorCodes_CannotGetSuggestionsOnMultipleTagsSimultaneously       = PlatformErrorCodes(902)
-	PlatformErrorCodes_NotAValidPartialTag                                    = PlatformErrorCodes(903)
-	PlatformErrorCodes_TagSuggestionsUnknownSqlResult                         = PlatformErrorCodes(904)
-	PlatformErrorCodes_TagsUnableToLoadPopularTagsFromDatabase                = PlatformErrorCodes(905)
-	PlatformErrorCodes_TagInvalid                                             = PlatformErrorCodes(906)
-	PlatformErrorCodes_TagNotFound                                            = PlatformErrorCodes(907)
-	PlatformErrorCodes_SingleTagExpected                                      = PlatformErrorCodes(908)
-	PlatformErrorCodes_TagsExceededMaximumPerItem                             = PlatformErrorCodes(909)
-	PlatformErrorCodes_IgnoreInvalidParameters                                = PlatformErrorCodes(1000)
-	PlatformErrorCodes_IgnoreSqlException                                     = PlatformErrorCodes(1001)
-	PlatformErrorCodes_IgnoreErrorRetrievingGroupPermissions                  = PlatformErrorCodes(1002)
-	PlatformErrorCodes_IgnoreErrorInsufficientPermission                      = PlatformErrorCodes(1003)
-	PlatformErrorCodes_IgnoreErrorRetrievingItem                              = PlatformErrorCodes(1004)
-	PlatformErrorCodes_IgnoreCannotIgnoreSelf                                 = PlatformErrorCodes(1005)
-	PlatformErrorCodes_IgnoreIllegalType                                      = PlatformErrorCodes(1006)
-	PlatformErrorCodes_IgnoreNotFound                                         = PlatformErrorCodes(1007)
-	PlatformErrorCodes_IgnoreUserGloballyIgnored                              = PlatformErrorCodes(1008)
-	PlatformErrorCodes_IgnoreUserIgnored                                      = PlatformErrorCodes(1009)
-	PlatformErrorCodes_TargetUserIgnored                                      = PlatformErrorCodes(1010)
-	PlatformErrorCodes_NotificationSettingInvalid                             = PlatformErrorCodes(1100)
-	PlatformErrorCodes_PsnApiExpiredAccessToken                               = PlatformErrorCodes(1204)
-	PlatformErrorCodes_PSNExForbidden                                         = PlatformErrorCodes(1205)
-	PlatformErrorCodes_PSNExSystemDisabled                                    = PlatformErrorCodes(1218)
-	PlatformErrorCodes_PsnApiErrorCodeUnknown                                 = PlatformErrorCodes(1223)
-	PlatformErrorCodes_PsnApiErrorWebException                                = PlatformErrorCodes(1224)
-	PlatformErrorCodes_PsnApiBadRequest                                       = PlatformErrorCodes(1225)
-	PlatformErrorCodes_PsnApiAccessTokenRequired                              = PlatformErrorCodes(1226)
-	PlatformErrorCodes_PsnApiInvalidAccessToken                               = PlatformErrorCodes(1227)
-	PlatformErrorCodes_PsnApiBannedUser                                       = PlatformErrorCodes(1229)
-	PlatformErrorCodes_PsnApiAccountUpgradeRequired                           = PlatformErrorCodes(1230)
-	PlatformErrorCodes_PsnApiServiceTemporarilyUnavailable                    = PlatformErrorCodes(1231)
-	PlatformErrorCodes_PsnApiServerBusy                                       = PlatformErrorCodes(1232)
-	PlatformErrorCodes_PsnApiUnderMaintenance                                 = PlatformErrorCodes(1233)
-	PlatformErrorCodes_PsnApiProfileUserNotFound                              = PlatformErrorCodes(1234)
-	PlatformErrorCodes_PsnApiProfilePrivacyRestriction                        = PlatformErrorCodes(1235)
-	PlatformErrorCodes_PsnApiProfileUnderMaintenance                          = PlatformErrorCodes(1236)
-	PlatformErrorCodes_PsnApiAccountAttributeMissing                          = PlatformErrorCodes(1237)
-	PlatformErrorCodes_PsnApiNoPermission                                     = PlatformErrorCodes(1238)
-	PlatformErrorCodes_PsnApiTargetUserBlocked                                = PlatformErrorCodes(1239)
-	PlatformErrorCodes_PsnApiJwksMissing                                      = PlatformErrorCodes(1240)
-	PlatformErrorCodes_PsnApiJwtMalformedHeader                               = PlatformErrorCodes(1241)
-	PlatformErrorCodes_PsnApiJwtMalformedPayload                              = PlatformErrorCodes(1242)
-	PlatformErrorCodes_XblExSystemDisabled                                    = PlatformErrorCodes(1300)
-	PlatformErrorCodes_XblExUnknownError                                      = PlatformErrorCodes(1301)
-	PlatformErrorCodes_XblApiErrorWebException                                = PlatformErrorCodes(1302)
-	PlatformErrorCodes_XblStsTokenInvalid                                     = PlatformErrorCodes(1303)
-	PlatformErrorCodes_XblStsMissingToken                                     = PlatformErrorCodes(1304)
-	PlatformErrorCodes_XblStsExpiredToken                                     = PlatformErrorCodes(1305)
-	PlatformErrorCodes_XblAccessToTheSandboxDenied                            = PlatformErrorCodes(1306)
-	PlatformErrorCodes_XblMsaResponseMissing                                  = PlatformErrorCodes(1307)
-	PlatformErrorCodes_XblMsaAccessTokenExpired                               = PlatformErrorCodes(1308)
-	PlatformErrorCodes_XblMsaInvalidRequest                                   = PlatformErrorCodes(1309)
-	PlatformErrorCodes_XblMsaFriendsRequireSignIn                             = PlatformErrorCodes(1310)
-	PlatformErrorCodes_XblUserActionRequired                                  = PlatformErrorCodes(1311)
-	PlatformErrorCodes_XblParentalControls                                    = PlatformErrorCodes(1312)
-	PlatformErrorCodes_XblDeveloperAccount                                    = PlatformErrorCodes(1313)
-	PlatformErrorCodes_XblUserTokenExpired                                    = PlatformErrorCodes(1314)
-	PlatformErrorCodes_XblUserTokenInvalid                                    = PlatformErrorCodes(1315)
-	PlatformErrorCodes_XblOffline                                             = PlatformErrorCodes(1316)
-	PlatformErrorCodes_XblUnknownErrorCode                                    = PlatformErrorCodes(1317)
-	PlatformErrorCodes_XblMsaInvalidGrant                                     = PlatformErrorCodes(1318)
-	PlatformErrorCodes_ReportNotYetResolved                                   = PlatformErrorCodes(1400)
-	PlatformErrorCodes_ReportOverturnDoesNotChangeDecision                    = PlatformErrorCodes(1401)
-	PlatformErrorCodes_ReportNotFound                                         = PlatformErrorCodes(1402)
-	PlatformErrorCodes_ReportAlreadyReported                                  = PlatformErrorCodes(1403)
-	PlatformErrorCodes_ReportInvalidResolution                                = PlatformErrorCodes(1404)
-	PlatformErrorCodes_ReportNotAssignedToYou                                 = PlatformErrorCodes(1405)
-	PlatformErrorCodes_LegacyGameStatsSystemDisabled                          = PlatformErrorCodes(1500)
-	PlatformErrorCodes_LegacyGameStatsUnknownError                            = PlatformErrorCodes(1501)
-	PlatformErrorCodes_LegacyGameStatsMalformedSneakerNetCode                 = PlatformErrorCodes(1502)
-	PlatformErrorCodes_DestinyAccountAcquisitionFailure                       = PlatformErrorCodes(1600)
-	PlatformErrorCodes_DestinyAccountNotFound                                 = PlatformErrorCodes(1601)
-	PlatformErrorCodes_DestinyBuildStatsDatabaseError                         = PlatformErrorCodes(1602)
-	PlatformErrorCodes_DestinyCharacterStatsDatabaseError                     = PlatformErrorCodes(1603)
-	PlatformErrorCodes_DestinyPvPStatsDatabaseError                           = PlatformErrorCodes(1604)
-	PlatformErrorCodes_DestinyPvEStatsDatabaseError                           = PlatformErrorCodes(1605)
-	PlatformErrorCodes_DestinyGrimoireStatsDatabaseError                      = PlatformErrorCodes(1606)
-	PlatformErrorCodes_DestinyStatsParameterMembershipTypeParseError          = PlatformErrorCodes(1607)
-	PlatformErrorCodes_DestinyStatsParameterMembershipIdParseError            = PlatformErrorCodes(1608)
-	PlatformErrorCodes_DestinyStatsParameterRangeParseError                   = PlatformErrorCodes(1609)
-	PlatformErrorCodes_DestinyStringItemHashNotFound                          = PlatformErrorCodes(1610)
-	PlatformErrorCodes_DestinyStringSetNotFound                               = PlatformErrorCodes(1611)
-	PlatformErrorCodes_DestinyContentLookupNotFoundForKey                     = PlatformErrorCodes(1612)
-	PlatformErrorCodes_DestinyContentItemNotFound                             = PlatformErrorCodes(1613)
-	PlatformErrorCodes_DestinyContentSectionNotFound                          = PlatformErrorCodes(1614)
-	PlatformErrorCodes_DestinyContentPropertyNotFound                         = PlatformErrorCodes(1615)
-	PlatformErrorCodes_DestinyContentConfigNotFound                           = PlatformErrorCodes(1616)
-	PlatformErrorCodes_DestinyContentPropertyBucketValueNotFound              = PlatformErrorCodes(1617)
-	PlatformErrorCodes_DestinyUnexpectedError                                 = PlatformErrorCodes(1618)
-	PlatformErrorCodes_DestinyInvalidAction                                   = PlatformErrorCodes(1619)
-	PlatformErrorCodes_DestinyCharacterNotFound                               = PlatformErrorCodes(1620)
-	PlatformErrorCodes_DestinyInvalidFlag                                     = PlatformErrorCodes(1621)
-	PlatformErrorCodes_DestinyInvalidRequest                                  = PlatformErrorCodes(1622)
-	PlatformErrorCodes_DestinyItemNotFound                                    = PlatformErrorCodes(1623)
-	PlatformErrorCodes_DestinyInvalidCustomizationChoices                     = PlatformErrorCodes(1624)
-	PlatformErrorCodes_DestinyVendorItemNotFound                              = PlatformErrorCodes(1625)
-	PlatformErrorCodes_DestinyInternalError                                   = PlatformErrorCodes(1626)
-	PlatformErrorCodes_DestinyVendorNotFound                                  = PlatformErrorCodes(1627)
-	PlatformErrorCodes_DestinyRecentActivitiesDatabaseError                   = PlatformErrorCodes(1628)
-	PlatformErrorCodes_DestinyItemBucketNotFound                              = PlatformErrorCodes(1629)
-	PlatformErrorCodes_DestinyInvalidMembershipType                           = PlatformErrorCodes(1630)
-	PlatformErrorCodes_DestinyVersionIncompatibility                          = PlatformErrorCodes(1631)
-	PlatformErrorCodes_DestinyItemAlreadyInInventory                          = PlatformErrorCodes(1632)
-	PlatformErrorCodes_DestinyBucketNotFound                                  = PlatformErrorCodes(1633)
-	PlatformErrorCodes_DestinyCharacterNotInTower                             = PlatformErrorCodes(1634)
-	PlatformErrorCodes_DestinyCharacterNotLoggedIn                            = PlatformErrorCodes(1635)
-	PlatformErrorCodes_DestinyDefinitionsNotLoaded                            = PlatformErrorCodes(1636)
-	PlatformErrorCodes_DestinyInventoryFull                                   = PlatformErrorCodes(1637)
-	PlatformErrorCodes_DestinyItemFailedLevelCheck                            = PlatformErrorCodes(1638)
-	PlatformErrorCodes_DestinyItemFailedUnlockCheck                           = PlatformErrorCodes(1639)
-	PlatformErrorCodes_DestinyItemUnequippable                                = PlatformErrorCodes(1640)
-	PlatformErrorCodes_DestinyItemUniqueEquipRestricted                       = PlatformErrorCodes(1641)
-	PlatformErrorCodes_DestinyNoRoomInDestination                             = PlatformErrorCodes(1642)
-	PlatformErrorCodes_DestinyServiceFailure                                  = PlatformErrorCodes(1643)
-	PlatformErrorCodes_DestinyServiceRetired                                  = PlatformErrorCodes(1644)
-	PlatformErrorCodes_DestinyTransferFailed                                  = PlatformErrorCodes(1645)
-	PlatformErrorCodes_DestinyTransferNotFoundForSourceBucket                 = PlatformErrorCodes(1646)
-	PlatformErrorCodes_DestinyUnexpectedResultInVendorTransferCheck           = PlatformErrorCodes(1647)
-	PlatformErrorCodes_DestinyUniquenessViolation                             = PlatformErrorCodes(1648)
-	PlatformErrorCodes_DestinyErrorDeserializationFailure                     = PlatformErrorCodes(1649)
-	PlatformErrorCodes_DestinyValidAccountTicketRequired                      = PlatformErrorCodes(1650)
-	PlatformErrorCodes_DestinyShardRelayClientTimeout                         = PlatformErrorCodes(1651)
-	PlatformErrorCodes_DestinyShardRelayProxyTimeout                          = PlatformErrorCodes(1652)
-	PlatformErrorCodes_DestinyPGCRNotFound                                    = PlatformErrorCodes(1653)
-	PlatformErrorCodes_DestinyAccountMustBeOffline                            = PlatformErrorCodes(1654)
-	PlatformErrorCodes_DestinyCanOnlyEquipInGame                              = PlatformErrorCodes(1655)
-	PlatformErrorCodes_DestinyCannotPerformActionOnEquippedItem               = PlatformErrorCodes(1656)
-	PlatformErrorCodes_DestinyQuestAlreadyCompleted                           = PlatformErrorCodes(1657)
-	PlatformErrorCodes_DestinyQuestAlreadyTracked                             = PlatformErrorCodes(1658)
-	PlatformErrorCodes_DestinyTrackableQuestsFull                             = PlatformErrorCodes(1659)
-	PlatformErrorCodes_DestinyItemNotTransferrable                            = PlatformErrorCodes(1660)
-	PlatformErrorCodes_DestinyVendorPurchaseNotAllowed                        = PlatformErrorCodes(1661)
-	PlatformErrorCodes_DestinyContentVersionMismatch                          = PlatformErrorCodes(1662)
-	PlatformErrorCodes_DestinyItemActionForbidden                             = PlatformErrorCodes(1663)
-	PlatformErrorCodes_DestinyRefundInvalid                                   = PlatformErrorCodes(1664)
-	PlatformErrorCodes_DestinyPrivacyRestriction                              = PlatformErrorCodes(1665)
-	PlatformErrorCodes_DestinyActionInsufficientPrivileges                    = PlatformErrorCodes(1666)
-	PlatformErrorCodes_DestinyInvalidClaimException                           = PlatformErrorCodes(1667)
-	PlatformErrorCodes_DestinyLegacyPlatformRestricted                        = PlatformErrorCodes(1668)
-	PlatformErrorCodes_DestinyLegacyPlatformInUse                             = PlatformErrorCodes(1669)
-	PlatformErrorCodes_DestinyLegacyPlatformInaccessible                      = PlatformErrorCodes(1670)
-	PlatformErrorCodes_DestinyCannotPerformActionAtThisLocation               = PlatformErrorCodes(1671)
-	PlatformErrorCodes_DestinyThrottledByGameServer                           = PlatformErrorCodes(1672)
-	PlatformErrorCodes_DestinyItemNotTransferrableHasSideEffects              = PlatformErrorCodes(1673)
-	PlatformErrorCodes_DestinyItemLocked                                      = PlatformErrorCodes(1674)
-	PlatformErrorCodes_DestinyCannotAffordMaterialRequirements                = PlatformErrorCodes(1675)
-	PlatformErrorCodes_DestinyFailedPlugInsertionRules                        = PlatformErrorCodes(1676)
-	PlatformErrorCodes_DestinySocketNotFound                                  = PlatformErrorCodes(1677)
-	PlatformErrorCodes_DestinySocketActionNotAllowed                          = PlatformErrorCodes(1678)
-	PlatformErrorCodes_DestinySocketAlreadyHasPlug                            = PlatformErrorCodes(1679)
-	PlatformErrorCodes_DestinyPlugItemNotAvailable                            = PlatformErrorCodes(1680)
-	PlatformErrorCodes_DestinyCharacterLoggedInNotAllowed                     = PlatformErrorCodes(1681)
-	PlatformErrorCodes_DestinyPublicAccountNotAccessible                      = PlatformErrorCodes(1682)
-	PlatformErrorCodes_DestinyClaimsItemAlreadyClaimed                        = PlatformErrorCodes(1683)
-	PlatformErrorCodes_DestinyClaimsNoInventorySpace                          = PlatformErrorCodes(1684)
-	PlatformErrorCodes_DestinyClaimsRequiredLevelNotMet                       = PlatformErrorCodes(1685)
-	PlatformErrorCodes_DestinyClaimsInvalidState                              = PlatformErrorCodes(1686)
-	PlatformErrorCodes_DestinyNotEnoughRoomForMultipleRewards                 = PlatformErrorCodes(1687)
-	PlatformErrorCodes_DestinyDirectBabelClientTimeout                        = PlatformErrorCodes(1688)
-	PlatformErrorCodes_FbInvalidRequest                                       = PlatformErrorCodes(1800)
-	PlatformErrorCodes_FbRedirectMismatch                                     = PlatformErrorCodes(1801)
-	PlatformErrorCodes_FbAccessDenied                                         = PlatformErrorCodes(1802)
-	PlatformErrorCodes_FbUnsupportedResponseType                              = PlatformErrorCodes(1803)
-	PlatformErrorCodes_FbInvalidScope                                         = PlatformErrorCodes(1804)
-	PlatformErrorCodes_FbUnsupportedGrantType                                 = PlatformErrorCodes(1805)
-	PlatformErrorCodes_FbInvalidGrant                                         = PlatformErrorCodes(1806)
-	PlatformErrorCodes_InvitationExpired                                      = PlatformErrorCodes(1900)
-	PlatformErrorCodes_InvitationUnknownType                                  = PlatformErrorCodes(1901)
-	PlatformErrorCodes_InvitationInvalidResponseStatus                        = PlatformErrorCodes(1902)
-	PlatformErrorCodes_InvitationInvalidType                                  = PlatformErrorCodes(1903)
-	PlatformErrorCodes_InvitationAlreadyPending                               = PlatformErrorCodes(1904)
-	PlatformErrorCodes_InvitationInsufficientPermission                       = PlatformErrorCodes(1905)
-	PlatformErrorCodes_InvitationInvalidCode                                  = PlatformErrorCodes(1906)
-	PlatformErrorCodes_InvitationInvalidTargetState                           = PlatformErrorCodes(1907)
-	PlatformErrorCodes_InvitationCannotBeReactivated                          = PlatformErrorCodes(1908)
-	PlatformErrorCodes_InvitationNoRecipients                                 = PlatformErrorCodes(1910)
-	PlatformErrorCodes_InvitationGroupCannotSendToSelf                        = PlatformErrorCodes(1911)
-	PlatformErrorCodes_InvitationTooManyRecipients                            = PlatformErrorCodes(1912)
-	PlatformErrorCodes_InvitationInvalid                                      = PlatformErrorCodes(1913)
-	PlatformErrorCodes_InvitationNotFound                                     = PlatformErrorCodes(1914)
-	PlatformErrorCodes_TokenInvalid                                           = PlatformErrorCodes(2000)
-	PlatformErrorCodes_TokenBadFormat                                         = PlatformErrorCodes(2001)
-	PlatformErrorCodes_TokenAlreadyClaimed                                    = PlatformErrorCodes(2002)
-	PlatformErrorCodes_TokenAlreadyClaimedSelf                                = PlatformErrorCodes(2003)
-	PlatformErrorCodes_TokenThrottling                                        = PlatformErrorCodes(2004)
-	PlatformErrorCodes_TokenUnknownRedemptionFailure                          = PlatformErrorCodes(2005)
-	PlatformErrorCodes_TokenPurchaseClaimFailedAfterTokenClaimed              = PlatformErrorCodes(2006)
-	PlatformErrorCodes_TokenUserAlreadyOwnsOffer                              = PlatformErrorCodes(2007)
-	PlatformErrorCodes_TokenInvalidOfferKey                                   = PlatformErrorCodes(2008)
-	PlatformErrorCodes_TokenEmailNotValidated                                 = PlatformErrorCodes(2009)
-	PlatformErrorCodes_TokenProvisioningBadVendorOrOffer                      = PlatformErrorCodes(2010)
-	PlatformErrorCodes_TokenPurchaseHistoryUnknownError                       = PlatformErrorCodes(2011)
-	PlatformErrorCodes_TokenThrottleStateUnknownError                         = PlatformErrorCodes(2012)
-	PlatformErrorCodes_TokenUserAgeNotVerified                                = PlatformErrorCodes(2013)
-	PlatformErrorCodes_TokenExceededOfferMaximum                              = PlatformErrorCodes(2014)
-	PlatformErrorCodes_TokenNoAvailableUnlocks                                = PlatformErrorCodes(2015)
-	PlatformErrorCodes_TokenMarketplaceInvalidPlatform                        = PlatformErrorCodes(2016)
-	PlatformErrorCodes_TokenNoMarketplaceCodesFound                           = PlatformErrorCodes(2017)
-	PlatformErrorCodes_TokenOfferNotAvailableForRedemption                    = PlatformErrorCodes(2018)
-	PlatformErrorCodes_TokenUnlockPartialFailure                              = PlatformErrorCodes(2019)
-	PlatformErrorCodes_TokenMarketplaceInvalidRegion                          = PlatformErrorCodes(2020)
-	PlatformErrorCodes_TokenOfferExpired                                      = PlatformErrorCodes(2021)
-	PlatformErrorCodes_RAFExceededMaximumReferrals                            = PlatformErrorCodes(2022)
-	PlatformErrorCodes_RAFDuplicateBond                                       = PlatformErrorCodes(2023)
-	PlatformErrorCodes_RAFNoValidVeteranDestinyMembershipsFound               = PlatformErrorCodes(2024)
-	PlatformErrorCodes_RAFNotAValidVeteranUser                                = PlatformErrorCodes(2025)
-	PlatformErrorCodes_RAFCodeAlreadyClaimedOrNotFound                        = PlatformErrorCodes(2026)
-	PlatformErrorCodes_RAFMismatchedDestinyMembershipType                     = PlatformErrorCodes(2027)
-	PlatformErrorCodes_RAFUnableToAccessPurchaseHistory                       = PlatformErrorCodes(2028)
-	PlatformErrorCodes_RAFUnableToCreateBond                                  = PlatformErrorCodes(2029)
-	PlatformErrorCodes_RAFUnableToFindBond                                    = PlatformErrorCodes(2030)
-	PlatformErrorCodes_RAFUnableToRemoveBond                                  = PlatformErrorCodes(2031)
-	PlatformErrorCodes_RAFCannotBondToSelf                                    = PlatformErrorCodes(2032)
-	PlatformErrorCodes_RAFInvalidPlatform                                     = PlatformErrorCodes(2033)
-	PlatformErrorCodes_RAFGenerateThrottled                                   = PlatformErrorCodes(2034)
-	PlatformErrorCodes_RAFUnableToCreateBondVersionMismatch                   = PlatformErrorCodes(2035)
-	PlatformErrorCodes_RAFUnableToRemoveBondVersionMismatch                   = PlatformErrorCodes(2036)
-	PlatformErrorCodes_RAFRedeemThrottled                                     = PlatformErrorCodes(2037)
-	PlatformErrorCodes_NoAvailableDiscountCode                                = PlatformErrorCodes(2038)
-	PlatformErrorCodes_DiscountAlreadyClaimed                                 = PlatformErrorCodes(2039)
-	PlatformErrorCodes_DiscountClaimFailure                                   = PlatformErrorCodes(2040)
-	PlatformErrorCodes_DiscountConfigurationFailure                           = PlatformErrorCodes(2041)
-	PlatformErrorCodes_DiscountGenerationFailure                              = PlatformErrorCodes(2042)
-	PlatformErrorCodes_DiscountAlreadyExists                                  = PlatformErrorCodes(2043)
-	PlatformErrorCodes_TokenRequiresCredentialXuid                            = PlatformErrorCodes(2044)
-	PlatformErrorCodes_TokenRequiresCredentialPsnid                           = PlatformErrorCodes(2045)
-	PlatformErrorCodes_OfferRequired                                          = PlatformErrorCodes(2046)
-	PlatformErrorCodes_UnknownEververseHistoryError                           = PlatformErrorCodes(2047)
-	PlatformErrorCodes_MissingEververseHistoryError                           = PlatformErrorCodes(2048)
-	PlatformErrorCodes_BungieRewardEmailStateInvalid                          = PlatformErrorCodes(2049)
-	PlatformErrorCodes_BungieRewardNotYetClaimable                            = PlatformErrorCodes(2050)
-	PlatformErrorCodes_MissingOfferConfig                                     = PlatformErrorCodes(2051)
-	PlatformErrorCodes_RAFQuestEntitlementRequiresBnet                        = PlatformErrorCodes(2052)
-	PlatformErrorCodes_RAFQuestEntitlementTransportFailure                    = PlatformErrorCodes(2053)
-	PlatformErrorCodes_RAFQuestEntitlementUnknownFailure                      = PlatformErrorCodes(2054)
-	PlatformErrorCodes_RAFVeteranRewardUnknownFailure                         = PlatformErrorCodes(2055)
-	PlatformErrorCodes_RAFTooEarlyToCancelBond                                = PlatformErrorCodes(2056)
-	PlatformErrorCodes_LoyaltyRewardAlreadyRedeemed                           = PlatformErrorCodes(2057)
-	PlatformErrorCodes_UnclaimedLoyaltyRewardEntryNotFound                    = PlatformErrorCodes(2058)
-	PlatformErrorCodes_PartnerOfferPartialFailure                             = PlatformErrorCodes(2059)
-	PlatformErrorCodes_PartnerOfferAlreadyClaimed                             = PlatformErrorCodes(2060)
-	PlatformErrorCodes_PartnerOfferSkuNotFound                                = PlatformErrorCodes(2061)
-	PlatformErrorCodes_PartnerOfferSkuExpired                                 = PlatformErrorCodes(2062)
-	PlatformErrorCodes_PartnerOfferPermissionFailure                          = PlatformErrorCodes(2063)
-	PlatformErrorCodes_PartnerOfferNoDestinyAccount                           = PlatformErrorCodes(2064)
-	PlatformErrorCodes_PartnerOfferApplyDataNotFound                          = PlatformErrorCodes(2065)
-	PlatformErrorCodes_ApiExceededMaxKeys                                     = PlatformErrorCodes(2100)
-	PlatformErrorCodes_ApiInvalidOrExpiredKey                                 = PlatformErrorCodes(2101)
-	PlatformErrorCodes_ApiKeyMissingFromRequest                               = PlatformErrorCodes(2102)
-	PlatformErrorCodes_ApplicationDisabled                                    = PlatformErrorCodes(2103)
-	PlatformErrorCodes_ApplicationExceededMax                                 = PlatformErrorCodes(2104)
-	PlatformErrorCodes_ApplicationDisallowedByScope                           = PlatformErrorCodes(2105)
-	PlatformErrorCodes_AuthorizationCodeInvalid                               = PlatformErrorCodes(2106)
-	PlatformErrorCodes_OriginHeaderDoesNotMatchKey                            = PlatformErrorCodes(2107)
-	PlatformErrorCodes_AccessNotPermittedByApplicationScope                   = PlatformErrorCodes(2108)
-	PlatformErrorCodes_ApplicationNameIsTaken                                 = PlatformErrorCodes(2109)
-	PlatformErrorCodes_RefreshTokenNotYetValid                                = PlatformErrorCodes(2110)
-	PlatformErrorCodes_AccessTokenHasExpired                                  = PlatformErrorCodes(2111)
-	PlatformErrorCodes_ApplicationTokenFormatNotValid                         = PlatformErrorCodes(2112)
-	PlatformErrorCodes_ApplicationNotConfiguredForBungieAuth                  = PlatformErrorCodes(2113)
-	PlatformErrorCodes_ApplicationNotConfiguredForOAuth                       = PlatformErrorCodes(2114)
-	PlatformErrorCodes_OAuthAccessTokenExpired                                = PlatformErrorCodes(2115)
-	PlatformErrorCodes_ApplicationTokenKeyIdDoesNotExist                      = PlatformErrorCodes(2116)
-	PlatformErrorCodes_ProvidedTokenNotValidRefreshToken                      = PlatformErrorCodes(2117)
-	PlatformErrorCodes_RefreshTokenExpired                                    = PlatformErrorCodes(2118)
-	PlatformErrorCodes_AuthorizationRecordInvalid                             = PlatformErrorCodes(2119)
-	PlatformErrorCodes_TokenPreviouslyRevoked                                 = PlatformErrorCodes(2120)
-	PlatformErrorCodes_TokenInvalidMembership                                 = PlatformErrorCodes(2121)
-	PlatformErrorCodes_AuthorizationCodeStale                                 = PlatformErrorCodes(2122)
-	PlatformErrorCodes_AuthorizationRecordExpired                             = PlatformErrorCodes(2123)
-	PlatformErrorCodes_AuthorizationRecordRevoked                             = PlatformErrorCodes(2124)
-	PlatformErrorCodes_AuthorizationRecordInactiveApiKey                      = PlatformErrorCodes(2125)
-	PlatformErrorCodes_AuthorizationRecordApiKeyMatching                      = PlatformErrorCodes(2126)
-	PlatformErrorCodes_PartnershipInvalidType                                 = PlatformErrorCodes(2200)
-	PlatformErrorCodes_PartnershipValidationError                             = PlatformErrorCodes(2201)
-	PlatformErrorCodes_PartnershipValidationTimeout                           = PlatformErrorCodes(2202)
-	PlatformErrorCodes_PartnershipAccessFailure                               = PlatformErrorCodes(2203)
-	PlatformErrorCodes_PartnershipAccountInvalid                              = PlatformErrorCodes(2204)
-	PlatformErrorCodes_PartnershipGetAccountInfoFailure                       = PlatformErrorCodes(2205)
-	PlatformErrorCodes_PartnershipDisabled                                    = PlatformErrorCodes(2206)
-	PlatformErrorCodes_PartnershipAlreadyExists                               = PlatformErrorCodes(2207)
-	PlatformErrorCodes_CommunityStreamingUnavailable                          = PlatformErrorCodes(2300)
-	PlatformErrorCodes_TwitchNotLinked                                        = PlatformErrorCodes(2500)
-	PlatformErrorCodes_TwitchAccountNotFound                                  = PlatformErrorCodes(2501)
-	PlatformErrorCodes_TwitchCouldNotLoadDestinyInfo                          = PlatformErrorCodes(2502)
-	PlatformErrorCodes_TwitchCouldNotRegisterUser                             = PlatformErrorCodes(2503)
-	PlatformErrorCodes_TwitchCouldNotUnregisterUser                           = PlatformErrorCodes(2504)
-	PlatformErrorCodes_TwitchRequiresRelinking                                = PlatformErrorCodes(2505)
-	PlatformErrorCodes_TwitchNoPlatformChosen                                 = PlatformErrorCodes(2506)
-	PlatformErrorCodes_TwitchDropHistoryPermissionFailure                     = PlatformErrorCodes(2507)
-	PlatformErrorCodes_TwitchDropsRepairPartialFailure                        = PlatformErrorCodes(2508)
-	PlatformErrorCodes_TwitchNotAuthorized                                    = PlatformErrorCodes(2509)
-	PlatformErrorCodes_TwitchUnknownAuthorizationFailure                      = PlatformErrorCodes(2510)
-	PlatformErrorCodes_TrendingCategoryNotFound                               = PlatformErrorCodes(2600)
-	PlatformErrorCodes_TrendingEntryTypeNotSupported                          = PlatformErrorCodes(2601)
-	PlatformErrorCodes_ReportOffenderNotInPgcr                                = PlatformErrorCodes(2700)
-	PlatformErrorCodes_ReportRequestorNotInPgcr                               = PlatformErrorCodes(2701)
-	PlatformErrorCodes_ReportSubmissionFailed                                 = PlatformErrorCodes(2702)
-	PlatformErrorCodes_ReportCannotReportSelf                                 = PlatformErrorCodes(2703)
-	PlatformErrorCodes_AwaTypeDisabled                                        = PlatformErrorCodes(2800)
-	PlatformErrorCodes_AwaTooManyPendingRequests                              = PlatformErrorCodes(2801)
-	PlatformErrorCodes_AwaTheFeatureRequiresARegisteredDevice                 = PlatformErrorCodes(2802)
-	PlatformErrorCodes_AwaRequestWasUnansweredForTooLong                      = PlatformErrorCodes(2803)
-	PlatformErrorCodes_AwaWriteRequestMissingOrInvalidToken                   = PlatformErrorCodes(2804)
-	PlatformErrorCodes_AwaWriteRequestTokenExpired                            = PlatformErrorCodes(2805)
-	PlatformErrorCodes_AwaWriteRequestTokenUsageLimitReached                  = PlatformErrorCodes(2806)
-	PlatformErrorCodes_SteamWebApiError                                       = PlatformErrorCodes(2900)
-	PlatformErrorCodes_SteamWebNullResponseError                              = PlatformErrorCodes(2901)
-	PlatformErrorCodes_SteamAccountRequired                                   = PlatformErrorCodes(2902)
-	PlatformErrorCodes_SteamNotAuthorized                                     = PlatformErrorCodes(2903)
-	PlatformErrorCodes_ClanFireteamNotFound                                   = PlatformErrorCodes(3000)
-	PlatformErrorCodes_ClanFireteamAddNoAlternatesForImmediate                = PlatformErrorCodes(3001)
-	PlatformErrorCodes_ClanFireteamFull                                       = PlatformErrorCodes(3002)
-	PlatformErrorCodes_ClanFireteamAltFull                                    = PlatformErrorCodes(3003)
-	PlatformErrorCodes_ClanFireteamBlocked                                    = PlatformErrorCodes(3004)
-	PlatformErrorCodes_ClanFireteamPlayerEntryNotFound                        = PlatformErrorCodes(3005)
-	PlatformErrorCodes_ClanFireteamPermissions                                = PlatformErrorCodes(3006)
-	PlatformErrorCodes_ClanFireteamInvalidPlatform                            = PlatformErrorCodes(3007)
-	PlatformErrorCodes_ClanFireteamCannotAdjustSlotCount                      = PlatformErrorCodes(3008)
-	PlatformErrorCodes_ClanFireteamInvalidPlayerPlatform                      = PlatformErrorCodes(3009)
-	PlatformErrorCodes_ClanFireteamNotReadyForInvitesNotEnoughPlayers         = PlatformErrorCodes(3010)
-	PlatformErrorCodes_ClanFireteamGameInvitesNotSupportForPlatform           = PlatformErrorCodes(3011)
-	PlatformErrorCodes_ClanFireteamPlatformInvitePreqFailure                  = PlatformErrorCodes(3012)
-	PlatformErrorCodes_ClanFireteamInvalidAuthContext                         = PlatformErrorCodes(3013)
-	PlatformErrorCodes_ClanFireteamInvalidAuthProviderPsn                     = PlatformErrorCodes(3014)
-	PlatformErrorCodes_ClanFireteamPs4SessionFull                             = PlatformErrorCodes(3015)
-	PlatformErrorCodes_ClanFireteamInvalidAuthToken                           = PlatformErrorCodes(3016)
-	PlatformErrorCodes_ClanFireteamScheduledFireteamsDisabled                 = PlatformErrorCodes(3017)
-	PlatformErrorCodes_ClanFireteamNotReadyForInvitesNotScheduledYet          = PlatformErrorCodes(3018)
-	PlatformErrorCodes_ClanFireteamNotReadyForInvitesClosed                   = PlatformErrorCodes(3019)
-	PlatformErrorCodes_ClanFireteamScheduledFireteamsRequireAdminPermissions  = PlatformErrorCodes(3020)
-	PlatformErrorCodes_ClanFireteamNonPublicMustHaveClan                      = PlatformErrorCodes(3021)
-	PlatformErrorCodes_ClanFireteamPublicCreationRestriction                  = PlatformErrorCodes(3022)
-	PlatformErrorCodes_ClanFireteamAlreadyJoined                              = PlatformErrorCodes(3023)
-	PlatformErrorCodes_ClanFireteamScheduledFireteamsRange                    = PlatformErrorCodes(3024)
-	PlatformErrorCodes_ClanFireteamPublicCreationRestrictionExtended          = PlatformErrorCodes(3025)
-	PlatformErrorCodes_ClanFireteamExpired                                    = PlatformErrorCodes(3026)
-	PlatformErrorCodes_ClanFireteamInvalidAuthProvider                        = PlatformErrorCodes(3027)
-	PlatformErrorCodes_ClanFireteamInvalidAuthProviderXuid                    = PlatformErrorCodes(3028)
-	PlatformErrorCodes_ClanFireteamThrottle                                   = PlatformErrorCodes(3029)
-	PlatformErrorCodes_ClanFireteamTooManyOpenScheduledFireteams              = PlatformErrorCodes(3030)
-	PlatformErrorCodes_ClanFireteamCannotReopenScheduledFireteams             = PlatformErrorCodes(3031)
-	PlatformErrorCodes_ClanFireteamJoinNoAccountSpecified                     = PlatformErrorCodes(3032)
-	PlatformErrorCodes_ClanFireteamMinDestiny2ProgressForCreation             = PlatformErrorCodes(3033)
-	PlatformErrorCodes_ClanFireteamMinDestiny2ProgressForJoin                 = PlatformErrorCodes(3034)
-	PlatformErrorCodes_ClanFireteamSMSOrPurchaseRequiredCreate                = PlatformErrorCodes(3035)
-	PlatformErrorCodes_ClanFireteamPurchaseRequiredCreate                     = PlatformErrorCodes(3036)
-	PlatformErrorCodes_ClanFireteamSMSOrPurchaseRequiredJoin                  = PlatformErrorCodes(3037)
-	PlatformErrorCodes_ClanFireteamPurchaseRequiredJoin                       = PlatformErrorCodes(3038)
-	PlatformErrorCodes_CrossSaveOverriddenAccountNotFound                     = PlatformErrorCodes(3200)
-	PlatformErrorCodes_CrossSaveTooManyOverriddenPlatforms                    = PlatformErrorCodes(3201)
-	PlatformErrorCodes_CrossSaveNoOverriddenPlatforms                         = PlatformErrorCodes(3202)
-	PlatformErrorCodes_CrossSavePrimaryAccountNotFound                        = PlatformErrorCodes(3203)
-	PlatformErrorCodes_CrossSaveRequestInvalid                                = PlatformErrorCodes(3204)
-	PlatformErrorCodes_CrossSaveBungieAccountValidationFailure                = PlatformErrorCodes(3206)
-	PlatformErrorCodes_CrossSaveOverriddenPlatformNotAllowed                  = PlatformErrorCodes(3207)
-	PlatformErrorCodes_CrossSaveThresholdExceeded                             = PlatformErrorCodes(3208)
-	PlatformErrorCodes_CrossSaveIncompatibleMembershipType                    = PlatformErrorCodes(3209)
-	PlatformErrorCodes_CrossSaveCouldNotFindLinkedAccountForMembershipType    = PlatformErrorCodes(3210)
-	PlatformErrorCodes_CrossSaveCouldNotCreateDestinyProfileForMembershipType = PlatformErrorCodes(3211)
-	PlatformErrorCodes_CrossSaveErrorCreatingDestinyProfileForMembershipType  = PlatformErrorCodes(3212)
-	PlatformErrorCodes_CrossSaveCannotOverrideSelf                            = PlatformErrorCodes(3213)
-	PlatformErrorCodes_CrossSaveRecentSilverPurchase                          = PlatformErrorCodes(3214)
-	PlatformErrorCodes_CrossSaveSilverBalanceNegative                         = PlatformErrorCodes(3215)
-	PlatformErrorCodes_CrossSaveAccountNotAuthenticated                       = PlatformErrorCodes(3216)
-	PlatformErrorCodes_ErrorOneAccountAlreadyActive                           = PlatformErrorCodes(3217)
-	PlatformErrorCodes_ErrorOneAccountDestinyRestriction                      = PlatformErrorCodes(3218)
-	PlatformErrorCodes_CrossSaveMustMigrateToSteam                            = PlatformErrorCodes(3219)
-	PlatformErrorCodes_CrossSaveSteamAlreadyPaired                            = PlatformErrorCodes(3220)
-	PlatformErrorCodes_CrossSaveCannotPairJustSteamAndBlizzard                = PlatformErrorCodes(3221)
-	PlatformErrorCodes_CrossSaveCannotPairSteamAloneBeforeShadowkeep          = PlatformErrorCodes(3222)
-	PlatformErrorCodes_AuthVerificationNotLinkedToAccount                     = PlatformErrorCodes(3300)
-	PlatformErrorCodes_PCMigrationMissingBlizzard                             = PlatformErrorCodes(3400)
-	PlatformErrorCodes_PCMigrationMissingSteam                                = PlatformErrorCodes(3401)
-	PlatformErrorCodes_PCMigrationInvalidBlizzard                             = PlatformErrorCodes(3402)
-	PlatformErrorCodes_PCMigrationInvalidSteam                                = PlatformErrorCodes(3403)
-	PlatformErrorCodes_PCMigrationUnknownFailure                              = PlatformErrorCodes(3404)
-	PlatformErrorCodes_PCMigrationUnknownException                            = PlatformErrorCodes(3405)
-	PlatformErrorCodes_PCMigrationNotLinked                                   = PlatformErrorCodes(3406)
-	PlatformErrorCodes_PCMigrationAccountsAlreadyUsed                         = PlatformErrorCodes(3407)
-	PlatformErrorCodes_PCMigrationStepFailed                                  = PlatformErrorCodes(3408)
-	PlatformErrorCodes_PCMigrationInvalidBlizzardCrossSaveState               = PlatformErrorCodes(3409)
-	PlatformErrorCodes_PCMigrationDestinationBanned                           = PlatformErrorCodes(3410)
-	PlatformErrorCodes_PCMigrationDestinyFailure                              = PlatformErrorCodes(3411)
-	PlatformErrorCodes_PCMigrationSilverTransferFailed                        = PlatformErrorCodes(3412)
-	PlatformErrorCodes_PCMigrationEntitlementTransferFailed                   = PlatformErrorCodes(3413)
-	PlatformErrorCodes_PCMigrationCannotStompClanFounder                      = PlatformErrorCodes(3414)
-	PlatformErrorCodes_UnsupportedBrowser                                     = PlatformErrorCodes(3500)
-	PlatformErrorCodes_StadiaAccountRequired                                  = PlatformErrorCodes(3600)
-	PlatformErrorCodes_ErrorPhoneValidationTooManyUses                        = PlatformErrorCodes(3702)
-	PlatformErrorCodes_ErrorPhoneValidationNoAssociatedPhone                  = PlatformErrorCodes(3703)
-	PlatformErrorCodes_ErrorPhoneValidationCodeInvalid                        = PlatformErrorCodes(3705)
-	PlatformErrorCodes_ErrorPhoneValidationBanned                             = PlatformErrorCodes(3706)
-	PlatformErrorCodes_ErrorPhoneValidationCodeTooRecentlySent                = PlatformErrorCodes(3707)
-	PlatformErrorCodes_ErrorPhoneValidationCodeExpired                        = PlatformErrorCodes(3708)
-	PlatformErrorCodes_ErrorPhoneValidationInvalidNumberType                  = PlatformErrorCodes(3709)
-	PlatformErrorCodes_ErrorPhoneValidationCodeTooRecentlyChecked             = PlatformErrorCodes(3710)
-	PlatformErrorCodes_ApplePushErrorUnknown                                  = PlatformErrorCodes(3800)
-	PlatformErrorCodes_ApplePushErrorNull                                     = PlatformErrorCodes(3801)
-	PlatformErrorCodes_ApplePushErrorTimeout                                  = PlatformErrorCodes(3802)
-	PlatformErrorCodes_ApplePushBadRequest                                    = PlatformErrorCodes(3803)
-	PlatformErrorCodes_ApplePushFailedAuth                                    = PlatformErrorCodes(3804)
-	PlatformErrorCodes_ApplePushThrottled                                     = PlatformErrorCodes(3805)
-	PlatformErrorCodes_ApplePushServiceUnavailable                            = PlatformErrorCodes(3806)
-	PlatformErrorCodes_NotAnImageOrVideo                                      = PlatformErrorCodes(3807)
-	PlatformErrorCodes_ErrorBungieFriendsBlockFailed                          = PlatformErrorCodes(3900)
-	PlatformErrorCodes_ErrorBungieFriendsAutoReject                           = PlatformErrorCodes(3901)
-	PlatformErrorCodes_ErrorBungieFriendsNoRequestFound                       = PlatformErrorCodes(3902)
-	PlatformErrorCodes_ErrorBungieFriendsAlreadyFriends                       = PlatformErrorCodes(3903)
-	PlatformErrorCodes_ErrorBungieFriendsUnableToRemoveRequest                = PlatformErrorCodes(3904)
-	PlatformErrorCodes_ErrorBungieFriendsUnableToRemove                       = PlatformErrorCodes(3905)
-	PlatformErrorCodes_ErrorBungieFriendsIdenticalSourceTarget                = PlatformErrorCodes(3906)
-	PlatformErrorCodes_ErrorBungieFriendsSelf                                 = PlatformErrorCodes(3907)
-	PlatformErrorCodes_ErrorBungieBlockSelf                                   = PlatformErrorCodes(3908)
-	PlatformErrorCodes_ErrorBungieFriendsListFull                             = PlatformErrorCodes(3910)
-	PlatformErrorCodes_ErrorBungieBlockListFull                               = PlatformErrorCodes(3911)
-	PlatformErrorCodes_ErrorEgsUnknown                                        = PlatformErrorCodes(4000)
-	PlatformErrorCodes_ErrorEgsBadRequest                                     = PlatformErrorCodes(4001)
-	PlatformErrorCodes_ErrorEgsNotAuthorized                                  = PlatformErrorCodes(4002)
-	PlatformErrorCodes_ErrorEgsForbidden                                      = PlatformErrorCodes(4003)
-	PlatformErrorCodes_ErrorEgsAccountNotFound                                = PlatformErrorCodes(4004)
-	PlatformErrorCodes_ErrorEgsWebException                                   = PlatformErrorCodes(4005)
-	PlatformErrorCodes_ErrorEgsUnavailable                                    = PlatformErrorCodes(4006)
-	PlatformErrorCodes_ErrorEgsJwksMissing                                    = PlatformErrorCodes(4007)
-	PlatformErrorCodes_ErrorEgsJwtMalformedHeader                             = PlatformErrorCodes(4008)
-	PlatformErrorCodes_ErrorEgsJwtMalformedPayload                            = PlatformErrorCodes(4009)
+	PlatformErrorCodes_None                                                      = PlatformErrorCodes(0)
+	PlatformErrorCodes_Success                                                   = PlatformErrorCodes(1)
+	PlatformErrorCodes_TransportException                                        = PlatformErrorCodes(2)
+	PlatformErrorCodes_UnhandledException                                        = PlatformErrorCodes(3)
+	PlatformErrorCodes_NotImplemented                                            = PlatformErrorCodes(4)
+	PlatformErrorCodes_SystemDisabled                                            = PlatformErrorCodes(5)
+	PlatformErrorCodes_FailedToLoadAvailableLocalesConfiguration                 = PlatformErrorCodes(6)
+	PlatformErrorCodes_ParameterParseFailure                                     = PlatformErrorCodes(7)
+	PlatformErrorCodes_ParameterInvalidRange                                     = PlatformErrorCodes(8)
+	PlatformErrorCodes_BadRequest                                                = PlatformErrorCodes(9)
+	PlatformErrorCodes_AuthenticationInvalid                                     = PlatformErrorCodes(10)
+	PlatformErrorCodes_DataNotFound                                              = PlatformErrorCodes(11)
+	PlatformErrorCodes_InsufficientPrivileges                                    = PlatformErrorCodes(12)
+	PlatformErrorCodes_Duplicate                                                 = PlatformErrorCodes(13)
+	PlatformErrorCodes_UnknownSqlResult                                          = PlatformErrorCodes(14)
+	PlatformErrorCodes_ValidationError                                           = PlatformErrorCodes(15)
+	PlatformErrorCodes_ValidationMissingFieldError                               = PlatformErrorCodes(16)
+	PlatformErrorCodes_ValidationInvalidInputError                               = PlatformErrorCodes(17)
+	PlatformErrorCodes_InvalidParameters                                         = PlatformErrorCodes(18)
+	PlatformErrorCodes_ParameterNotFound                                         = PlatformErrorCodes(19)
+	PlatformErrorCodes_UnhandledHttpException                                    = PlatformErrorCodes(20)
+	PlatformErrorCodes_NotFound                                                  = PlatformErrorCodes(21)
+	PlatformErrorCodes_WebAuthModuleAsyncFailed                                  = PlatformErrorCodes(22)
+	PlatformErrorCodes_InvalidReturnValue                                        = PlatformErrorCodes(23)
+	PlatformErrorCodes_UserBanned                                                = PlatformErrorCodes(24)
+	PlatformErrorCodes_InvalidPostBody                                           = PlatformErrorCodes(25)
+	PlatformErrorCodes_MissingPostBody                                           = PlatformErrorCodes(26)
+	PlatformErrorCodes_ExternalServiceTimeout                                    = PlatformErrorCodes(27)
+	PlatformErrorCodes_ValidationLengthError                                     = PlatformErrorCodes(28)
+	PlatformErrorCodes_ValidationRangeError                                      = PlatformErrorCodes(29)
+	PlatformErrorCodes_JsonDeserializationError                                  = PlatformErrorCodes(30)
+	PlatformErrorCodes_ThrottleLimitExceeded                                     = PlatformErrorCodes(31)
+	PlatformErrorCodes_ValidationTagError                                        = PlatformErrorCodes(32)
+	PlatformErrorCodes_ValidationProfanityError                                  = PlatformErrorCodes(33)
+	PlatformErrorCodes_ValidationUrlFormatError                                  = PlatformErrorCodes(34)
+	PlatformErrorCodes_ThrottleLimitExceededMinutes                              = PlatformErrorCodes(35)
+	PlatformErrorCodes_ThrottleLimitExceededMomentarily                          = PlatformErrorCodes(36)
+	PlatformErrorCodes_ThrottleLimitExceededSeconds                              = PlatformErrorCodes(37)
+	PlatformErrorCodes_ExternalServiceUnknown                                    = PlatformErrorCodes(38)
+	PlatformErrorCodes_ValidationWordLengthError                                 = PlatformErrorCodes(39)
+	PlatformErrorCodes_ValidationInvisibleUnicode                                = PlatformErrorCodes(40)
+	PlatformErrorCodes_ValidationBadNames                                        = PlatformErrorCodes(41)
+	PlatformErrorCodes_ExternalServiceFailed                                     = PlatformErrorCodes(42)
+	PlatformErrorCodes_ServiceRetired                                            = PlatformErrorCodes(43)
+	PlatformErrorCodes_UnknownSqlException                                       = PlatformErrorCodes(44)
+	PlatformErrorCodes_UnsupportedLocale                                         = PlatformErrorCodes(45)
+	PlatformErrorCodes_InvalidPageNumber                                         = PlatformErrorCodes(46)
+	PlatformErrorCodes_MaximumPageSizeExceeded                                   = PlatformErrorCodes(47)
+	PlatformErrorCodes_ServiceUnsupported                                        = PlatformErrorCodes(48)
+	PlatformErrorCodes_ValidationMaximumUnicodeCombiningCharacters               = PlatformErrorCodes(49)
+	PlatformErrorCodes_ValidationMaximumSequentialCarriageReturns                = PlatformErrorCodes(50)
+	PlatformErrorCodes_PerEndpointRequestThrottleExceeded                        = PlatformErrorCodes(51)
+	PlatformErrorCodes_AuthContextCacheAssertion                                 = PlatformErrorCodes(52)
+	PlatformErrorCodes_ExPlatformStringValidationError                           = PlatformErrorCodes(53)
+	PlatformErrorCodes_PerApplicationThrottleExceeded                            = PlatformErrorCodes(54)
+	PlatformErrorCodes_PerApplicationAnonymousThrottleExceeded                   = PlatformErrorCodes(55)
+	PlatformErrorCodes_PerApplicationAuthenticatedThrottleExceeded               = PlatformErrorCodes(56)
+	PlatformErrorCodes_PerUserThrottleExceeded                                   = PlatformErrorCodes(57)
+	PlatformErrorCodes_PayloadSignatureVerificationFailure                       = PlatformErrorCodes(58)
+	PlatformErrorCodes_InvalidServiceAuthContext                                 = PlatformErrorCodes(59)
+	PlatformErrorCodes_FailedMinimumAgeCheck                                     = PlatformErrorCodes(60)
+	PlatformErrorCodes_ObsoleteCredentialType                                    = PlatformErrorCodes(89)
+	PlatformErrorCodes_UnableToUnPairMobileApp                                   = PlatformErrorCodes(90)
+	PlatformErrorCodes_UnableToPairMobileApp                                     = PlatformErrorCodes(91)
+	PlatformErrorCodes_CannotUseMobileAuthWithNonMobileProvider                  = PlatformErrorCodes(92)
+	PlatformErrorCodes_MissingDeviceCookie                                       = PlatformErrorCodes(93)
+	PlatformErrorCodes_FacebookTokenExpired                                      = PlatformErrorCodes(94)
+	PlatformErrorCodes_AuthTicketRequired                                        = PlatformErrorCodes(95)
+	PlatformErrorCodes_CookieContextRequired                                     = PlatformErrorCodes(96)
+	PlatformErrorCodes_UnknownAuthenticationError                                = PlatformErrorCodes(97)
+	PlatformErrorCodes_BungieNetAccountCreationRequired                          = PlatformErrorCodes(98)
+	PlatformErrorCodes_WebAuthRequired                                           = PlatformErrorCodes(99)
+	PlatformErrorCodes_ContentUnknownSqlResult                                   = PlatformErrorCodes(100)
+	PlatformErrorCodes_ContentNeedUniquePath                                     = PlatformErrorCodes(101)
+	PlatformErrorCodes_ContentSqlException                                       = PlatformErrorCodes(102)
+	PlatformErrorCodes_ContentNotFound                                           = PlatformErrorCodes(103)
+	PlatformErrorCodes_ContentSuccessWithTagAddFail                              = PlatformErrorCodes(104)
+	PlatformErrorCodes_ContentSearchMissingParameters                            = PlatformErrorCodes(105)
+	PlatformErrorCodes_ContentInvalidId                                          = PlatformErrorCodes(106)
+	PlatformErrorCodes_ContentPhysicalFileDeletionError                          = PlatformErrorCodes(107)
+	PlatformErrorCodes_ContentPhysicalFileCreationError                          = PlatformErrorCodes(108)
+	PlatformErrorCodes_ContentPerforceSubmissionError                            = PlatformErrorCodes(109)
+	PlatformErrorCodes_ContentPerforceInitializationError                        = PlatformErrorCodes(110)
+	PlatformErrorCodes_ContentDeploymentPackageNotReadyError                     = PlatformErrorCodes(111)
+	PlatformErrorCodes_ContentUploadFailed                                       = PlatformErrorCodes(112)
+	PlatformErrorCodes_ContentTooManyResults                                     = PlatformErrorCodes(113)
+	PlatformErrorCodes_ContentInvalidState                                       = PlatformErrorCodes(115)
+	PlatformErrorCodes_ContentNavigationParentNotFound                           = PlatformErrorCodes(116)
+	PlatformErrorCodes_ContentNavigationParentUpdateError                        = PlatformErrorCodes(117)
+	PlatformErrorCodes_DeploymentPackageNotEditable                              = PlatformErrorCodes(118)
+	PlatformErrorCodes_ContentValidationError                                    = PlatformErrorCodes(119)
+	PlatformErrorCodes_ContentPropertiesValidationError                          = PlatformErrorCodes(120)
+	PlatformErrorCodes_ContentTypeNotFound                                       = PlatformErrorCodes(121)
+	PlatformErrorCodes_DeploymentPackageNotFound                                 = PlatformErrorCodes(122)
+	PlatformErrorCodes_ContentSearchInvalidParameters                            = PlatformErrorCodes(123)
+	PlatformErrorCodes_ContentItemPropertyAggregationError                       = PlatformErrorCodes(124)
+	PlatformErrorCodes_DeploymentPackageFileNotFound                             = PlatformErrorCodes(125)
+	PlatformErrorCodes_ContentPerforceFileHistoryNotFound                        = PlatformErrorCodes(126)
+	PlatformErrorCodes_ContentAssetZipCreationFailure                            = PlatformErrorCodes(127)
+	PlatformErrorCodes_ContentAssetZipCreationBusy                               = PlatformErrorCodes(128)
+	PlatformErrorCodes_ContentProjectNotFound                                    = PlatformErrorCodes(129)
+	PlatformErrorCodes_ContentFolderNotFound                                     = PlatformErrorCodes(130)
+	PlatformErrorCodes_ContentPackagesInconsistent                               = PlatformErrorCodes(131)
+	PlatformErrorCodes_ContentPackagesInvalidState                               = PlatformErrorCodes(132)
+	PlatformErrorCodes_ContentPackagesInconsistentType                           = PlatformErrorCodes(133)
+	PlatformErrorCodes_ContentCannotDeletePackage                                = PlatformErrorCodes(134)
+	PlatformErrorCodes_ContentLockedForChanges                                   = PlatformErrorCodes(135)
+	PlatformErrorCodes_ContentFileUploadFailed                                   = PlatformErrorCodes(136)
+	PlatformErrorCodes_ContentNotReviewed                                        = PlatformErrorCodes(137)
+	PlatformErrorCodes_ContentPermissionDenied                                   = PlatformErrorCodes(138)
+	PlatformErrorCodes_ContentInvalidExternalUrl                                 = PlatformErrorCodes(139)
+	PlatformErrorCodes_ContentExternalFileCannotBeImportedLocally                = PlatformErrorCodes(140)
+	PlatformErrorCodes_ContentTagSaveFailure                                     = PlatformErrorCodes(141)
+	PlatformErrorCodes_ContentPerforceUnmatchedFileError                         = PlatformErrorCodes(142)
+	PlatformErrorCodes_ContentPerforceChangelistResultNotFound                   = PlatformErrorCodes(143)
+	PlatformErrorCodes_ContentPerforceChangelistFileItemsNotFound                = PlatformErrorCodes(144)
+	PlatformErrorCodes_ContentPerforceInvalidRevisionError                       = PlatformErrorCodes(145)
+	PlatformErrorCodes_ContentUnloadedSaveResult                                 = PlatformErrorCodes(146)
+	PlatformErrorCodes_ContentPropertyInvalidNumber                              = PlatformErrorCodes(147)
+	PlatformErrorCodes_ContentPropertyInvalidUrl                                 = PlatformErrorCodes(148)
+	PlatformErrorCodes_ContentPropertyInvalidDate                                = PlatformErrorCodes(149)
+	PlatformErrorCodes_ContentPropertyInvalidSet                                 = PlatformErrorCodes(150)
+	PlatformErrorCodes_ContentPropertyCannotDeserialize                          = PlatformErrorCodes(151)
+	PlatformErrorCodes_ContentRegexValidationFailOnProperty                      = PlatformErrorCodes(152)
+	PlatformErrorCodes_ContentMaxLengthFailOnProperty                            = PlatformErrorCodes(153)
+	PlatformErrorCodes_ContentPropertyUnexpectedDeserializationError             = PlatformErrorCodes(154)
+	PlatformErrorCodes_ContentPropertyRequired                                   = PlatformErrorCodes(155)
+	PlatformErrorCodes_ContentCannotCreateFile                                   = PlatformErrorCodes(156)
+	PlatformErrorCodes_ContentInvalidMigrationFile                               = PlatformErrorCodes(157)
+	PlatformErrorCodes_ContentMigrationAlteringProcessedItem                     = PlatformErrorCodes(158)
+	PlatformErrorCodes_ContentPropertyDefinitionNotFound                         = PlatformErrorCodes(159)
+	PlatformErrorCodes_ContentReviewDataChanged                                  = PlatformErrorCodes(160)
+	PlatformErrorCodes_ContentRollbackRevisionNotInPackage                       = PlatformErrorCodes(161)
+	PlatformErrorCodes_ContentItemNotBasedOnLatestRevision                       = PlatformErrorCodes(162)
+	PlatformErrorCodes_ContentUnauthorized                                       = PlatformErrorCodes(163)
+	PlatformErrorCodes_ContentCannotCreateDeploymentPackage                      = PlatformErrorCodes(164)
+	PlatformErrorCodes_ContentUserNotFound                                       = PlatformErrorCodes(165)
+	PlatformErrorCodes_ContentLocalePermissionDenied                             = PlatformErrorCodes(166)
+	PlatformErrorCodes_ContentInvalidLinkToInternalEnvironment                   = PlatformErrorCodes(167)
+	PlatformErrorCodes_ContentInvalidBlacklistedContent                          = PlatformErrorCodes(168)
+	PlatformErrorCodes_ContentMacroMalformedNoContentId                          = PlatformErrorCodes(169)
+	PlatformErrorCodes_ContentMacroMalformedNoTemplateType                       = PlatformErrorCodes(170)
+	PlatformErrorCodes_ContentIllegalBNetMembershipId                            = PlatformErrorCodes(171)
+	PlatformErrorCodes_ContentLocaleDidNotMatchExpected                          = PlatformErrorCodes(172)
+	PlatformErrorCodes_ContentBabelCallFailed                                    = PlatformErrorCodes(173)
+	PlatformErrorCodes_ContentEnglishPostLiveForbidden                           = PlatformErrorCodes(174)
+	PlatformErrorCodes_ContentLocaleEditPermissionDenied                         = PlatformErrorCodes(175)
+	PlatformErrorCodes_ContentStackUnknownError                                  = PlatformErrorCodes(176)
+	PlatformErrorCodes_ContentStackNotFound                                      = PlatformErrorCodes(177)
+	PlatformErrorCodes_ContentStackRateLimited                                   = PlatformErrorCodes(178)
+	PlatformErrorCodes_ContentStackTimeout                                       = PlatformErrorCodes(179)
+	PlatformErrorCodes_ContentStackServiceError                                  = PlatformErrorCodes(180)
+	PlatformErrorCodes_ContentStackDeserializationFailure                        = PlatformErrorCodes(181)
+	PlatformErrorCodes_UserNonUniqueName                                         = PlatformErrorCodes(200)
+	PlatformErrorCodes_UserManualLinkingStepRequired                             = PlatformErrorCodes(201)
+	PlatformErrorCodes_UserCreateUnknownSqlResult                                = PlatformErrorCodes(202)
+	PlatformErrorCodes_UserCreateUnknownSqlException                             = PlatformErrorCodes(203)
+	PlatformErrorCodes_UserMalformedMembershipId                                 = PlatformErrorCodes(204)
+	PlatformErrorCodes_UserCannotFindRequestedUser                               = PlatformErrorCodes(205)
+	PlatformErrorCodes_UserCannotLoadAccountCredentialLinkInfo                   = PlatformErrorCodes(206)
+	PlatformErrorCodes_UserInvalidMobileAppType                                  = PlatformErrorCodes(207)
+	PlatformErrorCodes_UserMissingMobilePairingInfo                              = PlatformErrorCodes(208)
+	PlatformErrorCodes_UserCannotGenerateMobileKeyWhileUsingMobileCredential     = PlatformErrorCodes(209)
+	PlatformErrorCodes_UserGenerateMobileKeyExistingSlotCollision                = PlatformErrorCodes(210)
+	PlatformErrorCodes_UserDisplayNameMissingOrInvalid                           = PlatformErrorCodes(211)
+	PlatformErrorCodes_UserCannotLoadAccountProfileData                          = PlatformErrorCodes(212)
+	PlatformErrorCodes_UserCannotSaveUserProfileData                             = PlatformErrorCodes(213)
+	PlatformErrorCodes_UserEmailMissingOrInvalid                                 = PlatformErrorCodes(214)
+	PlatformErrorCodes_UserTermsOfUseRequired                                    = PlatformErrorCodes(215)
+	PlatformErrorCodes_UserCannotCreateNewAccountWhileLoggedIn                   = PlatformErrorCodes(216)
+	PlatformErrorCodes_UserCannotResolveCentralAccount                           = PlatformErrorCodes(217)
+	PlatformErrorCodes_UserInvalidAvatar                                         = PlatformErrorCodes(218)
+	PlatformErrorCodes_UserMissingCreatedUserResult                              = PlatformErrorCodes(219)
+	PlatformErrorCodes_UserCannotChangeUniqueNameYet                             = PlatformErrorCodes(220)
+	PlatformErrorCodes_UserCannotChangeDisplayNameYet                            = PlatformErrorCodes(221)
+	PlatformErrorCodes_UserCannotChangeEmail                                     = PlatformErrorCodes(222)
+	PlatformErrorCodes_UserUniqueNameMustStartWithLetter                         = PlatformErrorCodes(223)
+	PlatformErrorCodes_UserNoLinkedAccountsSupportFriendListings                 = PlatformErrorCodes(224)
+	PlatformErrorCodes_UserAcknowledgmentTableFull                               = PlatformErrorCodes(225)
+	PlatformErrorCodes_UserCreationDestinyMembershipRequired                     = PlatformErrorCodes(226)
+	PlatformErrorCodes_UserFriendsTokenNeedsRefresh                              = PlatformErrorCodes(227)
+	PlatformErrorCodes_UserEmailValidationUnknown                                = PlatformErrorCodes(228)
+	PlatformErrorCodes_UserEmailValidationLimit                                  = PlatformErrorCodes(229)
+	PlatformErrorCodes_TransactionEmailSendFailure                               = PlatformErrorCodes(230)
+	PlatformErrorCodes_MailHookPermissionFailure                                 = PlatformErrorCodes(231)
+	PlatformErrorCodes_MailServiceRateLimit                                      = PlatformErrorCodes(232)
+	PlatformErrorCodes_UserEmailMustBeVerified                                   = PlatformErrorCodes(233)
+	PlatformErrorCodes_UserMustAllowCustomerServiceEmails                        = PlatformErrorCodes(234)
+	PlatformErrorCodes_NonTransactionalEmailSendFailure                          = PlatformErrorCodes(235)
+	PlatformErrorCodes_UnknownErrorSettingGlobalDisplayName                      = PlatformErrorCodes(236)
+	PlatformErrorCodes_DuplicateGlobalDisplayName                                = PlatformErrorCodes(237)
+	PlatformErrorCodes_ErrorRunningNameValidationChecks                          = PlatformErrorCodes(238)
+	PlatformErrorCodes_ErrorDatabaseGlobalName                                   = PlatformErrorCodes(239)
+	PlatformErrorCodes_ErrorNoAvailableNameChanges                               = PlatformErrorCodes(240)
+	PlatformErrorCodes_ErrorNameAlreadySetToInput                                = PlatformErrorCodes(241)
+	PlatformErrorCodes_UserDisplayNameLessThanMinLength                          = PlatformErrorCodes(242)
+	PlatformErrorCodes_UserDisplayNameGreaterThanMaxLength                       = PlatformErrorCodes(243)
+	PlatformErrorCodes_UserDisplayNameContainsUnacceptableOrInvalidContent       = PlatformErrorCodes(244)
+	PlatformErrorCodes_EmailValidationOffline                                    = PlatformErrorCodes(245)
+	PlatformErrorCodes_EmailValidationFailOldCode                                = PlatformErrorCodes(246)
+	PlatformErrorCodes_EmailValidationFailBadLink                                = PlatformErrorCodes(247)
+	PlatformErrorCodes_EmailUnsubscribeFail                                      = PlatformErrorCodes(248)
+	PlatformErrorCodes_EmailUnsubscribeFailNew                                   = PlatformErrorCodes(249)
+	PlatformErrorCodes_MessagingUnknownError                                     = PlatformErrorCodes(300)
+	PlatformErrorCodes_MessagingSelfError                                        = PlatformErrorCodes(301)
+	PlatformErrorCodes_MessagingSendThrottle                                     = PlatformErrorCodes(302)
+	PlatformErrorCodes_MessagingNoBody                                           = PlatformErrorCodes(303)
+	PlatformErrorCodes_MessagingTooManyUsers                                     = PlatformErrorCodes(304)
+	PlatformErrorCodes_MessagingCanNotLeaveConversation                          = PlatformErrorCodes(305)
+	PlatformErrorCodes_MessagingUnableToSend                                     = PlatformErrorCodes(306)
+	PlatformErrorCodes_MessagingDeletedUserForbidden                             = PlatformErrorCodes(307)
+	PlatformErrorCodes_MessagingCannotDeleteExternalConversation                 = PlatformErrorCodes(308)
+	PlatformErrorCodes_MessagingGroupChatDisabled                                = PlatformErrorCodes(309)
+	PlatformErrorCodes_MessagingMustIncludeSelfInPrivateMessage                  = PlatformErrorCodes(310)
+	PlatformErrorCodes_MessagingSenderIsBanned                                   = PlatformErrorCodes(311)
+	PlatformErrorCodes_MessagingGroupOptionalChatExceededMaximum                 = PlatformErrorCodes(312)
+	PlatformErrorCodes_PrivateMessagingRequiresDestinyMembership                 = PlatformErrorCodes(313)
+	PlatformErrorCodes_MessagingSendDailyThrottle                                = PlatformErrorCodes(314)
+	PlatformErrorCodes_AddSurveyAnswersUnknownSqlException                       = PlatformErrorCodes(400)
+	PlatformErrorCodes_ForumBodyCannotBeEmpty                                    = PlatformErrorCodes(500)
+	PlatformErrorCodes_ForumSubjectCannotBeEmptyOnTopicPost                      = PlatformErrorCodes(501)
+	PlatformErrorCodes_ForumCannotLocateParentPost                               = PlatformErrorCodes(502)
+	PlatformErrorCodes_ForumThreadLockedForReplies                               = PlatformErrorCodes(503)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringCreatePost                     = PlatformErrorCodes(504)
+	PlatformErrorCodes_ForumUnknownTagCreationError                              = PlatformErrorCodes(505)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringTagItem                        = PlatformErrorCodes(506)
+	PlatformErrorCodes_ForumUnknownExceptionCreatePost                           = PlatformErrorCodes(507)
+	PlatformErrorCodes_ForumQuestionMustBeTopicPost                              = PlatformErrorCodes(508)
+	PlatformErrorCodes_ForumExceptionDuringTagSearch                             = PlatformErrorCodes(509)
+	PlatformErrorCodes_ForumExceptionDuringTopicRetrieval                        = PlatformErrorCodes(510)
+	PlatformErrorCodes_ForumAliasedTagError                                      = PlatformErrorCodes(511)
+	PlatformErrorCodes_ForumCannotLocateThread                                   = PlatformErrorCodes(512)
+	PlatformErrorCodes_ForumUnknownExceptionEditPost                             = PlatformErrorCodes(513)
+	PlatformErrorCodes_ForumCannotLocatePost                                     = PlatformErrorCodes(514)
+	PlatformErrorCodes_ForumUnknownExceptionGetOrCreateTags                      = PlatformErrorCodes(515)
+	PlatformErrorCodes_ForumEditPermissionDenied                                 = PlatformErrorCodes(516)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringTagIdRetrieval                 = PlatformErrorCodes(517)
+	PlatformErrorCodes_ForumCannotGetRating                                      = PlatformErrorCodes(518)
+	PlatformErrorCodes_ForumUnknownExceptionGetRating                            = PlatformErrorCodes(519)
+	PlatformErrorCodes_ForumRatingsAccessError                                   = PlatformErrorCodes(520)
+	PlatformErrorCodes_ForumRelatedPostAccessError                               = PlatformErrorCodes(521)
+	PlatformErrorCodes_ForumLatestReplyAccessError                               = PlatformErrorCodes(522)
+	PlatformErrorCodes_ForumUserStatusAccessError                                = PlatformErrorCodes(523)
+	PlatformErrorCodes_ForumAuthorAccessError                                    = PlatformErrorCodes(524)
+	PlatformErrorCodes_ForumGroupAccessError                                     = PlatformErrorCodes(525)
+	PlatformErrorCodes_ForumUrlExpectedButMissing                                = PlatformErrorCodes(526)
+	PlatformErrorCodes_ForumRepliesCannotBeEmpty                                 = PlatformErrorCodes(527)
+	PlatformErrorCodes_ForumRepliesCannotBeInDifferentGroups                     = PlatformErrorCodes(528)
+	PlatformErrorCodes_ForumSubTopicCannotBeCreatedAtThisThreadLevel             = PlatformErrorCodes(529)
+	PlatformErrorCodes_ForumCannotCreateContentTopic                             = PlatformErrorCodes(530)
+	PlatformErrorCodes_ForumTopicDoesNotExist                                    = PlatformErrorCodes(531)
+	PlatformErrorCodes_ForumContentCommentsNotAllowed                            = PlatformErrorCodes(532)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringEditPost                       = PlatformErrorCodes(533)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringGetPost                        = PlatformErrorCodes(534)
+	PlatformErrorCodes_ForumPostValidationBadUrl                                 = PlatformErrorCodes(535)
+	PlatformErrorCodes_ForumBodyTooLong                                          = PlatformErrorCodes(536)
+	PlatformErrorCodes_ForumSubjectTooLong                                       = PlatformErrorCodes(537)
+	PlatformErrorCodes_ForumAnnouncementNotAllowed                               = PlatformErrorCodes(538)
+	PlatformErrorCodes_ForumCannotShareOwnPost                                   = PlatformErrorCodes(539)
+	PlatformErrorCodes_ForumEditNoOp                                             = PlatformErrorCodes(540)
+	PlatformErrorCodes_ForumUnknownDatabaseErrorDuringGetPost                    = PlatformErrorCodes(541)
+	PlatformErrorCodes_ForumExceeedMaximumRowLimit                               = PlatformErrorCodes(542)
+	PlatformErrorCodes_ForumCannotSharePrivatePost                               = PlatformErrorCodes(543)
+	PlatformErrorCodes_ForumCannotCrossPostBetweenGroups                         = PlatformErrorCodes(544)
+	PlatformErrorCodes_ForumIncompatibleCategories                               = PlatformErrorCodes(555)
+	PlatformErrorCodes_ForumCannotUseTheseCategoriesOnNonTopicPost               = PlatformErrorCodes(556)
+	PlatformErrorCodes_ForumCanOnlyDeleteTopics                                  = PlatformErrorCodes(557)
+	PlatformErrorCodes_ForumDeleteSqlException                                   = PlatformErrorCodes(558)
+	PlatformErrorCodes_ForumDeleteSqlUnknownResult                               = PlatformErrorCodes(559)
+	PlatformErrorCodes_ForumTooManyTags                                          = PlatformErrorCodes(560)
+	PlatformErrorCodes_ForumCanOnlyRateTopics                                    = PlatformErrorCodes(561)
+	PlatformErrorCodes_ForumBannedPostsCannotBeEdited                            = PlatformErrorCodes(562)
+	PlatformErrorCodes_ForumThreadRootIsBanned                                   = PlatformErrorCodes(563)
+	PlatformErrorCodes_ForumCannotUseOfficialTagCategoryAsTag                    = PlatformErrorCodes(564)
+	PlatformErrorCodes_ForumAnswerCannotBeMadeOnCreatePost                       = PlatformErrorCodes(565)
+	PlatformErrorCodes_ForumAnswerCannotBeMadeOnEditPost                         = PlatformErrorCodes(566)
+	PlatformErrorCodes_ForumAnswerPostIdIsNotADirectReplyOfQuestion              = PlatformErrorCodes(567)
+	PlatformErrorCodes_ForumAnswerTopicIdIsNotAQuestion                          = PlatformErrorCodes(568)
+	PlatformErrorCodes_ForumUnknownExceptionDuringMarkAnswer                     = PlatformErrorCodes(569)
+	PlatformErrorCodes_ForumUnknownSqlResultDuringMarkAnswer                     = PlatformErrorCodes(570)
+	PlatformErrorCodes_ForumCannotRateYourOwnPosts                               = PlatformErrorCodes(571)
+	PlatformErrorCodes_ForumPollsMustBeTheFirstPostInTopic                       = PlatformErrorCodes(572)
+	PlatformErrorCodes_ForumInvalidPollInput                                     = PlatformErrorCodes(573)
+	PlatformErrorCodes_ForumGroupAdminEditNonMember                              = PlatformErrorCodes(574)
+	PlatformErrorCodes_ForumCannotEditModeratorEditedPost                        = PlatformErrorCodes(575)
+	PlatformErrorCodes_ForumRequiresDestinyMembership                            = PlatformErrorCodes(576)
+	PlatformErrorCodes_ForumUnexpectedError                                      = PlatformErrorCodes(577)
+	PlatformErrorCodes_ForumAgeLock                                              = PlatformErrorCodes(578)
+	PlatformErrorCodes_ForumMaxPages                                             = PlatformErrorCodes(579)
+	PlatformErrorCodes_ForumMaxPagesOldestFirst                                  = PlatformErrorCodes(580)
+	PlatformErrorCodes_ForumCannotApplyForumIdWithoutTags                        = PlatformErrorCodes(581)
+	PlatformErrorCodes_ForumCannotApplyForumIdToNonTopics                        = PlatformErrorCodes(582)
+	PlatformErrorCodes_ForumCannotDownvoteCommunityCreations                     = PlatformErrorCodes(583)
+	PlatformErrorCodes_ForumTopicsMustHaveOfficialCategory                       = PlatformErrorCodes(584)
+	PlatformErrorCodes_ForumRecruitmentTopicMalformed                            = PlatformErrorCodes(585)
+	PlatformErrorCodes_ForumRecruitmentTopicNotFound                             = PlatformErrorCodes(586)
+	PlatformErrorCodes_ForumRecruitmentTopicNoSlotsRemaining                     = PlatformErrorCodes(587)
+	PlatformErrorCodes_ForumRecruitmentTopicKickBan                              = PlatformErrorCodes(588)
+	PlatformErrorCodes_ForumRecruitmentTopicRequirementsNotMet                   = PlatformErrorCodes(589)
+	PlatformErrorCodes_ForumRecruitmentTopicNoPlayers                            = PlatformErrorCodes(590)
+	PlatformErrorCodes_ForumRecruitmentApproveFailMessageBan                     = PlatformErrorCodes(591)
+	PlatformErrorCodes_ForumRecruitmentGlobalBan                                 = PlatformErrorCodes(592)
+	PlatformErrorCodes_ForumUserBannedFromThisTopic                              = PlatformErrorCodes(593)
+	PlatformErrorCodes_ForumRecruitmentFireteamMembersOnly                       = PlatformErrorCodes(594)
+	PlatformErrorCodes_ForumRequiresDestiny2Progress                             = PlatformErrorCodes(595)
+	PlatformErrorCodes_ForumRequiresDestiny2EntitlementPurchase                  = PlatformErrorCodes(596)
+	PlatformErrorCodes_GroupMembershipApplicationAlreadyResolved                 = PlatformErrorCodes(601)
+	PlatformErrorCodes_GroupMembershipAlreadyApplied                             = PlatformErrorCodes(602)
+	PlatformErrorCodes_GroupMembershipInsufficientPrivileges                     = PlatformErrorCodes(603)
+	PlatformErrorCodes_GroupIdNotReturnedFromCreation                            = PlatformErrorCodes(604)
+	PlatformErrorCodes_GroupSearchInvalidParameters                              = PlatformErrorCodes(605)
+	PlatformErrorCodes_GroupMembershipPendingApplicationNotFound                 = PlatformErrorCodes(606)
+	PlatformErrorCodes_GroupInvalidId                                            = PlatformErrorCodes(607)
+	PlatformErrorCodes_GroupInvalidMembershipId                                  = PlatformErrorCodes(608)
+	PlatformErrorCodes_GroupInvalidMembershipType                                = PlatformErrorCodes(609)
+	PlatformErrorCodes_GroupMissingTags                                          = PlatformErrorCodes(610)
+	PlatformErrorCodes_GroupMembershipNotFound                                   = PlatformErrorCodes(611)
+	PlatformErrorCodes_GroupInvalidRating                                        = PlatformErrorCodes(612)
+	PlatformErrorCodes_GroupUserFollowingAccessError                             = PlatformErrorCodes(613)
+	PlatformErrorCodes_GroupUserMembershipAccessError                            = PlatformErrorCodes(614)
+	PlatformErrorCodes_GroupCreatorAccessError                                   = PlatformErrorCodes(615)
+	PlatformErrorCodes_GroupAdminAccessError                                     = PlatformErrorCodes(616)
+	PlatformErrorCodes_GroupPrivatePostNotViewable                               = PlatformErrorCodes(617)
+	PlatformErrorCodes_GroupMembershipNotLoggedIn                                = PlatformErrorCodes(618)
+	PlatformErrorCodes_GroupNotDeleted                                           = PlatformErrorCodes(619)
+	PlatformErrorCodes_GroupUnknownErrorUndeletingGroup                          = PlatformErrorCodes(620)
+	PlatformErrorCodes_GroupDeleted                                              = PlatformErrorCodes(621)
+	PlatformErrorCodes_GroupNotFound                                             = PlatformErrorCodes(622)
+	PlatformErrorCodes_GroupMemberBanned                                         = PlatformErrorCodes(623)
+	PlatformErrorCodes_GroupMembershipClosed                                     = PlatformErrorCodes(624)
+	PlatformErrorCodes_GroupPrivatePostOverrideError                             = PlatformErrorCodes(625)
+	PlatformErrorCodes_GroupNameTaken                                            = PlatformErrorCodes(626)
+	PlatformErrorCodes_GroupDeletionGracePeriodExpired                           = PlatformErrorCodes(627)
+	PlatformErrorCodes_GroupCannotCheckBanStatus                                 = PlatformErrorCodes(628)
+	PlatformErrorCodes_GroupMaximumMembershipCountReached                        = PlatformErrorCodes(629)
+	PlatformErrorCodes_NoDestinyAccountForClanPlatform                           = PlatformErrorCodes(630)
+	PlatformErrorCodes_AlreadyRequestingMembershipForClanPlatform                = PlatformErrorCodes(631)
+	PlatformErrorCodes_AlreadyClanMemberOnPlatform                               = PlatformErrorCodes(632)
+	PlatformErrorCodes_GroupJoinedCannotSetClanName                              = PlatformErrorCodes(633)
+	PlatformErrorCodes_GroupLeftCannotClearClanName                              = PlatformErrorCodes(634)
+	PlatformErrorCodes_GroupRelationshipRequestPending                           = PlatformErrorCodes(635)
+	PlatformErrorCodes_GroupRelationshipRequestBlocked                           = PlatformErrorCodes(636)
+	PlatformErrorCodes_GroupRelationshipRequestNotFound                          = PlatformErrorCodes(637)
+	PlatformErrorCodes_GroupRelationshipBlockNotFound                            = PlatformErrorCodes(638)
+	PlatformErrorCodes_GroupRelationshipNotFound                                 = PlatformErrorCodes(639)
+	PlatformErrorCodes_GroupAlreadyAllied                                        = PlatformErrorCodes(641)
+	PlatformErrorCodes_GroupAlreadyMember                                        = PlatformErrorCodes(642)
+	PlatformErrorCodes_GroupRelationshipAlreadyExists                            = PlatformErrorCodes(643)
+	PlatformErrorCodes_InvalidGroupTypesForRelationshipRequest                   = PlatformErrorCodes(644)
+	PlatformErrorCodes_GroupAtMaximumAlliances                                   = PlatformErrorCodes(646)
+	PlatformErrorCodes_GroupCannotSetClanOnlySettings                            = PlatformErrorCodes(647)
+	PlatformErrorCodes_ClanCannotSetTwoDefaultPostTypes                          = PlatformErrorCodes(648)
+	PlatformErrorCodes_GroupMemberInvalidMemberType                              = PlatformErrorCodes(649)
+	PlatformErrorCodes_GroupInvalidPlatformType                                  = PlatformErrorCodes(650)
+	PlatformErrorCodes_GroupMemberInvalidSort                                    = PlatformErrorCodes(651)
+	PlatformErrorCodes_GroupInvalidResolveState                                  = PlatformErrorCodes(652)
+	PlatformErrorCodes_ClanAlreadyEnabledForPlatform                             = PlatformErrorCodes(653)
+	PlatformErrorCodes_ClanNotEnabledForPlatform                                 = PlatformErrorCodes(654)
+	PlatformErrorCodes_ClanEnabledButCouldNotJoinNoAccount                       = PlatformErrorCodes(655)
+	PlatformErrorCodes_ClanEnabledButCouldNotJoinAlreadyMember                   = PlatformErrorCodes(656)
+	PlatformErrorCodes_ClanCannotJoinNoCredential                                = PlatformErrorCodes(657)
+	PlatformErrorCodes_NoClanMembershipForPlatform                               = PlatformErrorCodes(658)
+	PlatformErrorCodes_GroupToGroupFollowLimitReached                            = PlatformErrorCodes(659)
+	PlatformErrorCodes_ChildGroupAlreadyInAlliance                               = PlatformErrorCodes(660)
+	PlatformErrorCodes_OwnerGroupAlreadyInAlliance                               = PlatformErrorCodes(661)
+	PlatformErrorCodes_AllianceOwnerCannotJoinAlliance                           = PlatformErrorCodes(662)
+	PlatformErrorCodes_GroupNotInAlliance                                        = PlatformErrorCodes(663)
+	PlatformErrorCodes_ChildGroupCannotInviteToAlliance                          = PlatformErrorCodes(664)
+	PlatformErrorCodes_GroupToGroupAlreadyFollowed                               = PlatformErrorCodes(665)
+	PlatformErrorCodes_GroupToGroupNotFollowing                                  = PlatformErrorCodes(666)
+	PlatformErrorCodes_ClanMaximumMembershipReached                              = PlatformErrorCodes(667)
+	PlatformErrorCodes_ClanNameNotValid                                          = PlatformErrorCodes(668)
+	PlatformErrorCodes_ClanNameNotValidError                                     = PlatformErrorCodes(669)
+	PlatformErrorCodes_AllianceOwnerNotDefined                                   = PlatformErrorCodes(670)
+	PlatformErrorCodes_AllianceChildNotDefined                                   = PlatformErrorCodes(671)
+	PlatformErrorCodes_ClanCultureIllegalCharacters                              = PlatformErrorCodes(672)
+	PlatformErrorCodes_ClanTagIllegalCharacters                                  = PlatformErrorCodes(673)
+	PlatformErrorCodes_ClanRequiresInvitation                                    = PlatformErrorCodes(674)
+	PlatformErrorCodes_ClanMembershipClosed                                      = PlatformErrorCodes(675)
+	PlatformErrorCodes_ClanInviteAlreadyMember                                   = PlatformErrorCodes(676)
+	PlatformErrorCodes_GroupInviteAlreadyMember                                  = PlatformErrorCodes(677)
+	PlatformErrorCodes_GroupJoinApprovalRequired                                 = PlatformErrorCodes(678)
+	PlatformErrorCodes_ClanTagRequired                                           = PlatformErrorCodes(679)
+	PlatformErrorCodes_GroupNameCannotStartOrEndWithWhiteSpace                   = PlatformErrorCodes(680)
+	PlatformErrorCodes_ClanCallsignCannotStartOrEndWithWhiteSpace                = PlatformErrorCodes(681)
+	PlatformErrorCodes_ClanMigrationFailed                                       = PlatformErrorCodes(682)
+	PlatformErrorCodes_ClanNotEnabledAlreadyMemberOfAnotherClan                  = PlatformErrorCodes(683)
+	PlatformErrorCodes_GroupModerationNotPermittedOnNonMembers                   = PlatformErrorCodes(684)
+	PlatformErrorCodes_ClanCreationInWorldServerFailed                           = PlatformErrorCodes(685)
+	PlatformErrorCodes_ClanNotFound                                              = PlatformErrorCodes(686)
+	PlatformErrorCodes_ClanMembershipLevelDoesNotPermitThatAction                = PlatformErrorCodes(687)
+	PlatformErrorCodes_ClanMemberNotFound                                        = PlatformErrorCodes(688)
+	PlatformErrorCodes_ClanMissingMembershipApprovers                            = PlatformErrorCodes(689)
+	PlatformErrorCodes_ClanInWrongStateForRequestedAction                        = PlatformErrorCodes(690)
+	PlatformErrorCodes_ClanNameAlreadyUsed                                       = PlatformErrorCodes(691)
+	PlatformErrorCodes_ClanTooFewMembers                                         = PlatformErrorCodes(692)
+	PlatformErrorCodes_ClanInfoCannotBeWhitespace                                = PlatformErrorCodes(693)
+	PlatformErrorCodes_GroupCultureThrottle                                      = PlatformErrorCodes(694)
+	PlatformErrorCodes_ClanTargetDisallowsInvites                                = PlatformErrorCodes(695)
+	PlatformErrorCodes_ClanInvalidOperation                                      = PlatformErrorCodes(696)
+	PlatformErrorCodes_ClanFounderCannotLeaveWithoutAbdication                   = PlatformErrorCodes(697)
+	PlatformErrorCodes_ClanNameReserved                                          = PlatformErrorCodes(698)
+	PlatformErrorCodes_ClanApplicantInClanSoNowInvited                           = PlatformErrorCodes(699)
+	PlatformErrorCodes_ActivitiesUnknownException                                = PlatformErrorCodes(701)
+	PlatformErrorCodes_ActivitiesParameterNull                                   = PlatformErrorCodes(702)
+	PlatformErrorCodes_ActivityCountsDiabled                                     = PlatformErrorCodes(703)
+	PlatformErrorCodes_ActivitySearchInvalidParameters                           = PlatformErrorCodes(704)
+	PlatformErrorCodes_ActivityPermissionDenied                                  = PlatformErrorCodes(705)
+	PlatformErrorCodes_ShareAlreadyShared                                        = PlatformErrorCodes(706)
+	PlatformErrorCodes_ActivityLoggingDisabled                                   = PlatformErrorCodes(707)
+	PlatformErrorCodes_ClanRequiresExistingDestinyAccount                        = PlatformErrorCodes(750)
+	PlatformErrorCodes_ClanNameRestricted                                        = PlatformErrorCodes(751)
+	PlatformErrorCodes_ClanCreationBan                                           = PlatformErrorCodes(752)
+	PlatformErrorCodes_ClanCreationTenureRequirementsNotMet                      = PlatformErrorCodes(753)
+	PlatformErrorCodes_ClanFieldContainsReservedTerms                            = PlatformErrorCodes(754)
+	PlatformErrorCodes_ClanFieldContainsInappropriateContent                     = PlatformErrorCodes(755)
+	PlatformErrorCodes_ItemAlreadyFollowed                                       = PlatformErrorCodes(801)
+	PlatformErrorCodes_ItemNotFollowed                                           = PlatformErrorCodes(802)
+	PlatformErrorCodes_CannotFollowSelf                                          = PlatformErrorCodes(803)
+	PlatformErrorCodes_GroupFollowLimitExceeded                                  = PlatformErrorCodes(804)
+	PlatformErrorCodes_TagFollowLimitExceeded                                    = PlatformErrorCodes(805)
+	PlatformErrorCodes_UserFollowLimitExceeded                                   = PlatformErrorCodes(806)
+	PlatformErrorCodes_FollowUnsupportedEntityType                               = PlatformErrorCodes(807)
+	PlatformErrorCodes_NoValidTagsInList                                         = PlatformErrorCodes(900)
+	PlatformErrorCodes_BelowMinimumSuggestionLength                              = PlatformErrorCodes(901)
+	PlatformErrorCodes_CannotGetSuggestionsOnMultipleTagsSimultaneously          = PlatformErrorCodes(902)
+	PlatformErrorCodes_NotAValidPartialTag                                       = PlatformErrorCodes(903)
+	PlatformErrorCodes_TagSuggestionsUnknownSqlResult                            = PlatformErrorCodes(904)
+	PlatformErrorCodes_TagsUnableToLoadPopularTagsFromDatabase                   = PlatformErrorCodes(905)
+	PlatformErrorCodes_TagInvalid                                                = PlatformErrorCodes(906)
+	PlatformErrorCodes_TagNotFound                                               = PlatformErrorCodes(907)
+	PlatformErrorCodes_SingleTagExpected                                         = PlatformErrorCodes(908)
+	PlatformErrorCodes_TagsExceededMaximumPerItem                                = PlatformErrorCodes(909)
+	PlatformErrorCodes_IgnoreInvalidParameters                                   = PlatformErrorCodes(1000)
+	PlatformErrorCodes_IgnoreSqlException                                        = PlatformErrorCodes(1001)
+	PlatformErrorCodes_IgnoreErrorRetrievingGroupPermissions                     = PlatformErrorCodes(1002)
+	PlatformErrorCodes_IgnoreErrorInsufficientPermission                         = PlatformErrorCodes(1003)
+	PlatformErrorCodes_IgnoreErrorRetrievingItem                                 = PlatformErrorCodes(1004)
+	PlatformErrorCodes_IgnoreCannotIgnoreSelf                                    = PlatformErrorCodes(1005)
+	PlatformErrorCodes_IgnoreIllegalType                                         = PlatformErrorCodes(1006)
+	PlatformErrorCodes_IgnoreNotFound                                            = PlatformErrorCodes(1007)
+	PlatformErrorCodes_IgnoreUserGloballyIgnored                                 = PlatformErrorCodes(1008)
+	PlatformErrorCodes_IgnoreUserIgnored                                         = PlatformErrorCodes(1009)
+	PlatformErrorCodes_TargetUserIgnored                                         = PlatformErrorCodes(1010)
+	PlatformErrorCodes_NotificationSettingInvalid                                = PlatformErrorCodes(1100)
+	PlatformErrorCodes_PsnApiExpiredAccessToken                                  = PlatformErrorCodes(1204)
+	PlatformErrorCodes_PSNExForbidden                                            = PlatformErrorCodes(1205)
+	PlatformErrorCodes_PSNExSystemDisabled                                       = PlatformErrorCodes(1218)
+	PlatformErrorCodes_PsnApiErrorCodeUnknown                                    = PlatformErrorCodes(1223)
+	PlatformErrorCodes_PsnApiErrorWebException                                   = PlatformErrorCodes(1224)
+	PlatformErrorCodes_PsnApiBadRequest                                          = PlatformErrorCodes(1225)
+	PlatformErrorCodes_PsnApiAccessTokenRequired                                 = PlatformErrorCodes(1226)
+	PlatformErrorCodes_PsnApiInvalidAccessToken                                  = PlatformErrorCodes(1227)
+	PlatformErrorCodes_PsnApiBannedUser                                          = PlatformErrorCodes(1229)
+	PlatformErrorCodes_PsnApiAccountUpgradeRequired                              = PlatformErrorCodes(1230)
+	PlatformErrorCodes_PsnApiServiceTemporarilyUnavailable                       = PlatformErrorCodes(1231)
+	PlatformErrorCodes_PsnApiServerBusy                                          = PlatformErrorCodes(1232)
+	PlatformErrorCodes_PsnApiUnderMaintenance                                    = PlatformErrorCodes(1233)
+	PlatformErrorCodes_PsnApiProfileUserNotFound                                 = PlatformErrorCodes(1234)
+	PlatformErrorCodes_PsnApiProfilePrivacyRestriction                           = PlatformErrorCodes(1235)
+	PlatformErrorCodes_PsnApiProfileUnderMaintenance                             = PlatformErrorCodes(1236)
+	PlatformErrorCodes_PsnApiAccountAttributeMissing                             = PlatformErrorCodes(1237)
+	PlatformErrorCodes_PsnApiNoPermission                                        = PlatformErrorCodes(1238)
+	PlatformErrorCodes_PsnApiTargetUserBlocked                                   = PlatformErrorCodes(1239)
+	PlatformErrorCodes_PsnApiJwksMissing                                         = PlatformErrorCodes(1240)
+	PlatformErrorCodes_PsnApiJwtMalformedHeader                                  = PlatformErrorCodes(1241)
+	PlatformErrorCodes_PsnApiJwtMalformedPayload                                 = PlatformErrorCodes(1242)
+	PlatformErrorCodes_XblExSystemDisabled                                       = PlatformErrorCodes(1300)
+	PlatformErrorCodes_XblExUnknownError                                         = PlatformErrorCodes(1301)
+	PlatformErrorCodes_XblApiErrorWebException                                   = PlatformErrorCodes(1302)
+	PlatformErrorCodes_XblStsTokenInvalid                                        = PlatformErrorCodes(1303)
+	PlatformErrorCodes_XblStsMissingToken                                        = PlatformErrorCodes(1304)
+	PlatformErrorCodes_XblStsExpiredToken                                        = PlatformErrorCodes(1305)
+	PlatformErrorCodes_XblAccessToTheSandboxDenied                               = PlatformErrorCodes(1306)
+	PlatformErrorCodes_XblMsaResponseMissing                                     = PlatformErrorCodes(1307)
+	PlatformErrorCodes_XblMsaAccessTokenExpired                                  = PlatformErrorCodes(1308)
+	PlatformErrorCodes_XblMsaInvalidRequest                                      = PlatformErrorCodes(1309)
+	PlatformErrorCodes_XblMsaFriendsRequireSignIn                                = PlatformErrorCodes(1310)
+	PlatformErrorCodes_XblUserActionRequired                                     = PlatformErrorCodes(1311)
+	PlatformErrorCodes_XblParentalControls                                       = PlatformErrorCodes(1312)
+	PlatformErrorCodes_XblDeveloperAccount                                       = PlatformErrorCodes(1313)
+	PlatformErrorCodes_XblUserTokenExpired                                       = PlatformErrorCodes(1314)
+	PlatformErrorCodes_XblUserTokenInvalid                                       = PlatformErrorCodes(1315)
+	PlatformErrorCodes_XblOffline                                                = PlatformErrorCodes(1316)
+	PlatformErrorCodes_XblUnknownErrorCode                                       = PlatformErrorCodes(1317)
+	PlatformErrorCodes_XblMsaInvalidGrant                                        = PlatformErrorCodes(1318)
+	PlatformErrorCodes_ReportNotYetResolved                                      = PlatformErrorCodes(1400)
+	PlatformErrorCodes_ReportOverturnDoesNotChangeDecision                       = PlatformErrorCodes(1401)
+	PlatformErrorCodes_ReportNotFound                                            = PlatformErrorCodes(1402)
+	PlatformErrorCodes_ReportAlreadyReported                                     = PlatformErrorCodes(1403)
+	PlatformErrorCodes_ReportInvalidResolution                                   = PlatformErrorCodes(1404)
+	PlatformErrorCodes_ReportNotAssignedToYou                                    = PlatformErrorCodes(1405)
+	PlatformErrorCodes_LegacyGameStatsSystemDisabled                             = PlatformErrorCodes(1500)
+	PlatformErrorCodes_LegacyGameStatsUnknownError                               = PlatformErrorCodes(1501)
+	PlatformErrorCodes_LegacyGameStatsMalformedSneakerNetCode                    = PlatformErrorCodes(1502)
+	PlatformErrorCodes_DestinyAccountAcquisitionFailure                          = PlatformErrorCodes(1600)
+	PlatformErrorCodes_DestinyAccountNotFound                                    = PlatformErrorCodes(1601)
+	PlatformErrorCodes_DestinyBuildStatsDatabaseError                            = PlatformErrorCodes(1602)
+	PlatformErrorCodes_DestinyCharacterStatsDatabaseError                        = PlatformErrorCodes(1603)
+	PlatformErrorCodes_DestinyPvPStatsDatabaseError                              = PlatformErrorCodes(1604)
+	PlatformErrorCodes_DestinyPvEStatsDatabaseError                              = PlatformErrorCodes(1605)
+	PlatformErrorCodes_DestinyGrimoireStatsDatabaseError                         = PlatformErrorCodes(1606)
+	PlatformErrorCodes_DestinyStatsParameterMembershipTypeParseError             = PlatformErrorCodes(1607)
+	PlatformErrorCodes_DestinyStatsParameterMembershipIdParseError               = PlatformErrorCodes(1608)
+	PlatformErrorCodes_DestinyStatsParameterRangeParseError                      = PlatformErrorCodes(1609)
+	PlatformErrorCodes_DestinyStringItemHashNotFound                             = PlatformErrorCodes(1610)
+	PlatformErrorCodes_DestinyStringSetNotFound                                  = PlatformErrorCodes(1611)
+	PlatformErrorCodes_DestinyContentLookupNotFoundForKey                        = PlatformErrorCodes(1612)
+	PlatformErrorCodes_DestinyContentItemNotFound                                = PlatformErrorCodes(1613)
+	PlatformErrorCodes_DestinyContentSectionNotFound                             = PlatformErrorCodes(1614)
+	PlatformErrorCodes_DestinyContentPropertyNotFound                            = PlatformErrorCodes(1615)
+	PlatformErrorCodes_DestinyContentConfigNotFound                              = PlatformErrorCodes(1616)
+	PlatformErrorCodes_DestinyContentPropertyBucketValueNotFound                 = PlatformErrorCodes(1617)
+	PlatformErrorCodes_DestinyUnexpectedError                                    = PlatformErrorCodes(1618)
+	PlatformErrorCodes_DestinyInvalidAction                                      = PlatformErrorCodes(1619)
+	PlatformErrorCodes_DestinyCharacterNotFound                                  = PlatformErrorCodes(1620)
+	PlatformErrorCodes_DestinyInvalidFlag                                        = PlatformErrorCodes(1621)
+	PlatformErrorCodes_DestinyInvalidRequest                                     = PlatformErrorCodes(1622)
+	PlatformErrorCodes_DestinyItemNotFound                                       = PlatformErrorCodes(1623)
+	PlatformErrorCodes_DestinyInvalidCustomizationChoices                        = PlatformErrorCodes(1624)
+	PlatformErrorCodes_DestinyVendorItemNotFound                                 = PlatformErrorCodes(1625)
+	PlatformErrorCodes_DestinyInternalError                                      = PlatformErrorCodes(1626)
+	PlatformErrorCodes_DestinyVendorNotFound                                     = PlatformErrorCodes(1627)
+	PlatformErrorCodes_DestinyRecentActivitiesDatabaseError                      = PlatformErrorCodes(1628)
+	PlatformErrorCodes_DestinyItemBucketNotFound                                 = PlatformErrorCodes(1629)
+	PlatformErrorCodes_DestinyInvalidMembershipType                              = PlatformErrorCodes(1630)
+	PlatformErrorCodes_DestinyVersionIncompatibility                             = PlatformErrorCodes(1631)
+	PlatformErrorCodes_DestinyItemAlreadyInInventory                             = PlatformErrorCodes(1632)
+	PlatformErrorCodes_DestinyBucketNotFound                                     = PlatformErrorCodes(1633)
+	PlatformErrorCodes_DestinyCharacterNotInTower                                = PlatformErrorCodes(1634)
+	PlatformErrorCodes_DestinyCharacterNotLoggedIn                               = PlatformErrorCodes(1635)
+	PlatformErrorCodes_DestinyDefinitionsNotLoaded                               = PlatformErrorCodes(1636)
+	PlatformErrorCodes_DestinyInventoryFull                                      = PlatformErrorCodes(1637)
+	PlatformErrorCodes_DestinyItemFailedLevelCheck                               = PlatformErrorCodes(1638)
+	PlatformErrorCodes_DestinyItemFailedUnlockCheck                              = PlatformErrorCodes(1639)
+	PlatformErrorCodes_DestinyItemUnequippable                                   = PlatformErrorCodes(1640)
+	PlatformErrorCodes_DestinyItemUniqueEquipRestricted                          = PlatformErrorCodes(1641)
+	PlatformErrorCodes_DestinyNoRoomInDestination                                = PlatformErrorCodes(1642)
+	PlatformErrorCodes_DestinyServiceFailure                                     = PlatformErrorCodes(1643)
+	PlatformErrorCodes_DestinyServiceRetired                                     = PlatformErrorCodes(1644)
+	PlatformErrorCodes_DestinyTransferFailed                                     = PlatformErrorCodes(1645)
+	PlatformErrorCodes_DestinyTransferNotFoundForSourceBucket                    = PlatformErrorCodes(1646)
+	PlatformErrorCodes_DestinyUnexpectedResultInVendorTransferCheck              = PlatformErrorCodes(1647)
+	PlatformErrorCodes_DestinyUniquenessViolation                                = PlatformErrorCodes(1648)
+	PlatformErrorCodes_DestinyErrorDeserializationFailure                        = PlatformErrorCodes(1649)
+	PlatformErrorCodes_DestinyValidAccountTicketRequired                         = PlatformErrorCodes(1650)
+	PlatformErrorCodes_DestinyShardRelayClientTimeout                            = PlatformErrorCodes(1651)
+	PlatformErrorCodes_DestinyShardRelayProxyTimeout                             = PlatformErrorCodes(1652)
+	PlatformErrorCodes_DestinyPGCRNotFound                                       = PlatformErrorCodes(1653)
+	PlatformErrorCodes_DestinyAccountMustBeOffline                               = PlatformErrorCodes(1654)
+	PlatformErrorCodes_DestinyCanOnlyEquipInGame                                 = PlatformErrorCodes(1655)
+	PlatformErrorCodes_DestinyCannotPerformActionOnEquippedItem                  = PlatformErrorCodes(1656)
+	PlatformErrorCodes_DestinyQuestAlreadyCompleted                              = PlatformErrorCodes(1657)
+	PlatformErrorCodes_DestinyQuestAlreadyTracked                                = PlatformErrorCodes(1658)
+	PlatformErrorCodes_DestinyTrackableQuestsFull                                = PlatformErrorCodes(1659)
+	PlatformErrorCodes_DestinyItemNotTransferrable                               = PlatformErrorCodes(1660)
+	PlatformErrorCodes_DestinyVendorPurchaseNotAllowed                           = PlatformErrorCodes(1661)
+	PlatformErrorCodes_DestinyContentVersionMismatch                             = PlatformErrorCodes(1662)
+	PlatformErrorCodes_DestinyItemActionForbidden                                = PlatformErrorCodes(1663)
+	PlatformErrorCodes_DestinyRefundInvalid                                      = PlatformErrorCodes(1664)
+	PlatformErrorCodes_DestinyPrivacyRestriction                                 = PlatformErrorCodes(1665)
+	PlatformErrorCodes_DestinyActionInsufficientPrivileges                       = PlatformErrorCodes(1666)
+	PlatformErrorCodes_DestinyInvalidClaimException                              = PlatformErrorCodes(1667)
+	PlatformErrorCodes_DestinyLegacyPlatformRestricted                           = PlatformErrorCodes(1668)
+	PlatformErrorCodes_DestinyLegacyPlatformInUse                                = PlatformErrorCodes(1669)
+	PlatformErrorCodes_DestinyLegacyPlatformInaccessible                         = PlatformErrorCodes(1670)
+	PlatformErrorCodes_DestinyCannotPerformActionAtThisLocation                  = PlatformErrorCodes(1671)
+	PlatformErrorCodes_DestinyThrottledByGameServer                              = PlatformErrorCodes(1672)
+	PlatformErrorCodes_DestinyItemNotTransferrableHasSideEffects                 = PlatformErrorCodes(1673)
+	PlatformErrorCodes_DestinyItemLocked                                         = PlatformErrorCodes(1674)
+	PlatformErrorCodes_DestinyCannotAffordMaterialRequirements                   = PlatformErrorCodes(1675)
+	PlatformErrorCodes_DestinyFailedPlugInsertionRules                           = PlatformErrorCodes(1676)
+	PlatformErrorCodes_DestinySocketNotFound                                     = PlatformErrorCodes(1677)
+	PlatformErrorCodes_DestinySocketActionNotAllowed                             = PlatformErrorCodes(1678)
+	PlatformErrorCodes_DestinySocketAlreadyHasPlug                               = PlatformErrorCodes(1679)
+	PlatformErrorCodes_DestinyPlugItemNotAvailable                               = PlatformErrorCodes(1680)
+	PlatformErrorCodes_DestinyCharacterLoggedInNotAllowed                        = PlatformErrorCodes(1681)
+	PlatformErrorCodes_DestinyPublicAccountNotAccessible                         = PlatformErrorCodes(1682)
+	PlatformErrorCodes_DestinyClaimsItemAlreadyClaimed                           = PlatformErrorCodes(1683)
+	PlatformErrorCodes_DestinyClaimsNoInventorySpace                             = PlatformErrorCodes(1684)
+	PlatformErrorCodes_DestinyClaimsRequiredLevelNotMet                          = PlatformErrorCodes(1685)
+	PlatformErrorCodes_DestinyClaimsInvalidState                                 = PlatformErrorCodes(1686)
+	PlatformErrorCodes_DestinyNotEnoughRoomForMultipleRewards                    = PlatformErrorCodes(1687)
+	PlatformErrorCodes_DestinyDirectBabelClientTimeout                           = PlatformErrorCodes(1688)
+	PlatformErrorCodes_FbInvalidRequest                                          = PlatformErrorCodes(1800)
+	PlatformErrorCodes_FbRedirectMismatch                                        = PlatformErrorCodes(1801)
+	PlatformErrorCodes_FbAccessDenied                                            = PlatformErrorCodes(1802)
+	PlatformErrorCodes_FbUnsupportedResponseType                                 = PlatformErrorCodes(1803)
+	PlatformErrorCodes_FbInvalidScope                                            = PlatformErrorCodes(1804)
+	PlatformErrorCodes_FbUnsupportedGrantType                                    = PlatformErrorCodes(1805)
+	PlatformErrorCodes_FbInvalidGrant                                            = PlatformErrorCodes(1806)
+	PlatformErrorCodes_InvitationExpired                                         = PlatformErrorCodes(1900)
+	PlatformErrorCodes_InvitationUnknownType                                     = PlatformErrorCodes(1901)
+	PlatformErrorCodes_InvitationInvalidResponseStatus                           = PlatformErrorCodes(1902)
+	PlatformErrorCodes_InvitationInvalidType                                     = PlatformErrorCodes(1903)
+	PlatformErrorCodes_InvitationAlreadyPending                                  = PlatformErrorCodes(1904)
+	PlatformErrorCodes_InvitationInsufficientPermission                          = PlatformErrorCodes(1905)
+	PlatformErrorCodes_InvitationInvalidCode                                     = PlatformErrorCodes(1906)
+	PlatformErrorCodes_InvitationInvalidTargetState                              = PlatformErrorCodes(1907)
+	PlatformErrorCodes_InvitationCannotBeReactivated                             = PlatformErrorCodes(1908)
+	PlatformErrorCodes_InvitationNoRecipients                                    = PlatformErrorCodes(1910)
+	PlatformErrorCodes_InvitationGroupCannotSendToSelf                           = PlatformErrorCodes(1911)
+	PlatformErrorCodes_InvitationTooManyRecipients                               = PlatformErrorCodes(1912)
+	PlatformErrorCodes_InvitationInvalid                                         = PlatformErrorCodes(1913)
+	PlatformErrorCodes_InvitationNotFound                                        = PlatformErrorCodes(1914)
+	PlatformErrorCodes_TokenInvalid                                              = PlatformErrorCodes(2000)
+	PlatformErrorCodes_TokenBadFormat                                            = PlatformErrorCodes(2001)
+	PlatformErrorCodes_TokenAlreadyClaimed                                       = PlatformErrorCodes(2002)
+	PlatformErrorCodes_TokenAlreadyClaimedSelf                                   = PlatformErrorCodes(2003)
+	PlatformErrorCodes_TokenThrottling                                           = PlatformErrorCodes(2004)
+	PlatformErrorCodes_TokenUnknownRedemptionFailure                             = PlatformErrorCodes(2005)
+	PlatformErrorCodes_TokenPurchaseClaimFailedAfterTokenClaimed                 = PlatformErrorCodes(2006)
+	PlatformErrorCodes_TokenUserAlreadyOwnsOffer                                 = PlatformErrorCodes(2007)
+	PlatformErrorCodes_TokenInvalidOfferKey                                      = PlatformErrorCodes(2008)
+	PlatformErrorCodes_TokenEmailNotValidated                                    = PlatformErrorCodes(2009)
+	PlatformErrorCodes_TokenProvisioningBadVendorOrOffer                         = PlatformErrorCodes(2010)
+	PlatformErrorCodes_TokenPurchaseHistoryUnknownError                          = PlatformErrorCodes(2011)
+	PlatformErrorCodes_TokenThrottleStateUnknownError                            = PlatformErrorCodes(2012)
+	PlatformErrorCodes_TokenUserAgeNotVerified                                   = PlatformErrorCodes(2013)
+	PlatformErrorCodes_TokenExceededOfferMaximum                                 = PlatformErrorCodes(2014)
+	PlatformErrorCodes_TokenNoAvailableUnlocks                                   = PlatformErrorCodes(2015)
+	PlatformErrorCodes_TokenMarketplaceInvalidPlatform                           = PlatformErrorCodes(2016)
+	PlatformErrorCodes_TokenNoMarketplaceCodesFound                              = PlatformErrorCodes(2017)
+	PlatformErrorCodes_TokenOfferNotAvailableForRedemption                       = PlatformErrorCodes(2018)
+	PlatformErrorCodes_TokenUnlockPartialFailure                                 = PlatformErrorCodes(2019)
+	PlatformErrorCodes_TokenMarketplaceInvalidRegion                             = PlatformErrorCodes(2020)
+	PlatformErrorCodes_TokenOfferExpired                                         = PlatformErrorCodes(2021)
+	PlatformErrorCodes_RAFExceededMaximumReferrals                               = PlatformErrorCodes(2022)
+	PlatformErrorCodes_RAFDuplicateBond                                          = PlatformErrorCodes(2023)
+	PlatformErrorCodes_RAFNoValidVeteranDestinyMembershipsFound                  = PlatformErrorCodes(2024)
+	PlatformErrorCodes_RAFNotAValidVeteranUser                                   = PlatformErrorCodes(2025)
+	PlatformErrorCodes_RAFCodeAlreadyClaimedOrNotFound                           = PlatformErrorCodes(2026)
+	PlatformErrorCodes_RAFMismatchedDestinyMembershipType                        = PlatformErrorCodes(2027)
+	PlatformErrorCodes_RAFUnableToAccessPurchaseHistory                          = PlatformErrorCodes(2028)
+	PlatformErrorCodes_RAFUnableToCreateBond                                     = PlatformErrorCodes(2029)
+	PlatformErrorCodes_RAFUnableToFindBond                                       = PlatformErrorCodes(2030)
+	PlatformErrorCodes_RAFUnableToRemoveBond                                     = PlatformErrorCodes(2031)
+	PlatformErrorCodes_RAFCannotBondToSelf                                       = PlatformErrorCodes(2032)
+	PlatformErrorCodes_RAFInvalidPlatform                                        = PlatformErrorCodes(2033)
+	PlatformErrorCodes_RAFGenerateThrottled                                      = PlatformErrorCodes(2034)
+	PlatformErrorCodes_RAFUnableToCreateBondVersionMismatch                      = PlatformErrorCodes(2035)
+	PlatformErrorCodes_RAFUnableToRemoveBondVersionMismatch                      = PlatformErrorCodes(2036)
+	PlatformErrorCodes_RAFRedeemThrottled                                        = PlatformErrorCodes(2037)
+	PlatformErrorCodes_NoAvailableDiscountCode                                   = PlatformErrorCodes(2038)
+	PlatformErrorCodes_DiscountAlreadyClaimed                                    = PlatformErrorCodes(2039)
+	PlatformErrorCodes_DiscountClaimFailure                                      = PlatformErrorCodes(2040)
+	PlatformErrorCodes_DiscountConfigurationFailure                              = PlatformErrorCodes(2041)
+	PlatformErrorCodes_DiscountGenerationFailure                                 = PlatformErrorCodes(2042)
+	PlatformErrorCodes_DiscountAlreadyExists                                     = PlatformErrorCodes(2043)
+	PlatformErrorCodes_TokenRequiresCredentialXuid                               = PlatformErrorCodes(2044)
+	PlatformErrorCodes_TokenRequiresCredentialPsnid                              = PlatformErrorCodes(2045)
+	PlatformErrorCodes_OfferRequired                                             = PlatformErrorCodes(2046)
+	PlatformErrorCodes_UnknownEververseHistoryError                              = PlatformErrorCodes(2047)
+	PlatformErrorCodes_MissingEververseHistoryError                              = PlatformErrorCodes(2048)
+	PlatformErrorCodes_BungieRewardEmailStateInvalid                             = PlatformErrorCodes(2049)
+	PlatformErrorCodes_BungieRewardNotYetClaimable                               = PlatformErrorCodes(2050)
+	PlatformErrorCodes_MissingOfferConfig                                        = PlatformErrorCodes(2051)
+	PlatformErrorCodes_RAFQuestEntitlementRequiresBnet                           = PlatformErrorCodes(2052)
+	PlatformErrorCodes_RAFQuestEntitlementTransportFailure                       = PlatformErrorCodes(2053)
+	PlatformErrorCodes_RAFQuestEntitlementUnknownFailure                         = PlatformErrorCodes(2054)
+	PlatformErrorCodes_RAFVeteranRewardUnknownFailure                            = PlatformErrorCodes(2055)
+	PlatformErrorCodes_RAFTooEarlyToCancelBond                                   = PlatformErrorCodes(2056)
+	PlatformErrorCodes_LoyaltyRewardAlreadyRedeemed                              = PlatformErrorCodes(2057)
+	PlatformErrorCodes_UnclaimedLoyaltyRewardEntryNotFound                       = PlatformErrorCodes(2058)
+	PlatformErrorCodes_PartnerOfferPartialFailure                                = PlatformErrorCodes(2059)
+	PlatformErrorCodes_PartnerOfferAlreadyClaimed                                = PlatformErrorCodes(2060)
+	PlatformErrorCodes_PartnerOfferSkuNotFound                                   = PlatformErrorCodes(2061)
+	PlatformErrorCodes_PartnerOfferSkuExpired                                    = PlatformErrorCodes(2062)
+	PlatformErrorCodes_PartnerOfferPermissionFailure                             = PlatformErrorCodes(2063)
+	PlatformErrorCodes_PartnerOfferNoDestinyAccount                              = PlatformErrorCodes(2064)
+	PlatformErrorCodes_PartnerOfferApplyDataNotFound                             = PlatformErrorCodes(2065)
+	PlatformErrorCodes_ApiExceededMaxKeys                                        = PlatformErrorCodes(2100)
+	PlatformErrorCodes_ApiInvalidOrExpiredKey                                    = PlatformErrorCodes(2101)
+	PlatformErrorCodes_ApiKeyMissingFromRequest                                  = PlatformErrorCodes(2102)
+	PlatformErrorCodes_ApplicationDisabled                                       = PlatformErrorCodes(2103)
+	PlatformErrorCodes_ApplicationExceededMax                                    = PlatformErrorCodes(2104)
+	PlatformErrorCodes_ApplicationDisallowedByScope                              = PlatformErrorCodes(2105)
+	PlatformErrorCodes_AuthorizationCodeInvalid                                  = PlatformErrorCodes(2106)
+	PlatformErrorCodes_OriginHeaderDoesNotMatchKey                               = PlatformErrorCodes(2107)
+	PlatformErrorCodes_AccessNotPermittedByApplicationScope                      = PlatformErrorCodes(2108)
+	PlatformErrorCodes_ApplicationNameIsTaken                                    = PlatformErrorCodes(2109)
+	PlatformErrorCodes_RefreshTokenNotYetValid                                   = PlatformErrorCodes(2110)
+	PlatformErrorCodes_AccessTokenHasExpired                                     = PlatformErrorCodes(2111)
+	PlatformErrorCodes_ApplicationTokenFormatNotValid                            = PlatformErrorCodes(2112)
+	PlatformErrorCodes_ApplicationNotConfiguredForBungieAuth                     = PlatformErrorCodes(2113)
+	PlatformErrorCodes_ApplicationNotConfiguredForOAuth                          = PlatformErrorCodes(2114)
+	PlatformErrorCodes_OAuthAccessTokenExpired                                   = PlatformErrorCodes(2115)
+	PlatformErrorCodes_ApplicationTokenKeyIdDoesNotExist                         = PlatformErrorCodes(2116)
+	PlatformErrorCodes_ProvidedTokenNotValidRefreshToken                         = PlatformErrorCodes(2117)
+	PlatformErrorCodes_RefreshTokenExpired                                       = PlatformErrorCodes(2118)
+	PlatformErrorCodes_AuthorizationRecordInvalid                                = PlatformErrorCodes(2119)
+	PlatformErrorCodes_TokenPreviouslyRevoked                                    = PlatformErrorCodes(2120)
+	PlatformErrorCodes_TokenInvalidMembership                                    = PlatformErrorCodes(2121)
+	PlatformErrorCodes_AuthorizationCodeStale                                    = PlatformErrorCodes(2122)
+	PlatformErrorCodes_AuthorizationRecordExpired                                = PlatformErrorCodes(2123)
+	PlatformErrorCodes_AuthorizationRecordRevoked                                = PlatformErrorCodes(2124)
+	PlatformErrorCodes_AuthorizationRecordInactiveApiKey                         = PlatformErrorCodes(2125)
+	PlatformErrorCodes_AuthorizationRecordApiKeyMatching                         = PlatformErrorCodes(2126)
+	PlatformErrorCodes_PartnershipInvalidType                                    = PlatformErrorCodes(2200)
+	PlatformErrorCodes_PartnershipValidationError                                = PlatformErrorCodes(2201)
+	PlatformErrorCodes_PartnershipValidationTimeout                              = PlatformErrorCodes(2202)
+	PlatformErrorCodes_PartnershipAccessFailure                                  = PlatformErrorCodes(2203)
+	PlatformErrorCodes_PartnershipAccountInvalid                                 = PlatformErrorCodes(2204)
+	PlatformErrorCodes_PartnershipGetAccountInfoFailure                          = PlatformErrorCodes(2205)
+	PlatformErrorCodes_PartnershipDisabled                                       = PlatformErrorCodes(2206)
+	PlatformErrorCodes_PartnershipAlreadyExists                                  = PlatformErrorCodes(2207)
+	PlatformErrorCodes_CommunityStreamingUnavailable                             = PlatformErrorCodes(2300)
+	PlatformErrorCodes_TwitchNotLinked                                           = PlatformErrorCodes(2500)
+	PlatformErrorCodes_TwitchAccountNotFound                                     = PlatformErrorCodes(2501)
+	PlatformErrorCodes_TwitchCouldNotLoadDestinyInfo                             = PlatformErrorCodes(2502)
+	PlatformErrorCodes_TwitchCouldNotRegisterUser                                = PlatformErrorCodes(2503)
+	PlatformErrorCodes_TwitchCouldNotUnregisterUser                              = PlatformErrorCodes(2504)
+	PlatformErrorCodes_TwitchRequiresRelinking                                   = PlatformErrorCodes(2505)
+	PlatformErrorCodes_TwitchNoPlatformChosen                                    = PlatformErrorCodes(2506)
+	PlatformErrorCodes_TwitchDropHistoryPermissionFailure                        = PlatformErrorCodes(2507)
+	PlatformErrorCodes_TwitchDropsRepairPartialFailure                           = PlatformErrorCodes(2508)
+	PlatformErrorCodes_TwitchNotAuthorized                                       = PlatformErrorCodes(2509)
+	PlatformErrorCodes_TwitchUnknownAuthorizationFailure                         = PlatformErrorCodes(2510)
+	PlatformErrorCodes_TrendingCategoryNotFound                                  = PlatformErrorCodes(2600)
+	PlatformErrorCodes_TrendingEntryTypeNotSupported                             = PlatformErrorCodes(2601)
+	PlatformErrorCodes_ReportOffenderNotInPgcr                                   = PlatformErrorCodes(2700)
+	PlatformErrorCodes_ReportRequestorNotInPgcr                                  = PlatformErrorCodes(2701)
+	PlatformErrorCodes_ReportSubmissionFailed                                    = PlatformErrorCodes(2702)
+	PlatformErrorCodes_ReportCannotReportSelf                                    = PlatformErrorCodes(2703)
+	PlatformErrorCodes_AwaTypeDisabled                                           = PlatformErrorCodes(2800)
+	PlatformErrorCodes_AwaTooManyPendingRequests                                 = PlatformErrorCodes(2801)
+	PlatformErrorCodes_AwaTheFeatureRequiresARegisteredDevice                    = PlatformErrorCodes(2802)
+	PlatformErrorCodes_AwaRequestWasUnansweredForTooLong                         = PlatformErrorCodes(2803)
+	PlatformErrorCodes_AwaWriteRequestMissingOrInvalidToken                      = PlatformErrorCodes(2804)
+	PlatformErrorCodes_AwaWriteRequestTokenExpired                               = PlatformErrorCodes(2805)
+	PlatformErrorCodes_AwaWriteRequestTokenUsageLimitReached                     = PlatformErrorCodes(2806)
+	PlatformErrorCodes_SteamWebApiError                                          = PlatformErrorCodes(2900)
+	PlatformErrorCodes_SteamWebNullResponseError                                 = PlatformErrorCodes(2901)
+	PlatformErrorCodes_SteamAccountRequired                                      = PlatformErrorCodes(2902)
+	PlatformErrorCodes_SteamNotAuthorized                                        = PlatformErrorCodes(2903)
+	PlatformErrorCodes_ClanFireteamNotFound                                      = PlatformErrorCodes(3000)
+	PlatformErrorCodes_ClanFireteamAddNoAlternatesForImmediate                   = PlatformErrorCodes(3001)
+	PlatformErrorCodes_ClanFireteamFull                                          = PlatformErrorCodes(3002)
+	PlatformErrorCodes_ClanFireteamAltFull                                       = PlatformErrorCodes(3003)
+	PlatformErrorCodes_ClanFireteamBlocked                                       = PlatformErrorCodes(3004)
+	PlatformErrorCodes_ClanFireteamPlayerEntryNotFound                           = PlatformErrorCodes(3005)
+	PlatformErrorCodes_ClanFireteamPermissions                                   = PlatformErrorCodes(3006)
+	PlatformErrorCodes_ClanFireteamInvalidPlatform                               = PlatformErrorCodes(3007)
+	PlatformErrorCodes_ClanFireteamCannotAdjustSlotCount                         = PlatformErrorCodes(3008)
+	PlatformErrorCodes_ClanFireteamInvalidPlayerPlatform                         = PlatformErrorCodes(3009)
+	PlatformErrorCodes_ClanFireteamNotReadyForInvitesNotEnoughPlayers            = PlatformErrorCodes(3010)
+	PlatformErrorCodes_ClanFireteamGameInvitesNotSupportForPlatform              = PlatformErrorCodes(3011)
+	PlatformErrorCodes_ClanFireteamPlatformInvitePreqFailure                     = PlatformErrorCodes(3012)
+	PlatformErrorCodes_ClanFireteamInvalidAuthContext                            = PlatformErrorCodes(3013)
+	PlatformErrorCodes_ClanFireteamInvalidAuthProviderPsn                        = PlatformErrorCodes(3014)
+	PlatformErrorCodes_ClanFireteamPs4SessionFull                                = PlatformErrorCodes(3015)
+	PlatformErrorCodes_ClanFireteamInvalidAuthToken                              = PlatformErrorCodes(3016)
+	PlatformErrorCodes_ClanFireteamScheduledFireteamsDisabled                    = PlatformErrorCodes(3017)
+	PlatformErrorCodes_ClanFireteamNotReadyForInvitesNotScheduledYet             = PlatformErrorCodes(3018)
+	PlatformErrorCodes_ClanFireteamNotReadyForInvitesClosed                      = PlatformErrorCodes(3019)
+	PlatformErrorCodes_ClanFireteamScheduledFireteamsRequireAdminPermissions     = PlatformErrorCodes(3020)
+	PlatformErrorCodes_ClanFireteamNonPublicMustHaveClan                         = PlatformErrorCodes(3021)
+	PlatformErrorCodes_ClanFireteamPublicCreationRestriction                     = PlatformErrorCodes(3022)
+	PlatformErrorCodes_ClanFireteamAlreadyJoined                                 = PlatformErrorCodes(3023)
+	PlatformErrorCodes_ClanFireteamScheduledFireteamsRange                       = PlatformErrorCodes(3024)
+	PlatformErrorCodes_ClanFireteamPublicCreationRestrictionExtended             = PlatformErrorCodes(3025)
+	PlatformErrorCodes_ClanFireteamExpired                                       = PlatformErrorCodes(3026)
+	PlatformErrorCodes_ClanFireteamInvalidAuthProvider                           = PlatformErrorCodes(3027)
+	PlatformErrorCodes_ClanFireteamInvalidAuthProviderXuid                       = PlatformErrorCodes(3028)
+	PlatformErrorCodes_ClanFireteamThrottle                                      = PlatformErrorCodes(3029)
+	PlatformErrorCodes_ClanFireteamTooManyOpenScheduledFireteams                 = PlatformErrorCodes(3030)
+	PlatformErrorCodes_ClanFireteamCannotReopenScheduledFireteams                = PlatformErrorCodes(3031)
+	PlatformErrorCodes_ClanFireteamJoinNoAccountSpecified                        = PlatformErrorCodes(3032)
+	PlatformErrorCodes_ClanFireteamMinDestiny2ProgressForCreation                = PlatformErrorCodes(3033)
+	PlatformErrorCodes_ClanFireteamMinDestiny2ProgressForJoin                    = PlatformErrorCodes(3034)
+	PlatformErrorCodes_ClanFireteamSMSOrPurchaseRequiredCreate                   = PlatformErrorCodes(3035)
+	PlatformErrorCodes_ClanFireteamPurchaseRequiredCreate                        = PlatformErrorCodes(3036)
+	PlatformErrorCodes_ClanFireteamSMSOrPurchaseRequiredJoin                     = PlatformErrorCodes(3037)
+	PlatformErrorCodes_ClanFireteamPurchaseRequiredJoin                          = PlatformErrorCodes(3038)
+	PlatformErrorCodes_FireteamFinderInvalidMembershipType                       = PlatformErrorCodes(3100)
+	PlatformErrorCodes_FireteamFinderInvalidMembershipId                         = PlatformErrorCodes(3101)
+	PlatformErrorCodes_FireteamFinderInvalidCharacterId                          = PlatformErrorCodes(3102)
+	PlatformErrorCodes_FireteamFinderInvalidListingOptions                       = PlatformErrorCodes(3103)
+	PlatformErrorCodes_FireteamFinderInvalidRequestData                          = PlatformErrorCodes(3104)
+	PlatformErrorCodes_FireteamFinderListingApplicationFailed                    = PlatformErrorCodes(3105)
+	PlatformErrorCodes_FireteamFinderListingAutoJoinFailed                       = PlatformErrorCodes(3106)
+	PlatformErrorCodes_FireteamFinderPlayerApplicationsParsingFailed             = PlatformErrorCodes(3107)
+	PlatformErrorCodes_FireteamFinderJoinLobbyHostFailed                         = PlatformErrorCodes(3108)
+	PlatformErrorCodes_FireteamFinderPlayerNotInGame                             = PlatformErrorCodes(3109)
+	PlatformErrorCodes_FireteamFinderActivationFailed                            = PlatformErrorCodes(3110)
+	PlatformErrorCodes_FireteamFinderApplicationNotFound                         = PlatformErrorCodes(3111)
+	PlatformErrorCodes_FireteamFinderUserAlreadyAppliedToListing                 = PlatformErrorCodes(3112)
+	PlatformErrorCodes_FireteamFinderApplicationClosedForUpdates                 = PlatformErrorCodes(3113)
+	PlatformErrorCodes_FireteamFinderListingAtMaxOpenApplicationsLimit           = PlatformErrorCodes(3114)
+	PlatformErrorCodes_FireteamFinderUserNotInApplication                        = PlatformErrorCodes(3115)
+	PlatformErrorCodes_FireteamFinderApplicationUserAlreadyListingOwner          = PlatformErrorCodes(3116)
+	PlatformErrorCodes_FireteamFinderOfferNotFound                               = PlatformErrorCodes(3117)
+	PlatformErrorCodes_FireteamFinderOfferClosedForUpdates                       = PlatformErrorCodes(3118)
+	PlatformErrorCodes_FireteamFinderOfferUserNotTarget                          = PlatformErrorCodes(3119)
+	PlatformErrorCodes_FireteamFinderLobbyNotFound                               = PlatformErrorCodes(3120)
+	PlatformErrorCodes_FireteamFinderListingNotFound                             = PlatformErrorCodes(3121)
+	PlatformErrorCodes_FireteamFinderLobbyFull                                   = PlatformErrorCodes(3122)
+	PlatformErrorCodes_FireteamFinderUserNotListingOwner                         = PlatformErrorCodes(3123)
+	PlatformErrorCodes_FireteamFinderUserNotLobbyOwner                           = PlatformErrorCodes(3124)
+	PlatformErrorCodes_FireteamFinderLobbyClosedForUpdates                       = PlatformErrorCodes(3125)
+	PlatformErrorCodes_FireteamFinderUserNotInLobby                              = PlatformErrorCodes(3126)
+	PlatformErrorCodes_FireteamFinderDisabledSettingsValue                       = PlatformErrorCodes(3127)
+	PlatformErrorCodes_FireteamFinderOwnerInActiveLobby                          = PlatformErrorCodes(3128)
+	PlatformErrorCodes_FireteamFinderApplicationClosedToOfflinePlayers           = PlatformErrorCodes(3129)
+	PlatformErrorCodes_FireteamFinderUserNotApplicationOwner                     = PlatformErrorCodes(3130)
+	PlatformErrorCodes_FireteamFinderInviteValidationFailed                      = PlatformErrorCodes(3131)
+	PlatformErrorCodes_FireteamFinderOwnerNotInGame                              = PlatformErrorCodes(3132)
+	PlatformErrorCodes_FireteamFinderPlayerAtMaxLobbyLimit                       = PlatformErrorCodes(3133)
+	PlatformErrorCodes_FireteamFinderLobbyTooFarInTheFuture                      = PlatformErrorCodes(3134)
+	PlatformErrorCodes_FireteamFinderApplicantNotInGame                          = PlatformErrorCodes(3135)
+	PlatformErrorCodes_FireteamFinderResponseUndefined                           = PlatformErrorCodes(3150)
+	PlatformErrorCodes_FireteamFinderResponseMoved                               = PlatformErrorCodes(3151)
+	PlatformErrorCodes_FireteamFinderResponseLoggingIn                           = PlatformErrorCodes(3152)
+	PlatformErrorCodes_FireteamFinderResponseBadRequest                          = PlatformErrorCodes(3153)
+	PlatformErrorCodes_FireteamFinderResponseUnauthorized                        = PlatformErrorCodes(3154)
+	PlatformErrorCodes_FireteamFinderResponseForbidden                           = PlatformErrorCodes(3155)
+	PlatformErrorCodes_FireteamFinderResponseNotFound                            = PlatformErrorCodes(3156)
+	PlatformErrorCodes_FireteamFinderInternalServerError                         = PlatformErrorCodes(3157)
+	PlatformErrorCodes_FireteamFinderServiceUnavailable                          = PlatformErrorCodes(3158)
+	PlatformErrorCodes_FireteamFinderInternalServerErrorNonFatal                 = PlatformErrorCodes(3159)
+	PlatformErrorCodes_CrossSaveOverriddenAccountNotFound                        = PlatformErrorCodes(3200)
+	PlatformErrorCodes_CrossSaveTooManyOverriddenPlatforms                       = PlatformErrorCodes(3201)
+	PlatformErrorCodes_CrossSaveNoOverriddenPlatforms                            = PlatformErrorCodes(3202)
+	PlatformErrorCodes_CrossSavePrimaryAccountNotFound                           = PlatformErrorCodes(3203)
+	PlatformErrorCodes_CrossSaveRequestInvalid                                   = PlatformErrorCodes(3204)
+	PlatformErrorCodes_CrossSaveBungieAccountValidationFailure                   = PlatformErrorCodes(3206)
+	PlatformErrorCodes_CrossSaveOverriddenPlatformNotAllowed                     = PlatformErrorCodes(3207)
+	PlatformErrorCodes_CrossSaveThresholdExceeded                                = PlatformErrorCodes(3208)
+	PlatformErrorCodes_CrossSaveIncompatibleMembershipType                       = PlatformErrorCodes(3209)
+	PlatformErrorCodes_CrossSaveCouldNotFindLinkedAccountForMembershipType       = PlatformErrorCodes(3210)
+	PlatformErrorCodes_CrossSaveCouldNotCreateDestinyProfileForMembershipType    = PlatformErrorCodes(3211)
+	PlatformErrorCodes_CrossSaveErrorCreatingDestinyProfileForMembershipType     = PlatformErrorCodes(3212)
+	PlatformErrorCodes_CrossSaveCannotOverrideSelf                               = PlatformErrorCodes(3213)
+	PlatformErrorCodes_CrossSaveRecentSilverPurchase                             = PlatformErrorCodes(3214)
+	PlatformErrorCodes_CrossSaveSilverBalanceNegative                            = PlatformErrorCodes(3215)
+	PlatformErrorCodes_CrossSaveAccountNotAuthenticated                          = PlatformErrorCodes(3216)
+	PlatformErrorCodes_ErrorOneAccountAlreadyActive                              = PlatformErrorCodes(3217)
+	PlatformErrorCodes_ErrorOneAccountDestinyRestriction                         = PlatformErrorCodes(3218)
+	PlatformErrorCodes_CrossSaveMustMigrateToSteam                               = PlatformErrorCodes(3219)
+	PlatformErrorCodes_CrossSaveSteamAlreadyPaired                               = PlatformErrorCodes(3220)
+	PlatformErrorCodes_CrossSaveCannotPairJustSteamAndBlizzard                   = PlatformErrorCodes(3221)
+	PlatformErrorCodes_CrossSaveCannotPairSteamAloneBeforeShadowkeep             = PlatformErrorCodes(3222)
+	PlatformErrorCodes_AuthVerificationNotLinkedToAccount                        = PlatformErrorCodes(3300)
+	PlatformErrorCodes_PCMigrationMissingBlizzard                                = PlatformErrorCodes(3400)
+	PlatformErrorCodes_PCMigrationMissingSteam                                   = PlatformErrorCodes(3401)
+	PlatformErrorCodes_PCMigrationInvalidBlizzard                                = PlatformErrorCodes(3402)
+	PlatformErrorCodes_PCMigrationInvalidSteam                                   = PlatformErrorCodes(3403)
+	PlatformErrorCodes_PCMigrationUnknownFailure                                 = PlatformErrorCodes(3404)
+	PlatformErrorCodes_PCMigrationUnknownException                               = PlatformErrorCodes(3405)
+	PlatformErrorCodes_PCMigrationNotLinked                                      = PlatformErrorCodes(3406)
+	PlatformErrorCodes_PCMigrationAccountsAlreadyUsed                            = PlatformErrorCodes(3407)
+	PlatformErrorCodes_PCMigrationStepFailed                                     = PlatformErrorCodes(3408)
+	PlatformErrorCodes_PCMigrationInvalidBlizzardCrossSaveState                  = PlatformErrorCodes(3409)
+	PlatformErrorCodes_PCMigrationDestinationBanned                              = PlatformErrorCodes(3410)
+	PlatformErrorCodes_PCMigrationDestinyFailure                                 = PlatformErrorCodes(3411)
+	PlatformErrorCodes_PCMigrationSilverTransferFailed                           = PlatformErrorCodes(3412)
+	PlatformErrorCodes_PCMigrationEntitlementTransferFailed                      = PlatformErrorCodes(3413)
+	PlatformErrorCodes_PCMigrationCannotStompClanFounder                         = PlatformErrorCodes(3414)
+	PlatformErrorCodes_UnsupportedBrowser                                        = PlatformErrorCodes(3500)
+	PlatformErrorCodes_StadiaAccountRequired                                     = PlatformErrorCodes(3600)
+	PlatformErrorCodes_ErrorPhoneValidationTooManyUses                           = PlatformErrorCodes(3702)
+	PlatformErrorCodes_ErrorPhoneValidationNoAssociatedPhone                     = PlatformErrorCodes(3703)
+	PlatformErrorCodes_ErrorPhoneValidationCodeInvalid                           = PlatformErrorCodes(3705)
+	PlatformErrorCodes_ErrorPhoneValidationBanned                                = PlatformErrorCodes(3706)
+	PlatformErrorCodes_ErrorPhoneValidationCodeTooRecentlySent                   = PlatformErrorCodes(3707)
+	PlatformErrorCodes_ErrorPhoneValidationCodeExpired                           = PlatformErrorCodes(3708)
+	PlatformErrorCodes_ErrorPhoneValidationInvalidNumberType                     = PlatformErrorCodes(3709)
+	PlatformErrorCodes_ErrorPhoneValidationCodeTooRecentlyChecked                = PlatformErrorCodes(3710)
+	PlatformErrorCodes_ErrorPhoneValidationRecentlyPlayedDestiny2AccountRequired = PlatformErrorCodes(3711)
+	PlatformErrorCodes_ApplePushErrorUnknown                                     = PlatformErrorCodes(3800)
+	PlatformErrorCodes_ApplePushErrorNull                                        = PlatformErrorCodes(3801)
+	PlatformErrorCodes_ApplePushErrorTimeout                                     = PlatformErrorCodes(3802)
+	PlatformErrorCodes_ApplePushBadRequest                                       = PlatformErrorCodes(3803)
+	PlatformErrorCodes_ApplePushFailedAuth                                       = PlatformErrorCodes(3804)
+	PlatformErrorCodes_ApplePushThrottled                                        = PlatformErrorCodes(3805)
+	PlatformErrorCodes_ApplePushServiceUnavailable                               = PlatformErrorCodes(3806)
+	PlatformErrorCodes_NotAnImageOrVideo                                         = PlatformErrorCodes(3807)
+	PlatformErrorCodes_ErrorBungieFriendsBlockFailed                             = PlatformErrorCodes(3900)
+	PlatformErrorCodes_ErrorBungieFriendsAutoReject                              = PlatformErrorCodes(3901)
+	PlatformErrorCodes_ErrorBungieFriendsNoRequestFound                          = PlatformErrorCodes(3902)
+	PlatformErrorCodes_ErrorBungieFriendsAlreadyFriends                          = PlatformErrorCodes(3903)
+	PlatformErrorCodes_ErrorBungieFriendsUnableToRemoveRequest                   = PlatformErrorCodes(3904)
+	PlatformErrorCodes_ErrorBungieFriendsUnableToRemove                          = PlatformErrorCodes(3905)
+	PlatformErrorCodes_ErrorBungieFriendsIdenticalSourceTarget                   = PlatformErrorCodes(3906)
+	PlatformErrorCodes_ErrorBungieFriendsSelf                                    = PlatformErrorCodes(3907)
+	PlatformErrorCodes_ErrorBungieBlockSelf                                      = PlatformErrorCodes(3908)
+	PlatformErrorCodes_ErrorBungieFriendsListFull                                = PlatformErrorCodes(3910)
+	PlatformErrorCodes_ErrorBungieBlockListFull                                  = PlatformErrorCodes(3911)
+	PlatformErrorCodes_ErrorBungieFriendNotFound                                 = PlatformErrorCodes(3912)
+	PlatformErrorCodes_ErrorBungieFriendInvalidMembershipType                    = PlatformErrorCodes(3913)
+	PlatformErrorCodes_ErrorEgsUnknown                                           = PlatformErrorCodes(4000)
+	PlatformErrorCodes_ErrorEgsBadRequest                                        = PlatformErrorCodes(4001)
+	PlatformErrorCodes_ErrorEgsNotAuthorized                                     = PlatformErrorCodes(4002)
+	PlatformErrorCodes_ErrorEgsForbidden                                         = PlatformErrorCodes(4003)
+	PlatformErrorCodes_ErrorEgsAccountNotFound                                   = PlatformErrorCodes(4004)
+	PlatformErrorCodes_ErrorEgsWebException                                      = PlatformErrorCodes(4005)
+	PlatformErrorCodes_ErrorEgsUnavailable                                       = PlatformErrorCodes(4006)
+	PlatformErrorCodes_ErrorEgsJwksMissing                                       = PlatformErrorCodes(4007)
+	PlatformErrorCodes_ErrorEgsJwtMalformedHeader                                = PlatformErrorCodes(4008)
+	PlatformErrorCodes_ErrorEgsJwtMalformedPayload                               = PlatformErrorCodes(4009)
 )
 
 // Fireteam.FireteamDateRange
@@ -43170,6 +47494,1324 @@ type FireteamUserInfoCard struct {
 
 	// A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc.
 	SupplementalDisplayName string `json:"supplementalDisplayName"`
+}
+
+// FireteamFinder.DestinyFireteamFinderActivityGraphState
+type FireteamFinderActivityGraphState struct {
+	// {
+	//   "properties": {
+	//     "isAvailable": {
+	//       "description": "Indicates if this fireteam finder activity graph node is available to select for this character.",
+	//       "type": "boolean"
+	//     },
+	//     "isVisible": {
+	//       "description": "Indicates if this fireteam finder activity graph node is visible for this character.",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// Indicates if this fireteam finder activity graph node is available to select for this character.
+	IsAvailable bool `json:"isAvailable"`
+
+	// Indicates if this fireteam finder activity graph node is visible for this character.
+	IsVisible bool `json:"isVisible"`
+}
+
+// FireteamFinder.DestinyFireteamFinderApplicant
+type FireteamFinderApplicant map[string]any
+
+//	{
+//	  "type": "object"
+//	}
+//
+// FireteamFinder.DestinyFireteamFinderApplicantSet
+type FireteamFinderApplicantSet struct {
+	// {
+	//   "properties": {
+	//     "applicants": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicant"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Applicants []FireteamFinderApplicant `json:"applicants"`
+}
+
+// FireteamFinder.DestinyFireteamFinderApplication
+type FireteamFinderApplication struct {
+	// {
+	//   "properties": {
+	//     "applicantSet": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicantSet"
+	//     },
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "applicationType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
+	//       }
+	//     },
+	//     "createdDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "referralToken": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationState"
+	//       }
+	//     },
+	//     "submitterId": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicantSet FireteamFinderApplicantSet `json:"applicantSet"`
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	ApplicationType FireteamFinderApplicationType `json:"applicationType"`
+
+	CreatedDateTime Timestamp `json:"createdDateTime"`
+
+	ListingID Int64 `json:"listingId"`
+
+	ReferralToken Int64 `json:"referralToken"`
+
+	Revision int32 `json:"revision"`
+
+	State FireteamFinderApplicationState `json:"state"`
+
+	SubmitterID FireteamFinderPlayerId `json:"submitterId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderApplicationState
+type FireteamFinderApplicationState int32
+
+const (
+	FireteamFinderApplicationState_Unknown              = FireteamFinderApplicationState(0)
+	FireteamFinderApplicationState_WaitingForApplicants = FireteamFinderApplicationState(1)
+	FireteamFinderApplicationState_WaitingForLobbyOwner = FireteamFinderApplicationState(2)
+	FireteamFinderApplicationState_Accepted             = FireteamFinderApplicationState(3)
+	FireteamFinderApplicationState_Rejected             = FireteamFinderApplicationState(4)
+	FireteamFinderApplicationState_Deleted              = FireteamFinderApplicationState(5)
+	FireteamFinderApplicationState_Expired              = FireteamFinderApplicationState(6)
+)
+
+// FireteamFinder.DestinyFireteamFinderApplicationType
+type FireteamFinderApplicationType int32
+
+const (
+	FireteamFinderApplicationType_Unknown   = FireteamFinderApplicationType(0)
+	FireteamFinderApplicationType_Creator   = FireteamFinderApplicationType(1)
+	FireteamFinderApplicationType_Search    = FireteamFinderApplicationType(2)
+	FireteamFinderApplicationType_Invite    = FireteamFinderApplicationType(3)
+	FireteamFinderApplicationType_Friend    = FireteamFinderApplicationType(4)
+	FireteamFinderApplicationType_Encounter = FireteamFinderApplicationType(5)
+	FireteamFinderApplicationType_Public    = FireteamFinderApplicationType(6)
+)
+
+// FireteamFinder.DestinyFireteamFinderApplyToListingResponse
+type FireteamFinderApplyToListingResponse struct {
+	// {
+	//   "properties": {
+	//     "application": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
+	//     },
+	//     "isApplied": {
+	//       "type": "boolean"
+	//     },
+	//     "listing": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Application FireteamFinderApplication `json:"application"`
+
+	IsApplied bool `json:"isApplied"`
+
+	Listing FireteamFinderListing `json:"listing"`
+}
+
+// FireteamFinder.DestinyFireteamFinderBulkGetListingStatusRequest
+type FireteamFinderBulkGetListingStatusRequestBody map[string]any
+
+//	{
+//	  "type": "object"
+//	}
+//
+// FireteamFinder.DestinyFireteamFinderBulkGetListingStatusResponse
+type FireteamFinderBulkGetListingStatusResponse struct {
+	// {
+	//   "properties": {
+	//     "listingStatus": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingStatus"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ListingStatus []FireteamFinderListingStatus `json:"listingStatus"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetApplicationResponse
+type FireteamFinderGetApplicationResponse struct {
+	// {
+	//   "properties": {
+	//     "applicantSet": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicantSet"
+	//     },
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "applicationType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
+	//       }
+	//     },
+	//     "createdDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "referralToken": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationState"
+	//       }
+	//     },
+	//     "submitterId": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicantSet FireteamFinderApplicantSet `json:"applicantSet"`
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	ApplicationType FireteamFinderApplicationType `json:"applicationType"`
+
+	CreatedDateTime Timestamp `json:"createdDateTime"`
+
+	ListingID Int64 `json:"listingId"`
+
+	ReferralToken Int64 `json:"referralToken"`
+
+	Revision int32 `json:"revision"`
+
+	State FireteamFinderApplicationState `json:"state"`
+
+	SubmitterID FireteamFinderPlayerId `json:"submitterId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetCharacterActivityAccessResponse
+type FireteamFinderGetCharacterActivityAccessResponse struct {
+	// {
+	//   "properties": {
+	//     "fireteamFinderActivityGraphStates": {
+	//       "additionalProperties": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderActivityGraphState"
+	//       },
+	//       "description": "A map of fireteam finder activity graph hashes to visibility and availability states.",
+	//       "type": "object",
+	//       "x-dictionary-key": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// A map of fireteam finder activity graph hashes to visibility and availability states.
+	FireteamFinderActivityGraphStates map[Hash[FireteamFinderActivityGraphDefinition]]FireteamFinderActivityGraphState `json:"fireteamFinderActivityGraphStates"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetListingApplicationsResponse
+type FireteamFinderGetListingApplicationsResponse struct {
+	// {
+	//   "properties": {
+	//     "applications": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "nextPageToken": {
+	//       "type": "string"
+	//     },
+	//     "pageSize": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Applications []FireteamFinderApplication `json:"applications"`
+
+	NextPageToken string `json:"nextPageToken"`
+
+	PageSize int32 `json:"pageSize"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetLobbyOffersResponse
+type FireteamFinderGetLobbyOffersResponse struct {
+	// {
+	//   "properties": {
+	//     "offers": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "pageToken": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Offers []FireteamFinderOffer `json:"offers"`
+
+	PageToken string `json:"pageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetPlayerApplicationsResponse
+type FireteamFinderGetPlayerApplicationsResponse struct {
+	// {
+	//   "properties": {
+	//     "applications": {
+	//       "description": "All applications that this player has sent.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "nextPageToken": {
+	//       "description": "String token to request next page of results.",
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// All applications that this player has sent.
+	Applications []FireteamFinderApplication `json:"applications"`
+
+	// String token to request next page of results.
+	NextPageToken string `json:"nextPageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetPlayerLobbiesResponse
+type FireteamFinderGetPlayerLobbiesResponse struct {
+	// {
+	//   "properties": {
+	//     "lobbies": {
+	//       "description": "All available lobbies that this player has created or is a member of.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyResponse"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "nextPageToken": {
+	//       "description": "A string token required to get the next page of results. This will be null or empty if there are no more results.",
+	//       "type": "string"
+	//     },
+	//     "pageSize": {
+	//       "description": "The number of results requested.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// All available lobbies that this player has created or is a member of.
+	Lobbies []FireteamFinderLobbyResponse `json:"lobbies"`
+
+	// A string token required to get the next page of results. This will be null or empty if there are no
+	// more results.
+	NextPageToken string `json:"nextPageToken"`
+
+	// The number of results requested.
+	PageSize int32 `json:"pageSize"`
+}
+
+// FireteamFinder.DestinyFireteamFinderGetPlayerOffersResponse
+type FireteamFinderGetPlayerOffersResponse struct {
+	// {
+	//   "properties": {
+	//     "offers": {
+	//       "description": "All offers that this player has recieved.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// All offers that this player has recieved.
+	Offers []FireteamFinderOffer `json:"offers"`
+}
+
+// FireteamFinder.DestinyFireteamFinderHostLobbyRequest
+type FireteamFinderHostLobbyRequestBody struct {
+	// {
+	//   "properties": {
+	//     "activityGraphHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "activityHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     },
+	//     "clanId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "listingValues": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "maxPlayerCount": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "onlinePlayersOnly": {
+	//       "type": "boolean"
+	//     },
+	//     "privacyScope": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope"
+	//       }
+	//     },
+	//     "scheduledDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityGraphHash Hash[FireteamFinderActivityGraphDefinition] `json:"activityGraphHash"`
+
+	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
+
+	ClanID Int64 `json:"clanId"`
+
+	ListingValues []FireteamFinderListingValue `json:"listingValues"`
+
+	MaxPlayerCount int32 `json:"maxPlayerCount"`
+
+	OnlinePlayersOnly bool `json:"onlinePlayersOnly"`
+
+	PrivacyScope FireteamFinderLobbyPrivacyScope `json:"privacyScope"`
+
+	ScheduledDateTime Timestamp `json:"scheduledDateTime"`
+}
+
+// FireteamFinder.DestinyFireteamFinderHostLobbyResponse
+type FireteamFinderHostLobbyResponse struct {
+	// {
+	//   "properties": {
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "offerId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	ListingID Int64 `json:"listingId"`
+
+	LobbyID Int64 `json:"lobbyId"`
+
+	OfferID Int64 `json:"offerId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderJoinLobbyRequest
+type FireteamFinderJoinLobbyRequestBody struct {
+	// {
+	//   "properties": {
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "offerId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	LobbyID Int64 `json:"lobbyId"`
+
+	OfferID Int64 `json:"offerId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderKickPlayerRequest
+type FireteamFinderKickPlayerRequestBody struct {
+	// {
+	//   "properties": {
+	//     "targetCharacterId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "targetMembershipType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/BungieMembershipType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	TargetCharacterID Int64 `json:"targetCharacterId"`
+
+	TargetMembershipType BungieMembershipType `json:"targetMembershipType"`
+}
+
+// FireteamFinder.DestinyFireteamFinderListing
+type FireteamFinderListing struct {
+	// {
+	//   "properties": {
+	//     "availableSlots": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "createdDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "lobbyState": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
+	//       }
+	//     },
+	//     "ownerId": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "settings": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	AvailableSlots int32 `json:"availableSlots"`
+
+	CreatedDateTime Timestamp `json:"createdDateTime"`
+
+	ListingID Int64 `json:"listingId"`
+
+	LobbyID Int64 `json:"lobbyId"`
+
+	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
+
+	OwnerID FireteamFinderPlayerId `json:"ownerId"`
+
+	Revision int32 `json:"revision"`
+
+	Settings FireteamFinderLobbySettings `json:"settings"`
+}
+
+// FireteamFinder.DestinyFireteamFinderListingFilter
+type FireteamFinderListingFilter struct {
+	// {
+	//   "properties": {
+	//     "listingValue": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
+	//     },
+	//     "matchType": {
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilterMatchType"
+	//       }
+	//     },
+	//     "rangeType": {
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilterRangeType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ListingValue FireteamFinderListingValue `json:"listingValue"`
+
+	MatchType FireteamFinderListingFilterMatchType `json:"matchType"`
+
+	RangeType FireteamFinderListingFilterRangeType `json:"rangeType"`
+}
+
+// FireteamFinder.DestinyFireteamFinderListingFilterMatchType
+type FireteamFinderListingFilterMatchType int
+
+const (
+	FireteamFinderListingFilterMatchType_Unknown = FireteamFinderListingFilterMatchType(0)
+	FireteamFinderListingFilterMatchType_MustNot = FireteamFinderListingFilterMatchType(1)
+	FireteamFinderListingFilterMatchType_Should  = FireteamFinderListingFilterMatchType(2)
+	FireteamFinderListingFilterMatchType_Filter  = FireteamFinderListingFilterMatchType(3)
+)
+
+// FireteamFinder.DestinyFireteamFinderListingFilterRangeType
+type FireteamFinderListingFilterRangeType int
+
+const (
+	FireteamFinderListingFilterRangeType_Unknown              = FireteamFinderListingFilterRangeType(0)
+	FireteamFinderListingFilterRangeType_All                  = FireteamFinderListingFilterRangeType(1)
+	FireteamFinderListingFilterRangeType_Any                  = FireteamFinderListingFilterRangeType(2)
+	FireteamFinderListingFilterRangeType_InRangeInclusive     = FireteamFinderListingFilterRangeType(3)
+	FireteamFinderListingFilterRangeType_InRangeExclusive     = FireteamFinderListingFilterRangeType(4)
+	FireteamFinderListingFilterRangeType_GreaterThan          = FireteamFinderListingFilterRangeType(5)
+	FireteamFinderListingFilterRangeType_GreaterThanOrEqualTo = FireteamFinderListingFilterRangeType(6)
+	FireteamFinderListingFilterRangeType_LessThan             = FireteamFinderListingFilterRangeType(7)
+	FireteamFinderListingFilterRangeType_LessThanOrEqualTo    = FireteamFinderListingFilterRangeType(8)
+)
+
+// FireteamFinder.DestinyFireteamFinderListingStatus
+type FireteamFinderListingStatus struct {
+	// {
+	//   "properties": {
+	//     "availableSlots": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "listingRevision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	AvailableSlots int32 `json:"availableSlots"`
+
+	ListingID Int64 `json:"listingId"`
+
+	ListingRevision int32 `json:"listingRevision"`
+}
+
+// FireteamFinder.DestinyFireteamFinderListingValue
+type FireteamFinderListingValue struct {
+	// {
+	//   "properties": {
+	//     "valueType": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "values": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ValueType uint32 `json:"valueType"`
+
+	Values []uint32 `json:"values"`
+}
+
+// FireteamFinder.DestinyFireteamFinderLobbyListingReference
+type FireteamFinderLobbyListingReference struct {
+	// {
+	//   "properties": {
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ListingID Int64 `json:"listingId"`
+
+	LobbyID Int64 `json:"lobbyId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderLobbyPlayer
+type FireteamFinderLobbyPlayer struct {
+	// {
+	//   "properties": {
+	//     "offerId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "playerId": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     },
+	//     "referralToken": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerReadinessState"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	OfferID Int64 `json:"offerId"`
+
+	PlayerID FireteamFinderPlayerId `json:"playerId"`
+
+	ReferralToken Int64 `json:"referralToken"`
+
+	State FireteamFinderPlayerReadinessState `json:"state"`
+}
+
+// FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope
+type FireteamFinderLobbyPrivacyScope int32
+
+const (
+	FireteamFinderLobbyPrivacyScope_Unknown      = FireteamFinderLobbyPrivacyScope(0)
+	FireteamFinderLobbyPrivacyScope_Open         = FireteamFinderLobbyPrivacyScope(1)
+	FireteamFinderLobbyPrivacyScope_Applications = FireteamFinderLobbyPrivacyScope(2)
+	FireteamFinderLobbyPrivacyScope_Clan         = FireteamFinderLobbyPrivacyScope(3)
+	FireteamFinderLobbyPrivacyScope_Friends      = FireteamFinderLobbyPrivacyScope(4)
+)
+
+// FireteamFinder.DestinyFireteamFinderLobbyResponse
+type FireteamFinderLobbyResponse struct {
+	// {
+	//   "properties": {
+	//     "createdDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     },
+	//     "listingId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "owner": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     },
+	//     "players": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPlayer"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "settings": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	CreatedDateTime Timestamp `json:"createdDateTime"`
+
+	ListingID Int64 `json:"listingId"`
+
+	LobbyID Int64 `json:"lobbyId"`
+
+	Owner FireteamFinderPlayerId `json:"owner"`
+
+	Players []FireteamFinderLobbyPlayer `json:"players"`
+
+	Revision int32 `json:"revision"`
+
+	Settings FireteamFinderLobbySettings `json:"settings"`
+
+	State FireteamFinderLobbyState `json:"state"`
+}
+
+// FireteamFinder.DestinyFireteamFinderLobbySettings
+type FireteamFinderLobbySettings struct {
+	// {
+	//   "properties": {
+	//     "activityGraphHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
+	//       }
+	//     },
+	//     "activityHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
+	//       }
+	//     },
+	//     "clanId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "listingValues": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "maxPlayerCount": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "onlinePlayersOnly": {
+	//       "type": "boolean"
+	//     },
+	//     "privacyScope": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope"
+	//       }
+	//     },
+	//     "scheduledDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityGraphHash Hash[FireteamFinderActivityGraphDefinition] `json:"activityGraphHash"`
+
+	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
+
+	ClanID Int64 `json:"clanId"`
+
+	ListingValues []FireteamFinderListingValue `json:"listingValues"`
+
+	MaxPlayerCount int32 `json:"maxPlayerCount"`
+
+	OnlinePlayersOnly bool `json:"onlinePlayersOnly"`
+
+	PrivacyScope FireteamFinderLobbyPrivacyScope `json:"privacyScope"`
+
+	ScheduledDateTime Timestamp `json:"scheduledDateTime"`
+}
+
+// FireteamFinder.DestinyFireteamFinderLobbyState
+type FireteamFinderLobbyState int32
+
+const (
+	FireteamFinderLobbyState_Unknown  = FireteamFinderLobbyState(0)
+	FireteamFinderLobbyState_Inactive = FireteamFinderLobbyState(1)
+	FireteamFinderLobbyState_Active   = FireteamFinderLobbyState(2)
+	FireteamFinderLobbyState_Expired  = FireteamFinderLobbyState(3)
+	FireteamFinderLobbyState_Closed   = FireteamFinderLobbyState(4)
+	FireteamFinderLobbyState_Canceled = FireteamFinderLobbyState(5)
+	FireteamFinderLobbyState_Deleted  = FireteamFinderLobbyState(6)
+)
+
+// FireteamFinder.DestinyFireteamFinderOffer
+type FireteamFinderOffer struct {
+	// {
+	//   "properties": {
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "createdDateTime": {
+	//       "format": "date-time",
+	//       "type": "string"
+	//     },
+	//     "lobbyId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "offerId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOfferState"
+	//       }
+	//     },
+	//     "targetId": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	CreatedDateTime Timestamp `json:"createdDateTime"`
+
+	LobbyID Int64 `json:"lobbyId"`
+
+	OfferID Int64 `json:"offerId"`
+
+	Revision int32 `json:"revision"`
+
+	State FireteamFinderOfferState `json:"state"`
+
+	TargetID FireteamFinderPlayerId `json:"targetId"`
+}
+
+// FireteamFinder.DestinyFireteamFinderOfferState
+type FireteamFinderOfferState int32
+
+const (
+	FireteamFinderOfferState_Unknown  = FireteamFinderOfferState(0)
+	FireteamFinderOfferState_Pending  = FireteamFinderOfferState(1)
+	FireteamFinderOfferState_Accepted = FireteamFinderOfferState(2)
+	FireteamFinderOfferState_Rejected = FireteamFinderOfferState(3)
+	FireteamFinderOfferState_Deleted  = FireteamFinderOfferState(4)
+	FireteamFinderOfferState_Expired  = FireteamFinderOfferState(5)
+)
+
+// FireteamFinder.DestinyFireteamFinderPlayerId
+type FireteamFinderPlayerId struct {
+	// {
+	//   "properties": {
+	//     "characterId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "membershipId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "membershipType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/BungieMembershipType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	CharacterID Int64 `json:"characterId"`
+
+	MembershipID Int64 `json:"membershipId"`
+
+	MembershipType BungieMembershipType `json:"membershipType"`
+}
+
+// FireteamFinder.DestinyFireteamFinderPlayerReadinessState
+type FireteamFinderPlayerReadinessState int32
+
+const (
+	FireteamFinderPlayerReadinessState_Unknown        = FireteamFinderPlayerReadinessState(0)
+	FireteamFinderPlayerReadinessState_Reserved       = FireteamFinderPlayerReadinessState(1)
+	FireteamFinderPlayerReadinessState_Disconnected   = FireteamFinderPlayerReadinessState(2)
+	FireteamFinderPlayerReadinessState_InLobbyUnready = FireteamFinderPlayerReadinessState(3)
+	FireteamFinderPlayerReadinessState_InLobbyReady   = FireteamFinderPlayerReadinessState(4)
+	FireteamFinderPlayerReadinessState_Summoned       = FireteamFinderPlayerReadinessState(5)
+)
+
+// FireteamFinder.DestinyFireteamFinderRespondToApplicationRequest
+type FireteamFinderRespondToApplicationRequestBody struct {
+	// {
+	//   "properties": {
+	//     "accepted": {
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Accepted bool `json:"accepted"`
+}
+
+// FireteamFinder.DestinyFireteamFinderRespondToApplicationResponse
+type FireteamFinderRespondToApplicationResponse struct {
+	// {
+	//   "properties": {
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "applicationRevision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	ApplicationRevision int32 `json:"applicationRevision"`
+}
+
+// FireteamFinder.DestinyFireteamFinderRespondToAuthenticationRequest
+type FireteamFinderRespondToAuthenticationRequestBody struct {
+	// {
+	//   "properties": {
+	//     "confirmed": {
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Confirmed bool `json:"confirmed"`
+}
+
+// FireteamFinder.DestinyFireteamFinderRespondToAuthenticationResponse
+type FireteamFinderRespondToAuthenticationResponse struct {
+	// {
+	//   "properties": {
+	//     "applicationId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "applicationRevision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "listing": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
+	//     },
+	//     "offer": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ApplicationID Int64 `json:"applicationId"`
+
+	ApplicationRevision int32 `json:"applicationRevision"`
+
+	Listing FireteamFinderListing `json:"listing"`
+
+	Offer FireteamFinderOffer `json:"offer"`
+}
+
+// FireteamFinder.DestinyFireteamFinderRespondToOfferRequest
+type FireteamFinderRespondToOfferRequestBody struct {
+	// {
+	//   "properties": {
+	//     "accepted": {
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Accepted bool `json:"accepted"`
+}
+
+// FireteamFinder.DestinyFireteamFinderRespondToOfferResponse
+type FireteamFinderRespondToOfferResponse struct {
+	// {
+	//   "properties": {
+	//     "offerId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "revision": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "state": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOfferState"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	OfferID Int64 `json:"offerId"`
+
+	Revision int32 `json:"revision"`
+
+	State FireteamFinderOfferState `json:"state"`
+}
+
+// FireteamFinder.DestinyFireteamFinderSearchListingsByClanRequest
+type FireteamFinderSearchListingsByClanRequestBody struct {
+	// {
+	//   "properties": {
+	//     "lobbyState": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
+	//       }
+	//     },
+	//     "pageSize": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "pageToken": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
+
+	PageSize int32 `json:"pageSize"`
+
+	PageToken string `json:"pageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderSearchListingsByClanResponse
+type FireteamFinderSearchListingsByClanResponse struct {
+	// {
+	//   "properties": {
+	//     "listings": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "pageToken": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Listings []FireteamFinderListing `json:"listings"`
+
+	PageToken string `json:"pageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersRequest
+type FireteamFinderSearchListingsByFiltersRequestBody struct {
+	// {
+	//   "properties": {
+	//     "filters": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilter"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "lobbyState": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
+	//       }
+	//     },
+	//     "pageSize": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "pageToken": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Filters []FireteamFinderListingFilter `json:"filters"`
+
+	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
+
+	PageSize int32 `json:"pageSize"`
+
+	PageToken string `json:"pageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersResponse
+type FireteamFinderSearchListingsByFiltersResponse struct {
+	// {
+	//   "properties": {
+	//     "listings": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "pageToken": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	Listings []FireteamFinderListing `json:"listings"`
+
+	PageToken string `json:"pageToken"`
+}
+
+// FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsRequest
+type FireteamFinderUpdateLobbySettingsRequestBody struct {
+	// {
+	//   "properties": {
+	//     "updatedSettings": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	UpdatedSettings FireteamFinderLobbySettings `json:"updatedSettings"`
+}
+
+// FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsResponse
+type FireteamFinderUpdateLobbySettingsResponse struct {
+	// {
+	//   "properties": {
+	//     "updatedListing": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
+	//     },
+	//     "updatedLobby": {
+	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyResponse"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	UpdatedListing FireteamFinderListing `json:"updatedListing"`
+
+	UpdatedLobby FireteamFinderLobbyResponse `json:"updatedLobby"`
 }
 
 // Forum.CommunityContentSortMode
@@ -43872,7 +49514,7 @@ const (
 )
 
 // GroupsV2.GroupApplicationListRequest
-type GroupApplicationListRequest struct {
+type GroupApplicationListRequestBody struct {
 	// {
 	//   "properties": {
 	//     "memberships": {
@@ -43894,7 +49536,7 @@ type GroupApplicationListRequest struct {
 }
 
 // GroupsV2.GroupApplicationRequest
-type GroupApplicationRequest struct {
+type GroupApplicationRequestBody struct {
 	// {
 	//   "properties": {
 	//     "message": {
@@ -43989,7 +49631,7 @@ type GroupBan struct {
 }
 
 // GroupsV2.GroupBanRequest
-type GroupBanRequest struct {
+type GroupBanRequestBody struct {
 	// {
 	//   "properties": {
 	//     "comment": {
@@ -44199,6 +49841,84 @@ type GroupEditAction struct {
 	Tags string `json:"tags"`
 
 	Theme string `json:"theme"`
+}
+
+// GroupsV2.GroupEditHistory
+type GroupEditHistory struct {
+	// {
+	//   "properties": {
+	//     "about": {
+	//       "type": "string"
+	//     },
+	//     "aboutEditors": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
+	//     "clanCallsign": {
+	//       "type": "string"
+	//     },
+	//     "clanCallsignEditors": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
+	//     "editDate": {
+	//       "format": "date-time",
+	//       "nullable": true,
+	//       "type": "string"
+	//     },
+	//     "groupEditors": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/User.UserInfoCard"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "groupId": {
+	//       "format": "int64",
+	//       "type": "integer"
+	//     },
+	//     "motto": {
+	//       "type": "string"
+	//     },
+	//     "mottoEditors": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
+	//     "name": {
+	//       "type": "string"
+	//     },
+	//     "nameEditors": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	About string `json:"about"`
+
+	AboutEditors Nullable[Int64] `json:"aboutEditors,omitempty"`
+
+	ClanCallsign string `json:"clanCallsign"`
+
+	ClanCallsignEditors Nullable[Int64] `json:"clanCallsignEditors,omitempty"`
+
+	EditDate Nullable[Timestamp] `json:"editDate,omitempty"`
+
+	GroupEditors []UserInfoCard `json:"groupEditors"`
+
+	GroupID Int64 `json:"groupId"`
+
+	Motto string `json:"motto"`
+
+	MottoEditors Nullable[Int64] `json:"mottoEditors,omitempty"`
+
+	Name string `json:"name"`
+
+	NameEditors Nullable[Int64] `json:"nameEditors,omitempty"`
 }
 
 // GroupsV2.GroupFeatures
@@ -44547,7 +50267,7 @@ type GroupMembershipSearchResponse struct {
 }
 
 // GroupsV2.GroupNameSearchRequest
-type GroupNameSearchRequest struct {
+type GroupNameSearchRequestBody struct {
 	// {
 	//   "properties": {
 	//     "groupName": {
@@ -44612,7 +50332,7 @@ type GroupOptionalConversation struct {
 }
 
 // GroupsV2.GroupOptionalConversationAddRequest
-type GroupOptionalConversationAddRequest struct {
+type GroupOptionalConversationAddRequestBody struct {
 	// {
 	//   "properties": {
 	//     "chatName": {
@@ -44636,7 +50356,7 @@ type GroupOptionalConversationAddRequest struct {
 }
 
 // GroupsV2.GroupOptionalConversationEditRequest
-type GroupOptionalConversationEditRequest struct {
+type GroupOptionalConversationEditRequestBody struct {
 	// {
 	//   "properties": {
 	//     "chatEnabled": {
@@ -45478,6 +51198,11 @@ type GroupV2 struct {
 	//     "name": {
 	//       "type": "string"
 	//     },
+	//     "remoteGroupId": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "tags": {
 	//       "items": {
 	//         "type": "string"
@@ -45542,6 +51267,8 @@ type GroupV2 struct {
 	Motto string `json:"motto"`
 
 	Name string `json:"name"`
+
+	RemoteGroupID Nullable[Int64] `json:"remoteGroupId,omitempty"`
 
 	Tags []string `json:"tags"`
 
@@ -45609,6 +51336,11 @@ type GroupV2Card struct {
 	//     "name": {
 	//       "type": "string"
 	//     },
+	//     "remoteGroupId": {
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "theme": {
 	//       "type": "string"
 	//     }
@@ -45639,6 +51371,8 @@ type GroupV2Card struct {
 	Motto string `json:"motto"`
 
 	Name string `json:"name"`
+
+	RemoteGroupID Nullable[Int64] `json:"remoteGroupId,omitempty"`
 
 	Theme string `json:"theme"`
 }
@@ -46316,7 +52050,7 @@ type CollectibleDefinitions struct {
 }
 
 // Tokens.PartnerOfferClaimRequest
-type PartnerOfferClaimRequest struct {
+type PartnerOfferClaimRequestBody struct {
 	// {
 	//   "properties": {
 	//     "BungieNetMembershipId": {
@@ -47524,7 +53258,7 @@ type EmailViewDefinitionSetting struct {
 }
 
 // User.ExactSearchRequest
-type ExactSearchRequest struct {
+type ExactSearchRequestBody struct {
 	// {
 	//   "properties": {
 	//     "displayName": {
@@ -48051,7 +53785,7 @@ type UserMembershipData struct {
 }
 
 // User.UserSearchPrefixRequest
-type UserSearchPrefixRequest struct {
+type UserSearchPrefixRequestBody struct {
 	// {
 	//   "properties": {
 	//     "displayNamePrefix": {
@@ -48216,6 +53950,18 @@ func (e DeveloperRole) Enum() string {
 		return "TeamMember"
 	}
 	return fmt.Sprintf("DeveloperRole_%d", e)
+}
+
+func (e OAuthApplicationType) Enum() string {
+	switch e {
+	case OAuthApplicationType_None:
+		return "None"
+	case OAuthApplicationType_Confidential:
+		return "Confidential"
+	case OAuthApplicationType_Public:
+		return "Public"
+	}
+	return fmt.Sprintf("OAuthApplicationType_%d", e)
 }
 
 func (e BungieCredentialType) Enum() string {
@@ -48425,6 +54171,12 @@ func (e DamageType) Enum() string {
 	}
 	return fmt.Sprintf("DamageType_%d", e)
 }
+func (d ActivityInteractableDefinition) DefinitionTable() string {
+	return "DestinyActivityInteractableDefinition"
+}
+func (d ActivityInteractableEntryDefinition) DefinitionTable() string {
+	return "DestinyActivityInteractableEntryDefinition"
+}
 func (d ActivityModifierDefinition) DefinitionTable() string {
 	return "DestinyActivityModifierDefinition"
 }
@@ -48499,6 +54251,12 @@ func (d ActivityModifierReferenceDefinition) DefinitionTable() string {
 }
 func (d ActivityPlaylistItemDefinition) DefinitionTable() string {
 	return "DestinyActivityPlaylistItemDefinition"
+}
+func (d ActivityRequirementLabel) DefinitionTable() string {
+	return "DestinyActivityRequirementLabel"
+}
+func (d ActivityRequirementsBlock) DefinitionTable() string {
+	return "DestinyActivityRequirementsBlock"
 }
 func (d ActivityRewardDefinition) DefinitionTable() string {
 	return "DestinyActivityRewardDefinition"
@@ -48724,6 +54482,9 @@ func (d ProgressionRewardDefinition) DefinitionTable() string {
 }
 func (d ProgressionRewardItemQuantity) DefinitionTable() string {
 	return "DestinyProgressionRewardItemQuantity"
+}
+func (d ProgressionSocketPlugOverride) DefinitionTable() string {
+	return "DestinyProgressionSocketPlugOverride"
 }
 func (d ProgressionStepDefinition) DefinitionTable() string {
 	return "DestinyProgressionStepDefinition"
@@ -49010,6 +54771,48 @@ func (d LinkedGraphEntryDefinition) DefinitionTable() string {
 func (d EnergyTypeDefinition) DefinitionTable() string {
 	return "DestinyEnergyTypeDefinition"
 }
+func (d ActivityGraphReference) DefinitionTable() string {
+	return "DestinyActivityGraphReference"
+}
+func (d ActivityInteractableReference) DefinitionTable() string {
+	return "DestinyActivityInteractableReference"
+}
+func (d FireteamFinderActivityGraphDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderActivityGraphDefinition"
+}
+func (d FireteamFinderActivitySetDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderActivitySetDefinition"
+}
+func (d FireteamFinderConstantsDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderConstantsDefinition"
+}
+func (d FireteamFinderLabelDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderLabelDefinition"
+}
+func (d FireteamFinderLabelGroupDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderLabelGroupDefinition"
+}
+func (d FireteamFinderOptionCreatorSettings) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionCreatorSettings"
+}
+func (d FireteamFinderOptionDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionDefinition"
+}
+func (d FireteamFinderOptionGroupDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionGroupDefinition"
+}
+func (d FireteamFinderOptionSearcherSettings) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionSearcherSettings"
+}
+func (d FireteamFinderOptionSettingsControl) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionSettingsControl"
+}
+func (d FireteamFinderOptionValueDefinition) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionValueDefinition"
+}
+func (d FireteamFinderOptionValues) DefinitionTable() string {
+	return "DestinyFireteamFinderOptionValues"
+}
 func (d GuardianRankConstantsDefinition) DefinitionTable() string {
 	return "DestinyGuardianRankConstantsDefinition"
 }
@@ -49213,6 +55016,9 @@ func (d EventCardDefinition) DefinitionTable() string {
 }
 func (d EventCardImages) DefinitionTable() string {
 	return "DestinyEventCardImages"
+}
+func (d SeasonActDefinition) DefinitionTable() string {
+	return "DestinySeasonActDefinition"
 }
 func (d SeasonDefinition) DefinitionTable() string {
 	return "DestinySeasonDefinition"
@@ -49544,6 +55350,8 @@ func (e GameVersions) Enum() string {
 		return "TheWitchQueen"
 	case GameVersions_Lightfall:
 		return "Lightfall"
+	case GameVersions_TheFinalShape:
+		return "TheFinalShape"
 	}
 	return fmt.Sprintf("GameVersions_%d", e)
 }
@@ -49822,6 +55630,34 @@ func (e PresentationDisplayStyle) Enum() string {
 		return "SeasonalTriumph"
 	case PresentationDisplayStyle_GuardianRank:
 		return "GuardianRank"
+	case PresentationDisplayStyle_CategoryCollectibles:
+		return "CategoryCollectibles"
+	case PresentationDisplayStyle_CategoryCurrencies:
+		return "CategoryCurrencies"
+	case PresentationDisplayStyle_CategoryEmblems:
+		return "CategoryEmblems"
+	case PresentationDisplayStyle_CategoryEmotes:
+		return "CategoryEmotes"
+	case PresentationDisplayStyle_CategoryEngrams:
+		return "CategoryEngrams"
+	case PresentationDisplayStyle_CategoryFinishers:
+		return "CategoryFinishers"
+	case PresentationDisplayStyle_CategoryGhosts:
+		return "CategoryGhosts"
+	case PresentationDisplayStyle_CategoryMisc:
+		return "CategoryMisc"
+	case PresentationDisplayStyle_CategoryMods:
+		return "CategoryMods"
+	case PresentationDisplayStyle_CategoryOrnaments:
+		return "CategoryOrnaments"
+	case PresentationDisplayStyle_CategoryShaders:
+		return "CategoryShaders"
+	case PresentationDisplayStyle_CategoryShips:
+		return "CategoryShips"
+	case PresentationDisplayStyle_CategorySpawnfx:
+		return "CategorySpawnfx"
+	case PresentationDisplayStyle_CategoryUpgradeMaterials:
+		return "CategoryUpgradeMaterials"
 	}
 	return fmt.Sprintf("PresentationDisplayStyle_%d", e)
 }
@@ -49988,6 +55824,16 @@ func (e RecordToastStyle) Enum() string {
 		return "CraftingRecipeUnlocked"
 	case RecordToastStyle_ToastGuardianRankDetails:
 		return "ToastGuardianRankDetails"
+	case RecordToastStyle_PathfinderObjectiveCompleteRituals:
+		return "PathfinderObjectiveCompleteRituals"
+	case RecordToastStyle_PathfinderObjectiveCompleteSchism:
+		return "PathfinderObjectiveCompleteSchism"
+	case RecordToastStyle_PathfinderObjectiveCompletePvp:
+		return "PathfinderObjectiveCompletePvp"
+	case RecordToastStyle_PathfinderObjectiveCompleteStrikes:
+		return "PathfinderObjectiveCompleteStrikes"
+	case RecordToastStyle_PathfinderObjectiveCompleteGambit:
+		return "PathfinderObjectiveCompleteGambit"
 	}
 	return fmt.Sprintf("RecordToastStyle_%d", e)
 }
@@ -50232,6 +56078,14 @@ func (e VendorItemState) Enum() string {
 		return "Paracausal"
 	case VendorItemState_Cryptarch:
 		return "Cryptarch"
+	case VendorItemState_ArtifactPerkOwned:
+		return "ArtifactPerkOwned"
+	case VendorItemState_Savings:
+		return "Savings"
+	case VendorItemState_Ineligible:
+		return "Ineligible"
+	case VendorItemState_ArtifactPerkBoosted:
+		return "ArtifactPerkBoosted"
 	}
 	return fmt.Sprintf("VendorItemState_%d", e)
 }
@@ -50292,6 +56146,142 @@ func (e EquippingItemBlockAttributes) Enum() string {
 		return "EquipOnAcquire"
 	}
 	return fmt.Sprintf("EquippingItemBlockAttributes_%d", e)
+}
+
+func (e FireteamFinderCodeOptionType) Enum() string {
+	switch e {
+	case FireteamFinderCodeOptionType_None:
+		return "None"
+	case FireteamFinderCodeOptionType_ApplicationOnly:
+		return "ApplicationOnly"
+	case FireteamFinderCodeOptionType_OnlineOnly:
+		return "OnlineOnly"
+	case FireteamFinderCodeOptionType_PlayerCount:
+		return "PlayerCount"
+	case FireteamFinderCodeOptionType_Title:
+		return "Title"
+	case FireteamFinderCodeOptionType_Tags:
+		return "Tags"
+	case FireteamFinderCodeOptionType_FinderActivityGraph:
+		return "FinderActivityGraph"
+	case FireteamFinderCodeOptionType_MicrophoneRequired:
+		return "MicrophoneRequired"
+	}
+	return fmt.Sprintf("FireteamFinderCodeOptionType_%d", e)
+}
+
+func (e FireteamFinderLabelFieldType) Enum() string {
+	switch e {
+	case FireteamFinderLabelFieldType_Title:
+		return "Title"
+	case FireteamFinderLabelFieldType_Label:
+		return "Label"
+	}
+	return fmt.Sprintf("FireteamFinderLabelFieldType_%d", e)
+}
+
+func (e FireteamFinderOptionAvailability) Enum() string {
+	switch e {
+	case FireteamFinderOptionAvailability_None:
+		return "None"
+	case FireteamFinderOptionAvailability_CreateListingBuilder:
+		return "CreateListingBuilder"
+	case FireteamFinderOptionAvailability_SearchListingBuilder:
+		return "SearchListingBuilder"
+	case FireteamFinderOptionAvailability_ListingViewer:
+		return "ListingViewer"
+	case FireteamFinderOptionAvailability_LobbyViewer:
+		return "LobbyViewer"
+	}
+	return fmt.Sprintf("FireteamFinderOptionAvailability_%d", e)
+}
+
+func (e FireteamFinderOptionControlType) Enum() string {
+	switch e {
+	case FireteamFinderOptionControlType_None:
+		return "None"
+	case FireteamFinderOptionControlType_ValueCollection:
+		return "ValueCollection"
+	case FireteamFinderOptionControlType_RadioButton:
+		return "RadioButton"
+	}
+	return fmt.Sprintf("FireteamFinderOptionControlType_%d", e)
+}
+
+func (e FireteamFinderOptionDisplayFormat) Enum() string {
+	switch e {
+	case FireteamFinderOptionDisplayFormat_Text:
+		return "Text"
+	case FireteamFinderOptionDisplayFormat_Integer:
+		return "Integer"
+	case FireteamFinderOptionDisplayFormat_Bool:
+		return "Bool"
+	case FireteamFinderOptionDisplayFormat_FormatString:
+		return "FormatString"
+	}
+	return fmt.Sprintf("FireteamFinderOptionDisplayFormat_%d", e)
+}
+
+func (e FireteamFinderOptionSearchFilterType) Enum() string {
+	switch e {
+	case FireteamFinderOptionSearchFilterType_None:
+		return "None"
+	case FireteamFinderOptionSearchFilterType_All:
+		return "All"
+	case FireteamFinderOptionSearchFilterType_Any:
+		return "Any"
+	case FireteamFinderOptionSearchFilterType_InRangeInclusive:
+		return "InRangeInclusive"
+	case FireteamFinderOptionSearchFilterType_InRangeExclusive:
+		return "InRangeExclusive"
+	case FireteamFinderOptionSearchFilterType_GreaterThan:
+		return "GreaterThan"
+	case FireteamFinderOptionSearchFilterType_GreaterThanOrEqualTo:
+		return "GreaterThanOrEqualTo"
+	case FireteamFinderOptionSearchFilterType_LessThan:
+		return "LessThan"
+	case FireteamFinderOptionSearchFilterType_LessThanOrEqualTo:
+		return "LessThanOrEqualTo"
+	}
+	return fmt.Sprintf("FireteamFinderOptionSearchFilterType_%d", e)
+}
+
+func (e FireteamFinderOptionValueFlags) Enum() string {
+	switch e {
+	case FireteamFinderOptionValueFlags_None:
+		return "None"
+	case FireteamFinderOptionValueFlags_CreateListingDefaultValue:
+		return "CreateListingDefaultValue"
+	case FireteamFinderOptionValueFlags_SearchFilterDefaultValue:
+		return "SearchFilterDefaultValue"
+	}
+	return fmt.Sprintf("FireteamFinderOptionValueFlags_%d", e)
+}
+
+func (e FireteamFinderOptionValueProviderType) Enum() string {
+	switch e {
+	case FireteamFinderOptionValueProviderType_None:
+		return "None"
+	case FireteamFinderOptionValueProviderType_Values:
+		return "Values"
+	case FireteamFinderOptionValueProviderType_PlayerCount:
+		return "PlayerCount"
+	case FireteamFinderOptionValueProviderType_FireteamFinderLabels:
+		return "FireteamFinderLabels"
+	case FireteamFinderOptionValueProviderType_FireteamFinderActivityGraph:
+		return "FireteamFinderActivityGraph"
+	}
+	return fmt.Sprintf("FireteamFinderOptionValueProviderType_%d", e)
+}
+
+func (e FireteamFinderOptionVisibility) Enum() string {
+	switch e {
+	case FireteamFinderOptionVisibility_Always:
+		return "Always"
+	case FireteamFinderOptionVisibility_ShowWhenChangedFromDefault:
+		return "ShowWhenChangedFromDefault"
+	}
+	return fmt.Sprintf("FireteamFinderOptionVisibility_%d", e)
 }
 
 func (e ActivityModeType) Enum() string {
@@ -50464,6 +56454,8 @@ func (e ActivityModeType) Enum() string {
 		return "IronBannerRift"
 	case ActivityModeType_IronBannerZoneControl:
 		return "IronBannerZoneControl"
+	case ActivityModeType_Relic:
+		return "Relic"
 	}
 	return fmt.Sprintf("ActivityModeType_%d", e)
 }
@@ -50964,6 +56956,8 @@ func (e PlatformErrorCodes) Enum() string {
 		return "PayloadSignatureVerificationFailure"
 	case PlatformErrorCodes_InvalidServiceAuthContext:
 		return "InvalidServiceAuthContext"
+	case PlatformErrorCodes_FailedMinimumAgeCheck:
+		return "FailedMinimumAgeCheck"
 	case PlatformErrorCodes_ObsoleteCredentialType:
 		return "ObsoleteCredentialType"
 	case PlatformErrorCodes_UnableToUnPairMobileApp:
@@ -51238,6 +57232,16 @@ func (e PlatformErrorCodes) Enum() string {
 		return "UserDisplayNameGreaterThanMaxLength"
 	case PlatformErrorCodes_UserDisplayNameContainsUnacceptableOrInvalidContent:
 		return "UserDisplayNameContainsUnacceptableOrInvalidContent"
+	case PlatformErrorCodes_EmailValidationOffline:
+		return "EmailValidationOffline"
+	case PlatformErrorCodes_EmailValidationFailOldCode:
+		return "EmailValidationFailOldCode"
+	case PlatformErrorCodes_EmailValidationFailBadLink:
+		return "EmailValidationFailBadLink"
+	case PlatformErrorCodes_EmailUnsubscribeFail:
+		return "EmailUnsubscribeFail"
+	case PlatformErrorCodes_EmailUnsubscribeFailNew:
+		return "EmailUnsubscribeFailNew"
 	case PlatformErrorCodes_MessagingUnknownError:
 		return "MessagingUnknownError"
 	case PlatformErrorCodes_MessagingSelfError:
@@ -51266,6 +57270,8 @@ func (e PlatformErrorCodes) Enum() string {
 		return "MessagingGroupOptionalChatExceededMaximum"
 	case PlatformErrorCodes_PrivateMessagingRequiresDestinyMembership:
 		return "PrivateMessagingRequiresDestinyMembership"
+	case PlatformErrorCodes_MessagingSendDailyThrottle:
+		return "MessagingSendDailyThrottle"
 	case PlatformErrorCodes_AddSurveyAnswersUnknownSqlException:
 		return "AddSurveyAnswersUnknownSqlException"
 	case PlatformErrorCodes_ForumBodyCannotBeEmpty:
@@ -52378,6 +58384,98 @@ func (e PlatformErrorCodes) Enum() string {
 		return "ClanFireteamSMSOrPurchaseRequiredJoin"
 	case PlatformErrorCodes_ClanFireteamPurchaseRequiredJoin:
 		return "ClanFireteamPurchaseRequiredJoin"
+	case PlatformErrorCodes_FireteamFinderInvalidMembershipType:
+		return "FireteamFinderInvalidMembershipType"
+	case PlatformErrorCodes_FireteamFinderInvalidMembershipId:
+		return "FireteamFinderInvalidMembershipId"
+	case PlatformErrorCodes_FireteamFinderInvalidCharacterId:
+		return "FireteamFinderInvalidCharacterId"
+	case PlatformErrorCodes_FireteamFinderInvalidListingOptions:
+		return "FireteamFinderInvalidListingOptions"
+	case PlatformErrorCodes_FireteamFinderInvalidRequestData:
+		return "FireteamFinderInvalidRequestData"
+	case PlatformErrorCodes_FireteamFinderListingApplicationFailed:
+		return "FireteamFinderListingApplicationFailed"
+	case PlatformErrorCodes_FireteamFinderListingAutoJoinFailed:
+		return "FireteamFinderListingAutoJoinFailed"
+	case PlatformErrorCodes_FireteamFinderPlayerApplicationsParsingFailed:
+		return "FireteamFinderPlayerApplicationsParsingFailed"
+	case PlatformErrorCodes_FireteamFinderJoinLobbyHostFailed:
+		return "FireteamFinderJoinLobbyHostFailed"
+	case PlatformErrorCodes_FireteamFinderPlayerNotInGame:
+		return "FireteamFinderPlayerNotInGame"
+	case PlatformErrorCodes_FireteamFinderActivationFailed:
+		return "FireteamFinderActivationFailed"
+	case PlatformErrorCodes_FireteamFinderApplicationNotFound:
+		return "FireteamFinderApplicationNotFound"
+	case PlatformErrorCodes_FireteamFinderUserAlreadyAppliedToListing:
+		return "FireteamFinderUserAlreadyAppliedToListing"
+	case PlatformErrorCodes_FireteamFinderApplicationClosedForUpdates:
+		return "FireteamFinderApplicationClosedForUpdates"
+	case PlatformErrorCodes_FireteamFinderListingAtMaxOpenApplicationsLimit:
+		return "FireteamFinderListingAtMaxOpenApplicationsLimit"
+	case PlatformErrorCodes_FireteamFinderUserNotInApplication:
+		return "FireteamFinderUserNotInApplication"
+	case PlatformErrorCodes_FireteamFinderApplicationUserAlreadyListingOwner:
+		return "FireteamFinderApplicationUserAlreadyListingOwner"
+	case PlatformErrorCodes_FireteamFinderOfferNotFound:
+		return "FireteamFinderOfferNotFound"
+	case PlatformErrorCodes_FireteamFinderOfferClosedForUpdates:
+		return "FireteamFinderOfferClosedForUpdates"
+	case PlatformErrorCodes_FireteamFinderOfferUserNotTarget:
+		return "FireteamFinderOfferUserNotTarget"
+	case PlatformErrorCodes_FireteamFinderLobbyNotFound:
+		return "FireteamFinderLobbyNotFound"
+	case PlatformErrorCodes_FireteamFinderListingNotFound:
+		return "FireteamFinderListingNotFound"
+	case PlatformErrorCodes_FireteamFinderLobbyFull:
+		return "FireteamFinderLobbyFull"
+	case PlatformErrorCodes_FireteamFinderUserNotListingOwner:
+		return "FireteamFinderUserNotListingOwner"
+	case PlatformErrorCodes_FireteamFinderUserNotLobbyOwner:
+		return "FireteamFinderUserNotLobbyOwner"
+	case PlatformErrorCodes_FireteamFinderLobbyClosedForUpdates:
+		return "FireteamFinderLobbyClosedForUpdates"
+	case PlatformErrorCodes_FireteamFinderUserNotInLobby:
+		return "FireteamFinderUserNotInLobby"
+	case PlatformErrorCodes_FireteamFinderDisabledSettingsValue:
+		return "FireteamFinderDisabledSettingsValue"
+	case PlatformErrorCodes_FireteamFinderOwnerInActiveLobby:
+		return "FireteamFinderOwnerInActiveLobby"
+	case PlatformErrorCodes_FireteamFinderApplicationClosedToOfflinePlayers:
+		return "FireteamFinderApplicationClosedToOfflinePlayers"
+	case PlatformErrorCodes_FireteamFinderUserNotApplicationOwner:
+		return "FireteamFinderUserNotApplicationOwner"
+	case PlatformErrorCodes_FireteamFinderInviteValidationFailed:
+		return "FireteamFinderInviteValidationFailed"
+	case PlatformErrorCodes_FireteamFinderOwnerNotInGame:
+		return "FireteamFinderOwnerNotInGame"
+	case PlatformErrorCodes_FireteamFinderPlayerAtMaxLobbyLimit:
+		return "FireteamFinderPlayerAtMaxLobbyLimit"
+	case PlatformErrorCodes_FireteamFinderLobbyTooFarInTheFuture:
+		return "FireteamFinderLobbyTooFarInTheFuture"
+	case PlatformErrorCodes_FireteamFinderApplicantNotInGame:
+		return "FireteamFinderApplicantNotInGame"
+	case PlatformErrorCodes_FireteamFinderResponseUndefined:
+		return "FireteamFinderResponseUndefined"
+	case PlatformErrorCodes_FireteamFinderResponseMoved:
+		return "FireteamFinderResponseMoved"
+	case PlatformErrorCodes_FireteamFinderResponseLoggingIn:
+		return "FireteamFinderResponseLoggingIn"
+	case PlatformErrorCodes_FireteamFinderResponseBadRequest:
+		return "FireteamFinderResponseBadRequest"
+	case PlatformErrorCodes_FireteamFinderResponseUnauthorized:
+		return "FireteamFinderResponseUnauthorized"
+	case PlatformErrorCodes_FireteamFinderResponseForbidden:
+		return "FireteamFinderResponseForbidden"
+	case PlatformErrorCodes_FireteamFinderResponseNotFound:
+		return "FireteamFinderResponseNotFound"
+	case PlatformErrorCodes_FireteamFinderInternalServerError:
+		return "FireteamFinderInternalServerError"
+	case PlatformErrorCodes_FireteamFinderServiceUnavailable:
+		return "FireteamFinderServiceUnavailable"
+	case PlatformErrorCodes_FireteamFinderInternalServerErrorNonFatal:
+		return "FireteamFinderInternalServerErrorNonFatal"
 	case PlatformErrorCodes_CrossSaveOverriddenAccountNotFound:
 		return "CrossSaveOverriddenAccountNotFound"
 	case PlatformErrorCodes_CrossSaveTooManyOverriddenPlatforms:
@@ -52474,6 +58572,8 @@ func (e PlatformErrorCodes) Enum() string {
 		return "ErrorPhoneValidationInvalidNumberType"
 	case PlatformErrorCodes_ErrorPhoneValidationCodeTooRecentlyChecked:
 		return "ErrorPhoneValidationCodeTooRecentlyChecked"
+	case PlatformErrorCodes_ErrorPhoneValidationRecentlyPlayedDestiny2AccountRequired:
+		return "ErrorPhoneValidationRecentlyPlayedDestiny2AccountRequired"
 	case PlatformErrorCodes_ApplePushErrorUnknown:
 		return "ApplePushErrorUnknown"
 	case PlatformErrorCodes_ApplePushErrorNull:
@@ -52512,6 +58612,10 @@ func (e PlatformErrorCodes) Enum() string {
 		return "ErrorBungieFriendsListFull"
 	case PlatformErrorCodes_ErrorBungieBlockListFull:
 		return "ErrorBungieBlockListFull"
+	case PlatformErrorCodes_ErrorBungieFriendNotFound:
+		return "ErrorBungieFriendNotFound"
+	case PlatformErrorCodes_ErrorBungieFriendInvalidMembershipType:
+		return "ErrorBungieFriendInvalidMembershipType"
 	case PlatformErrorCodes_ErrorEgsUnknown:
 		return "ErrorEgsUnknown"
 	case PlatformErrorCodes_ErrorEgsBadRequest:
@@ -52610,6 +58714,156 @@ func (e FireteamSlotSearch) Enum() string {
 		return "HasOpenPlayerOrAltSlots"
 	}
 	return fmt.Sprintf("FireteamSlotSearch_%d", e)
+}
+
+func (e FireteamFinderApplicationState) Enum() string {
+	switch e {
+	case FireteamFinderApplicationState_Unknown:
+		return "Unknown"
+	case FireteamFinderApplicationState_WaitingForApplicants:
+		return "WaitingForApplicants"
+	case FireteamFinderApplicationState_WaitingForLobbyOwner:
+		return "WaitingForLobbyOwner"
+	case FireteamFinderApplicationState_Accepted:
+		return "Accepted"
+	case FireteamFinderApplicationState_Rejected:
+		return "Rejected"
+	case FireteamFinderApplicationState_Deleted:
+		return "Deleted"
+	case FireteamFinderApplicationState_Expired:
+		return "Expired"
+	}
+	return fmt.Sprintf("FireteamFinderApplicationState_%d", e)
+}
+
+func (e FireteamFinderApplicationType) Enum() string {
+	switch e {
+	case FireteamFinderApplicationType_Unknown:
+		return "Unknown"
+	case FireteamFinderApplicationType_Creator:
+		return "Creator"
+	case FireteamFinderApplicationType_Search:
+		return "Search"
+	case FireteamFinderApplicationType_Invite:
+		return "Invite"
+	case FireteamFinderApplicationType_Friend:
+		return "Friend"
+	case FireteamFinderApplicationType_Encounter:
+		return "Encounter"
+	case FireteamFinderApplicationType_Public:
+		return "Public"
+	}
+	return fmt.Sprintf("FireteamFinderApplicationType_%d", e)
+}
+
+func (e FireteamFinderListingFilterMatchType) Enum() string {
+	switch e {
+	case FireteamFinderListingFilterMatchType_Unknown:
+		return "Unknown"
+	case FireteamFinderListingFilterMatchType_MustNot:
+		return "MustNot"
+	case FireteamFinderListingFilterMatchType_Should:
+		return "Should"
+	case FireteamFinderListingFilterMatchType_Filter:
+		return "Filter"
+	}
+	return fmt.Sprintf("FireteamFinderListingFilterMatchType_%d", e)
+}
+
+func (e FireteamFinderListingFilterRangeType) Enum() string {
+	switch e {
+	case FireteamFinderListingFilterRangeType_Unknown:
+		return "Unknown"
+	case FireteamFinderListingFilterRangeType_All:
+		return "All"
+	case FireteamFinderListingFilterRangeType_Any:
+		return "Any"
+	case FireteamFinderListingFilterRangeType_InRangeInclusive:
+		return "InRangeInclusive"
+	case FireteamFinderListingFilterRangeType_InRangeExclusive:
+		return "InRangeExclusive"
+	case FireteamFinderListingFilterRangeType_GreaterThan:
+		return "GreaterThan"
+	case FireteamFinderListingFilterRangeType_GreaterThanOrEqualTo:
+		return "GreaterThanOrEqualTo"
+	case FireteamFinderListingFilterRangeType_LessThan:
+		return "LessThan"
+	case FireteamFinderListingFilterRangeType_LessThanOrEqualTo:
+		return "LessThanOrEqualTo"
+	}
+	return fmt.Sprintf("FireteamFinderListingFilterRangeType_%d", e)
+}
+
+func (e FireteamFinderLobbyPrivacyScope) Enum() string {
+	switch e {
+	case FireteamFinderLobbyPrivacyScope_Unknown:
+		return "Unknown"
+	case FireteamFinderLobbyPrivacyScope_Open:
+		return "Open"
+	case FireteamFinderLobbyPrivacyScope_Applications:
+		return "Applications"
+	case FireteamFinderLobbyPrivacyScope_Clan:
+		return "Clan"
+	case FireteamFinderLobbyPrivacyScope_Friends:
+		return "Friends"
+	}
+	return fmt.Sprintf("FireteamFinderLobbyPrivacyScope_%d", e)
+}
+
+func (e FireteamFinderLobbyState) Enum() string {
+	switch e {
+	case FireteamFinderLobbyState_Unknown:
+		return "Unknown"
+	case FireteamFinderLobbyState_Inactive:
+		return "Inactive"
+	case FireteamFinderLobbyState_Active:
+		return "Active"
+	case FireteamFinderLobbyState_Expired:
+		return "Expired"
+	case FireteamFinderLobbyState_Closed:
+		return "Closed"
+	case FireteamFinderLobbyState_Canceled:
+		return "Canceled"
+	case FireteamFinderLobbyState_Deleted:
+		return "Deleted"
+	}
+	return fmt.Sprintf("FireteamFinderLobbyState_%d", e)
+}
+
+func (e FireteamFinderOfferState) Enum() string {
+	switch e {
+	case FireteamFinderOfferState_Unknown:
+		return "Unknown"
+	case FireteamFinderOfferState_Pending:
+		return "Pending"
+	case FireteamFinderOfferState_Accepted:
+		return "Accepted"
+	case FireteamFinderOfferState_Rejected:
+		return "Rejected"
+	case FireteamFinderOfferState_Deleted:
+		return "Deleted"
+	case FireteamFinderOfferState_Expired:
+		return "Expired"
+	}
+	return fmt.Sprintf("FireteamFinderOfferState_%d", e)
+}
+
+func (e FireteamFinderPlayerReadinessState) Enum() string {
+	switch e {
+	case FireteamFinderPlayerReadinessState_Unknown:
+		return "Unknown"
+	case FireteamFinderPlayerReadinessState_Reserved:
+		return "Reserved"
+	case FireteamFinderPlayerReadinessState_Disconnected:
+		return "Disconnected"
+	case FireteamFinderPlayerReadinessState_InLobbyUnready:
+		return "InLobbyUnready"
+	case FireteamFinderPlayerReadinessState_InLobbyReady:
+		return "InLobbyReady"
+	case FireteamFinderPlayerReadinessState_Summoned:
+		return "Summoned"
+	}
+	return fmt.Sprintf("FireteamFinderPlayerReadinessState_%d", e)
 }
 
 func (e CommunityContentSortMode) Enum() string {
