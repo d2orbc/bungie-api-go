@@ -6,6 +6,53 @@ Documentation as one single, gigantic page: https://bungie-net.github.io
 
 This section will be added to as time goes by - we're working with it as we go!
 
+## 2025-05-09 Update for Rites of the Nine 
+- Added new fields to `DestinyEventCardDefinition` to support Heavy Metal event cards. 
+  - These fields are `eventCardCurrencyList`, `weeklyChallengesPresentationNodeHash`, and `rewardProgressionHash`.
+- Fixed the `FireteamFinderApplicantNotInGame` Fireteam Finder error code. 
+  - Now it is unique, rather than the same integer as another error code. 
+
+## 2024-12-08 Update for the Dawning
+- Added support for socket override definitions and states on season passes.
+  - Added `socketOverrides` to `DestinyProgressionRewardItemQuantity` definitions to reference socket types and plug items.
+  - Added `rewardItemSocketOverrideStates` to `DestinyProgression` for season pass rewards.
+    - This includes `rewardItemStats` for armor rolls and `itemState` for Deepsight red-border weapons.
+- Added support for virtual stack sizes on material requirements.
+  - Added `hasVirtualStackSize` to `DestinyMaterialRequirement` definitions, which would require the new material requirement states.
+  - Added `materialRequirementSetStates` to `DestinyCurrenciesComponent` with the `CurrencyLookups` component.
+    - The `materialRequirementStates` include an `itemHash`, a required `count` and a current `stackSize` (which may be virtual).
+
+## 2024-10-08 Update for Episode: Revenant
+- Added `DestinyVendorItemComponentSet` to return `DestinyItemComponent` objects for Vendor sale items.
+  - Request the `itemComponents` with the `ItemCommonData` component type.
+  - `DestinyItemComponent.state` provides Deepsight red-border status.
+  - `DestinyItemComponent.tooltipNotificationIndexes` provides tooltips, relevant for the new potions.
+- Added `stackSize` and `maxStackSize` to socket plugs.
+  - The `stackSize` shows the number of potions you've brewed in the Tonic Capsule sockets.
+
+## 2024-07-16 Update for Lost Sectors
+
+- Added `availableActivityInteractables` to `DestinyCharacterActivitiesComponent`.
+  - Finally adds support for today's Expert and Master Lost Sector activities.
+  - Also includes in-world activity interactables (totems) for campaign missions and the like.
+  - Cross-reference with `availableActivities` for those that can also be launched from the Director.
+
+## 2024-07-10 Update for The Final Shape
+
+- Added `acts` to `DestinySeasonDefinition` for the new Episodes.
+- Added an `isVisible` flag to `DestinyArtifactTierItem`.
+- Added a new `DestinyActivityModeType` enum value for 'Relic' activities.
+- Added a `recordTypeName` to `DestinyRecordDefinition`.
+- Replaced `obscuredString` with `obscuredName` and `obscuredDescription` on record definition state blocks.
+- Added `commendationNodePercentagesByHash` to `DestinySocialCommendationsComponent`.
+- Added a `tintedIcon` to `DestinySocialCommendationNodeDefinition`.
+- Added `guardianRankHashes` to `DestinyGuardianRankConstantsDefinition`.
+- Added the `renewedGuardianRank` to `DestinyProfileComponent`.
+
+## 2023-02-28 Update for Lightfall
+
+- Added Loadouts, Guardian Ranks, and Commendations!
+
 ## 2022-12-06 Update for the Season of the Seraph
 
 - Added `responseMintedTimestamp` and `secondaryComponentsMintedTimestamp` to DestinyProfileResponse.
