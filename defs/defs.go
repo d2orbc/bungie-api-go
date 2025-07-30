@@ -13,11 +13,19 @@ import (
 )
 
 func NewCache(api *bnet.API) *Cache {
-	return &Cache{api: api, m: make(map[string]*cachedTable)}
+	return NewCacheWithLocale(api, "en")
+}
+
+func NewCacheWithLocale(api *bnet.API, locale string) *Cache {
+	if locale == "" {
+		locale = "en"
+	}
+	return &Cache{api: api, locale: locale, m: make(map[string]*cachedTable)}
 }
 
 type Cache struct {
-	api *bnet.API
+	api    *bnet.API
+	locale string
 
 	mu       sync.Mutex
 	manifest bnet.Manifest
@@ -70,7 +78,11 @@ func (c *Cache) ensureTable(ctx context.Context, table string) error {
 	if t.version == mani.Version {
 		return nil
 	}
-	path, ok := mani.JsonWorldComponentContentPaths["en"][table]
+	path, ok := mani.JsonWorldComponentContentPaths[c.locale][table]
+	if !ok {
+		// Fallback to "en" if requested locale is not available
+		path, ok = mani.JsonWorldComponentContentPaths["en"][table]
+	}
 	if !ok {
 		return fmt.Errorf("unknown definition table %q", table)
 	}
