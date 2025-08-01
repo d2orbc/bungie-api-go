@@ -3577,53 +3577,6 @@ func (a API) ForumGetPostAndParent(ctx context.Context, req ForumGetPostAndParen
 	return &resp, err
 }
 
-// FireteamFinderGetListingRequest are the request parameters for operation FireteamFinder.GetListing
-type FireteamFinderGetListingRequest struct {
-
-	// The ID of the listing to retrieve.
-	// Required.
-	ListingID Int64
-}
-
-// FireteamFinderGetListing: Retrieves a Fireteam listing.
-//
-// URL: /FireteamFinder/Listing/{listingId}/
-//
-// Operation: FireteamFinder.GetListing
-func (a API) FireteamFinderGetListing(ctx context.Context, req FireteamFinderGetListingRequest) (*ServerResponse[FireteamFinderListing], error) {
-	//	{
-	//	  "description": "Retrieves a Fireteam listing.",
-	//	  "operationId": "FireteamFinder.GetListing",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "The ID of the listing to retrieve.",
-	//	      "in": "path",
-	//	      "name": "listingId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderListing"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderListing]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetListing",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Listing/{listingId}/", PathParams: map[string]string{
-			"listingId": fmt.Sprint(req.ListingID),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
 // FireteamGetActivePrivateClanFireteamCountRequest are the request parameters for operation
 // Fireteam.GetActivePrivateClanFireteamCount
 type FireteamGetActivePrivateClanFireteamCountRequest struct {
@@ -6916,914 +6869,6 @@ func (a API) GroupV2RecoverGroupForFounder(ctx context.Context, req GroupV2Recov
 	return &resp, err
 }
 
-// FireteamFinderSearchListingsByFiltersRequest are the request parameters for operation
-// FireteamFinder.SearchListingsByFilters
-type FireteamFinderSearchListingsByFiltersRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Optional boolean to bypass the offline-only check, so the client can pull fireteam from the game.
-	OverrideOfflineFilter bool
-
-	// Required.
-	Body FireteamFinderSearchListingsByFiltersRequestBody
-}
-
-// FireteamFinderSearchListingsByFilters: Returns search results for available Fireteams provided
-// search filters.
-//
-// URL: /FireteamFinder/Search/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.SearchListingsByFilters
-func (a API) FireteamFinderSearchListingsByFilters(ctx context.Context, req FireteamFinderSearchListingsByFiltersRequest) (*ServerResponse[FireteamFinderSearchListingsByFiltersResponse], error) {
-	//	{
-	//	  "description": "Returns search results for available Fireteams provided search filters.",
-	//	  "operationId": "FireteamFinder.SearchListingsByFilters",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "Optional boolean to bypass the offline-only check, so the client can pull fireteam from the game.",
-	//	      "in": "query",
-	//	      "name": "overrideOfflineFilter",
-	//	      "schema": {
-	//	        "type": "boolean"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderSearchListingsByFiltersResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.SearchListingsByFilters",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Search/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{
-			"overrideOfflineFilter": {fmt.Sprint(req.OverrideOfflineFilter)},
-		}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderSearchListingsByClanRequest are the request parameters for operation
-// FireteamFinder.SearchListingsByClan
-type FireteamFinderSearchListingsByClanRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderSearchListingsByClanRequestBody
-}
-
-// FireteamFinderSearchListingsByClan: Returns search results for available Fireteams provided a clan.
-//
-// URL: /FireteamFinder/Search/Clan/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.SearchListingsByClan
-func (a API) FireteamFinderSearchListingsByClan(ctx context.Context, req FireteamFinderSearchListingsByClanRequest) (*ServerResponse[FireteamFinderSearchListingsByClanResponse], error) {
-	//	{
-	//	  "description": "Returns search results for available Fireteams provided a clan.",
-	//	  "operationId": "FireteamFinder.SearchListingsByClan",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderSearchListingsByClanRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderSearchListingsByClanResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderSearchListingsByClanResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.SearchListingsByClan",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Search/Clan/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetPlayerOffersRequest are the request parameters for operation
-// FireteamFinder.GetPlayerOffers
-type FireteamFinderGetPlayerOffersRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// An optional token from a previous response to fetch the next page of results.
-	NextPageToken string
-
-	// The maximum number of results to be returned with this page.
-	PageSize int32
-}
-
-// FireteamFinderGetPlayerOffers: Retrieves Fireteam offers that this player has recieved.
-//
-// URL:
-// /FireteamFinder/PlayerOffers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetPlayerOffers
-func (a API) FireteamFinderGetPlayerOffers(ctx context.Context, req FireteamFinderGetPlayerOffersRequest) (*ServerResponse[FireteamFinderGetPlayerOffersResponse], error) {
-	//	{
-	//	  "description": "Retrieves Fireteam offers that this player has recieved.",
-	//	  "operationId": "FireteamFinder.GetPlayerOffers",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "An optional token from a previous response to fetch the next page of results.",
-	//	      "in": "query",
-	//	      "name": "nextPageToken",
-	//	      "schema": {
-	//	        "type": "string"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The maximum number of results to be returned with this page.",
-	//	      "in": "query",
-	//	      "name": "pageSize",
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerOffersResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetPlayerOffersResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerOffers",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/PlayerOffers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{
-			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
-			"pageSize":      {fmt.Sprint(req.PageSize)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetPlayerLobbiesRequest are the request parameters for operation
-// FireteamFinder.GetPlayerLobbies
-type FireteamFinderGetPlayerLobbiesRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// An optional token from a previous response to fetch the next page of results.
-	NextPageToken string
-
-	// The maximum number of results to be returned with this page.
-	PageSize int32
-}
-
-// FireteamFinderGetPlayerLobbies: Retrieves the information for a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/PlayerLobbies/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetPlayerLobbies
-func (a API) FireteamFinderGetPlayerLobbies(ctx context.Context, req FireteamFinderGetPlayerLobbiesRequest) (*ServerResponse[FireteamFinderGetPlayerLobbiesResponse], error) {
-	//	{
-	//	  "description": "Retrieves the information for a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.GetPlayerLobbies",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "An optional token from a previous response to fetch the next page of results.",
-	//	      "in": "query",
-	//	      "name": "nextPageToken",
-	//	      "schema": {
-	//	        "type": "string"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The maximum number of results to be returned with this page.",
-	//	      "in": "query",
-	//	      "name": "pageSize",
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerLobbiesResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetPlayerLobbiesResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerLobbies",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/PlayerLobbies/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{
-			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
-			"pageSize":      {fmt.Sprint(req.PageSize)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetPlayerApplicationsRequest are the request parameters for operation
-// FireteamFinder.GetPlayerApplications
-type FireteamFinderGetPlayerApplicationsRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// An optional token from a previous response to fetch the next page of results.
-	NextPageToken string
-
-	// The maximum number of results to be returned with this page.
-	PageSize int32
-}
-
-// FireteamFinderGetPlayerApplications: Retrieves Fireteam applications that this player has sent or
-// recieved.
-//
-// URL:
-// /FireteamFinder/PlayerApplications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetPlayerApplications
-func (a API) FireteamFinderGetPlayerApplications(ctx context.Context, req FireteamFinderGetPlayerApplicationsRequest) (*ServerResponse[FireteamFinderGetPlayerApplicationsResponse], error) {
-	//	{
-	//	  "description": "Retrieves Fireteam applications that this player has sent or recieved.",
-	//	  "operationId": "FireteamFinder.GetPlayerApplications",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "An optional token from a previous response to fetch the next page of results.",
-	//	      "in": "query",
-	//	      "name": "nextPageToken",
-	//	      "schema": {
-	//	        "type": "string"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The maximum number of results to be returned with this page.",
-	//	      "in": "query",
-	//	      "name": "pageSize",
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetPlayerApplicationsResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetPlayerApplicationsResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetPlayerApplications",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/PlayerApplications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{
-			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
-			"pageSize":      {fmt.Sprint(req.PageSize)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderJoinLobbyRequest are the request parameters for operation FireteamFinder.JoinLobby
-type FireteamFinderJoinLobbyRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderJoinLobbyRequestBody
-}
-
-// FireteamFinderJoinLobby: Sends a request to join an available Fireteam lobby.
-//
-// URL: /FireteamFinder/Lobby/Join/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.JoinLobby
-func (a API) FireteamFinderJoinLobby(ctx context.Context, req FireteamFinderJoinLobbyRequest) (*ServerResponse[FireteamFinderLobbyResponse], error) {
-	//	{
-	//	  "description": "Sends a request to join an available Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.JoinLobby",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderJoinLobbyRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderLobbyResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderLobbyResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.JoinLobby",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/Join/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderHostLobbyRequest are the request parameters for operation FireteamFinder.HostLobby
-type FireteamFinderHostLobbyRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderHostLobbyRequestBody
-}
-
-// FireteamFinderHostLobby: Creates a new Fireteam lobby and Fireteam Finder listing.
-//
-// URL: /FireteamFinder/Lobby/Host/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.HostLobby
-func (a API) FireteamFinderHostLobby(ctx context.Context, req FireteamFinderHostLobbyRequest) (*ServerResponse[FireteamFinderHostLobbyResponse], error) {
-	//	{
-	//	  "description": "Creates a new Fireteam lobby and Fireteam Finder listing.",
-	//	  "operationId": "FireteamFinder.HostLobby",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderHostLobbyRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderHostLobbyResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderHostLobbyResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.HostLobby",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/Host/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderBulkGetListingStatusRequest are the request parameters for operation
-// FireteamFinder.BulkGetListingStatus
-type FireteamFinderBulkGetListingStatusRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderBulkGetListingStatusRequestBody
-}
-
-// FireteamFinderBulkGetListingStatus: Retrieves Fireteam listing statuses in bulk.
-//
-// URL:
-// /FireteamFinder/Listing/BulkStatus/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.BulkGetListingStatus
-func (a API) FireteamFinderBulkGetListingStatus(ctx context.Context, req FireteamFinderBulkGetListingStatusRequest) (*ServerResponse[FireteamFinderBulkGetListingStatusResponse], error) {
-	//	{
-	//	  "description": "Retrieves Fireteam listing statuses in bulk.",
-	//	  "operationId": "FireteamFinder.BulkGetListingStatus",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderBulkGetListingStatusRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderBulkGetListingStatusResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderBulkGetListingStatusResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.BulkGetListingStatus",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Listing/BulkStatus/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetCharacterActivityAccessRequest are the request parameters for operation
-// FireteamFinder.GetCharacterActivityAccess
-type FireteamFinderGetCharacterActivityAccessRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-}
-
-// FireteamFinderGetCharacterActivityAccess: Retrieves the information for a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/CharacterActivityAccess/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetCharacterActivityAccess
-func (a API) FireteamFinderGetCharacterActivityAccess(ctx context.Context, req FireteamFinderGetCharacterActivityAccessRequest) (*ServerResponse[FireteamFinderGetCharacterActivityAccessResponse], error) {
-	//	{
-	//	  "description": "Retrieves the information for a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.GetCharacterActivityAccess",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetCharacterActivityAccessResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetCharacterActivityAccessResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetCharacterActivityAccess",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/CharacterActivityAccess/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
 // Destiny2GetItemRequest are the request parameters for operation Destiny2.GetItem
 type Destiny2GetItemRequest struct {
 
@@ -9485,1432 +8530,6 @@ func (a API) ForumGetCoreTopicsPaged(ctx context.Context, req ForumGetCoreTopics
 	return &resp, err
 }
 
-// FireteamFinderGetOfferRequest are the request parameters for operation FireteamFinder.GetOffer
-type FireteamFinderGetOfferRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The unique ID of the offer.
-	// Required.
-	OfferID Int64
-}
-
-// FireteamFinderGetOffer: Retrieves an offer to a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Offer/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetOffer
-func (a API) FireteamFinderGetOffer(ctx context.Context, req FireteamFinderGetOfferRequest) (*ServerResponse[FireteamFinderOffer], error) {
-	//	{
-	//	  "description": "Retrieves an offer to a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.GetOffer",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The unique ID of the offer.",
-	//	      "in": "path",
-	//	      "name": "offerId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderOffer"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderOffer]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetOffer",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Offer/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"offerId":               fmt.Sprint(req.OfferID),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderRespondToOfferRequest are the request parameters for operation
-// FireteamFinder.RespondToOffer
-type FireteamFinderRespondToOfferRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The unique ID of the offer.
-	// Required.
-	OfferID Int64
-
-	// Required.
-	Body FireteamFinderRespondToOfferRequestBody
-}
-
-// FireteamFinderRespondToOffer: Responds to a Fireteam lobby offer.
-//
-// URL:
-// /FireteamFinder/Offer/Respond/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.RespondToOffer
-func (a API) FireteamFinderRespondToOffer(ctx context.Context, req FireteamFinderRespondToOfferRequest) (*ServerResponse[FireteamFinderRespondToOfferResponse], error) {
-	//	{
-	//	  "description": "Responds to a Fireteam lobby offer.",
-	//	  "operationId": "FireteamFinder.RespondToOffer",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The unique ID of the offer.",
-	//	      "in": "path",
-	//	      "name": "offerId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToOfferRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToOfferResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderRespondToOfferResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToOffer",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Offer/Respond/{offerId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"offerId":               fmt.Sprint(req.OfferID),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetLobbyRequest are the request parameters for operation FireteamFinder.GetLobby
-type FireteamFinderGetLobbyRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The ID of the lobby to retrieve.
-	// Required.
-	LobbyID Int64
-}
-
-// FireteamFinderGetLobby: Retrieves the information for a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Lobby/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetLobby
-func (a API) FireteamFinderGetLobby(ctx context.Context, req FireteamFinderGetLobbyRequest) (*ServerResponse[FireteamFinderLobbyResponse], error) {
-	//	{
-	//	  "description": "Retrieves the information for a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.GetLobby",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to retrieve.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderLobbyResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderLobbyResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetLobby",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetLobbyOffersRequest are the request parameters for operation
-// FireteamFinder.GetLobbyOffers
-type FireteamFinderGetLobbyOffersRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The unique ID of the lobby.
-	// Required.
-	LobbyID Int64
-
-	// An optional token from a previous response to fetch the next page of results.
-	NextPageToken string
-
-	// The maximum number of results to be returned with this page.
-	PageSize int32
-}
-
-// FireteamFinderGetLobbyOffers: Retrieves all offers relevant to a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Lobby/{lobbyId}/Offers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetLobbyOffers
-func (a API) FireteamFinderGetLobbyOffers(ctx context.Context, req FireteamFinderGetLobbyOffersRequest) (*ServerResponse[FireteamFinderGetLobbyOffersResponse], error) {
-	//	{
-	//	  "description": "Retrieves all offers relevant to a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.GetLobbyOffers",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The unique ID of the lobby.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "An optional token from a previous response to fetch the next page of results.",
-	//	      "in": "query",
-	//	      "name": "nextPageToken",
-	//	      "schema": {
-	//	        "type": "string"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The maximum number of results to be returned with this page.",
-	//	      "in": "query",
-	//	      "name": "pageSize",
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetLobbyOffersResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetLobbyOffersResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetLobbyOffers",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/Offers/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{
-			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
-			"pageSize":      {fmt.Sprint(req.PageSize)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderUpdateLobbySettingsRequest are the request parameters for operation
-// FireteamFinder.UpdateLobbySettings
-type FireteamFinderUpdateLobbySettingsRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The ID of the lobby to update.
-	// Required.
-	LobbyID Int64
-
-	// Required.
-	Body FireteamFinderUpdateLobbySettingsRequestBody
-}
-
-// FireteamFinderUpdateLobbySettings: Updates the settings for a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Lobby/UpdateSettings/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.UpdateLobbySettings
-func (a API) FireteamFinderUpdateLobbySettings(ctx context.Context, req FireteamFinderUpdateLobbySettingsRequest) (*ServerResponse[FireteamFinderUpdateLobbySettingsResponse], error) {
-	//	{
-	//	  "description": "Updates the settings for a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.UpdateLobbySettings",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to update.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderUpdateLobbySettingsResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.UpdateLobbySettings",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/UpdateSettings/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderLeaveLobbyRequest are the request parameters for operation FireteamFinder.LeaveLobby
-type FireteamFinderLeaveLobbyRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The ID of the lobby to leave.
-	// Required.
-	LobbyID Int64
-}
-
-// FireteamFinderLeaveLobby: Sends a request to leave a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Lobby/Leave/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.LeaveLobby
-func (a API) FireteamFinderLeaveLobby(ctx context.Context, req FireteamFinderLeaveLobbyRequest) (*ServerResponse[bool], error) {
-	//	{
-	//	  "description": "Sends a request to leave a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.LeaveLobby",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to leave.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/boolean"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.LeaveLobby",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/Leave/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderActivateLobbyForNewListingIdRequest are the request parameters for operation
-// FireteamFinder.ActivateLobbyForNewListingId
-type FireteamFinderActivateLobbyForNewListingIdRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Optional boolean to forcibly activate the lobby, kicking pending applicants.
-	ForceActivation bool
-
-	// The ID of the lobby to activate.
-	// Required.
-	LobbyID Int64
-}
-
-// FireteamFinderActivateLobbyForNewListingId: Activates a lobby and initializes it as an active
-// Fireteam, returning the updated Listing ID.
-//
-// URL:
-// /FireteamFinder/Lobby/ActivateForNewListingId/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.ActivateLobbyForNewListingId
-func (a API) FireteamFinderActivateLobbyForNewListingId(ctx context.Context, req FireteamFinderActivateLobbyForNewListingIdRequest) (*ServerResponse[bool], error) {
-	//	{
-	//	  "description": "Activates a lobby and initializes it as an active Fireteam, returning the updated Listing ID.",
-	//	  "operationId": "FireteamFinder.ActivateLobbyForNewListingId",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "Optional boolean to forcibly activate the lobby, kicking pending applicants.",
-	//	      "in": "query",
-	//	      "name": "forceActivation",
-	//	      "schema": {
-	//	        "type": "boolean"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to activate.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/boolean"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ActivateLobbyForNewListingId",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/ActivateForNewListingId/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{
-			"forceActivation": {fmt.Sprint(req.ForceActivation)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderActivateLobbyRequest are the request parameters for operation
-// FireteamFinder.ActivateLobby
-type FireteamFinderActivateLobbyRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Optional boolean to forcibly activate the lobby, kicking pending applicants.
-	ForceActivation bool
-
-	// The ID of the lobby to activate.
-	// Required.
-	LobbyID Int64
-}
-
-// FireteamFinderActivateLobby: Activates a lobby and initializes it as an active Fireteam.
-//
-// URL:
-// /FireteamFinder/Lobby/Activate/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.ActivateLobby
-func (a API) FireteamFinderActivateLobby(ctx context.Context, req FireteamFinderActivateLobbyRequest) (*ServerResponse[bool], error) {
-	//	{
-	//	  "description": "Activates a lobby and initializes it as an active Fireteam.",
-	//	  "operationId": "FireteamFinder.ActivateLobby",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "Optional boolean to forcibly activate the lobby, kicking pending applicants.",
-	//	      "in": "query",
-	//	      "name": "forceActivation",
-	//	      "schema": {
-	//	        "type": "boolean"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to activate.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/boolean"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ActivateLobby",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/Activate/{lobbyId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-		}, QueryParams: url.Values{
-			"forceActivation": {fmt.Sprint(req.ForceActivation)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetListingApplicationsRequest are the request parameters for operation
-// FireteamFinder.GetListingApplications
-type FireteamFinderGetListingApplicationsRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Optional flag representing a filter on the state of the application.
-	Flags Int64
-
-	// The ID of the listing whose applications to retrieve.
-	// Required.
-	ListingID Int64
-
-	// An optional token from a previous response to fetch the next page of results.
-	NextPageToken string
-
-	// The maximum number of results to be returned with this page.
-	PageSize int32
-}
-
-// FireteamFinderGetListingApplications: Retrieves all applications to a Fireteam Finder listing.
-//
-// URL:
-// /FireteamFinder/Listing/{listingId}/Applications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetListingApplications
-func (a API) FireteamFinderGetListingApplications(ctx context.Context, req FireteamFinderGetListingApplicationsRequest) (*ServerResponse[FireteamFinderGetListingApplicationsResponse], error) {
-	//	{
-	//	  "description": "Retrieves all applications to a Fireteam Finder listing.",
-	//	  "operationId": "FireteamFinder.GetListingApplications",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "Optional flag representing a filter on the state of the application.",
-	//	      "in": "query",
-	//	      "name": "flags",
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the listing whose applications to retrieve.",
-	//	      "in": "path",
-	//	      "name": "listingId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "An optional token from a previous response to fetch the next page of results.",
-	//	      "in": "query",
-	//	      "name": "nextPageToken",
-	//	      "schema": {
-	//	        "type": "string"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The maximum number of results to be returned with this page.",
-	//	      "in": "query",
-	//	      "name": "pageSize",
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetListingApplicationsResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetListingApplicationsResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetListingApplications",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Listing/{listingId}/Applications/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"listingId":             fmt.Sprint(req.ListingID),
-		}, QueryParams: url.Values{
-			"flags":         {fmt.Sprint(req.Flags)},
-			"nextPageToken": {fmt.Sprint(req.NextPageToken)},
-			"pageSize":      {fmt.Sprint(req.PageSize)},
-		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderRespondToAuthenticationRequest are the request parameters for operation
-// FireteamFinder.RespondToAuthentication
-type FireteamFinderRespondToAuthenticationRequest struct {
-
-	// The ID of the application whose authentication to confirm.
-	// Required.
-	ApplicationID Int64
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderRespondToAuthenticationRequestBody
-}
-
-// FireteamFinderRespondToAuthentication: Responds to an authentication request for a Fireteam.
-//
-// URL:
-// /FireteamFinder/Authentication/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.RespondToAuthentication
-func (a API) FireteamFinderRespondToAuthentication(ctx context.Context, req FireteamFinderRespondToAuthenticationRequest) (*ServerResponse[FireteamFinderRespondToAuthenticationResponse], error) {
-	//	{
-	//	  "description": "Responds to an authentication request for a Fireteam.",
-	//	  "operationId": "FireteamFinder.RespondToAuthentication",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "The ID of the application whose authentication to confirm.",
-	//	      "in": "path",
-	//	      "name": "applicationId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToAuthenticationRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToAuthenticationResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderRespondToAuthenticationResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToAuthentication",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Authentication/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"applicationId":         fmt.Sprint(req.ApplicationID),
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderGetApplicationRequest are the request parameters for operation
-// FireteamFinder.GetApplication
-type FireteamFinderGetApplicationRequest struct {
-
-	// Required.
-	ApplicationID Int64
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-}
-
-// FireteamFinderGetApplication: Retrieves a Fireteam application.
-//
-// URL:
-// /FireteamFinder/Application/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.GetApplication
-func (a API) FireteamFinderGetApplication(ctx context.Context, req FireteamFinderGetApplicationRequest) (*ServerResponse[FireteamFinderGetApplicationResponse], error) {
-	//	{
-	//	  "description": "Retrieves a Fireteam application.",
-	//	  "operationId": "FireteamFinder.GetApplication",
-	//	  "parameters": [
-	//	    {
-	//	      "in": "path",
-	//	      "name": "applicationId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderGetApplicationResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderGetApplicationResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.GetApplication",
-		Method:   "GET",
-		PathSpec: "/FireteamFinder/Application/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"applicationId":         fmt.Sprint(req.ApplicationID),
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderRespondToApplicationRequest are the request parameters for operation
-// FireteamFinder.RespondToApplication
-type FireteamFinderRespondToApplicationRequest struct {
-
-	// The application ID to respond to.
-	// Required.
-	ApplicationID Int64
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// Required.
-	Body FireteamFinderRespondToApplicationRequestBody
-}
-
-// FireteamFinderRespondToApplication: Responds to an application sent to a Fireteam lobby.
-//
-// URL:
-// /FireteamFinder/Application/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.RespondToApplication
-func (a API) FireteamFinderRespondToApplication(ctx context.Context, req FireteamFinderRespondToApplicationRequest) (*ServerResponse[FireteamFinderRespondToApplicationResponse], error) {
-	//	{
-	//	  "description": "Responds to an application sent to a Fireteam lobby.",
-	//	  "operationId": "FireteamFinder.RespondToApplication",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "The application ID to respond to.",
-	//	      "in": "path",
-	//	      "name": "applicationId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderRespondToApplicationRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderRespondToApplicationResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderRespondToApplicationResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.RespondToApplication",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Application/Respond/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"applicationId":         fmt.Sprint(req.ApplicationID),
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderLeaveApplicationRequest are the request parameters for operation
-// FireteamFinder.LeaveApplication
-type FireteamFinderLeaveApplicationRequest struct {
-
-	// The ID of the application to leave.
-	// Required.
-	ApplicationID Int64
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-}
-
-// FireteamFinderLeaveApplication: Sends a request to leave a Fireteam listing application.
-//
-// URL:
-// /FireteamFinder/Application/Leave/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.LeaveApplication
-func (a API) FireteamFinderLeaveApplication(ctx context.Context, req FireteamFinderLeaveApplicationRequest) (*ServerResponse[bool], error) {
-	//	{
-	//	  "description": "Sends a request to leave a Fireteam listing application.",
-	//	  "operationId": "FireteamFinder.LeaveApplication",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "The ID of the application to leave.",
-	//	      "in": "path",
-	//	      "name": "applicationId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/boolean"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.LeaveApplication",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Application/Leave/{applicationId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"applicationId":         fmt.Sprint(req.ApplicationID),
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-		}, QueryParams: url.Values{}}, &resp)
-	return &resp, err
-}
-
 // FireteamGetMyClanFireteamsRequest are the request parameters for operation
 // Fireteam.GetMyClanFireteams
 type FireteamGetMyClanFireteamsRequest struct {
@@ -11289,250 +8908,6 @@ func (a API) Destiny2GetCollectibleNodeDetails(ctx context.Context, req Destiny2
 		}, QueryParams: url.Values{
 			"components": {joinArray(req.Components)},
 		}}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderKickPlayerRequest are the request parameters for operation FireteamFinder.KickPlayer
-type FireteamFinderKickPlayerRequest struct {
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The ID of the lobby to kick the player from.
-	// Required.
-	LobbyID Int64
-
-	// A valid Destiny membership ID of the player to kick.
-	// Required.
-	TargetMembershipID Int64
-
-	// Required.
-	Body FireteamFinderKickPlayerRequestBody
-}
-
-// FireteamFinderKickPlayer: Kicks a player from a Fireteam Finder lobby.
-//
-// URL:
-// /FireteamFinder/Lobby/{lobbyId}/KickPlayer/{targetMembershipId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.KickPlayer
-func (a API) FireteamFinderKickPlayer(ctx context.Context, req FireteamFinderKickPlayerRequest) (*ServerResponse[bool], error) {
-	//	{
-	//	  "description": "Kicks a player from a Fireteam Finder lobby.",
-	//	  "operationId": "FireteamFinder.KickPlayer",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The ID of the lobby to kick the player from.",
-	//	      "in": "path",
-	//	      "name": "lobbyId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID of the player to kick.",
-	//	      "in": "path",
-	//	      "name": "targetMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "requestBody": {
-	//	    "content": {
-	//	      "application/json": {
-	//	        "schema": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderKickPlayerRequest"
-	//	        }
-	//	      }
-	//	    },
-	//	    "required": true
-	//	  },
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/boolean"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[bool]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.KickPlayer",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Lobby/{lobbyId}/KickPlayer/{targetMembershipId}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"lobbyId":               fmt.Sprint(req.LobbyID),
-			"targetMembershipId":    fmt.Sprint(req.TargetMembershipID),
-		}, QueryParams: url.Values{}, Body: req.Body}, &resp)
-	return &resp, err
-}
-
-// FireteamFinderApplyToListingRequest are the request parameters for operation
-// FireteamFinder.ApplyToListing
-type FireteamFinderApplyToListingRequest struct {
-
-	// The type of application to apply
-	// Required.
-	ApplicationType FireteamFinderApplicationType
-
-	// A valid Destiny character ID.
-	// Required.
-	DestinyCharacterID Int64
-
-	// A valid Destiny membership ID.
-	// Required.
-	DestinyMembershipID Int64
-
-	// A valid Destiny membership type.
-	// Required.
-	DestinyMembershipType BungieMembershipType
-
-	// The id of the listing to apply to
-	// Required.
-	ListingID Int64
-}
-
-// FireteamFinderApplyToListing: Applies to have a character join a fireteam.
-//
-// URL:
-// /FireteamFinder/Listing/{listingId}/Apply/{applicationType}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/
-//
-// Operation: FireteamFinder.ApplyToListing
-func (a API) FireteamFinderApplyToListing(ctx context.Context, req FireteamFinderApplyToListingRequest) (*ServerResponse[FireteamFinderApplyToListingResponse], error) {
-	//	{
-	//	  "description": "Applies to have a character join a fireteam.",
-	//	  "operationId": "FireteamFinder.ApplyToListing",
-	//	  "parameters": [
-	//	    {
-	//	      "description": "The type of application to apply",
-	//	      "in": "path",
-	//	      "name": "applicationType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny character ID.",
-	//	      "in": "path",
-	//	      "name": "destinyCharacterId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership ID.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "A valid Destiny membership type.",
-	//	      "in": "path",
-	//	      "name": "destinyMembershipType",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "description": "The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.",
-	//	        "format": "int32",
-	//	        "type": "integer",
-	//	        "x-enum-is-bitmask": false,
-	//	        "x-enum-reference": {
-	//	          "$ref": "#/components/schemas/BungieMembershipType"
-	//	        }
-	//	      }
-	//	    },
-	//	    {
-	//	      "description": "The id of the listing to apply to",
-	//	      "in": "path",
-	//	      "name": "listingId",
-	//	      "required": true,
-	//	      "schema": {
-	//	        "format": "int64",
-	//	        "type": "integer"
-	//	      }
-	//	    }
-	//	  ],
-	//	  "responses": {
-	//	    "200": {
-	//	      "$ref": "#/components/responses/FireteamFinder.DestinyFireteamFinderApplyToListingResponse"
-	//	    }
-	//	  },
-	//	  "tags": [
-	//	    "FireteamFinder"
-	//	  ]
-	//	}
-	var resp ServerResponse[FireteamFinderApplyToListingResponse]
-	err := a.client.Do(ctx, ClientRequest{Operation: "FireteamFinder.ApplyToListing",
-		Method:   "POST",
-		PathSpec: "/FireteamFinder/Listing/{listingId}/Apply/{applicationType}/{destinyMembershipType}/{destinyMembershipId}/{destinyCharacterId}/", PathParams: map[string]string{
-			"applicationType":       fmt.Sprint(req.ApplicationType),
-			"destinyCharacterId":    fmt.Sprint(req.DestinyCharacterID),
-			"destinyMembershipId":   fmt.Sprint(req.DestinyMembershipID),
-			"destinyMembershipType": fmt.Sprint(req.DestinyMembershipType),
-			"listingId":             fmt.Sprint(req.ListingID),
-		}, QueryParams: url.Values{}}, &resp)
 	return &resp, err
 }
 
@@ -12628,6 +10003,7 @@ const (
 	BungieMembershipType_TigerStadia   = BungieMembershipType(5)
 	BungieMembershipType_TigerEgs      = BungieMembershipType(6)
 	BungieMembershipType_TigerDemon    = BungieMembershipType(10)
+	BungieMembershipType_GoliathGame   = BungieMembershipType(20)
 	BungieMembershipType_BungieNext    = BungieMembershipType(254)
 	BungieMembershipType_All           = BungieMembershipType(-1)
 )
@@ -12906,6 +10282,13 @@ type CoreSettings struct {
 	//     "ammoTypeSpecialIcon": {
 	//       "type": "string"
 	//     },
+	//     "armorArchetypePlugSetHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition"
+	//       }
+	//     },
 	//     "badgesRootNode": {
 	//       "format": "uint32",
 	//       "type": "integer",
@@ -12969,6 +10352,13 @@ type CoreSettings struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
 	//       }
 	//     },
+	//     "featuredItemsListHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Inventory.DestinyItemFilterDefinition"
+	//       }
+	//     },
 	//     "fireteamFinderConstantsHash": {
 	//       "format": "uint32",
 	//       "type": "integer",
@@ -13018,6 +10408,13 @@ type CoreSettings struct {
 	//       "type": "array",
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+	//       }
+	//     },
+	//     "inventoryItemConstantsHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Items.DestinyInventoryItemConstantsDefinition"
 	//       }
 	//     },
 	//     "legacySealsRootNodeHash": {
@@ -13094,6 +10491,13 @@ type CoreSettings struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
 	//       }
 	//     },
+	//     "seasonalHubEventCardHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinyEventCardDefinition"
+	//       }
+	//     },
 	//     "undiscoveredCollectibleImage": {
 	//       "type": "string"
 	//     }
@@ -13111,6 +10515,8 @@ type CoreSettings struct {
 
 	AmmoTypeSpecialIcon string `json:"ammoTypeSpecialIcon"`
 
+	ArmorArchetypePlugSetHash Hash[PlugSetDefinition] `json:"armorArchetypePlugSetHash"`
+
 	BadgesRootNode Hash[PresentationNodeDefinition] `json:"badgesRootNode"`
 
 	CollectionRootNode Hash[PresentationNodeDefinition] `json:"collectionRootNode"`
@@ -13127,6 +10533,8 @@ type CoreSettings struct {
 
 	ExoticCatalystsRootNodeHash Hash[PresentationNodeDefinition] `json:"exoticCatalystsRootNodeHash"`
 
+	FeaturedItemsListHash Hash[ItemFilterDefinition] `json:"featuredItemsListHash"`
+
 	FireteamFinderConstantsHash Hash[FireteamFinderConstantsDefinition] `json:"fireteamFinderConstantsHash"`
 
 	FutureSeasonHashes []uint32 `json:"futureSeasonHashes"`
@@ -13138,6 +10546,8 @@ type CoreSettings struct {
 	InsertPlugFreeBlockedSocketTypeHashes []uint32 `json:"insertPlugFreeBlockedSocketTypeHashes"`
 
 	InsertPlugFreeProtectedPlugItemHashes []uint32 `json:"insertPlugFreeProtectedPlugItemHashes"`
+
+	InventoryItemConstantsHash Hash[InventoryItemConstantsDefinition] `json:"inventoryItemConstantsHash"`
 
 	LegacySealsRootNodeHash Hash[PresentationNodeDefinition] `json:"legacySealsRootNodeHash"`
 
@@ -13158,6 +10568,8 @@ type CoreSettings struct {
 	RecordsRootNode Hash[PresentationNodeDefinition] `json:"recordsRootNode"`
 
 	SeasonalChallengesPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"seasonalChallengesPresentationNodeHash,omitempty"`
+
+	SeasonalHubEventCardHash Hash[EventCardDefinition] `json:"seasonalHubEventCardHash"`
 
 	UndiscoveredCollectibleImage string `json:"undiscoveredCollectibleImage"`
 }
@@ -17073,6 +14485,264 @@ const (
 	DamageType_Strand  = DamageType(7)
 )
 
+// Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition
+type ActivityDifficultyTierCollectionDefinition struct {
+	// {
+	//   "properties": {
+	//     "difficultyTiers": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityDifficultyTierDefinition"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivityDifficultyTierCollections"
+	// }
+
+	DifficultyTiers []ActivityDifficultyTierDefinition `json:"difficultyTiers"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivityDifficultyTierDefinition
+type ActivityDifficultyTierDefinition struct {
+	// {
+	//   "properties": {
+	//     "activityLevel": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "fixedActivitySkulls": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkull"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "maximumFireteamLeaderPower": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "minimumFireteamLeaderPower": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "optionalRequiredTrait": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition"
+	//       }
+	//     },
+	//     "recommendedActivityLevelOffset": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "scoreTimeLimitMultiplier": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "selectableSkullCollectionHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition"
+	//       }
+	//     },
+	//     "skullSubcategoryOverrides": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityDifficultyTierSubcategoryOverride"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "tierEnabledUnlockExpression": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.DestinyUnlockExpressionDefinition"
+	//     },
+	//     "tierRank": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "tierType": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityDifficultyTierType"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityLevel int32 `json:"activityLevel"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	FixedActivitySkulls []ActivitySkull `json:"fixedActivitySkulls"`
+
+	MaximumFireteamLeaderPower int32 `json:"maximumFireteamLeaderPower"`
+
+	MinimumFireteamLeaderPower int32 `json:"minimumFireteamLeaderPower"`
+
+	OptionalRequiredTrait Nullable[Hash[TraitDefinition]] `json:"optionalRequiredTrait,omitempty"`
+
+	RecommendedActivityLevelOffset int32 `json:"recommendedActivityLevelOffset"`
+
+	ScoreTimeLimitMultiplier int32 `json:"scoreTimeLimitMultiplier"`
+
+	SelectableSkullCollectionHashes []uint32 `json:"selectableSkullCollectionHashes"`
+
+	SkullSubcategoryOverrides []ActivityDifficultyTierSubcategoryOverride `json:"skullSubcategoryOverrides"`
+
+	TierEnabledUnlockExpression UnlockExpressionDefinition `json:"tierEnabledUnlockExpression"`
+
+	TierRank int32 `json:"tierRank"`
+
+	TierType ActivityDifficultyTierType `json:"tierType"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivityDifficultyTierSubcategoryOverride
+type ActivityDifficultyTierSubcategoryOverride struct {
+	// {
+	//   "properties": {
+	//     "refreshTimeMinutes": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "refreshTimeOffsetMinutes": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "skullSubcategoryHash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	RefreshTimeMinutes int32 `json:"refreshTimeMinutes"`
+
+	RefreshTimeOffsetMinutes int32 `json:"refreshTimeOffsetMinutes"`
+
+	SkullSubcategoryHash uint32 `json:"skullSubcategoryHash"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivityFamilyDefinition
+type ActivityFamilyDefinition struct {
+	// {
+	//   "properties": {
+	//     "disabledSkullCategoryHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullCategoryDefinition"
+	//       }
+	//     },
+	//     "disabledSkullSubcategoryHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullSubcategoryDefinition"
+	//       }
+	//     },
+	//     "fixedSkullSubcategoryHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullSubcategoryDefinition"
+	//       }
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "traits": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivityFamilies"
+	// }
+
+	DisabledSkullCategoryHashes []uint32 `json:"disabledSkullCategoryHashes"`
+
+	DisabledSkullSubcategoryHashes []uint32 `json:"disabledSkullSubcategoryHashes"`
+
+	FixedSkullSubcategoryHashes []uint32 `json:"fixedSkullSubcategoryHashes"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	Traits []uint32 `json:"traits"`
+}
+
 // Destiny.Definitions.Activities.DestinyActivityInteractableDefinition
 //
 // There are times in every Activity's life when interacting with an object in the world will result in
@@ -17148,6 +14818,492 @@ type ActivityInteractableEntryDefinition struct {
 
 	// The activity that will trigger when you interact with this interactable.
 	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivityLoadoutRestrictionDefinition
+type ActivityLoadoutRestrictionDefinition struct {
+	// {
+	//   "properties": {
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "restrictedEquipmentSlotHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyEquipmentSlotDefinition"
+	//       }
+	//     },
+	//     "restrictedItemFilterHash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivityLoadoutRestrictionDefinitions"
+	// }
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	RestrictedEquipmentSlotHashes []uint32 `json:"restrictedEquipmentSlotHashes"`
+
+	RestrictedItemFilterHash uint32 `json:"restrictedItemFilterHash"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySelectableSkull
+type ActivitySelectableSkull struct {
+	// {
+	//   "properties": {
+	//     "activitySkull": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkull"
+	//     },
+	//     "isEmptySkull": {
+	//       "type": "boolean"
+	//     },
+	//     "loadoutRestrictionHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityLoadoutRestrictionDefinition"
+	//       }
+	//     },
+	//     "requiredTraitExistence": {
+	//       "type": "boolean"
+	//     },
+	//     "requiredTraitHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivitySkull ActivitySkull `json:"activitySkull"`
+
+	IsEmptySkull bool `json:"isEmptySkull"`
+
+	LoadoutRestrictionHash Nullable[Hash[ActivityLoadoutRestrictionDefinition]] `json:"loadoutRestrictionHash,omitempty"`
+
+	RequiredTraitExistence bool `json:"requiredTraitExistence"`
+
+	RequiredTraitHash Nullable[Hash[TraitDefinition]] `json:"requiredTraitHash,omitempty"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition
+type ActivitySelectableSkullCollectionDefinition struct {
+	// {
+	//   "properties": {
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "selectableActivitySkulls": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkull"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "selectionType": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionSelectionType"
+	//     },
+	//     "skullSubcategoryHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullSubcategoryDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivitySelectableSkullCollections"
+	// }
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	SelectableActivitySkulls []ActivitySelectableSkull `json:"selectableActivitySkulls"`
+
+	SelectionType ActivitySelectableSkullCollectionSelectionType `json:"selectionType"`
+
+	SkullSubcategoryHashes []uint32 `json:"skullSubcategoryHashes"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionSelectionType
+type ActivitySelectableSkullCollectionSelectionType struct {
+	// {
+	//   "properties": {
+	//     "refreshTimeMinutes": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "refreshTimeOffsetMinutes": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "selectionCount": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	RefreshTimeMinutes int32 `json:"refreshTimeMinutes"`
+
+	RefreshTimeOffsetMinutes int32 `json:"refreshTimeOffsetMinutes"`
+
+	SelectionCount int32 `json:"selectionCount"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySelectableSkullExclusionGroupDefinition
+type ActivitySelectableSkullExclusionGroupDefinition struct {
+	// {
+	//   "properties": {
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivitySelectableSkullExclusionGroups"
+	// }
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySkull
+type ActivitySkull struct {
+	// {
+	//   "properties": {
+	//     "activityModifierConnotation": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityModifierConnotation"
+	//       }
+	//     },
+	//     "activityModifierDisplayCategory": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityModifierDisplayCategory"
+	//       }
+	//     },
+	//     "displayDescriptionOverrideForNavMode": {
+	//       "type": "string"
+	//     },
+	//     "displayInActivitySelection": {
+	//       "type": "boolean"
+	//     },
+	//     "displayInNavMode": {
+	//       "type": "boolean"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "dynamicUse": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivitySkullDynamicUse"
+	//       }
+	//     },
+	//     "hasUi": {
+	//       "type": "boolean"
+	//     },
+	//     "hash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "modifierMultiplierContribution": {
+	//       "format": "float",
+	//       "type": "number"
+	//     },
+	//     "modifierPowerContribution": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "skullExclusionGroupHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullExclusionGroupDefinition"
+	//       }
+	//     },
+	//     "skullIdentifierHash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "skullOptions": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullOption"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ActivityModifierConnotation ActivityModifierConnotation `json:"activityModifierConnotation"`
+
+	ActivityModifierDisplayCategory ActivityModifierDisplayCategory `json:"activityModifierDisplayCategory"`
+
+	DisplayDescriptionOverrideForNavMode string `json:"displayDescriptionOverrideForNavMode"`
+
+	DisplayInActivitySelection bool `json:"displayInActivitySelection"`
+
+	DisplayInNavMode bool `json:"displayInNavMode"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	DynamicUse ActivitySkullDynamicUse `json:"dynamicUse"`
+
+	HasUi bool `json:"hasUi"`
+
+	Hash uint32 `json:"hash"`
+
+	ModifierMultiplierContribution float64 `json:"modifierMultiplierContribution"`
+
+	ModifierPowerContribution int32 `json:"modifierPowerContribution"`
+
+	SkullExclusionGroupHash Nullable[Hash[ActivitySelectableSkullExclusionGroupDefinition]] `json:"skullExclusionGroupHash,omitempty"`
+
+	SkullIdentifierHash uint32 `json:"skullIdentifierHash"`
+
+	SkullOptions []ActivitySkullOption `json:"skullOptions"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySkullCategoryDefinition
+type ActivitySkullCategoryDefinition struct {
+	// {
+	//   "properties": {
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivitySkullCategories"
+	// }
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySkullOption
+type ActivitySkullOption struct {
+	// {
+	//   "properties": {
+	//     "boolValue": {
+	//       "type": "boolean"
+	//     },
+	//     "floatValue": {
+	//       "format": "float",
+	//       "type": "number"
+	//     },
+	//     "integerValue": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "minDisplayDifficultyId": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityDifficultyId"
+	//       }
+	//     },
+	//     "optionHash": {
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "stringValue": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	BoolValue bool `json:"boolValue"`
+
+	FloatValue float64 `json:"floatValue"`
+
+	IntegerValue int32 `json:"integerValue"`
+
+	MinDisplayDifficultyID ActivityDifficultyId `json:"minDisplayDifficultyId"`
+
+	OptionHash uint32 `json:"optionHash"`
+
+	StringValue string `json:"stringValue"`
+}
+
+// Destiny.Definitions.Activities.DestinyActivitySkullSubcategoryDefinition
+type ActivitySkullSubcategoryDefinition struct {
+	// {
+	//   "properties": {
+	//     "availabilityTierRank": {
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "defaultSkullHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "displayProperties": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "parentSkullCategoryHash": {
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkullCategoryDefinition"
+	//       }
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "ActivitySkullSubcategories"
+	// }
+
+	AvailabilityTierRank int32 `json:"availabilityTierRank"`
+
+	DefaultSkullHashes []uint32 `json:"defaultSkullHashes"`
+
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	ParentSkullCategoryHash Hash[ActivitySkullCategoryDefinition] `json:"parentSkullCategoryHash"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
 }
 
 // Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition
@@ -17996,6 +16152,16 @@ type ActivityDefinition struct {
 	// {
 	//   "description": "The static data about Activities in Destiny 2.\r\nNote that an Activity must be combined with an ActivityMode to know - from a Gameplay perspective - what the user is \"Playing\".\r\nIn most PvE activities, this is fairly straightforward. A Story Activity can only be played in the Story Activity Mode.\r\nHowever, in PvP activities, the Activity alone only tells you the map being played, or the Playlist that the user chose to enter. You'll need to know the Activity Mode they're playing to know that they're playing Mode X on Map Y.\r\nActivity Definitions tell a great deal of information about what *could* be relevant to a user: what rewards they can earn, what challenges could be performed, what modifiers could be applied. To figure out which of these properties is actually live, you'll need to combine the definition with \"Live\" data from one of the Destiny endpoints.\r\nActivities also have Activity Types, but unfortunately in Destiny 2 these are even less reliable of a source of information than they were in Destiny 1. I will be looking into ways to provide more reliable sources for type information as time goes on, but for now we're going to have to deal with the limitations. See DestinyActivityTypeDefinition for more information.",
 	//   "properties": {
+	//     "activityFamilyHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityFamilyDefinition"
+	//       }
+	//     },
 	//     "activityGraphList": {
 	//       "description": "Unfortunately, in practice this is almost never populated. In theory, this is supposed to tell which Activity Graph to show if you bring up the director while in this activity.",
 	//       "items": {
@@ -18060,6 +16226,14 @@ type ActivityDefinition struct {
 	//       "type": "integer",
 	//       "x-mapped-definition": {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyDestinationDefinition"
+	//       }
+	//     },
+	//     "difficultyTierCollectionHash": {
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition"
 	//       }
 	//     },
 	//     "directActivityModeHash": {
@@ -18632,6 +16806,16 @@ type ActivityDefinition struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "selectableSkullCollectionHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition"
+	//       }
+	//     },
 	//     "selectionScreenDisplayProperties": {
 	//       "allOf": [
 	//         {
@@ -18645,11 +16829,23 @@ type ActivityDefinition struct {
 	//       "description": "The difficulty tier of the activity.",
 	//       "format": "int32",
 	//       "type": "integer"
+	//     },
+	//     "traitHashes": {
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Traits.DestinyTraitDefinition"
+	//       }
 	//     }
 	//   },
 	//   "type": "object",
 	//   "x-mobile-manifest-name": "Activities"
 	// }
+
+	ActivityFamilyHashes []uint32 `json:"activityFamilyHashes"`
 
 	// Unfortunately, in practice this is almost never populated. In theory, this is supposed to tell which
 	// Activity Graph to show if you bring up the director while in this activity.
@@ -18690,6 +16886,8 @@ type ActivityDefinition struct {
 	// thought of as a more specific location than a "Place". For instance, if the "Place" is Earth, the
 	// "Destination" would be a specific city or region on Earth.
 	DestinationHash Hash[DestinationDefinition] `json:"destinationHash"`
+
+	DifficultyTierCollectionHash Nullable[Hash[ActivityDifficultyTierCollectionDefinition]] `json:"difficultyTierCollectionHash,omitempty"`
 
 	// If this activity had an activity mode directly defined on it, this will be the hash of that mode.
 	DirectActivityModeHash Nullable[Hash[ActivityModeDefinition]] `json:"directActivityModeHash,omitempty"`
@@ -18791,6 +16989,8 @@ type ActivityDefinition struct {
 	// specifically until you roll for it at the end)
 	Rewards []ActivityRewardDefinition `json:"rewards"`
 
+	SelectableSkullCollectionHashes []uint32 `json:"selectableSkullCollectionHashes"`
+
 	// The title, subtitle, and icon for the activity as determined by Selection Screen data, if there is
 	// any for this activity. There won't be data in this field if the activity is never shown in a
 	// selection/options screen.
@@ -18798,6 +16998,8 @@ type ActivityDefinition struct {
 
 	// The difficulty tier of the activity.
 	Tier int32 `json:"tier"`
+
+	TraitHashes []uint32 `json:"traitHashes"`
 }
 
 // Destiny.Definitions.DestinyActivityGraphListEntryDefinition
@@ -19782,6 +17984,52 @@ type ActivityRewardDefinition struct {
 	RewardText string `json:"rewardText"`
 }
 
+// Destiny.Definitions.DestinyActivityRewardItem
+type ActivityRewardItem struct {
+	// {
+	//   "properties": {
+	//     "itemQuantity": {
+	//       "$ref": "#/components/schemas/Destiny.DestinyItemQuantity"
+	//     },
+	//     "uiStyle": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	ItemQuantity ItemQuantity `json:"itemQuantity"`
+
+	UiStyle string `json:"uiStyle"`
+}
+
+// Destiny.Definitions.DestinyActivityRewardMapping
+type ActivityRewardMapping struct {
+	// {
+	//   "properties": {
+	//     "displayBehavior": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityRewardDisplayMode"
+	//       }
+	//     },
+	//     "rewardItems": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRewardItem"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	DisplayBehavior ActivityRewardDisplayMode `json:"displayBehavior"`
+
+	RewardItems []ActivityRewardItem `json:"rewardItems"`
+}
+
 // Destiny.Definitions.DestinyActivityTypeDefinition
 //
 // The definition for an Activity Type.
@@ -20612,6 +18860,15 @@ type EquippingBlockDefinition struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "equipableItemSetHash": {
+	//       "description": "If this item is part of an item set with bonus perks, this will the hash of that set.",
+	//       "format": "uint32",
+	//       "nullable": true,
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Items.DestinyEquipableItemSetDefinition"
+	//       }
+	//     },
 	//     "equipmentSlotTypeHash": {
 	//       "description": "An equipped item *must* be equipped in an Equipment Slot. This is the hash identifier of the DestinyEquipmentSlotDefinition into which it must be equipped.",
 	//       "format": "uint32",
@@ -20654,6 +18911,9 @@ type EquippingBlockDefinition struct {
 	// These are strings that represent the possible Game/Account/Character state failure conditions that
 	// can occur when trying to equip the item. They match up one-to-one with requiredUnlockExpressions.
 	DisplayStrings []string `json:"displayStrings"`
+
+	// If this item is part of an item set with bonus perks, this will the hash of that set.
+	EquipableItemSetHash Nullable[Hash[EquipableItemSetDefinition]] `json:"equipableItemSetHash,omitempty"`
 
 	// An equipped item *must* be equipped in an Equipment Slot. This is the hash identifier of the
 	// DestinyEquipmentSlotDefinition into which it must be equipped.
@@ -21231,6 +19491,10 @@ type InventoryItemDefinition struct {
 	//       "description": "If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.",
 	//       "type": "string"
 	//     },
+	//     "iconWatermarkFeatured": {
+	//       "description": "This is the active watermark for the item if it is currently Featured in-game. Clients should use the isFeaturedItem boolean to decide whether or not to show this as opposed to iconWatermark.",
+	//       "type": "string"
+	//     },
 	//     "iconWatermarkShelved": {
 	//       "description": "If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap below the current season power cap, it can be treated as 'shelved', and should be shown with this 'shelved' watermark overlay.",
 	//       "type": "string"
@@ -21255,6 +19519,10 @@ type InventoryItemDefinition struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyItemInvestmentStatDefinition"
 	//       },
 	//       "type": "array"
+	//     },
+	//     "isFeaturedItem": {
+	//       "description": "Whether or not this item is currently featured in the game, giving it a special watermark",
+	//       "type": "boolean"
 	//     },
 	//     "isWrapper": {
 	//       "description": "If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be \"wrapped\" by one of these items so that we can safely provide refund capabilities before the item is \"unwrapped\".",
@@ -21646,6 +19914,10 @@ type InventoryItemDefinition struct {
 	// property.
 	IconWatermark string `json:"iconWatermark"`
 
+	// This is the active watermark for the item if it is currently Featured in-game. Clients should use
+	// the isFeaturedItem boolean to decide whether or not to show this as opposed to iconWatermark.
+	IconWatermarkFeatured string `json:"iconWatermarkFeatured"`
+
 	// If available, this is the 'shelved' release watermark overlay for the icon. If the item version has
 	// a power cap below the current season power cap, it can be treated as 'shelved', and should be shown
 	// with this 'shelved' watermark overlay.
@@ -21663,6 +19935,9 @@ type InventoryItemDefinition struct {
 	// into account any Stat Group transformations. I have retained them for debugging purposes, but I do
 	// not know how useful people will find them.
 	InvestmentStats []ItemInvestmentStatDefinition `json:"investmentStats"`
+
+	// Whether or not this item is currently featured in the game, giving it a special watermark
+	IsFeaturedItem bool `json:"isFeaturedItem"`
 
 	// If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be
 	// "wrapped" by one of these items so that we can safely provide refund capabilities before the item is
@@ -29247,6 +27522,14 @@ type ActivityInteractableReference struct {
 type FireteamFinderActivityGraphDefinition struct {
 	// {
 	//   "properties": {
+	//     "activityTreeChildSortMode": {
+	//       "format": "int32",
+	//       "type": "integer",
+	//       "x-enum-is-bitmask": false,
+	//       "x-enum-reference": {
+	//         "$ref": "#/components/schemas/Destiny.DestinyActivityTreeChildSortMode"
+	//       }
+	//     },
 	//     "children": {
 	//       "items": {
 	//         "format": "uint32",
@@ -29262,6 +27545,17 @@ type FireteamFinderActivityGraphDefinition struct {
 	//     },
 	//     "displayProperties": {
 	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//     },
+	//     "enabledOnTreeTypesListEnum": {
+	//       "items": {
+	//         "format": "int32",
+	//         "type": "integer",
+	//         "x-enum-is-bitmask": false,
+	//         "x-enum-reference": {
+	//           "$ref": "#/components/schemas/Destiny.DestinyActivityTreeType"
+	//         }
+	//       },
+	//       "type": "array"
 	//     },
 	//     "hash": {
 	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
@@ -29340,6 +27634,14 @@ type FireteamFinderActivityGraphDefinition struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
 	//       }
 	//     },
+	//     "sortMatchmadeActivitiesToFront": {
+	//       "type": "boolean"
+	//     },
+	//     "sortPriority": {
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "specificActivitySetHash": {
 	//       "format": "uint32",
 	//       "nullable": true,
@@ -29353,11 +27655,15 @@ type FireteamFinderActivityGraphDefinition struct {
 	//   "x-mobile-manifest-name": "FireteamFinderActivityGraphs"
 	// }
 
+	ActivityTreeChildSortMode ActivityTreeChildSortMode `json:"activityTreeChildSortMode"`
+
 	Children []uint32 `json:"children"`
 
 	Color Color `json:"color"`
 
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	EnabledOnTreeTypesListEnum []ActivityTreeType `json:"enabledOnTreeTypesListEnum"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
 	// globally.
@@ -29386,6 +27692,10 @@ type FireteamFinderActivityGraphDefinition struct {
 	RelatedLocationHashes []uint32 `json:"relatedLocationHashes"`
 
 	SelfAndAllDescendantHashes []uint32 `json:"selfAndAllDescendantHashes"`
+
+	SortMatchmadeActivitiesToFront bool `json:"sortMatchmadeActivitiesToFront"`
+
+	SortPriority Nullable[int32] `json:"sortPriority,omitempty"`
 
 	SpecificActivitySetHash Nullable[Hash[FireteamFinderActivitySetDefinition]] `json:"specificActivitySetHash,omitempty"`
 }
@@ -30188,6 +28498,59 @@ type GuardianRankIconBackgroundsDefinition struct {
 	BackgroundPlateWhiteImagePath string `json:"backgroundPlateWhiteImagePath"`
 }
 
+// Destiny.Definitions.Inventory.DestinyItemFilterDefinition
+//
+// Lists of items that can be used for a variety of purposes, including featuring them as new gear
+type ItemFilterDefinition struct {
+	// {
+	//   "description": "Lists of items that can be used for a variety of purposes, including featuring them as new gear",
+	//   "properties": {
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "setItems": {
+	//       "description": "The items in this set",
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "itemFilters"
+	// }
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	// The items in this set
+	SetItems []uint32 `json:"setItems"`
+}
+
 // Destiny.Definitions.Items.DestinyDerivedItemCategoryDefinition
 //
 // A shortcut for the fact that some items have a "Preview Vendor" - See
@@ -30379,6 +28742,127 @@ type EnergyCostEntry struct {
 	// The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the
 	// energy type.
 	EnergyTypeHash Hash[EnergyTypeDefinition] `json:"energyTypeHash"`
+}
+
+// Destiny.Definitions.Items.DestinyEquipableItemSetDefinition
+//
+// Perks that are active only when you have a certain number of set items equipped.
+type EquipableItemSetDefinition struct {
+	// {
+	//   "description": "Perks that are active only when you have a certain number of set items equipped.",
+	//   "properties": {
+	//     "displayProperties": {
+	//       "allOf": [
+	//         {
+	//           "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+	//         }
+	//       ],
+	//       "description": "Display Properties, including name and icon, for this item set",
+	//       "type": "object"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     },
+	//     "setItems": {
+	//       "description": "The items that confer these perks.",
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+	//       }
+	//     },
+	//     "setPerks": {
+	//       "description": "The perks conferred by this set of armor pieces.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Items.DestinyItemSetPerkDefinition"
+	//       },
+	//       "type": "array"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "EquipableItemSets"
+	// }
+
+	// Display Properties, including name and icon, for this item set
+	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
+
+	// The items that confer these perks.
+	SetItems []uint32 `json:"setItems"`
+
+	// The perks conferred by this set of armor pieces.
+	SetPerks []ItemSetPerkDefinition `json:"setPerks"`
+}
+
+// Destiny.Definitions.Items.DestinyInventoryItemConstantsDefinition
+type InventoryItemConstantsDefinition struct {
+	// {
+	//   "properties": {
+	//     "gearTierOverlayImagePaths": {
+	//       "description": "Gear tier overlay images",
+	//       "items": {
+	//         "type": "string"
+	//       },
+	//       "type": "array"
+	//     },
+	//     "hash": {
+	//       "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+	//       "format": "uint32",
+	//       "type": "integer"
+	//     },
+	//     "index": {
+	//       "description": "The index of the entity as it was found in the investment tables.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "redacted": {
+	//       "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+	//       "type": "boolean"
+	//     }
+	//   },
+	//   "type": "object",
+	//   "x-mobile-manifest-name": "InventoryItemConstants"
+	// }
+
+	// Gear tier overlay images
+	GearTierOverlayImagePaths []string `json:"gearTierOverlayImagePaths"`
+
+	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
+	// globally.
+	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
+	Hash uint32 `json:"hash"`
+
+	// The index of the entity as it was found in the investment tables.
+	Index int32 `json:"index"`
+
+	// If this is true, then there is an entity with this identifier/type combination, but BNet is not yet
+	// allowed to show it. Sorry!
+	Redacted bool `json:"redacted"`
 }
 
 // Destiny.Definitions.Items.DestinyItemPlugDefinition
@@ -30591,6 +29075,34 @@ type ItemPlugDefinition struct {
 	// guidance... you'll have to piece that together on your end. Or do what we do, and just show plugs
 	// more generically, without specialized styles.
 	UiPlugLabel string `json:"uiPlugLabel"`
+}
+
+// Destiny.Definitions.Items.DestinyItemSetPerkDefinition
+type ItemSetPerkDefinition struct {
+	// {
+	//   "properties": {
+	//     "requiredSetCount": {
+	//       "description": "The number of set pieces required to activate the perk.",
+	//       "format": "int32",
+	//       "type": "integer"
+	//     },
+	//     "sandboxPerkHash": {
+	//       "description": "The perk this set confers.",
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinySandboxPerkDefinition"
+	//       }
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The number of set pieces required to activate the perk.
+	RequiredSetCount int32 `json:"requiredSetCount"`
+
+	// The perk this set confers.
+	SandboxPerkHash Hash[SandboxPerkDefinition] `json:"sandboxPerkHash"`
 }
 
 // Destiny.Definitions.Items.DestinyItemTierTypeDefinition
@@ -33629,6 +32141,15 @@ type SeasonDefinition struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
 	//       }
 	//     },
+	//     "seasonPassList": {
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassReference"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
+	//       }
+	//     },
 	//     "seasonPassProgressionHash": {
 	//       "format": "uint32",
 	//       "nullable": true,
@@ -33687,6 +32208,8 @@ type SeasonDefinition struct {
 
 	SeasonPassHash Nullable[Hash[SeasonPassDefinition]] `json:"seasonPassHash,omitempty"`
 
+	SeasonPassList []SeasonPassReference `json:"seasonPassList"`
+
 	SeasonPassProgressionHash Nullable[Hash[ProgressionDefinition]] `json:"seasonPassProgressionHash,omitempty"`
 
 	SeasonalChallengesPresentationNodeHash Nullable[Hash[PresentationNodeDefinition]] `json:"seasonalChallengesPresentationNodeHash,omitempty"`
@@ -33698,6 +32221,9 @@ type SeasonDefinition struct {
 type SeasonPassDefinition struct {
 	// {
 	//   "properties": {
+	//     "color": {
+	//       "$ref": "#/components/schemas/Destiny.Misc.DestinyColor"
+	//     },
 	//     "displayProperties": {
 	//       "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
 	//     },
@@ -33706,10 +32232,16 @@ type SeasonPassDefinition struct {
 	//       "format": "uint32",
 	//       "type": "integer"
 	//     },
+	//     "images": {
+	//       "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassImages"
+	//     },
 	//     "index": {
 	//       "description": "The index of the entity as it was found in the investment tables.",
 	//       "format": "int32",
 	//       "type": "integer"
+	//     },
+	//     "linkRedirectPath": {
+	//       "type": "string"
 	//     },
 	//     "prestigeProgressionHash": {
 	//       "description": "I know what you're thinking, but I promise we're not going to duplicate and drown you. Instead, we're giving you sweet, sweet power bonuses.\r\n Prestige progression is further progression that you can make on the Season pass after you gain max ranks, that will ultimately increase your power/light level over the theoretical limit.",
@@ -33736,6 +32268,8 @@ type SeasonPassDefinition struct {
 	//   "x-mobile-manifest-name": "SeasonPasses"
 	// }
 
+	Color Color `json:"color"`
+
 	DisplayProperties DisplayPropertiesDefinition `json:"displayProperties"`
 
 	// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not
@@ -33743,8 +32277,12 @@ type SeasonPassDefinition struct {
 	// When entities refer to each other in Destiny content, it is this hash that they are referring to.
 	Hash uint32 `json:"hash"`
 
+	Images SeasonPassImages `json:"images"`
+
 	// The index of the entity as it was found in the investment tables.
 	Index int32 `json:"index"`
+
+	LinkRedirectPath string `json:"linkRedirectPath"`
 
 	// I know what you're thinking, but I promise we're not going to duplicate and drown you. Instead,
 	// we're giving you sweet, sweet power bonuses.
@@ -33762,6 +32300,66 @@ type SeasonPassDefinition struct {
 	// provide item rewards for the Season pass. Further experience after you reach the limit is provided
 	// in the "Prestige" progression referred to by prestigeProgressionHash.
 	RewardProgressionHash Hash[ProgressionDefinition] `json:"rewardProgressionHash"`
+}
+
+// Destiny.Definitions.Seasons.DestinySeasonPassImages
+type SeasonPassImages struct {
+	// {
+	//   "properties": {
+	//     "iconImagePath": {
+	//       "type": "string"
+	//     },
+	//     "themeBackgroundImagePath": {
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	IconImagePath string `json:"iconImagePath"`
+
+	ThemeBackgroundImagePath string `json:"themeBackgroundImagePath"`
+}
+
+// Destiny.Definitions.Seasons.DestinySeasonPassReference
+//
+// Defines the hash, unlock flag and start time of season passes
+type SeasonPassReference struct {
+	// {
+	//   "description": "Defines the hash, unlock flag and start time of season passes",
+	//   "properties": {
+	//     "seasonPassEndDate": {
+	//       "description": "The Season Pass End Date",
+	//       "format": "date-time",
+	//       "nullable": true,
+	//       "type": "string"
+	//     },
+	//     "seasonPassHash": {
+	//       "description": "The Season Pass Hash",
+	//       "format": "uint32",
+	//       "type": "integer",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
+	//       }
+	//     },
+	//     "seasonPassStartDate": {
+	//       "description": "The Season Pass Start Date",
+	//       "format": "date-time",
+	//       "nullable": true,
+	//       "type": "string"
+	//     }
+	//   },
+	//   "type": "object"
+	// }
+
+	// The Season Pass End Date
+	SeasonPassEndDate Nullable[Timestamp] `json:"seasonPassEndDate,omitempty"`
+
+	// The Season Pass Hash
+	SeasonPassHash Hash[SeasonPassDefinition] `json:"seasonPassHash"`
+
+	// The Season Pass Start Date
+	SeasonPassStartDate Nullable[Timestamp] `json:"seasonPassStartDate,omitempty"`
 }
 
 // Destiny.Definitions.Seasons.DestinySeasonPreviewDefinition
@@ -34628,7 +33226,7 @@ type Activity struct {
 	//       "additionalProperties": {
 	//         "type": "boolean"
 	//       },
-	//       "description": "The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).\r\nAs a concrete example of this data, the hashes you get for Raids will correspond to the currently active \"Challenge Mode\".\r\nWe don't have any human readable information for these, but saavy 3rd party app users could manually associate the key (a hash identifier for the \"option\" that is enabled/disabled) and the value (whether it's enabled or disabled presently)\r\nOn our side, we don't necessarily even know what these are used for (the game designers know, but we don't), and we have no human readable data for them. In order to use them, you will have to do some experimentation.",
+	//       "description": "The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).\r\nAs a concrete example of this data, the hashes you get for Raids will correspond to the currently active \"Challenge Mode\".\r\nWe don't have any human readable information for these, but savvy 3rd party app users could manually associate the key (a hash identifier for the \"option\" that is enabled/disabled) and the value (whether it's enabled or disabled presently)\r\nOn our side, we don't necessarily even know what these are used for (the game designers know, but we don't), and we have no human readable data for them. In order to use them, you will have to do some experimentation.",
 	//       "type": "object",
 	//       "x-dictionary-key": {
 	//         "format": "uint32",
@@ -34683,7 +33281,7 @@ type Activity struct {
 	//       "type": "integer"
 	//     },
 	//     "modifierHashes": {
-	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
+	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestinyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
 	//       "items": {
 	//         "format": "uint32",
 	//         "type": "integer"
@@ -34698,6 +33296,13 @@ type Activity struct {
 	//       "format": "int32",
 	//       "nullable": true,
 	//       "type": "integer"
+	//     },
+	//     "visibleRewards": {
+	//       "description": "A filtered list of reward mappings with only the currently visible reward items.",
+	//       "items": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRewardMapping"
+	//       },
+	//       "type": "array"
 	//     }
 	//   },
 	//   "type": "object"
@@ -34714,7 +33319,7 @@ type Activity struct {
 	// hashes, for any given D2 base Raid variant the hash will be unique).
 	// As a concrete example of this data, the hashes you get for Raids will correspond to the currently
 	// active "Challenge Mode".
-	// We don't have any human readable information for these, but saavy 3rd party app users could manually
+	// We don't have any human readable information for these, but savvy 3rd party app users could manually
 	// associate the key (a hash identifier for the "option" that is enabled/disabled) and the value
 	// (whether it's enabled or disabled presently)
 	// On our side, we don't necessarily even know what these are used for (the game designers know, but we
@@ -34754,14 +33359,32 @@ type Activity struct {
 	// If the activity has modifiers, this will be the list of modifiers that all variants have in common.
 	// Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied
 	// to get at the modifier data.
-	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
+	// Note that, in the DestinyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
 	ModifierHashes []uint32 `json:"modifierHashes"`
 
 	// The recommended light level for the activity, if applicable.
 	RecommendedLight Nullable[int32] `json:"recommendedLight,omitempty"`
+
+	// A filtered list of reward mappings with only the currently visible reward items.
+	VisibleRewards []ActivityRewardMapping `json:"visibleRewards"`
 }
+
+// Destiny.DestinyActivityDifficultyId
+type ActivityDifficultyId int32
+
+const (
+	ActivityDifficultyId_Trivial          = ActivityDifficultyId(0)
+	ActivityDifficultyId_Easy             = ActivityDifficultyId(1)
+	ActivityDifficultyId_Normal           = ActivityDifficultyId(2)
+	ActivityDifficultyId_Challenging      = ActivityDifficultyId(3)
+	ActivityDifficultyId_Hard             = ActivityDifficultyId(4)
+	ActivityDifficultyId_Brave            = ActivityDifficultyId(5)
+	ActivityDifficultyId_AlmostImpossible = ActivityDifficultyId(6)
+	ActivityDifficultyId_Impossible       = ActivityDifficultyId(7)
+	ActivityDifficultyId_Count            = ActivityDifficultyId(8)
+)
 
 // Destiny.DestinyActivityDifficultyTier
 //
@@ -34780,6 +33403,15 @@ const (
 	ActivityDifficultyTier_Impossible       = ActivityDifficultyTier(7)
 )
 
+// Destiny.DestinyActivityDifficultyTierType
+type ActivityDifficultyTierType int32
+
+const (
+	ActivityDifficultyTierType_Default  = ActivityDifficultyTierType(0)
+	ActivityDifficultyTierType_Training = ActivityDifficultyTierType(1)
+	ActivityDifficultyTierType_Count    = ActivityDifficultyTierType(2)
+)
+
 // Destiny.DestinyActivityModeCategory
 //
 // Activity Modes are grouped into a few possible broad categories.
@@ -34790,6 +33422,34 @@ const (
 	ActivityModeCategory_PvE            = ActivityModeCategory(1)
 	ActivityModeCategory_PvP            = ActivityModeCategory(2)
 	ActivityModeCategory_PvECompetitive = ActivityModeCategory(3)
+)
+
+// Destiny.DestinyActivityModifierConnotation
+type ActivityModifierConnotation int32
+
+const (
+	ActivityModifierConnotation_Neutral       = ActivityModifierConnotation(0)
+	ActivityModifierConnotation_Positive      = ActivityModifierConnotation(1)
+	ActivityModifierConnotation_Negative      = ActivityModifierConnotation(2)
+	ActivityModifierConnotation_Affix         = ActivityModifierConnotation(3)
+	ActivityModifierConnotation_Informational = ActivityModifierConnotation(4)
+	ActivityModifierConnotation_Reward        = ActivityModifierConnotation(5)
+	ActivityModifierConnotation_Event         = ActivityModifierConnotation(6)
+	ActivityModifierConnotation_Count         = ActivityModifierConnotation(7)
+)
+
+// Destiny.DestinyActivityModifierDisplayCategory
+type ActivityModifierDisplayCategory int32
+
+const (
+	ActivityModifierDisplayCategory_None            = ActivityModifierDisplayCategory(0)
+	ActivityModifierDisplayCategory_ModeRules       = ActivityModifierDisplayCategory(1)
+	ActivityModifierDisplayCategory_SelfBuildcraft  = ActivityModifierDisplayCategory(2)
+	ActivityModifierDisplayCategory_EnemyAdjustment = ActivityModifierDisplayCategory(3)
+	ActivityModifierDisplayCategory_EnemyBuildcraft = ActivityModifierDisplayCategory(4)
+	ActivityModifierDisplayCategory_Seasonal        = ActivityModifierDisplayCategory(5)
+	ActivityModifierDisplayCategory_Fun             = ActivityModifierDisplayCategory(6)
+	ActivityModifierDisplayCategory_Count           = ActivityModifierDisplayCategory(7)
 )
 
 // Destiny.DestinyActivityNavPointType
@@ -34813,6 +33473,45 @@ const (
 	ActivityNavPointType_ArenaObjective       = ActivityNavPointType(14)
 	ActivityNavPointType_AutomationHint       = ActivityNavPointType(15)
 	ActivityNavPointType_TrackedQuest         = ActivityNavPointType(16)
+)
+
+// Destiny.DestinyActivityRewardDisplayMode
+type ActivityRewardDisplayMode int32
+
+const (
+	ActivityRewardDisplayMode_Aggregate = ActivityRewardDisplayMode(0)
+	ActivityRewardDisplayMode_PickFirst = ActivityRewardDisplayMode(1)
+	ActivityRewardDisplayMode_Count     = ActivityRewardDisplayMode(2)
+)
+
+// Destiny.DestinyActivitySkullDynamicUse
+type ActivitySkullDynamicUse int32
+
+const (
+	ActivitySkullDynamicUse_Unknown    = ActivitySkullDynamicUse(0)
+	ActivitySkullDynamicUse_Allowed    = ActivitySkullDynamicUse(1)
+	ActivitySkullDynamicUse_Disallowed = ActivitySkullDynamicUse(2)
+	ActivitySkullDynamicUse_Count      = ActivitySkullDynamicUse(3)
+)
+
+// Destiny.DestinyActivityTreeChildSortMode
+type ActivityTreeChildSortMode int32
+
+const (
+	ActivityTreeChildSortMode_Investment         = ActivityTreeChildSortMode(0)
+	ActivityTreeChildSortMode_FocusFirst         = ActivityTreeChildSortMode(1)
+	ActivityTreeChildSortMode_BonusAndFocusFirst = ActivityTreeChildSortMode(2)
+)
+
+// Destiny.DestinyActivityTreeType
+type ActivityTreeType int32
+
+const (
+	ActivityTreeType_FireteamFinder = ActivityTreeType(0)
+	ActivityTreeType_Curator        = ActivityTreeType(1)
+	ActivityTreeType_EventHome      = ActivityTreeType(2)
+	ActivityTreeType_SeasonHome     = ActivityTreeType(3)
+	ActivityTreeType_Count          = ActivityTreeType(4)
 )
 
 // Destiny.DestinyAmmunitionType
@@ -35026,6 +33725,8 @@ const (
 	GameVersions_TheWitchQueen     = GameVersions(256)
 	GameVersions_Lightfall         = GameVersions(512)
 	GameVersions_TheFinalShape     = GameVersions(1024)
+	GameVersions_EdgeOfFate        = GameVersions(2048)
+	GameVersions_Renegades         = GameVersions(4096)
 )
 
 // Destiny.DestinyGatingScope
@@ -35290,6 +33991,12 @@ const (
 	ObjectiveUiStyle_CraftingWeaponTimestamp     = ObjectiveUiStyle(4)
 	ObjectiveUiStyle_CraftingMementos            = ObjectiveUiStyle(5)
 	ObjectiveUiStyle_CraftingMementoTitle        = ObjectiveUiStyle(6)
+	ObjectiveUiStyle_DiscoverableMystery0        = ObjectiveUiStyle(7)
+	ObjectiveUiStyle_DiscoverableMystery1        = ObjectiveUiStyle(8)
+	ObjectiveUiStyle_DiscoverableMystery2        = ObjectiveUiStyle(9)
+	ObjectiveUiStyle_DiscoverableMystery3        = ObjectiveUiStyle(10)
+	ObjectiveUiStyle_DiscoverableMystery4        = ObjectiveUiStyle(11)
+	ObjectiveUiStyle_DiscoverableExotic          = ObjectiveUiStyle(12)
 )
 
 // Destiny.DestinyPartyMemberStates
@@ -35705,6 +34412,8 @@ const (
 	RecordToastStyle_PathfinderObjectiveCompletePvp     = RecordToastStyle(12)
 	RecordToastStyle_PathfinderObjectiveCompleteStrikes = RecordToastStyle(13)
 	RecordToastStyle_PathfinderObjectiveCompleteGambit  = RecordToastStyle(14)
+	RecordToastStyle_SeasonWeeklyComplete               = RecordToastStyle(15)
+	RecordToastStyle_SeasonDailyComplete                = RecordToastStyle(16)
 )
 
 // Destiny.DestinyRecordValueStyle
@@ -37560,6 +36269,12 @@ type ItemInstanceComponent struct {
 	//       "format": "int32",
 	//       "type": "integer"
 	//     },
+	//     "gearTier": {
+	//       "description": "Gear Tier, if applicable, fished up from the unlock value items.gear_tier",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "isEquipped": {
 	//       "description": "Is the item currently equipped on the given character?",
 	//       "type": "boolean"
@@ -37628,6 +36343,9 @@ type ItemInstanceComponent struct {
 
 	// If the item cannot be equipped until you reach a certain level, that level will be reflected here.
 	EquipRequiredLevel int32 `json:"equipRequiredLevel"`
+
+	// Gear Tier, if applicable, fished up from the unlock value items.gear_tier
+	GearTier Nullable[int32] `json:"gearTier,omitempty"`
 
 	// Is the item currently equipped on the given character?
 	IsEquipped bool `json:"isEquipped"`
@@ -38111,6 +36829,17 @@ type ProfileComponent struct {
 	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition"
 	//       }
 	//     },
+	//     "seasonPassHashes": {
+	//       "description": "A list of season passes aka reward passes that this profile owns. Unlike versionsOwned, these stay with the profile across Platforms, and thus will be valid.",
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array",
+	//       "x-mapped-definition": {
+	//         "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
+	//       }
+	//     },
 	//     "userInfo": {
 	//       "allOf": [
 	//         {
@@ -38174,6 +36903,10 @@ type ProfileComponent struct {
 	// on some other platform) won't see these as available: it will be whatever seasons are available for
 	// the platform on which they last played.
 	SeasonHashes []uint32 `json:"seasonHashes"`
+
+	// A list of season passes aka reward passes that this profile owns. Unlike versionsOwned, these stay
+	// with the profile across Platforms, and thus will be valid.
+	SeasonPassHashes []uint32 `json:"seasonPassHashes"`
 
 	// If you need to render the Profile (their platform name, icon, etc...) somewhere, this property
 	// contains that information.
@@ -38658,11 +37391,12 @@ const (
 type FireteamFinderOptionValueProviderType int32
 
 const (
-	FireteamFinderOptionValueProviderType_None                        = FireteamFinderOptionValueProviderType(0)
-	FireteamFinderOptionValueProviderType_Values                      = FireteamFinderOptionValueProviderType(1)
-	FireteamFinderOptionValueProviderType_PlayerCount                 = FireteamFinderOptionValueProviderType(2)
-	FireteamFinderOptionValueProviderType_FireteamFinderLabels        = FireteamFinderOptionValueProviderType(3)
-	FireteamFinderOptionValueProviderType_FireteamFinderActivityGraph = FireteamFinderOptionValueProviderType(4)
+	FireteamFinderOptionValueProviderType_None                         = FireteamFinderOptionValueProviderType(0)
+	FireteamFinderOptionValueProviderType_Values                       = FireteamFinderOptionValueProviderType(1)
+	FireteamFinderOptionValueProviderType_PlayerCount                  = FireteamFinderOptionValueProviderType(2)
+	FireteamFinderOptionValueProviderType_FireteamFinderLabels         = FireteamFinderOptionValueProviderType(3)
+	FireteamFinderOptionValueProviderType_FireteamFinderActivityGraph  = FireteamFinderOptionValueProviderType(4)
+	FireteamFinderOptionValueProviderType_FireteamFinderUIActivityTree = FireteamFinderOptionValueProviderType(5)
 )
 
 // Destiny.FireteamFinderOptionVisibility
@@ -39819,6 +38553,12 @@ type PostGameCarnageReportData struct {
 	//       "description": "Details about the activity.",
 	//       "type": "object"
 	//     },
+	//     "activityDifficultyTier": {
+	//       "description": "Difficulty tier index value for the activity.",
+	//       "format": "int32",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "activityWasStartedFromBeginning": {
 	//       "description": "True if the activity was started from the beginning, if that information is available and the activity was played post Witch Queen release.",
 	//       "nullable": true,
@@ -39835,6 +38575,14 @@ type PostGameCarnageReportData struct {
 	//       "description": "Date and time for the activity.",
 	//       "format": "date-time",
 	//       "type": "string"
+	//     },
+	//     "selectedSkullHashes": {
+	//       "description": "Collection of player-selected skull hashes active for the activity.",
+	//       "items": {
+	//         "format": "uint32",
+	//         "type": "integer"
+	//       },
+	//       "type": "array"
 	//     },
 	//     "startingPhaseIndex": {
 	//       "description": "If this activity has \"phases\", this is the phase at which the activity was started. This value is only valid for activities before the Beyond Light expansion shipped. Subsequent activities will not have a valid value here.",
@@ -39856,6 +38604,9 @@ type PostGameCarnageReportData struct {
 	// Details about the activity.
 	ActivityDetails HistoricalStatsActivity `json:"activityDetails"`
 
+	// Difficulty tier index value for the activity.
+	ActivityDifficultyTier Nullable[int32] `json:"activityDifficultyTier,omitempty"`
+
 	// True if the activity was started from the beginning, if that information is available and the
 	// activity was played post Witch Queen release.
 	ActivityWasStartedFromBeginning Nullable[bool] `json:"activityWasStartedFromBeginning,omitempty"`
@@ -39865,6 +38616,9 @@ type PostGameCarnageReportData struct {
 
 	// Date and time for the activity.
 	Period Timestamp `json:"period"`
+
+	// Collection of player-selected skull hashes active for the activity.
+	SelectedSkullHashes []uint32 `json:"selectedSkullHashes"`
 
 	// If this activity has "phases", this is the phase at which the activity was started. This value is
 	// only valid for activities before the Beyond Light expansion shipped. Subsequent activities will not
@@ -40694,7 +39448,7 @@ type MilestoneActivity struct {
 	//       ]
 	//     },
 	//     "modifierHashes": {
-	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data. Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
+	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data. Note that, in the DestinyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
 	//       "items": {
 	//         "format": "uint32",
 	//         "type": "integer"
@@ -40732,7 +39486,7 @@ type MilestoneActivity struct {
 
 	// If the activity has modifiers, this will be the list of modifiers that all variants have in common.
 	// Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied
-	// to get at the modifier data. Note that, in the DestiyActivityDefinition, you will see many more
+	// to get at the modifier data. Note that, in the DestinyActivityDefinition, you will see many more
 	// modifiers than this being referred to: those are all *possible* modifiers for the activity, not the
 	// active ones. Use only the active ones to match what's really live.
 	ModifierHashes []uint32 `json:"modifierHashes"`
@@ -41316,7 +40070,7 @@ type MilestoneChallengeActivity struct {
 	//       "additionalProperties": {
 	//         "type": "boolean"
 	//       },
-	//       "description": "The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).\r\nAs a concrete example of this data, the hashes you get for Raids will correspond to the currently active \"Challenge Mode\".\r\nWe don't have any human readable information for these, but saavy 3rd party app users could manually associate the key (a hash identifier for the \"option\" that is enabled/disabled) and the value (whether it's enabled or disabled presently)\r\nOn our side, we don't necessarily even know what these are used for (the game designers know, but we don't), and we have no human readable data for them. In order to use them, you will have to do some experimentation.",
+	//       "description": "The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).\r\nAs a concrete example of this data, the hashes you get for Raids will correspond to the currently active \"Challenge Mode\".\r\nWe don't have any human readable information for these, but savvy 3rd party app users could manually associate the key (a hash identifier for the \"option\" that is enabled/disabled) and the value (whether it's enabled or disabled presently)\r\nOn our side, we don't necessarily even know what these are used for (the game designers know, but we don't), and we have no human readable data for them. In order to use them, you will have to do some experimentation.",
 	//       "type": "object",
 	//       "x-dictionary-key": {
 	//         "format": "uint32",
@@ -41336,7 +40090,7 @@ type MilestoneChallengeActivity struct {
 	//       "type": "integer"
 	//     },
 	//     "modifierHashes": {
-	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
+	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestinyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
 	//       "items": {
 	//         "format": "uint32",
 	//         "type": "integer"
@@ -41366,7 +40120,7 @@ type MilestoneChallengeActivity struct {
 	// hashes, for any given D2 base Raid variant the hash will be unique).
 	// As a concrete example of this data, the hashes you get for Raids will correspond to the currently
 	// active "Challenge Mode".
-	// We don't have any human readable information for these, but saavy 3rd party app users could manually
+	// We don't have any human readable information for these, but savvy 3rd party app users could manually
 	// associate the key (a hash identifier for the "option" that is enabled/disabled) and the value
 	// (whether it's enabled or disabled presently)
 	// On our side, we don't necessarily even know what these are used for (the game designers know, but we
@@ -41383,7 +40137,7 @@ type MilestoneChallengeActivity struct {
 	// If the activity has modifiers, this will be the list of modifiers that all variants have in common.
 	// Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied
 	// to get at the modifier data.
-	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
+	// Note that, in the DestinyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
 	ModifierHashes []uint32 `json:"modifierHashes"`
@@ -42817,7 +41571,7 @@ type PublicMilestoneChallengeActivity struct {
 	//       "type": "integer"
 	//     },
 	//     "modifierHashes": {
-	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
+	//       "description": "If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.\r\nNote that, in the DestinyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.",
 	//       "items": {
 	//         "format": "uint32",
 	//         "type": "integer"
@@ -42861,7 +41615,7 @@ type PublicMilestoneChallengeActivity struct {
 	// If the activity has modifiers, this will be the list of modifiers that all variants have in common.
 	// Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied
 	// to get at the modifier data.
-	// Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being
+	// Note that, in the DestinyActivityDefinition, you will see many more modifiers than this being
 	// referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the
 	// active ones to match what's really live.
 	ModifierHashes []uint32 `json:"modifierHashes"`
@@ -45184,7 +43938,9 @@ type ProfileUserInfoCard struct {
 	//         "128",
 	//         "256",
 	//         "512",
-	//         "1024"
+	//         "1024",
+	//         "2048",
+	//         "4096"
 	//       ],
 	//       "format": "int32",
 	//       "nullable": true,
@@ -45238,6 +43994,14 @@ type ProfileUserInfoCard struct {
 	//         {
 	//           "identifier": "TheFinalShape",
 	//           "numericValue": "1024"
+	//         },
+	//         {
+	//           "identifier": "EdgeOfFate",
+	//           "numericValue": "2048"
+	//         },
+	//         {
+	//           "identifier": "Renegades",
+	//           "numericValue": "4096"
 	//         }
 	//       ]
 	//     }
@@ -45492,7 +44256,7 @@ type VendorResponse struct {
 
 	// Item components, keyed by the vendorItemIndex of the active sale items.
 	// COMPONENT TYPE: [See inside the DestinyVendorItemComponentSet contract for component types.]
-	ItemComponents VendorItemComponentSetOfint32 `json:"itemComponents"`
+	ItemComponents ItemComponentSet[int32] `json:"itemComponents"`
 
 	// Sales, keyed by the vendorItemIndex of the item being sold.
 	// COMPONENT TYPE: VendorSales
@@ -45604,7 +44368,7 @@ type VendorsResponse struct {
 	// The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever
 	// item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by
 	// the vendor.
-	ItemComponents map[uint32]VendorItemComponentSetOfint32 `json:"itemComponents"`
+	ItemComponents map[uint32]ItemComponentSet[int32] `json:"itemComponents"`
 
 	// Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so
 	// you will get one Sale Item Set Component per vendor returned.
@@ -46094,70 +44858,6 @@ type VendorReceipt struct {
 
 	// The seconds since epoch at which this receipt is rendered invalid.
 	TimeToExpiration Int64 `json:"timeToExpiration"`
-}
-
-// DestinyVendorItemComponentSetOfint32
-type VendorItemComponentSetOfint32 struct {
-	// {
-	//   "properties": {
-	//     "instances": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemInstanceComponent"
-	//     },
-	//     "itemComponents": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemComponent"
-	//     },
-	//     "objectives": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent"
-	//     },
-	//     "perks": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemPerksComponent"
-	//     },
-	//     "plugObjectives": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent"
-	//     },
-	//     "plugStates": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent"
-	//     },
-	//     "renderData": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemRenderComponent"
-	//     },
-	//     "reusablePlugs": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent"
-	//     },
-	//     "sockets": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemSocketsComponent"
-	//     },
-	//     "stats": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemStatsComponent"
-	//     },
-	//     "talentGrids": {
-	//       "$ref": "#/components/schemas/DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Instances ComponentResponse[map[int32]ItemInstanceComponent] `json:"instances"`
-
-	ItemComponents ComponentResponse[map[int32]ItemComponent] `json:"itemComponents"`
-
-	Objectives ComponentResponse[map[int32]ItemObjectivesComponent] `json:"objectives"`
-
-	Perks ComponentResponse[map[int32]ItemPerksComponent] `json:"perks"`
-
-	PlugObjectives ComponentResponse[map[int32]ItemPlugObjectivesComponent] `json:"plugObjectives"`
-
-	PlugStates ComponentResponse[map[uint32]ItemPlugComponent] `json:"plugStates"`
-
-	RenderData ComponentResponse[map[int32]ItemRenderComponent] `json:"renderData"`
-
-	ReusablePlugs ComponentResponse[map[int32]ItemReusablePlugsComponent] `json:"reusablePlugs"`
-
-	Sockets ComponentResponse[map[int32]ItemSocketsComponent] `json:"sockets"`
-
-	Stats ComponentResponse[map[int32]ItemStatsComponent] `json:"stats"`
-
-	TalentGrids ComponentResponse[map[int32]ItemTalentGridComponent] `json:"talentGrids"`
 }
 
 // Entities.EntityActionResult
@@ -47494,1324 +46194,6 @@ type FireteamUserInfoCard struct {
 
 	// A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc.
 	SupplementalDisplayName string `json:"supplementalDisplayName"`
-}
-
-// FireteamFinder.DestinyFireteamFinderActivityGraphState
-type FireteamFinderActivityGraphState struct {
-	// {
-	//   "properties": {
-	//     "isAvailable": {
-	//       "description": "Indicates if this fireteam finder activity graph node is available to select for this character.",
-	//       "type": "boolean"
-	//     },
-	//     "isVisible": {
-	//       "description": "Indicates if this fireteam finder activity graph node is visible for this character.",
-	//       "type": "boolean"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	// Indicates if this fireteam finder activity graph node is available to select for this character.
-	IsAvailable bool `json:"isAvailable"`
-
-	// Indicates if this fireteam finder activity graph node is visible for this character.
-	IsVisible bool `json:"isVisible"`
-}
-
-// FireteamFinder.DestinyFireteamFinderApplicant
-type FireteamFinderApplicant map[string]any
-
-//	{
-//	  "type": "object"
-//	}
-//
-// FireteamFinder.DestinyFireteamFinderApplicantSet
-type FireteamFinderApplicantSet struct {
-	// {
-	//   "properties": {
-	//     "applicants": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicant"
-	//       },
-	//       "type": "array"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Applicants []FireteamFinderApplicant `json:"applicants"`
-}
-
-// FireteamFinder.DestinyFireteamFinderApplication
-type FireteamFinderApplication struct {
-	// {
-	//   "properties": {
-	//     "applicantSet": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicantSet"
-	//     },
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "applicationType": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
-	//       }
-	//     },
-	//     "createdDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "referralToken": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationState"
-	//       }
-	//     },
-	//     "submitterId": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicantSet FireteamFinderApplicantSet `json:"applicantSet"`
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	ApplicationType FireteamFinderApplicationType `json:"applicationType"`
-
-	CreatedDateTime Timestamp `json:"createdDateTime"`
-
-	ListingID Int64 `json:"listingId"`
-
-	ReferralToken Int64 `json:"referralToken"`
-
-	Revision int32 `json:"revision"`
-
-	State FireteamFinderApplicationState `json:"state"`
-
-	SubmitterID FireteamFinderPlayerId `json:"submitterId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderApplicationState
-type FireteamFinderApplicationState int32
-
-const (
-	FireteamFinderApplicationState_Unknown              = FireteamFinderApplicationState(0)
-	FireteamFinderApplicationState_WaitingForApplicants = FireteamFinderApplicationState(1)
-	FireteamFinderApplicationState_WaitingForLobbyOwner = FireteamFinderApplicationState(2)
-	FireteamFinderApplicationState_Accepted             = FireteamFinderApplicationState(3)
-	FireteamFinderApplicationState_Rejected             = FireteamFinderApplicationState(4)
-	FireteamFinderApplicationState_Deleted              = FireteamFinderApplicationState(5)
-	FireteamFinderApplicationState_Expired              = FireteamFinderApplicationState(6)
-)
-
-// FireteamFinder.DestinyFireteamFinderApplicationType
-type FireteamFinderApplicationType int32
-
-const (
-	FireteamFinderApplicationType_Unknown   = FireteamFinderApplicationType(0)
-	FireteamFinderApplicationType_Creator   = FireteamFinderApplicationType(1)
-	FireteamFinderApplicationType_Search    = FireteamFinderApplicationType(2)
-	FireteamFinderApplicationType_Invite    = FireteamFinderApplicationType(3)
-	FireteamFinderApplicationType_Friend    = FireteamFinderApplicationType(4)
-	FireteamFinderApplicationType_Encounter = FireteamFinderApplicationType(5)
-	FireteamFinderApplicationType_Public    = FireteamFinderApplicationType(6)
-)
-
-// FireteamFinder.DestinyFireteamFinderApplyToListingResponse
-type FireteamFinderApplyToListingResponse struct {
-	// {
-	//   "properties": {
-	//     "application": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
-	//     },
-	//     "isApplied": {
-	//       "type": "boolean"
-	//     },
-	//     "listing": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Application FireteamFinderApplication `json:"application"`
-
-	IsApplied bool `json:"isApplied"`
-
-	Listing FireteamFinderListing `json:"listing"`
-}
-
-// FireteamFinder.DestinyFireteamFinderBulkGetListingStatusRequest
-type FireteamFinderBulkGetListingStatusRequestBody map[string]any
-
-//	{
-//	  "type": "object"
-//	}
-//
-// FireteamFinder.DestinyFireteamFinderBulkGetListingStatusResponse
-type FireteamFinderBulkGetListingStatusResponse struct {
-	// {
-	//   "properties": {
-	//     "listingStatus": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingStatus"
-	//       },
-	//       "type": "array"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ListingStatus []FireteamFinderListingStatus `json:"listingStatus"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetApplicationResponse
-type FireteamFinderGetApplicationResponse struct {
-	// {
-	//   "properties": {
-	//     "applicantSet": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicantSet"
-	//     },
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "applicationType": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationType"
-	//       }
-	//     },
-	//     "createdDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "referralToken": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplicationState"
-	//       }
-	//     },
-	//     "submitterId": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicantSet FireteamFinderApplicantSet `json:"applicantSet"`
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	ApplicationType FireteamFinderApplicationType `json:"applicationType"`
-
-	CreatedDateTime Timestamp `json:"createdDateTime"`
-
-	ListingID Int64 `json:"listingId"`
-
-	ReferralToken Int64 `json:"referralToken"`
-
-	Revision int32 `json:"revision"`
-
-	State FireteamFinderApplicationState `json:"state"`
-
-	SubmitterID FireteamFinderPlayerId `json:"submitterId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetCharacterActivityAccessResponse
-type FireteamFinderGetCharacterActivityAccessResponse struct {
-	// {
-	//   "properties": {
-	//     "fireteamFinderActivityGraphStates": {
-	//       "additionalProperties": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderActivityGraphState"
-	//       },
-	//       "description": "A map of fireteam finder activity graph hashes to visibility and availability states.",
-	//       "type": "object",
-	//       "x-dictionary-key": {
-	//         "format": "uint32",
-	//         "type": "integer"
-	//       },
-	//       "x-mapped-definition": {
-	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	// A map of fireteam finder activity graph hashes to visibility and availability states.
-	FireteamFinderActivityGraphStates map[Hash[FireteamFinderActivityGraphDefinition]]FireteamFinderActivityGraphState `json:"fireteamFinderActivityGraphStates"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetListingApplicationsResponse
-type FireteamFinderGetListingApplicationsResponse struct {
-	// {
-	//   "properties": {
-	//     "applications": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "nextPageToken": {
-	//       "type": "string"
-	//     },
-	//     "pageSize": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Applications []FireteamFinderApplication `json:"applications"`
-
-	NextPageToken string `json:"nextPageToken"`
-
-	PageSize int32 `json:"pageSize"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetLobbyOffersResponse
-type FireteamFinderGetLobbyOffersResponse struct {
-	// {
-	//   "properties": {
-	//     "offers": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "pageToken": {
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Offers []FireteamFinderOffer `json:"offers"`
-
-	PageToken string `json:"pageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetPlayerApplicationsResponse
-type FireteamFinderGetPlayerApplicationsResponse struct {
-	// {
-	//   "properties": {
-	//     "applications": {
-	//       "description": "All applications that this player has sent.",
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderApplication"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "nextPageToken": {
-	//       "description": "String token to request next page of results.",
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	// All applications that this player has sent.
-	Applications []FireteamFinderApplication `json:"applications"`
-
-	// String token to request next page of results.
-	NextPageToken string `json:"nextPageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetPlayerLobbiesResponse
-type FireteamFinderGetPlayerLobbiesResponse struct {
-	// {
-	//   "properties": {
-	//     "lobbies": {
-	//       "description": "All available lobbies that this player has created or is a member of.",
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyResponse"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "nextPageToken": {
-	//       "description": "A string token required to get the next page of results. This will be null or empty if there are no more results.",
-	//       "type": "string"
-	//     },
-	//     "pageSize": {
-	//       "description": "The number of results requested.",
-	//       "format": "int32",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	// All available lobbies that this player has created or is a member of.
-	Lobbies []FireteamFinderLobbyResponse `json:"lobbies"`
-
-	// A string token required to get the next page of results. This will be null or empty if there are no
-	// more results.
-	NextPageToken string `json:"nextPageToken"`
-
-	// The number of results requested.
-	PageSize int32 `json:"pageSize"`
-}
-
-// FireteamFinder.DestinyFireteamFinderGetPlayerOffersResponse
-type FireteamFinderGetPlayerOffersResponse struct {
-	// {
-	//   "properties": {
-	//     "offers": {
-	//       "description": "All offers that this player has recieved.",
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
-	//       },
-	//       "type": "array"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	// All offers that this player has recieved.
-	Offers []FireteamFinderOffer `json:"offers"`
-}
-
-// FireteamFinder.DestinyFireteamFinderHostLobbyRequest
-type FireteamFinderHostLobbyRequestBody struct {
-	// {
-	//   "properties": {
-	//     "activityGraphHash": {
-	//       "format": "uint32",
-	//       "type": "integer",
-	//       "x-mapped-definition": {
-	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
-	//       }
-	//     },
-	//     "activityHash": {
-	//       "format": "uint32",
-	//       "type": "integer",
-	//       "x-mapped-definition": {
-	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
-	//       }
-	//     },
-	//     "clanId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "listingValues": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "maxPlayerCount": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "onlinePlayersOnly": {
-	//       "type": "boolean"
-	//     },
-	//     "privacyScope": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope"
-	//       }
-	//     },
-	//     "scheduledDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ActivityGraphHash Hash[FireteamFinderActivityGraphDefinition] `json:"activityGraphHash"`
-
-	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-
-	ClanID Int64 `json:"clanId"`
-
-	ListingValues []FireteamFinderListingValue `json:"listingValues"`
-
-	MaxPlayerCount int32 `json:"maxPlayerCount"`
-
-	OnlinePlayersOnly bool `json:"onlinePlayersOnly"`
-
-	PrivacyScope FireteamFinderLobbyPrivacyScope `json:"privacyScope"`
-
-	ScheduledDateTime Timestamp `json:"scheduledDateTime"`
-}
-
-// FireteamFinder.DestinyFireteamFinderHostLobbyResponse
-type FireteamFinderHostLobbyResponse struct {
-	// {
-	//   "properties": {
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "offerId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	ListingID Int64 `json:"listingId"`
-
-	LobbyID Int64 `json:"lobbyId"`
-
-	OfferID Int64 `json:"offerId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderJoinLobbyRequest
-type FireteamFinderJoinLobbyRequestBody struct {
-	// {
-	//   "properties": {
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "offerId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	LobbyID Int64 `json:"lobbyId"`
-
-	OfferID Int64 `json:"offerId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderKickPlayerRequest
-type FireteamFinderKickPlayerRequestBody struct {
-	// {
-	//   "properties": {
-	//     "targetCharacterId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "targetMembershipType": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/BungieMembershipType"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	TargetCharacterID Int64 `json:"targetCharacterId"`
-
-	TargetMembershipType BungieMembershipType `json:"targetMembershipType"`
-}
-
-// FireteamFinder.DestinyFireteamFinderListing
-type FireteamFinderListing struct {
-	// {
-	//   "properties": {
-	//     "availableSlots": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "createdDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "lobbyState": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
-	//       }
-	//     },
-	//     "ownerId": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "settings": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	AvailableSlots int32 `json:"availableSlots"`
-
-	CreatedDateTime Timestamp `json:"createdDateTime"`
-
-	ListingID Int64 `json:"listingId"`
-
-	LobbyID Int64 `json:"lobbyId"`
-
-	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
-
-	OwnerID FireteamFinderPlayerId `json:"ownerId"`
-
-	Revision int32 `json:"revision"`
-
-	Settings FireteamFinderLobbySettings `json:"settings"`
-}
-
-// FireteamFinder.DestinyFireteamFinderListingFilter
-type FireteamFinderListingFilter struct {
-	// {
-	//   "properties": {
-	//     "listingValue": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
-	//     },
-	//     "matchType": {
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilterMatchType"
-	//       }
-	//     },
-	//     "rangeType": {
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilterRangeType"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ListingValue FireteamFinderListingValue `json:"listingValue"`
-
-	MatchType FireteamFinderListingFilterMatchType `json:"matchType"`
-
-	RangeType FireteamFinderListingFilterRangeType `json:"rangeType"`
-}
-
-// FireteamFinder.DestinyFireteamFinderListingFilterMatchType
-type FireteamFinderListingFilterMatchType int
-
-const (
-	FireteamFinderListingFilterMatchType_Unknown = FireteamFinderListingFilterMatchType(0)
-	FireteamFinderListingFilterMatchType_MustNot = FireteamFinderListingFilterMatchType(1)
-	FireteamFinderListingFilterMatchType_Should  = FireteamFinderListingFilterMatchType(2)
-	FireteamFinderListingFilterMatchType_Filter  = FireteamFinderListingFilterMatchType(3)
-)
-
-// FireteamFinder.DestinyFireteamFinderListingFilterRangeType
-type FireteamFinderListingFilterRangeType int
-
-const (
-	FireteamFinderListingFilterRangeType_Unknown              = FireteamFinderListingFilterRangeType(0)
-	FireteamFinderListingFilterRangeType_All                  = FireteamFinderListingFilterRangeType(1)
-	FireteamFinderListingFilterRangeType_Any                  = FireteamFinderListingFilterRangeType(2)
-	FireteamFinderListingFilterRangeType_InRangeInclusive     = FireteamFinderListingFilterRangeType(3)
-	FireteamFinderListingFilterRangeType_InRangeExclusive     = FireteamFinderListingFilterRangeType(4)
-	FireteamFinderListingFilterRangeType_GreaterThan          = FireteamFinderListingFilterRangeType(5)
-	FireteamFinderListingFilterRangeType_GreaterThanOrEqualTo = FireteamFinderListingFilterRangeType(6)
-	FireteamFinderListingFilterRangeType_LessThan             = FireteamFinderListingFilterRangeType(7)
-	FireteamFinderListingFilterRangeType_LessThanOrEqualTo    = FireteamFinderListingFilterRangeType(8)
-)
-
-// FireteamFinder.DestinyFireteamFinderListingStatus
-type FireteamFinderListingStatus struct {
-	// {
-	//   "properties": {
-	//     "availableSlots": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "listingRevision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	AvailableSlots int32 `json:"availableSlots"`
-
-	ListingID Int64 `json:"listingId"`
-
-	ListingRevision int32 `json:"listingRevision"`
-}
-
-// FireteamFinder.DestinyFireteamFinderListingValue
-type FireteamFinderListingValue struct {
-	// {
-	//   "properties": {
-	//     "valueType": {
-	//       "format": "uint32",
-	//       "type": "integer"
-	//     },
-	//     "values": {
-	//       "items": {
-	//         "format": "uint32",
-	//         "type": "integer"
-	//       },
-	//       "type": "array"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ValueType uint32 `json:"valueType"`
-
-	Values []uint32 `json:"values"`
-}
-
-// FireteamFinder.DestinyFireteamFinderLobbyListingReference
-type FireteamFinderLobbyListingReference struct {
-	// {
-	//   "properties": {
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ListingID Int64 `json:"listingId"`
-
-	LobbyID Int64 `json:"lobbyId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderLobbyPlayer
-type FireteamFinderLobbyPlayer struct {
-	// {
-	//   "properties": {
-	//     "offerId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "playerId": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     },
-	//     "referralToken": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerReadinessState"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	OfferID Int64 `json:"offerId"`
-
-	PlayerID FireteamFinderPlayerId `json:"playerId"`
-
-	ReferralToken Int64 `json:"referralToken"`
-
-	State FireteamFinderPlayerReadinessState `json:"state"`
-}
-
-// FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope
-type FireteamFinderLobbyPrivacyScope int32
-
-const (
-	FireteamFinderLobbyPrivacyScope_Unknown      = FireteamFinderLobbyPrivacyScope(0)
-	FireteamFinderLobbyPrivacyScope_Open         = FireteamFinderLobbyPrivacyScope(1)
-	FireteamFinderLobbyPrivacyScope_Applications = FireteamFinderLobbyPrivacyScope(2)
-	FireteamFinderLobbyPrivacyScope_Clan         = FireteamFinderLobbyPrivacyScope(3)
-	FireteamFinderLobbyPrivacyScope_Friends      = FireteamFinderLobbyPrivacyScope(4)
-)
-
-// FireteamFinder.DestinyFireteamFinderLobbyResponse
-type FireteamFinderLobbyResponse struct {
-	// {
-	//   "properties": {
-	//     "createdDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     },
-	//     "listingId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "owner": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     },
-	//     "players": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPlayer"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "settings": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	CreatedDateTime Timestamp `json:"createdDateTime"`
-
-	ListingID Int64 `json:"listingId"`
-
-	LobbyID Int64 `json:"lobbyId"`
-
-	Owner FireteamFinderPlayerId `json:"owner"`
-
-	Players []FireteamFinderLobbyPlayer `json:"players"`
-
-	Revision int32 `json:"revision"`
-
-	Settings FireteamFinderLobbySettings `json:"settings"`
-
-	State FireteamFinderLobbyState `json:"state"`
-}
-
-// FireteamFinder.DestinyFireteamFinderLobbySettings
-type FireteamFinderLobbySettings struct {
-	// {
-	//   "properties": {
-	//     "activityGraphHash": {
-	//       "format": "uint32",
-	//       "type": "integer",
-	//       "x-mapped-definition": {
-	//         "$ref": "#/components/schemas/Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition"
-	//       }
-	//     },
-	//     "activityHash": {
-	//       "format": "uint32",
-	//       "type": "integer",
-	//       "x-mapped-definition": {
-	//         "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDefinition"
-	//       }
-	//     },
-	//     "clanId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "listingValues": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingValue"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "maxPlayerCount": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "onlinePlayersOnly": {
-	//       "type": "boolean"
-	//     },
-	//     "privacyScope": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope"
-	//       }
-	//     },
-	//     "scheduledDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ActivityGraphHash Hash[FireteamFinderActivityGraphDefinition] `json:"activityGraphHash"`
-
-	ActivityHash Hash[ActivityDefinition] `json:"activityHash"`
-
-	ClanID Int64 `json:"clanId"`
-
-	ListingValues []FireteamFinderListingValue `json:"listingValues"`
-
-	MaxPlayerCount int32 `json:"maxPlayerCount"`
-
-	OnlinePlayersOnly bool `json:"onlinePlayersOnly"`
-
-	PrivacyScope FireteamFinderLobbyPrivacyScope `json:"privacyScope"`
-
-	ScheduledDateTime Timestamp `json:"scheduledDateTime"`
-}
-
-// FireteamFinder.DestinyFireteamFinderLobbyState
-type FireteamFinderLobbyState int32
-
-const (
-	FireteamFinderLobbyState_Unknown  = FireteamFinderLobbyState(0)
-	FireteamFinderLobbyState_Inactive = FireteamFinderLobbyState(1)
-	FireteamFinderLobbyState_Active   = FireteamFinderLobbyState(2)
-	FireteamFinderLobbyState_Expired  = FireteamFinderLobbyState(3)
-	FireteamFinderLobbyState_Closed   = FireteamFinderLobbyState(4)
-	FireteamFinderLobbyState_Canceled = FireteamFinderLobbyState(5)
-	FireteamFinderLobbyState_Deleted  = FireteamFinderLobbyState(6)
-)
-
-// FireteamFinder.DestinyFireteamFinderOffer
-type FireteamFinderOffer struct {
-	// {
-	//   "properties": {
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "createdDateTime": {
-	//       "format": "date-time",
-	//       "type": "string"
-	//     },
-	//     "lobbyId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "offerId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOfferState"
-	//       }
-	//     },
-	//     "targetId": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderPlayerId"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	CreatedDateTime Timestamp `json:"createdDateTime"`
-
-	LobbyID Int64 `json:"lobbyId"`
-
-	OfferID Int64 `json:"offerId"`
-
-	Revision int32 `json:"revision"`
-
-	State FireteamFinderOfferState `json:"state"`
-
-	TargetID FireteamFinderPlayerId `json:"targetId"`
-}
-
-// FireteamFinder.DestinyFireteamFinderOfferState
-type FireteamFinderOfferState int32
-
-const (
-	FireteamFinderOfferState_Unknown  = FireteamFinderOfferState(0)
-	FireteamFinderOfferState_Pending  = FireteamFinderOfferState(1)
-	FireteamFinderOfferState_Accepted = FireteamFinderOfferState(2)
-	FireteamFinderOfferState_Rejected = FireteamFinderOfferState(3)
-	FireteamFinderOfferState_Deleted  = FireteamFinderOfferState(4)
-	FireteamFinderOfferState_Expired  = FireteamFinderOfferState(5)
-)
-
-// FireteamFinder.DestinyFireteamFinderPlayerId
-type FireteamFinderPlayerId struct {
-	// {
-	//   "properties": {
-	//     "characterId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "membershipId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "membershipType": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/BungieMembershipType"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	CharacterID Int64 `json:"characterId"`
-
-	MembershipID Int64 `json:"membershipId"`
-
-	MembershipType BungieMembershipType `json:"membershipType"`
-}
-
-// FireteamFinder.DestinyFireteamFinderPlayerReadinessState
-type FireteamFinderPlayerReadinessState int32
-
-const (
-	FireteamFinderPlayerReadinessState_Unknown        = FireteamFinderPlayerReadinessState(0)
-	FireteamFinderPlayerReadinessState_Reserved       = FireteamFinderPlayerReadinessState(1)
-	FireteamFinderPlayerReadinessState_Disconnected   = FireteamFinderPlayerReadinessState(2)
-	FireteamFinderPlayerReadinessState_InLobbyUnready = FireteamFinderPlayerReadinessState(3)
-	FireteamFinderPlayerReadinessState_InLobbyReady   = FireteamFinderPlayerReadinessState(4)
-	FireteamFinderPlayerReadinessState_Summoned       = FireteamFinderPlayerReadinessState(5)
-)
-
-// FireteamFinder.DestinyFireteamFinderRespondToApplicationRequest
-type FireteamFinderRespondToApplicationRequestBody struct {
-	// {
-	//   "properties": {
-	//     "accepted": {
-	//       "type": "boolean"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Accepted bool `json:"accepted"`
-}
-
-// FireteamFinder.DestinyFireteamFinderRespondToApplicationResponse
-type FireteamFinderRespondToApplicationResponse struct {
-	// {
-	//   "properties": {
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "applicationRevision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	ApplicationRevision int32 `json:"applicationRevision"`
-}
-
-// FireteamFinder.DestinyFireteamFinderRespondToAuthenticationRequest
-type FireteamFinderRespondToAuthenticationRequestBody struct {
-	// {
-	//   "properties": {
-	//     "confirmed": {
-	//       "type": "boolean"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Confirmed bool `json:"confirmed"`
-}
-
-// FireteamFinder.DestinyFireteamFinderRespondToAuthenticationResponse
-type FireteamFinderRespondToAuthenticationResponse struct {
-	// {
-	//   "properties": {
-	//     "applicationId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "applicationRevision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "listing": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
-	//     },
-	//     "offer": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOffer"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	ApplicationID Int64 `json:"applicationId"`
-
-	ApplicationRevision int32 `json:"applicationRevision"`
-
-	Listing FireteamFinderListing `json:"listing"`
-
-	Offer FireteamFinderOffer `json:"offer"`
-}
-
-// FireteamFinder.DestinyFireteamFinderRespondToOfferRequest
-type FireteamFinderRespondToOfferRequestBody struct {
-	// {
-	//   "properties": {
-	//     "accepted": {
-	//       "type": "boolean"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Accepted bool `json:"accepted"`
-}
-
-// FireteamFinder.DestinyFireteamFinderRespondToOfferResponse
-type FireteamFinderRespondToOfferResponse struct {
-	// {
-	//   "properties": {
-	//     "offerId": {
-	//       "format": "int64",
-	//       "type": "integer"
-	//     },
-	//     "revision": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "state": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderOfferState"
-	//       }
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	OfferID Int64 `json:"offerId"`
-
-	Revision int32 `json:"revision"`
-
-	State FireteamFinderOfferState `json:"state"`
-}
-
-// FireteamFinder.DestinyFireteamFinderSearchListingsByClanRequest
-type FireteamFinderSearchListingsByClanRequestBody struct {
-	// {
-	//   "properties": {
-	//     "lobbyState": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
-	//       }
-	//     },
-	//     "pageSize": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "pageToken": {
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
-
-	PageSize int32 `json:"pageSize"`
-
-	PageToken string `json:"pageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderSearchListingsByClanResponse
-type FireteamFinderSearchListingsByClanResponse struct {
-	// {
-	//   "properties": {
-	//     "listings": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "pageToken": {
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Listings []FireteamFinderListing `json:"listings"`
-
-	PageToken string `json:"pageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersRequest
-type FireteamFinderSearchListingsByFiltersRequestBody struct {
-	// {
-	//   "properties": {
-	//     "filters": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListingFilter"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "lobbyState": {
-	//       "format": "int32",
-	//       "type": "integer",
-	//       "x-enum-is-bitmask": false,
-	//       "x-enum-reference": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyState"
-	//       }
-	//     },
-	//     "pageSize": {
-	//       "format": "int32",
-	//       "type": "integer"
-	//     },
-	//     "pageToken": {
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Filters []FireteamFinderListingFilter `json:"filters"`
-
-	LobbyState FireteamFinderLobbyState `json:"lobbyState"`
-
-	PageSize int32 `json:"pageSize"`
-
-	PageToken string `json:"pageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersResponse
-type FireteamFinderSearchListingsByFiltersResponse struct {
-	// {
-	//   "properties": {
-	//     "listings": {
-	//       "items": {
-	//         "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
-	//       },
-	//       "type": "array"
-	//     },
-	//     "pageToken": {
-	//       "type": "string"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	Listings []FireteamFinderListing `json:"listings"`
-
-	PageToken string `json:"pageToken"`
-}
-
-// FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsRequest
-type FireteamFinderUpdateLobbySettingsRequestBody struct {
-	// {
-	//   "properties": {
-	//     "updatedSettings": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbySettings"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	UpdatedSettings FireteamFinderLobbySettings `json:"updatedSettings"`
-}
-
-// FireteamFinder.DestinyFireteamFinderUpdateLobbySettingsResponse
-type FireteamFinderUpdateLobbySettingsResponse struct {
-	// {
-	//   "properties": {
-	//     "updatedListing": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderListing"
-	//     },
-	//     "updatedLobby": {
-	//       "$ref": "#/components/schemas/FireteamFinder.DestinyFireteamFinderLobbyResponse"
-	//     }
-	//   },
-	//   "type": "object"
-	// }
-
-	UpdatedListing FireteamFinderListing `json:"updatedListing"`
-
-	UpdatedLobby FireteamFinderLobbyResponse `json:"updatedLobby"`
 }
 
 // Forum.CommunityContentSortMode
@@ -51821,6 +49203,7 @@ type PlatformFriend struct {
 	//         "5",
 	//         "6",
 	//         "10",
+	//         "20",
 	//         "254",
 	//         "-1"
 	//       ],
@@ -51860,6 +49243,10 @@ type PlatformFriend struct {
 	//         {
 	//           "identifier": "TigerDemon",
 	//           "numericValue": "10"
+	//         },
+	//         {
+	//           "identifier": "GoliathGame",
+	//           "numericValue": "20"
 	//         },
 	//         {
 	//           "identifier": "BungieNext",
@@ -52107,6 +49494,7 @@ type PartnerOfferHistoryResponse struct {
 	//         "5",
 	//         "6",
 	//         "10",
+	//         "20",
 	//         "254",
 	//         "-1"
 	//       ],
@@ -52146,6 +49534,10 @@ type PartnerOfferHistoryResponse struct {
 	//         {
 	//           "identifier": "TigerDemon",
 	//           "numericValue": "10"
+	//         },
+	//         {
+	//           "identifier": "GoliathGame",
+	//           "numericValue": "20"
 	//         },
 	//         {
 	//           "identifier": "BungieNext",
@@ -53761,6 +51153,12 @@ type UserMembershipData struct {
 	//       },
 	//       "type": "array"
 	//     },
+	//     "marathonMembershipId": {
+	//       "description": "If this property is populated, it will have the membershipId for the Marathon Membership on this user's account\r\n If null, this user has no Marathon (i.e. \"GoliathGame\") membership.",
+	//       "format": "int64",
+	//       "nullable": true,
+	//       "type": "integer"
+	//     },
 	//     "primaryMembershipId": {
 	//       "description": "If this property is populated, it will have the membership ID of the account considered to be \"primary\" in this user's cross save relationship.\r\n If null, this user has no cross save relationship, nor primary account.",
 	//       "format": "int64",
@@ -53776,6 +51174,12 @@ type UserMembershipData struct {
 	// this allows you to see destiny memberships that are visible and linked to this account (regardless
 	// of whether or not they have characters on the world server)
 	DestinyMemberships []GroupUserInfoCard `json:"destinyMemberships"`
+
+	// If this property is populated, it will have the membershipId for the Marathon Membership on this
+	// user's account
+	//
+	//	If null, this user has no Marathon (i.e. "GoliathGame") membership.
+	MarathonMembershipID Nullable[Int64] `json:"marathonMembershipId,omitempty"`
 
 	// If this property is populated, it will have the membership ID of the account considered to be
 	// "primary" in this user's cross save relationship.
@@ -54016,6 +51420,8 @@ func (e BungieMembershipType) Enum() string {
 		return "TigerEgs"
 	case BungieMembershipType_TigerDemon:
 		return "TigerDemon"
+	case BungieMembershipType_GoliathGame:
+		return "GoliathGame"
 	case BungieMembershipType_BungieNext:
 		return "BungieNext"
 	case BungieMembershipType_All:
@@ -54171,11 +51577,50 @@ func (e DamageType) Enum() string {
 	}
 	return fmt.Sprintf("DamageType_%d", e)
 }
+func (d ActivityDifficultyTierCollectionDefinition) DefinitionTable() string {
+	return "DestinyActivityDifficultyTierCollectionDefinition"
+}
+func (d ActivityDifficultyTierDefinition) DefinitionTable() string {
+	return "DestinyActivityDifficultyTierDefinition"
+}
+func (d ActivityDifficultyTierSubcategoryOverride) DefinitionTable() string {
+	return "DestinyActivityDifficultyTierSubcategoryOverride"
+}
+func (d ActivityFamilyDefinition) DefinitionTable() string {
+	return "DestinyActivityFamilyDefinition"
+}
 func (d ActivityInteractableDefinition) DefinitionTable() string {
 	return "DestinyActivityInteractableDefinition"
 }
 func (d ActivityInteractableEntryDefinition) DefinitionTable() string {
 	return "DestinyActivityInteractableEntryDefinition"
+}
+func (d ActivityLoadoutRestrictionDefinition) DefinitionTable() string {
+	return "DestinyActivityLoadoutRestrictionDefinition"
+}
+func (d ActivitySelectableSkull) DefinitionTable() string {
+	return "DestinyActivitySelectableSkull"
+}
+func (d ActivitySelectableSkullCollectionDefinition) DefinitionTable() string {
+	return "DestinyActivitySelectableSkullCollectionDefinition"
+}
+func (d ActivitySelectableSkullCollectionSelectionType) DefinitionTable() string {
+	return "DestinyActivitySelectableSkullCollectionSelectionType"
+}
+func (d ActivitySelectableSkullExclusionGroupDefinition) DefinitionTable() string {
+	return "DestinyActivitySelectableSkullExclusionGroupDefinition"
+}
+func (d ActivitySkull) DefinitionTable() string {
+	return "DestinyActivitySkull"
+}
+func (d ActivitySkullCategoryDefinition) DefinitionTable() string {
+	return "DestinyActivitySkullCategoryDefinition"
+}
+func (d ActivitySkullOption) DefinitionTable() string {
+	return "DestinyActivitySkullOption"
+}
+func (d ActivitySkullSubcategoryDefinition) DefinitionTable() string {
+	return "DestinyActivitySkullSubcategoryDefinition"
 }
 func (d ActivityModifierDefinition) DefinitionTable() string {
 	return "DestinyActivityModifierDefinition"
@@ -54260,6 +51705,12 @@ func (d ActivityRequirementsBlock) DefinitionTable() string {
 }
 func (d ActivityRewardDefinition) DefinitionTable() string {
 	return "DestinyActivityRewardDefinition"
+}
+func (d ActivityRewardItem) DefinitionTable() string {
+	return "DestinyActivityRewardItem"
+}
+func (d ActivityRewardMapping) DefinitionTable() string {
+	return "DestinyActivityRewardMapping"
 }
 func (d ActivityTypeDefinition) DefinitionTable() string {
 	return "DestinyActivityTypeDefinition"
@@ -54822,6 +52273,9 @@ func (d GuardianRankDefinition) DefinitionTable() string {
 func (d GuardianRankIconBackgroundsDefinition) DefinitionTable() string {
 	return "DestinyGuardianRankIconBackgroundsDefinition"
 }
+func (d ItemFilterDefinition) DefinitionTable() string {
+	return "DestinyItemFilterDefinition"
+}
 func (d DerivedItemCategoryDefinition) DefinitionTable() string {
 	return "DestinyDerivedItemCategoryDefinition"
 }
@@ -54834,8 +52288,17 @@ func (d EnergyCapacityEntry) DefinitionTable() string {
 func (d EnergyCostEntry) DefinitionTable() string {
 	return "DestinyEnergyCostEntry"
 }
+func (d EquipableItemSetDefinition) DefinitionTable() string {
+	return "DestinyEquipableItemSetDefinition"
+}
+func (d InventoryItemConstantsDefinition) DefinitionTable() string {
+	return "DestinyInventoryItemConstantsDefinition"
+}
 func (d ItemPlugDefinition) DefinitionTable() string {
 	return "DestinyItemPlugDefinition"
+}
+func (d ItemSetPerkDefinition) DefinitionTable() string {
+	return "DestinyItemSetPerkDefinition"
 }
 func (d ItemTierTypeDefinition) DefinitionTable() string {
 	return "DestinyItemTierTypeDefinition"
@@ -55026,6 +52489,12 @@ func (d SeasonDefinition) DefinitionTable() string {
 func (d SeasonPassDefinition) DefinitionTable() string {
 	return "DestinySeasonPassDefinition"
 }
+func (d SeasonPassImages) DefinitionTable() string {
+	return "DestinySeasonPassImages"
+}
+func (d SeasonPassReference) DefinitionTable() string {
+	return "DestinySeasonPassReference"
+}
 func (d SeasonPreviewDefinition) DefinitionTable() string {
 	return "DestinySeasonPreviewDefinition"
 }
@@ -55066,6 +52535,30 @@ func (d VendorLocationDefinition) DefinitionTable() string {
 	return "DestinyVendorLocationDefinition"
 }
 
+func (e ActivityDifficultyId) Enum() string {
+	switch e {
+	case ActivityDifficultyId_Trivial:
+		return "Trivial"
+	case ActivityDifficultyId_Easy:
+		return "Easy"
+	case ActivityDifficultyId_Normal:
+		return "Normal"
+	case ActivityDifficultyId_Challenging:
+		return "Challenging"
+	case ActivityDifficultyId_Hard:
+		return "Hard"
+	case ActivityDifficultyId_Brave:
+		return "Brave"
+	case ActivityDifficultyId_AlmostImpossible:
+		return "AlmostImpossible"
+	case ActivityDifficultyId_Impossible:
+		return "Impossible"
+	case ActivityDifficultyId_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityDifficultyId_%d", e)
+}
+
 func (e ActivityDifficultyTier) Enum() string {
 	switch e {
 	case ActivityDifficultyTier_Trivial:
@@ -55088,6 +52581,18 @@ func (e ActivityDifficultyTier) Enum() string {
 	return fmt.Sprintf("ActivityDifficultyTier_%d", e)
 }
 
+func (e ActivityDifficultyTierType) Enum() string {
+	switch e {
+	case ActivityDifficultyTierType_Default:
+		return "Default"
+	case ActivityDifficultyTierType_Training:
+		return "Training"
+	case ActivityDifficultyTierType_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityDifficultyTierType_%d", e)
+}
+
 func (e ActivityModeCategory) Enum() string {
 	switch e {
 	case ActivityModeCategory_None:
@@ -55100,6 +52605,50 @@ func (e ActivityModeCategory) Enum() string {
 		return "PvECompetitive"
 	}
 	return fmt.Sprintf("ActivityModeCategory_%d", e)
+}
+
+func (e ActivityModifierConnotation) Enum() string {
+	switch e {
+	case ActivityModifierConnotation_Neutral:
+		return "Neutral"
+	case ActivityModifierConnotation_Positive:
+		return "Positive"
+	case ActivityModifierConnotation_Negative:
+		return "Negative"
+	case ActivityModifierConnotation_Affix:
+		return "Affix"
+	case ActivityModifierConnotation_Informational:
+		return "Informational"
+	case ActivityModifierConnotation_Reward:
+		return "Reward"
+	case ActivityModifierConnotation_Event:
+		return "Event"
+	case ActivityModifierConnotation_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityModifierConnotation_%d", e)
+}
+
+func (e ActivityModifierDisplayCategory) Enum() string {
+	switch e {
+	case ActivityModifierDisplayCategory_None:
+		return "None"
+	case ActivityModifierDisplayCategory_ModeRules:
+		return "ModeRules"
+	case ActivityModifierDisplayCategory_SelfBuildcraft:
+		return "SelfBuildcraft"
+	case ActivityModifierDisplayCategory_EnemyAdjustment:
+		return "EnemyAdjustment"
+	case ActivityModifierDisplayCategory_EnemyBuildcraft:
+		return "EnemyBuildcraft"
+	case ActivityModifierDisplayCategory_Seasonal:
+		return "Seasonal"
+	case ActivityModifierDisplayCategory_Fun:
+		return "Fun"
+	case ActivityModifierDisplayCategory_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityModifierDisplayCategory_%d", e)
 }
 
 func (e ActivityNavPointType) Enum() string {
@@ -55140,6 +52689,60 @@ func (e ActivityNavPointType) Enum() string {
 		return "TrackedQuest"
 	}
 	return fmt.Sprintf("ActivityNavPointType_%d", e)
+}
+
+func (e ActivityRewardDisplayMode) Enum() string {
+	switch e {
+	case ActivityRewardDisplayMode_Aggregate:
+		return "Aggregate"
+	case ActivityRewardDisplayMode_PickFirst:
+		return "PickFirst"
+	case ActivityRewardDisplayMode_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityRewardDisplayMode_%d", e)
+}
+
+func (e ActivitySkullDynamicUse) Enum() string {
+	switch e {
+	case ActivitySkullDynamicUse_Unknown:
+		return "Unknown"
+	case ActivitySkullDynamicUse_Allowed:
+		return "Allowed"
+	case ActivitySkullDynamicUse_Disallowed:
+		return "Disallowed"
+	case ActivitySkullDynamicUse_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivitySkullDynamicUse_%d", e)
+}
+
+func (e ActivityTreeChildSortMode) Enum() string {
+	switch e {
+	case ActivityTreeChildSortMode_Investment:
+		return "Investment"
+	case ActivityTreeChildSortMode_FocusFirst:
+		return "FocusFirst"
+	case ActivityTreeChildSortMode_BonusAndFocusFirst:
+		return "BonusAndFocusFirst"
+	}
+	return fmt.Sprintf("ActivityTreeChildSortMode_%d", e)
+}
+
+func (e ActivityTreeType) Enum() string {
+	switch e {
+	case ActivityTreeType_FireteamFinder:
+		return "FireteamFinder"
+	case ActivityTreeType_Curator:
+		return "Curator"
+	case ActivityTreeType_EventHome:
+		return "EventHome"
+	case ActivityTreeType_SeasonHome:
+		return "SeasonHome"
+	case ActivityTreeType_Count:
+		return "Count"
+	}
+	return fmt.Sprintf("ActivityTreeType_%d", e)
 }
 
 func (e AmmunitionType) Enum() string {
@@ -55352,6 +52955,10 @@ func (e GameVersions) Enum() string {
 		return "Lightfall"
 	case GameVersions_TheFinalShape:
 		return "TheFinalShape"
+	case GameVersions_EdgeOfFate:
+		return "EdgeOfFate"
+	case GameVersions_Renegades:
+		return "Renegades"
 	}
 	return fmt.Sprintf("GameVersions_%d", e)
 }
@@ -55594,6 +53201,18 @@ func (e ObjectiveUiStyle) Enum() string {
 		return "CraftingMementos"
 	case ObjectiveUiStyle_CraftingMementoTitle:
 		return "CraftingMementoTitle"
+	case ObjectiveUiStyle_DiscoverableMystery0:
+		return "DiscoverableMystery0"
+	case ObjectiveUiStyle_DiscoverableMystery1:
+		return "DiscoverableMystery1"
+	case ObjectiveUiStyle_DiscoverableMystery2:
+		return "DiscoverableMystery2"
+	case ObjectiveUiStyle_DiscoverableMystery3:
+		return "DiscoverableMystery3"
+	case ObjectiveUiStyle_DiscoverableMystery4:
+		return "DiscoverableMystery4"
+	case ObjectiveUiStyle_DiscoverableExotic:
+		return "DiscoverableExotic"
 	}
 	return fmt.Sprintf("ObjectiveUiStyle_%d", e)
 }
@@ -55834,6 +53453,10 @@ func (e RecordToastStyle) Enum() string {
 		return "PathfinderObjectiveCompleteStrikes"
 	case RecordToastStyle_PathfinderObjectiveCompleteGambit:
 		return "PathfinderObjectiveCompleteGambit"
+	case RecordToastStyle_SeasonWeeklyComplete:
+		return "SeasonWeeklyComplete"
+	case RecordToastStyle_SeasonDailyComplete:
+		return "SeasonDailyComplete"
 	}
 	return fmt.Sprintf("RecordToastStyle_%d", e)
 }
@@ -56270,6 +53893,8 @@ func (e FireteamFinderOptionValueProviderType) Enum() string {
 		return "FireteamFinderLabels"
 	case FireteamFinderOptionValueProviderType_FireteamFinderActivityGraph:
 		return "FireteamFinderActivityGraph"
+	case FireteamFinderOptionValueProviderType_FireteamFinderUIActivityTree:
+		return "FireteamFinderUIActivityTree"
 	}
 	return fmt.Sprintf("FireteamFinderOptionValueProviderType_%d", e)
 }
@@ -58714,156 +56339,6 @@ func (e FireteamSlotSearch) Enum() string {
 		return "HasOpenPlayerOrAltSlots"
 	}
 	return fmt.Sprintf("FireteamSlotSearch_%d", e)
-}
-
-func (e FireteamFinderApplicationState) Enum() string {
-	switch e {
-	case FireteamFinderApplicationState_Unknown:
-		return "Unknown"
-	case FireteamFinderApplicationState_WaitingForApplicants:
-		return "WaitingForApplicants"
-	case FireteamFinderApplicationState_WaitingForLobbyOwner:
-		return "WaitingForLobbyOwner"
-	case FireteamFinderApplicationState_Accepted:
-		return "Accepted"
-	case FireteamFinderApplicationState_Rejected:
-		return "Rejected"
-	case FireteamFinderApplicationState_Deleted:
-		return "Deleted"
-	case FireteamFinderApplicationState_Expired:
-		return "Expired"
-	}
-	return fmt.Sprintf("FireteamFinderApplicationState_%d", e)
-}
-
-func (e FireteamFinderApplicationType) Enum() string {
-	switch e {
-	case FireteamFinderApplicationType_Unknown:
-		return "Unknown"
-	case FireteamFinderApplicationType_Creator:
-		return "Creator"
-	case FireteamFinderApplicationType_Search:
-		return "Search"
-	case FireteamFinderApplicationType_Invite:
-		return "Invite"
-	case FireteamFinderApplicationType_Friend:
-		return "Friend"
-	case FireteamFinderApplicationType_Encounter:
-		return "Encounter"
-	case FireteamFinderApplicationType_Public:
-		return "Public"
-	}
-	return fmt.Sprintf("FireteamFinderApplicationType_%d", e)
-}
-
-func (e FireteamFinderListingFilterMatchType) Enum() string {
-	switch e {
-	case FireteamFinderListingFilterMatchType_Unknown:
-		return "Unknown"
-	case FireteamFinderListingFilterMatchType_MustNot:
-		return "MustNot"
-	case FireteamFinderListingFilterMatchType_Should:
-		return "Should"
-	case FireteamFinderListingFilterMatchType_Filter:
-		return "Filter"
-	}
-	return fmt.Sprintf("FireteamFinderListingFilterMatchType_%d", e)
-}
-
-func (e FireteamFinderListingFilterRangeType) Enum() string {
-	switch e {
-	case FireteamFinderListingFilterRangeType_Unknown:
-		return "Unknown"
-	case FireteamFinderListingFilterRangeType_All:
-		return "All"
-	case FireteamFinderListingFilterRangeType_Any:
-		return "Any"
-	case FireteamFinderListingFilterRangeType_InRangeInclusive:
-		return "InRangeInclusive"
-	case FireteamFinderListingFilterRangeType_InRangeExclusive:
-		return "InRangeExclusive"
-	case FireteamFinderListingFilterRangeType_GreaterThan:
-		return "GreaterThan"
-	case FireteamFinderListingFilterRangeType_GreaterThanOrEqualTo:
-		return "GreaterThanOrEqualTo"
-	case FireteamFinderListingFilterRangeType_LessThan:
-		return "LessThan"
-	case FireteamFinderListingFilterRangeType_LessThanOrEqualTo:
-		return "LessThanOrEqualTo"
-	}
-	return fmt.Sprintf("FireteamFinderListingFilterRangeType_%d", e)
-}
-
-func (e FireteamFinderLobbyPrivacyScope) Enum() string {
-	switch e {
-	case FireteamFinderLobbyPrivacyScope_Unknown:
-		return "Unknown"
-	case FireteamFinderLobbyPrivacyScope_Open:
-		return "Open"
-	case FireteamFinderLobbyPrivacyScope_Applications:
-		return "Applications"
-	case FireteamFinderLobbyPrivacyScope_Clan:
-		return "Clan"
-	case FireteamFinderLobbyPrivacyScope_Friends:
-		return "Friends"
-	}
-	return fmt.Sprintf("FireteamFinderLobbyPrivacyScope_%d", e)
-}
-
-func (e FireteamFinderLobbyState) Enum() string {
-	switch e {
-	case FireteamFinderLobbyState_Unknown:
-		return "Unknown"
-	case FireteamFinderLobbyState_Inactive:
-		return "Inactive"
-	case FireteamFinderLobbyState_Active:
-		return "Active"
-	case FireteamFinderLobbyState_Expired:
-		return "Expired"
-	case FireteamFinderLobbyState_Closed:
-		return "Closed"
-	case FireteamFinderLobbyState_Canceled:
-		return "Canceled"
-	case FireteamFinderLobbyState_Deleted:
-		return "Deleted"
-	}
-	return fmt.Sprintf("FireteamFinderLobbyState_%d", e)
-}
-
-func (e FireteamFinderOfferState) Enum() string {
-	switch e {
-	case FireteamFinderOfferState_Unknown:
-		return "Unknown"
-	case FireteamFinderOfferState_Pending:
-		return "Pending"
-	case FireteamFinderOfferState_Accepted:
-		return "Accepted"
-	case FireteamFinderOfferState_Rejected:
-		return "Rejected"
-	case FireteamFinderOfferState_Deleted:
-		return "Deleted"
-	case FireteamFinderOfferState_Expired:
-		return "Expired"
-	}
-	return fmt.Sprintf("FireteamFinderOfferState_%d", e)
-}
-
-func (e FireteamFinderPlayerReadinessState) Enum() string {
-	switch e {
-	case FireteamFinderPlayerReadinessState_Unknown:
-		return "Unknown"
-	case FireteamFinderPlayerReadinessState_Reserved:
-		return "Reserved"
-	case FireteamFinderPlayerReadinessState_Disconnected:
-		return "Disconnected"
-	case FireteamFinderPlayerReadinessState_InLobbyUnready:
-		return "InLobbyUnready"
-	case FireteamFinderPlayerReadinessState_InLobbyReady:
-		return "InLobbyReady"
-	case FireteamFinderPlayerReadinessState_Summoned:
-		return "Summoned"
-	}
-	return fmt.Sprintf("FireteamFinderPlayerReadinessState_%d", e)
 }
 
 func (e CommunityContentSortMode) Enum() string {

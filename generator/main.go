@@ -49,6 +49,9 @@ var refToTypeOverride = map[string]string{
 
 	"DestinyVendorSaleItemSetComponentOfDestinyPublicVendorSaleItemComponent": "ItemComponentSet[PublicVendorSaleItemComponent]",
 	"DestinyVendorSaleItemSetComponentOfDestinyVendorSaleItemComponent":       "ItemComponentSet[VendorSaleItemComponent]",
+
+	"VendorItemComponentSetOfint32":        "ItemComponentSet[int32]",
+	"DestinyVendorItemComponentSetOfint32": "ItemComponentSet[int32]",
 }
 
 func main() {
@@ -332,8 +335,11 @@ func checkDuplicateSchema(schemas openapi3.Schemas) {
 	var found = make(map[string]string)
 	for ref, _ := range schemas {
 		ident := refToIdent(ref)
+		if strings.HasPrefix(ident, "ItemComponentSet[") {
+			continue
+		}
 		if found[ident] != "" {
-			log.Fatalf("Duplicate schema %s %s", ref, found[ident])
+			log.Fatalf("Duplicate schema for ident (%s): %s %s", ident, ref, found[ident])
 		}
 		found[ident] = ref
 	}
