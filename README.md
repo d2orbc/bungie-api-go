@@ -6,6 +6,34 @@ Documentation as one single, gigantic page: https://bungie-net.github.io
 
 This section will be added to as time goes by - we're working with it as we go!
 
+## 2025-10-14 Update for Portal Activities
+- Added `curatorBlockDefinition` and `durationEstimate` to `DestinyActivityDefinition`.
+- Added `difficultyTierCollections` and `selectableSkullCollections` to `DestinyCharacterActivitiesComponent`.
+
+## 2025-09-26 Nullable Enum Properties
+- Updated nullable enum type properties to reference the enum definitions, rather than redefining them.
+
+## 2025-09-16 Extra Item Icon Layers 
+- Added extra static item icon layer image paths to `DestinyInventoryItemConstantsDefinition`.
+
+## 2025-09-10 Update for Ash & Iron
+- Added `selectableSkullCollections` to `DestinyActivityDefinition`.
+- Added `currentSeasonPassHash` to `DestinyProfileComponent` and `Destiny2CoreSettings`.
+
+## 2025-08-26 Destiny Global Constants Definition
+- Finally added specs for `DestinyGlobalConstantsDefinition`, but this has existed for a while now. Sorry!
+
+## 2025-08-19 Item Icon Layers and PGCR Scoreboards
+- Added `DestinyIconDefinition` for individual inventory item icon layers.
+  - Added `iconHash` to `DestinyDisplayPropertiesDefinition` for inventory item icons only.
+  - Also added useful static item icon layer image paths to `DestinyInventoryItemConstantsDefinition`.
+- Added `scoreboardValues` to `DestinyPostGameCarnageReportExtendedData` for Crucible player scores, reward scores, multipliers, and more.
+  - There will be some overlap between `scoreboardValues` and other existing stat values in PGCRs.
+
+## 2025-08-05 Follow-up for The Edge of Fate
+- Added `isHolofoil` and `isAdept` to `DestinyInventoryItemDefinition`.
+- Fixed `DestinyItemFilterDefinition` and renamed `setItems` to `allowedItems`.
+
 ## 2025-07-29 Follow-up for The Edge of Fate
 - Added account-owned `seasonPassHashes` to `DestinyProfileComponent`.
 - Added `visibleRewards` to `DestinyActvity`, which includes Bonus Focus rewards from the Portal.
