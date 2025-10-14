@@ -13,7 +13,7 @@
       "name": "BSD License 2.0",
       "url": "https://github.com/Bungie-net/api/blob/master/LICENSE"
     },
-    "version": "2.21.1"
+    "version": "2.21.8"
   },
   "servers": [
     {
@@ -9368,6 +9368,13 @@
             "type": "string",
             "description": "Note that \"icon\" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.\r\nBut usually, it will be a small square image that you can use as... well, an icon.\r\nThey are currently represented as 96px x 96px images."
           },
+          "iconHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Inventory.DestinyIconDefinition"
+            }
+          },
           "iconSequences": {
             "type": "array",
             "items": {
@@ -9394,6 +9401,42 @@
             }
           }
         }
+      },
+      "Destiny.Definitions.Inventory.DestinyIconDefinition": {
+        "type": "object",
+        "properties": {
+          "foreground": {
+            "type": "string"
+          },
+          "background": {
+            "type": "string"
+          },
+          "secondaryBackground": {
+            "type": "string"
+          },
+          "specialBackground": {
+            "type": "string"
+          },
+          "highResForeground": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "integer",
+            "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+            "format": "uint32"
+          },
+          "index": {
+            "type": "integer",
+            "description": "The index of the entity as it was found in the investment tables.",
+            "format": "int32"
+          },
+          "redacted": {
+            "type": "boolean",
+            "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!"
+          }
+        },
+        "description": "Lists of icons that can be used for a variety of purposes",
+        "x-mobile-manifest-name": "icons"
       },
       "Destiny.DestinyStatAggregationType": {
         "enum": [
@@ -9457,7 +9500,8 @@
           "2",
           "4",
           "8",
-          "16"
+          "16",
+          "32"
         ],
         "type": "integer",
         "description": "A flags enumeration/bitmask where each bit represents a different possible state that the item can be in that may effect how the item is displayed to the user and what actions can be performed against it.",
@@ -9491,6 +9535,11 @@
             "numericValue": "16",
             "identifier": "HighlightedObjective",
             "description": "If this bit is set, the item has a 'highlighted' objective. You may want to represent this with an orange-red icon border color."
+          },
+          {
+            "numericValue": "32",
+            "identifier": "Enhanced",
+            "description": "If this bit is set, the item has been 'enhanced' by the player."
           }
         ],
         "x-enum-is-bitmask": true
@@ -9591,6 +9640,13 @@
           "icon": {
             "type": "string",
             "description": "Note that \"icon\" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.\r\nBut usually, it will be a small square image that you can use as... well, an icon.\r\nThey are currently represented as 96px x 96px images."
+          },
+          "iconHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Inventory.DestinyIconDefinition"
+            }
           },
           "iconSequences": {
             "type": "array",
@@ -9809,6 +9865,14 @@
           "isFeaturedItem": {
             "type": "boolean",
             "description": "Whether or not this item is currently featured in the game, giving it a special watermark"
+          },
+          "isHolofoil": {
+            "type": "boolean",
+            "description": "Whether or not this item is holofoil, which has special icon treatment and in-game appearance."
+          },
+          "isAdept": {
+            "type": "boolean",
+            "description": "Whether or not this item is adept, which has increased stats and/or perks."
           },
           "screenshot": {
             "type": "string",
@@ -12292,6 +12356,13 @@
             "type": "string",
             "description": "Note that \"icon\" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.\r\nBut usually, it will be a small square image that you can use as... well, an icon.\r\nThey are currently represented as 96px x 96px images."
           },
+          "iconHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Inventory.DestinyIconDefinition"
+            }
+          },
           "iconSequences": {
             "type": "array",
             "items": {
@@ -13717,6 +13788,15 @@
               "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition"
             }
           },
+          "selectableSkullCollections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivitySelectableSkullCollections"
+            },
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition"
+            }
+          },
           "playlistItems": {
             "type": "array",
             "items": {
@@ -13759,440 +13839,13 @@
             }
           },
           "directActivityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "If the activity had an activity mode directly defined on it, this will be the enum value of that mode.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           },
           "loadouts": {
@@ -14243,6 +13896,24 @@
               "$ref": "#/components/schemas/Destiny.Constants.DestinyEnvironmentLocationMapping"
             },
             "description": "A list of location mappings that are affected by this activity. Pulled out of DestinyLocationDefinitions for our/your lookup convenience."
+          },
+          "curatorBlockDefinition": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityCuratorBlockDefinition"
+              }
+            ],
+            "description": "Additional data used for display in the in-game Portal screen"
+          },
+          "durationEstimate": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityDurationEstimate"
+              }
+            ],
+            "description": "Optional estimated duration, shown on the Portal tiles"
           },
           "hash": {
             "type": "integer",
@@ -15007,6 +14678,23 @@
           }
         }
       },
+      "Destiny.Definitions.DestinyActivitySelectableSkullCollections": {
+        "type": "object",
+        "properties": {
+          "selectableSkullCollectionHash": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "minimumTierRank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maximumTierRank": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "Destiny.Definitions.DestinyActivityPlaylistItemDefinition": {
         "type": "object",
         "properties": {
@@ -15028,440 +14716,13 @@
             }
           },
           "directActivityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           },
           "activityModeHashes": {
@@ -16373,6 +15634,39 @@
           }
         }
       },
+      "Destiny.Definitions.DestinyActivityCuratorBlockDefinition": {
+        "type": "object",
+        "properties": {
+          "quickplaySortPriority": {
+            "type": "integer",
+            "description": "Sort order",
+            "format": "int32"
+          },
+          "quickplaySortToFront": {
+            "type": "boolean",
+            "description": "Whether this activity should be sorted to the front of the Portal category"
+          }
+        }
+      },
+      "Destiny.Definitions.DestinyActivityDurationEstimate": {
+        "type": "object",
+        "properties": {
+          "durationPipsFilledCount": {
+            "type": "integer",
+            "description": "The number of filled pips shown on the Portal tile",
+            "format": "int32"
+          },
+          "durationPipsTotalCount": {
+            "type": "integer",
+            "description": "The total number of pips shown on the Portal tile",
+            "format": "int32"
+          },
+          "durationEstimateText": {
+            "type": "string",
+            "description": "The text string showing the estimated time to complete this activity"
+          }
+        }
+      },
       "Destiny.Definitions.DestinyPlaceDefinition": {
         "type": "object",
         "properties": {
@@ -16613,9 +15907,6 @@
             "items": {
               "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySkull"
             }
-          },
-          "tierEnabledUnlockExpression": {
-            "$ref": "#/components/schemas/Destiny.Definitions.DestinyUnlockExpressionDefinition"
           },
           "tierType": {
             "type": "integer",
@@ -16977,21 +16268,6 @@
         },
         "x-mobile-manifest-name": "ActivitySelectableSkullExclusionGroups"
       },
-      "Destiny.Definitions.DestinyUnlockExpressionDefinition": {
-        "type": "object",
-        "properties": {
-          "scope": {
-            "type": "integer",
-            "description": "A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum's documentation for more details.",
-            "format": "int32",
-            "x-enum-reference": {
-              "$ref": "#/components/schemas/Destiny.DestinyGatingScope"
-            },
-            "x-enum-is-bitmask": false
-          }
-        },
-        "description": "Where the sausage gets made. Unlock Expressions are the foundation of the game's gating mechanics and investment-related restrictions. They can test Unlock Flags and Unlock Values for certain states, using a sufficient amount of logical operators such that unlock expressions are effectively Turing complete.\r\nUse UnlockExpressionParser to evaluate expressions using an IUnlockContext parsed from Babel."
-      },
       "Destiny.DestinyActivityDifficultyTierType": {
         "enum": [
           "0",
@@ -17275,9 +16551,6 @@
           },
           "name": {
             "type": "string"
-          },
-          "unlockExpression": {
-            "$ref": "#/components/schemas/Destiny.Definitions.DestinyUnlockExpressionDefinition"
           },
           "linkedGraphId": {
             "type": "integer",
@@ -22309,33 +21582,12 @@
             "x-enum-is-bitmask": false
           },
           "groupMemberCountFilter": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "All"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "OneToTen"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "ElevenToOneHundred"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "GreaterThanOneHundred"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.GroupMemberCountFilter"
+            },
             "x-enum-is-bitmask": false
           },
           "localeFilter": {
@@ -22487,28 +21739,12 @@
             "nullable": true
           },
           "membershipOption": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Reviewed"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Open"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Closed"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.MembershipOption"
+            },
             "x-enum-is-bitmask": false
           },
           "isPublicTopicAdminOnly": {
@@ -22520,23 +21756,12 @@
             "nullable": true
           },
           "chatSecurity": {
-            "enum": [
-              "0",
-              "1"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Group"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Admins"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.ChatSecuritySetting"
+            },
             "x-enum-is-bitmask": false
           },
           "callsign": {
@@ -22546,28 +21771,12 @@
             "type": "string"
           },
           "homepage": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Wall"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Forum"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "AllianceForum"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.GroupHomepage"
+            },
             "x-enum-is-bitmask": false
           },
           "enableInvitationMessagingForAdmins": {
@@ -22575,28 +21784,12 @@
             "nullable": true
           },
           "defaultPublicity": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Public"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Alliance"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Private"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.GroupPostPublicity"
+            },
             "x-enum-is-bitmask": false
           }
         }
@@ -22615,29 +21808,13 @@
             "nullable": true
           },
           "HostGuidedGamePermissionOverride": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "description": "Minimum Member Level allowed to host guided games\r\nAlways Allowed: Founder, Acting Founder, Admin\r\nAllowed Overrides: None, Member, Beginner\r\nDefault is Member for clans, None for groups, although this means nothing for groups.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Beginner"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Member"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.HostGuidedGamesPermissionLevel"
+            },
             "x-enum-is-bitmask": false
           },
           "UpdateBannerPermissionOverride": {
@@ -22646,44 +21823,13 @@
             "nullable": true
           },
           "JoinLevel": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5"
-            ],
             "type": "integer",
             "description": "Level to join a member at when accepting an invite, application, or joining an open clan\r\nDefault is Beginner.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Beginner"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Member"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Admin"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "ActingFounder"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "Founder"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.RuntimeGroupMemberType"
+            },
             "x-enum-is-bitmask": false
           }
         }
@@ -22715,23 +21861,12 @@
             "type": "string"
           },
           "chatSecurity": {
-            "enum": [
-              "0",
-              "1"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Group"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Admins"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/GroupsV2.ChatSecuritySetting"
+            },
             "x-enum-is-bitmask": false
           }
         }
@@ -27924,69 +27059,12 @@
             "nullable": true
           },
           "MembershipType": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "10",
-              "20",
-              "254",
-              "-1"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "TigerXbox"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "TigerPsn"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "TigerSteam"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "TigerBlizzard"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "TigerStadia"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "TigerEgs"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "TigerDemon"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "GoliathGame"
-              },
-              {
-                "numericValue": "254",
-                "identifier": "BungieNext"
-              },
-              {
-                "numericValue": "-1",
-                "identifier": "All",
-                "description": "\"All\" is only valid for searching capabilities: you need to pass the actual matching BungieMembershipType for any query where you pass a known membershipId."
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/BungieMembershipType"
+            },
             "x-enum-is-bitmask": false
           },
           "LocalizedName": {
@@ -28041,28 +27119,12 @@
             "nullable": true
           },
           "ClaimState": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "format": "byte",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Claimed"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Applied"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Fulfilled"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Streaming.DropStateEnum"
+            },
             "x-enum-is-bitmask": false
           }
         }
@@ -28356,84 +27418,13 @@
             "description": "This is the silver available on this Profile across any platforms on which they have purchased silver.\r\n This is only available if you are requesting yourself."
           },
           "unpairedGameVersions": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "4",
-              "8",
-              "16",
-              "32",
-              "64",
-              "128",
-              "256",
-              "512",
-              "1024",
-              "2048",
-              "4096"
-            ],
             "type": "integer",
             "description": "If this profile is not in a cross save pairing, this will return the game versions that we believe this profile has access to.\r\n For the time being, we will not return this information for any membership that is in a cross save pairing. The gist is that, once the pairing occurs, we do not currently have a consistent way to get that information for the profile's original Platform, and thus gameVersions would be too inconsistent (based on the last platform they happened to play on) for the info to be useful.\r\n If we ever can get this data, this field will be deprecated and replaced with data on the DestinyLinkedProfileResponse itself, with game versions per linked Platform. But since we can't get that, we have this as a stop-gap measure for getting the data in the only situation that we currently need it.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Destiny2"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "DLC1"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "DLC2"
-              },
-              {
-                "numericValue": "8",
-                "identifier": "Forsaken"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "YearTwoAnnualPass"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "Shadowkeep"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "BeyondLight"
-              },
-              {
-                "numericValue": "128",
-                "identifier": "Anniversary30th"
-              },
-              {
-                "numericValue": "256",
-                "identifier": "TheWitchQueen"
-              },
-              {
-                "numericValue": "512",
-                "identifier": "Lightfall"
-              },
-              {
-                "numericValue": "1024",
-                "identifier": "TheFinalShape"
-              },
-              {
-                "numericValue": "2048",
-                "identifier": "EdgeOfFate"
-              },
-              {
-                "numericValue": "4096",
-                "identifier": "Renegades"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.DestinyGameVersions"
+            },
             "x-enum-is-bitmask": true
           },
           "supplementalDisplayName": {
@@ -29687,6 +28678,15 @@
             "nullable": true,
             "x-mapped-definition": {
               "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition"
+            }
+          },
+          "currentSeasonPassHash": {
+            "type": "integer",
+            "description": "If populated, this is a reference to the season pass that is currently active.",
+            "format": "uint32",
+            "nullable": true,
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
             }
           },
           "currentSeasonRewardPowerCap": {
@@ -32411,440 +31411,13 @@
             }
           },
           "activityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "The enumeration equivalent of the most specific Activity Mode under which this activity is played.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           },
           "modifierHashes": {
@@ -32898,440 +31471,13 @@
             }
           },
           "activityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "The enumeration equivalent of the most specific Activity Mode under which this activity is played.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           }
         },
@@ -34351,6 +32497,28 @@
             },
             "description": "The list of activity interactables that the player can interact with."
           },
+          "difficultyTierCollections": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Destiny.DestinyActivityDifficultyTierCollectionComponent"
+            },
+            "description": "The activity difficulty tier states for this character.",
+            "x-dictionary-key": {
+              "type": "integer",
+              "format": "uint32"
+            }
+          },
+          "selectableSkullCollections": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Destiny.DestinyActivitySelectableSkullCollectionComponent"
+            },
+            "description": "The selectable activity skulls states for this character.",
+            "x-dictionary-key": {
+              "type": "integer",
+              "format": "uint32"
+            }
+          },
           "currentActivityHash": {
             "type": "integer",
             "description": "If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this info with currentActivityModeHash to get a real picture of what the user is doing right now. For instance, PVP \"Activities\" are just maps: it's the ActivityMode that determines what type of PVP game they're playing.",
@@ -34368,440 +32536,13 @@
             }
           },
           "currentActivityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "And the current activity's most specific mode type, if it can be found.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           },
           "currentActivityModeHashes": {
@@ -34941,6 +32682,10 @@
               "$ref": "#/components/schemas/Destiny.Definitions.DestinyActivityRewardMapping"
             },
             "description": "A filtered list of reward mappings with only the currently visible reward items."
+          },
+          "isFocusedActivity": {
+            "type": "boolean",
+            "description": "Whether or not this activity is currently in the \"featured\" carousel of the Portal"
           }
         },
         "description": "Represents the \"Live\" data that we can obtain about a Character's status with a specific Activity. This will tell you whether the character can participate in the activity, as well as some other basic mutable information. \r\nMeant to be combined with static DestinyActivityDefinition data for a full picture of the Activity."
@@ -35106,6 +32851,73 @@
           }
         },
         "description": "Defines a specific interactable and the action that can occur when triggered."
+      },
+      "Destiny.DestinyActivityDifficultyTierCollectionComponent": {
+        "type": "object",
+        "properties": {
+          "difficultyTierCollectionHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition"
+            }
+          },
+          "difficultyTiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Destiny.DestinyActivityDifficultyTierComponent"
+            }
+          }
+        }
+      },
+      "Destiny.DestinyActivityDifficultyTierComponent": {
+        "type": "object",
+        "properties": {
+          "difficultyTierIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fixedActivitySkulls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Destiny.DestinyActivitySkullComponent"
+            }
+          }
+        }
+      },
+      "Destiny.DestinyActivitySkullComponent": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "skullIdentifierHash": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Destiny.DestinyActivitySelectableSkullCollectionComponent": {
+        "type": "object",
+        "properties": {
+          "selectableSkullCollectionHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition"
+            }
+          },
+          "selectableSkulls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Destiny.DestinyActivitySkullComponent"
+            }
+          }
+        }
       },
       "DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent": {
         "type": "object",
@@ -35761,34 +33573,13 @@
             "x-enum-is-bitmask": true
           },
           "breakerType": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "3"
-            ],
             "type": "integer",
             "description": "If populated, this item has a breaker type corresponding to the given value. See DestinyBreakerTypeDefinition for more details.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "ShieldPiercing"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Disruption"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Stagger"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.DestinyBreakerType"
+            },
             "x-enum-is-bitmask": false
           },
           "breakerTypeHash": {
@@ -37882,7 +35673,8 @@
           },
           {
             "numericValue": "4096",
-            "identifier": "AlreadyOwned"
+            "identifier": "AlreadyOwned",
+            "description": "DEPRECATED - Owned items use the NoUnlock state and a failure string indicating the proper display state."
           },
           {
             "numericValue": "8192",
@@ -37936,7 +35728,8 @@
           "2097152",
           "4194304",
           "8388608",
-          "16777216"
+          "16777216",
+          "33554432"
         ],
         "type": "integer",
         "description": "The possible states of Destiny Profile Records. IMPORTANT: Any given item can theoretically have many of these states simultaneously: as a result, this was altered to be a flags enumeration/bitmask for v3.2.0.",
@@ -38066,6 +35859,10 @@
           {
             "numericValue": "16777216",
             "identifier": "ArtifactPerkBoosted"
+          },
+          {
+            "numericValue": "33554432",
+            "identifier": "SeasonalArchiveFree"
           }
         ],
         "x-enum-is-bitmask": true
@@ -39897,6 +37694,16 @@
             "x-dictionary-key": {
               "type": "string"
             }
+          },
+          "scoreboardValues": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.DestinyHistoricalStatsValue"
+            },
+            "description": "Collection of stats from the player scoreboard in this activity.",
+            "x-dictionary-key": {
+              "type": "string"
+            }
           }
         }
       },
@@ -40110,32 +37917,13 @@
             "description": "Optional URI to an icon for the statistic"
           },
           "mergeMethod": {
-            "enum": [
-              "0",
-              "1",
-              "2"
-            ],
             "type": "integer",
             "description": "Optional icon for the statistic",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "Add",
-                "description": "When collapsing multiple instances of the stat together, add the values."
-              },
-              {
-                "numericValue": "1",
-                "identifier": "Min",
-                "description": "When collapsing multiple instances of the stat together, take the lower value."
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Max",
-                "description": "When collapsing multiple instances of the stat together, take the higher value."
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyStatsMergeMethod"
+            },
             "x-enum-is-bitmask": false
           },
           "unitLabel": {
@@ -41072,440 +38860,13 @@
             }
           },
           "activityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "The enumeration equivalent of the most specific Activity Mode under which this activity is played.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           }
         },
@@ -41532,440 +38893,13 @@
             }
           },
           "activityModeType": {
-            "enum": [
-              "0",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "24",
-              "25",
-              "26",
-              "27",
-              "28",
-              "29",
-              "30",
-              "31",
-              "32",
-              "37",
-              "38",
-              "39",
-              "40",
-              "41",
-              "42",
-              "43",
-              "44",
-              "45",
-              "46",
-              "47",
-              "48",
-              "49",
-              "50",
-              "51",
-              "52",
-              "53",
-              "54",
-              "55",
-              "56",
-              "57",
-              "58",
-              "59",
-              "60",
-              "61",
-              "62",
-              "63",
-              "64",
-              "65",
-              "66",
-              "67",
-              "68",
-              "69",
-              "70",
-              "71",
-              "72",
-              "73",
-              "74",
-              "75",
-              "76",
-              "77",
-              "78",
-              "79",
-              "80",
-              "81",
-              "82",
-              "83",
-              "84",
-              "85",
-              "86",
-              "87",
-              "88",
-              "89",
-              "90",
-              "91",
-              "92"
-            ],
             "type": "integer",
             "description": "The enumeration equivalent of the most specific Activity Mode under which this activity is played.",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "Story"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "Strike"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "Raid"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "AllPvP"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "Patrol"
-              },
-              {
-                "numericValue": "7",
-                "identifier": "AllPvE"
-              },
-              {
-                "numericValue": "9",
-                "identifier": "Reserved9"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "Control"
-              },
-              {
-                "numericValue": "11",
-                "identifier": "Reserved11"
-              },
-              {
-                "numericValue": "12",
-                "identifier": "Clash",
-                "description": "Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins."
-              },
-              {
-                "numericValue": "13",
-                "identifier": "Reserved13"
-              },
-              {
-                "numericValue": "15",
-                "identifier": "CrimsonDoubles"
-              },
-              {
-                "numericValue": "16",
-                "identifier": "Nightfall"
-              },
-              {
-                "numericValue": "17",
-                "identifier": "HeroicNightfall"
-              },
-              {
-                "numericValue": "18",
-                "identifier": "AllStrikes"
-              },
-              {
-                "numericValue": "19",
-                "identifier": "IronBanner"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "Reserved20"
-              },
-              {
-                "numericValue": "21",
-                "identifier": "Reserved21"
-              },
-              {
-                "numericValue": "22",
-                "identifier": "Reserved22"
-              },
-              {
-                "numericValue": "24",
-                "identifier": "Reserved24"
-              },
-              {
-                "numericValue": "25",
-                "identifier": "AllMayhem"
-              },
-              {
-                "numericValue": "26",
-                "identifier": "Reserved26"
-              },
-              {
-                "numericValue": "27",
-                "identifier": "Reserved27"
-              },
-              {
-                "numericValue": "28",
-                "identifier": "Reserved28"
-              },
-              {
-                "numericValue": "29",
-                "identifier": "Reserved29"
-              },
-              {
-                "numericValue": "30",
-                "identifier": "Reserved30"
-              },
-              {
-                "numericValue": "31",
-                "identifier": "Supremacy"
-              },
-              {
-                "numericValue": "32",
-                "identifier": "PrivateMatchesAll"
-              },
-              {
-                "numericValue": "37",
-                "identifier": "Survival"
-              },
-              {
-                "numericValue": "38",
-                "identifier": "Countdown"
-              },
-              {
-                "numericValue": "39",
-                "identifier": "TrialsOfTheNine"
-              },
-              {
-                "numericValue": "40",
-                "identifier": "Social"
-              },
-              {
-                "numericValue": "41",
-                "identifier": "TrialsCountdown"
-              },
-              {
-                "numericValue": "42",
-                "identifier": "TrialsSurvival"
-              },
-              {
-                "numericValue": "43",
-                "identifier": "IronBannerControl"
-              },
-              {
-                "numericValue": "44",
-                "identifier": "IronBannerClash"
-              },
-              {
-                "numericValue": "45",
-                "identifier": "IronBannerSupremacy"
-              },
-              {
-                "numericValue": "46",
-                "identifier": "ScoredNightfall"
-              },
-              {
-                "numericValue": "47",
-                "identifier": "ScoredHeroicNightfall"
-              },
-              {
-                "numericValue": "48",
-                "identifier": "Rumble"
-              },
-              {
-                "numericValue": "49",
-                "identifier": "AllDoubles"
-              },
-              {
-                "numericValue": "50",
-                "identifier": "Doubles"
-              },
-              {
-                "numericValue": "51",
-                "identifier": "PrivateMatchesClash"
-              },
-              {
-                "numericValue": "52",
-                "identifier": "PrivateMatchesControl"
-              },
-              {
-                "numericValue": "53",
-                "identifier": "PrivateMatchesSupremacy"
-              },
-              {
-                "numericValue": "54",
-                "identifier": "PrivateMatchesCountdown"
-              },
-              {
-                "numericValue": "55",
-                "identifier": "PrivateMatchesSurvival"
-              },
-              {
-                "numericValue": "56",
-                "identifier": "PrivateMatchesMayhem"
-              },
-              {
-                "numericValue": "57",
-                "identifier": "PrivateMatchesRumble"
-              },
-              {
-                "numericValue": "58",
-                "identifier": "HeroicAdventure"
-              },
-              {
-                "numericValue": "59",
-                "identifier": "Showdown"
-              },
-              {
-                "numericValue": "60",
-                "identifier": "Lockdown"
-              },
-              {
-                "numericValue": "61",
-                "identifier": "Scorched"
-              },
-              {
-                "numericValue": "62",
-                "identifier": "ScorchedTeam"
-              },
-              {
-                "numericValue": "63",
-                "identifier": "Gambit"
-              },
-              {
-                "numericValue": "64",
-                "identifier": "AllPvECompetitive"
-              },
-              {
-                "numericValue": "65",
-                "identifier": "Breakthrough"
-              },
-              {
-                "numericValue": "66",
-                "identifier": "BlackArmoryRun"
-              },
-              {
-                "numericValue": "67",
-                "identifier": "Salvage"
-              },
-              {
-                "numericValue": "68",
-                "identifier": "IronBannerSalvage"
-              },
-              {
-                "numericValue": "69",
-                "identifier": "PvPCompetitive"
-              },
-              {
-                "numericValue": "70",
-                "identifier": "PvPQuickplay"
-              },
-              {
-                "numericValue": "71",
-                "identifier": "ClashQuickplay"
-              },
-              {
-                "numericValue": "72",
-                "identifier": "ClashCompetitive"
-              },
-              {
-                "numericValue": "73",
-                "identifier": "ControlQuickplay"
-              },
-              {
-                "numericValue": "74",
-                "identifier": "ControlCompetitive"
-              },
-              {
-                "numericValue": "75",
-                "identifier": "GambitPrime"
-              },
-              {
-                "numericValue": "76",
-                "identifier": "Reckoning"
-              },
-              {
-                "numericValue": "77",
-                "identifier": "Menagerie"
-              },
-              {
-                "numericValue": "78",
-                "identifier": "VexOffensive"
-              },
-              {
-                "numericValue": "79",
-                "identifier": "NightmareHunt"
-              },
-              {
-                "numericValue": "80",
-                "identifier": "Elimination"
-              },
-              {
-                "numericValue": "81",
-                "identifier": "Momentum"
-              },
-              {
-                "numericValue": "82",
-                "identifier": "Dungeon"
-              },
-              {
-                "numericValue": "83",
-                "identifier": "Sundial"
-              },
-              {
-                "numericValue": "84",
-                "identifier": "TrialsOfOsiris"
-              },
-              {
-                "numericValue": "85",
-                "identifier": "Dares"
-              },
-              {
-                "numericValue": "86",
-                "identifier": "Offensive"
-              },
-              {
-                "numericValue": "87",
-                "identifier": "LostSector"
-              },
-              {
-                "numericValue": "88",
-                "identifier": "Rift"
-              },
-              {
-                "numericValue": "89",
-                "identifier": "ZoneControl"
-              },
-              {
-                "numericValue": "90",
-                "identifier": "IronBannerRift"
-              },
-              {
-                "numericValue": "91",
-                "identifier": "IronBannerZoneControl"
-              },
-              {
-                "numericValue": "92",
-                "identifier": "Relic"
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/Destiny.HistoricalStats.Definitions.DestinyActivityModeType"
+            },
             "x-enum-is-bitmask": false
           }
         },
@@ -43359,69 +40293,12 @@
             "nullable": true
           },
           "destinyMembershipType": {
-            "enum": [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "10",
-              "20",
-              "254",
-              "-1"
-            ],
             "type": "integer",
             "format": "int32",
             "nullable": true,
-            "x-enum-values": [
-              {
-                "numericValue": "0",
-                "identifier": "None"
-              },
-              {
-                "numericValue": "1",
-                "identifier": "TigerXbox"
-              },
-              {
-                "numericValue": "2",
-                "identifier": "TigerPsn"
-              },
-              {
-                "numericValue": "3",
-                "identifier": "TigerSteam"
-              },
-              {
-                "numericValue": "4",
-                "identifier": "TigerBlizzard"
-              },
-              {
-                "numericValue": "5",
-                "identifier": "TigerStadia"
-              },
-              {
-                "numericValue": "6",
-                "identifier": "TigerEgs"
-              },
-              {
-                "numericValue": "10",
-                "identifier": "TigerDemon"
-              },
-              {
-                "numericValue": "20",
-                "identifier": "GoliathGame"
-              },
-              {
-                "numericValue": "254",
-                "identifier": "BungieNext"
-              },
-              {
-                "numericValue": "-1",
-                "identifier": "All",
-                "description": "\"All\" is only valid for searching capabilities: you need to pass the actual matching BungieMembershipType for any query where you pass a known membershipId."
-              }
-            ],
+            "x-enum-reference": {
+              "$ref": "#/components/schemas/BungieMembershipType"
+            },
             "x-enum-is-bitmask": false
           },
           "bungieNetMembershipId": {
@@ -43704,6 +40581,13 @@
               "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
             }
           },
+          "globalConstantsHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyGlobalConstantsDefinition"
+            }
+          },
           "loadoutConstantsHash": {
             "type": "integer",
             "format": "uint32",
@@ -43827,6 +40711,14 @@
               "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonDefinition"
             }
           },
+          "currentSeasonPassHash": {
+            "type": "integer",
+            "format": "uint32",
+            "nullable": true,
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinySeasonPassDefinition"
+            }
+          },
           "seasonalChallengesPresentationNodeHash": {
             "type": "integer",
             "format": "uint32",
@@ -43856,6 +40748,274 @@
             }
           }
         }
+      },
+      "Destiny.Definitions.Common.DestinyGlobalConstantsDefinition": {
+        "type": "object",
+        "properties": {
+          "pathfinderConstants": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyPathfinderConstantsDefinition"
+              }
+            ],
+            "description": "Assorted constants for Pathfinder objectives"
+          },
+          "collectionsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "collectionBadgesRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "activeTriumphsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "activeSealsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "legacyTriumphsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "legacySealsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "medalsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "exoticCatalystsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "loreRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "metricsRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "craftingRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "guardianRanksRootNodeHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "seasonalHubEventCardHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Seasons.DestinyEventCardDefinition"
+            }
+          },
+          "destinyRewardPassRankSealImages": {
+            "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinyRewardPassRankSealImages"
+          },
+          "destinySeasonalHubRankIconImages": {
+            "$ref": "#/components/schemas/Destiny.Definitions.Common.DestinySeasonalHubRankIconImages"
+          },
+          "armorArchetypePlugSetHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Sockets.DestinyPlugSetDefinition"
+            }
+          },
+          "featuredItemsListHash": {
+            "type": "integer",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Inventory.DestinyItemFilterDefinition"
+            }
+          },
+          "hash": {
+            "type": "integer",
+            "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+            "format": "uint32"
+          },
+          "index": {
+            "type": "integer",
+            "description": "The index of the entity as it was found in the investment tables.",
+            "format": "int32"
+          },
+          "redacted": {
+            "type": "boolean",
+            "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!"
+          }
+        },
+        "x-mobile-manifest-name": "GlobalConstants"
+      },
+      "Destiny.Definitions.Common.DestinyPathfinderConstantsDefinition": {
+        "type": "object",
+        "properties": {
+          "thePaleHeartPathfinderRootNodeHash": {
+            "type": "integer",
+            "description": "Pathfinder root node for The Pale Heart",
+            "format": "uint32",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "allPathfinderRootNodeHashes": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "uint32"
+            },
+            "description": "Root presentation nodes for all currently valid Pathfinder boards",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+            }
+          },
+          "pathfinderTreeTiers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "uint32"
+            },
+            "description": "The current shape of Pathfinder boards, where a Pathfinder board is stored as as flat list of Records. The key of this dictionary is the index at which a tier starts, and the value is the total number of objectives in the tier.",
+            "x-dictionary-key": {
+              "type": "integer",
+              "format": "uint32"
+            }
+          },
+          "pathfinderTopology": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "uint32"
+              }
+            },
+            "description": "The topology of the Pathfinder board. The key is the index of the Record in the Pathfinder board, and the value is a list of the indices of Records that are connected to the Key Record. Using this topology, clients can ascertain if a Record can be unlocked, by checking if the objective of any connected Record has been completed and/or claimed.",
+            "x-dictionary-key": {
+              "type": "integer",
+              "format": "uint32"
+            }
+          },
+          "hash": {
+            "type": "integer",
+            "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+            "format": "uint32"
+          },
+          "index": {
+            "type": "integer",
+            "description": "The index of the entity as it was found in the investment tables.",
+            "format": "int32"
+          },
+          "redacted": {
+            "type": "boolean",
+            "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!"
+          }
+        }
+      },
+      "Destiny.Definitions.Common.DestinyRewardPassRankSealImages": {
+        "type": "object",
+        "properties": {
+          "rewardPassRankSealImagePath": {
+            "type": "string"
+          },
+          "rewardPassRankSealPremiumImagePath": {
+            "type": "string"
+          },
+          "rewardPassRankSealPrestigeImagePath": {
+            "type": "string"
+          },
+          "rewardPassRankSealPremiumPrestigeImagePath": {
+            "type": "string"
+          }
+        }
+      },
+      "Destiny.Definitions.Common.DestinySeasonalHubRankIconImages": {
+        "type": "object",
+        "properties": {
+          "seasonalHubRankIconUnearned": {
+            "type": "string"
+          },
+          "seasonalHubRankIconEarning": {
+            "type": "string"
+          },
+          "seasonalHubRankIconActive": {
+            "type": "string"
+          }
+        }
+      },
+      "Destiny.Definitions.Inventory.DestinyItemFilterDefinition": {
+        "type": "object",
+        "properties": {
+          "allowedItems": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "uint32"
+            },
+            "description": "The items in this set",
+            "x-mapped-definition": {
+              "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
+            }
+          },
+          "hash": {
+            "type": "integer",
+            "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+            "format": "uint32"
+          },
+          "index": {
+            "type": "integer",
+            "description": "The index of the entity as it was found in the investment tables.",
+            "format": "int32"
+          },
+          "redacted": {
+            "type": "boolean",
+            "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!"
+          }
+        },
+        "description": "Lists of items that can be used for a variety of purposes, including featuring them as new gear",
+        "x-mobile-manifest-name": "itemFilters"
       },
       "Destiny.Definitions.Loadouts.DestinyLoadoutConstantsDefinition": {
         "type": "object",
@@ -44924,6 +42084,66 @@
             },
             "description": "Gear tier overlay images"
           },
+          "watermarkDropShadowPath": {
+            "type": "string",
+            "description": "Watermark drop shadow"
+          },
+          "craftedBackgroundPath": {
+            "type": "string",
+            "description": "Reverse drop shadow for crafted icon identifier"
+          },
+          "featuredItemFlagPath": {
+            "type": "string",
+            "description": "Teal flag for featured item watermarks"
+          },
+          "masterworkOverlayPath": {
+            "type": "string",
+            "description": "Gold masterwork glow for non-Exotic items"
+          },
+          "masterworkExoticOverlayPath": {
+            "type": "string",
+            "description": "Gold masterwork glow for Exotic items"
+          },
+          "masterworkBorderedOverlayPath": {
+            "type": "string",
+            "description": "Gold masterwork glow for non-Exotic Items, with a gold border"
+          },
+          "masterworkExoticBorderedOverlayPath": {
+            "type": "string",
+            "description": "Gold masterwork glow for Exotic items, with a gold border"
+          },
+          "craftedOverlayPath": {
+            "type": "string",
+            "description": "Crafted weapon overlay path"
+          },
+          "enhancedItemOverlayPath": {
+            "type": "string",
+            "description": "Enhanced item overlay"
+          },
+          "holofoilBackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between item and color background to denote holofoil status, introduced in v736"
+          },
+          "holofoil900BackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between item and color background to denote holofoil status, introduced in v900"
+          },
+          "holofoil900AnimatedBackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between item and color background to denote holofoil status, introduced in v900, animated"
+          },
+          "universalOrnamentBackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between item and color background to denote universal ornament status"
+          },
+          "universalOrnamentLegendaryBackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between a legendary item and its color background to denote universal ornament status"
+          },
+          "universalOrnamentExoticBackgroundOverlayPath": {
+            "type": "string",
+            "description": "Layer between an exotic item and its color background to denote universal ornament status"
+          },
           "hash": {
             "type": "integer",
             "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
@@ -44940,38 +42160,6 @@
           }
         },
         "x-mobile-manifest-name": "InventoryItemConstants"
-      },
-      "Destiny.Definitions.Inventory.DestinyItemFilterDefinition": {
-        "type": "object",
-        "properties": {
-          "setItems": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "uint32"
-            },
-            "description": "The items in this set",
-            "x-mapped-definition": {
-              "$ref": "#/components/schemas/Destiny.Definitions.DestinyInventoryItemDefinition"
-            }
-          },
-          "hash": {
-            "type": "integer",
-            "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
-            "format": "uint32"
-          },
-          "index": {
-            "type": "integer",
-            "description": "The index of the entity as it was found in the investment tables.",
-            "format": "int32"
-          },
-          "redacted": {
-            "type": "boolean",
-            "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!"
-          }
-        },
-        "description": "Lists of items that can be used for a variety of purposes, including featuring them as new gear",
-        "x-mobile-manifest-name": "itemFilters"
       },
       "User.EmailSettings": {
         "type": "object",
